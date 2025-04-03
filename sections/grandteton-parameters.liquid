@@ -1,10 +1,10 @@
 <section id="hnz-product-2">
-  <div class="container section-content parameters-content">
-    <div class="row d-lg-flex d-md-none d-sm-none justify-content-between">
+  <div class="container section-content">
+    <div class="row d-lg-flex d-md-none d-sm-none justify-content-center">
       {% for block in product.metafields.custom.parameters.value.list %}
         {% comment %} col-lg-2 col-md-4 col-sm-6  {% endcomment %}
         {% comment %} <div class="flex-grow-1"> {% endcomment %}
-        <div class="spec parameters-item">
+        <div class="spec flex-1">
           <img src="{{ block.image }}">
           <div class="d-flex flex-column">
             <h5 class="title">
@@ -42,15 +42,6 @@
 <style>
   .flex-1 {
     flex: 1;
-  }
-  .parameters-item {
-    width:unset;
-  }
-  @media only screen and (min-width: 1920px) {
-     .parameters-content {
-       padding-left:0 !important;
-      padding-right:0 !important;
-    } 
   }
 </style>
 {% schema %}

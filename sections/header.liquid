@@ -1,274 +1,330 @@
 <style>
-  body.home-page .vanpower-header {
-  position: absolute;
-  top: unset;
-}
-.vanpower-header {
-  z-index: 200;
-  width: 100%;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: 0.4s ease;
-  left: 0;
-  right: 0;
-  top: 0;
-  /* top: 68px; */
-}
-
-.vanpower-header.sticky {
-  position: fixed;
-}
-
-.vanpower-header .nav-header {
-  height: 75px;
-  display: flex;
-  position: relative;
-}
-
-.vanpower-header .nav-header .container-panel {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1570px !important;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.vanpower-header .nav-header .nav-items {
-  padding: 0;
-}
-
-.vanpower-header .nav-items {
-  list-style: none;
-  margin: 0;
-  justify-content: space-between;
-}
-
-.vanpower-header .nav-items a {
-  font-family: Montserrat, Montserrat;
-  font-weight: 600;
-  color: #333333;
-  line-height: 20px;
-  text-decoration: none;
-}
-.vanpower-header ul.nav-items > li > a {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  gap: 10px;
-}
-
-.vanpower-header .nav-items .van-mm-item:after {
-  display: block;
-  content: "";
-  border-bottom: solid 3px #DB1629;
-  transform: scaleX(0);
-  position: absolute;
-  transition: transform 250ms ease-in-out;
-  width: 100%;
-  top: 24px;
-}
-
-.vanpower-header .nav-items .van-mm-item:hover:after {
-  transform: scaleX(1);
-}
-
-.vanpower-header .nav-items .van-mm-item:after {
-  transform-origin: 0% 50%;
-  position: relative;
-}
-
-.vanpower-header .nav-buttons {
-  align-items: center;
-  justify-content: flex-end;
-}
-.vanpower-header .nav-buttons .header-icon {
-  position: relative;
-}
-.vanpower-header .nav-buttons .header-icon .site-header__cart-count {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  right: calc(-6 / 1280 * 100vw);
-  top: -0.3125vw;
-  border-radius: 50%;
-  min-width: 1em;
-  height: 1em;
-  background-color: #d4202b;
-}
-.vanpower-header .nav-buttons .header-icon .site-header__cart-count span {
-  font-weight: 700;
-  color: #fff;
-  font-size: 10px;
-}
-
-.country-icon {
-  border-radius: 50%;
-}
-
-.find-a-store {
-  border: 1px solid #D3D3D3;
-  border-radius: 24px;
-  background: none;
-  padding: 10px 26px;
-  text-decoration: none !important;
-}
-.find-a-store span {
-  text-transform: uppercase;
-}
-.find-a-store:hover {
-  background-color: #DB1629;
-  border: 1px solid #DB1629;
-}
-.find-a-store:hover span {
-  color: #fff;
-}
-.region-selector img:hover{
-  opacity: .8
-}
-.vanpower-header .mobile-logo {
-  display: none;
-}
-/** mobile menu **/
-.mobile-menu-offcanvas {
-  border-left: 0 !important;
-}
-.mobile-menu-offcanvas .btn-close-mobile-menu {
-  font-size: 24px;
-  box-shadow: none;
-}
-@media (max-width: 414px) {
-  .vanpower-header .header-icon .icon-header__search, .vanpower-header .header-icon .icon-header__cart, .vanpower-header .header-icon .icon-header__account {
-    width: 20px !important;
-    height: auto;
-  }
-  .vanpower-header .header-icon .icon-header__account {
-    margin-bottom: 2px;
-  }
-  .vanpower-header .navbar-toggler {
-    width: 20px !important;
-    height: 20px !important;
+    body.home-page .vanpower-header {
+    position: absolute;
+    top: unset;
   }
   .vanpower-header {
-    top: 87px;
+    z-index: 200;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.4s ease;
+    left: 0;
+    right: 0;
+    top: 0;
   }
-}
- @media (max-width: 1200px) {
-  .vanpower-header .d-lg-block {
-    display: none !important;
+
+  .vanpower-header.sticky {
+    position: fixed;
   }
-  .vanpower-header .navbar-toggler {
-    display: block !important;
-  }
-  .vanpower-header .logo {
-    z-index: 101;
+
+  .vanpower-header .nav-header {
+    height: 75px;
+    display: flex;
     position: relative;
-    width: {{section.settings.logo_width_mobile}}px;
   }
+
+  .vanpower-header .nav-header .container-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1570px !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .vanpower-header .nav-header .nav-items {
+    padding: 0;
+  }
+
+  .vanpower-header .nav-items {
+    list-style: none;
+    margin: 0;
+    justify-content: space-between;
+  }
+
+  .vanpower-header .nav-items a {
+    font-family: Montserrat, Montserrat;
+    font-weight: 600;
+    color: #333333;
+    line-height: 20px;
+    text-decoration: none;
+  }
+  .vanpower-header ul.nav-items > li > a {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .vanpower-header .nav-items .van-mm-item:after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px #DB1629;
+    transform: scaleX(0);
+    position: absolute;
+    transition: transform 250ms ease-in-out;
+    width: 100%;
+    top: 24px;
+  }
+
+  .vanpower-header .nav-items .van-mm-item:hover:after {
+    transform: scaleX(1);
+  }
+
+  .vanpower-header .nav-items .van-mm-item:after {
+    transform-origin: 0% 50%;
+    position: relative;
+  }
+
   .vanpower-header .nav-buttons {
-    gap: 5px;
+    align-items: center;
+    justify-content: flex-end;
   }
-  .vanpower-header .icon-header__search, .vanpower-header .icon-header__cart {
-    width: 24px;
-    height: auto;
-    margin-bottom: 2px;
+  .vanpower-header .nav-buttons .header-icon {
+    position: relative;
   }
-  .vanpower-header .navbar-toggler {
-    width: 24px;
-    height: 24px;
+  .vanpower-header .nav-buttons .header-icon .site-header__cart-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: calc(-6 / 1280 * 100vw);
+    top: -0.3125vw;
+    border-radius: 50%;
+    min-width: 1em;
+    height: 1em;
+    background-color: #d4202b;
   }
-  a.nav-logo {
-    margin-left: 25px;
+  .vanpower-header .nav-buttons .header-icon .site-header__cart-count span {
+    font-weight: 700;
+    color: #fff;
+    font-size: 10px;
   }
-  .vanpower-header .nav-buttons .customerAccount-icon {
-    display: none;
+
+  .country-icon {
+    border-radius: 50%;
   }
-  .vanpower-header .dekstop-logo {
-    display: none;
+
+  .find-a-store {
+    border: 1px solid #D3D3D3;
+    border-radius: 24px;
+    background: none;
+    padding: 10px 26px;
+    text-decoration: none !important;
+  }
+  .find-a-store span {
+    text-transform: uppercase;
+  }
+  .find-a-store:hover {
+    background-color: #DB1629;
+    border: 1px solid #DB1629;
+  }
+  .find-a-store:hover span {
+    color: #fff;
+  }
+  .region-selector img:hover{
+    opacity: .8
   }
   .vanpower-header .mobile-logo {
-    display: block !important;
-    width: 167px !important;
+    display: none;
   }
-}
-@media (min-width: 768px) {
-  .vanpower-header .logo {
-    width: {{section.settings.logo_width}}px;
+  /** mobile menu **/
+  .mobile-menu-offcanvas {
+    border-left: 0 !important;
   }
-  .vanpower-header .nav-buttons {
-    gap: 26px;
+  .mobile-menu-offcanvas .btn-close-mobile-menu {
+    font-size: 24px;
+    box-shadow: none;
   }
-}
-@media only screen and (min-width: 1920px) {
-  .header-container {
-    padding-left:0 !important;
-    padding-right:0 !important;
+  @media (max-width: 414px) {
+    .vanpower-header .header-icon .icon-header__search, .vanpower-header .header-icon .icon-header__cart, .vanpower-header .header-icon .icon-header__account {
+      width: 20px !important;
+      height: auto;
+    }
+    .vanpower-header .header-icon .icon-header__account {
+      margin-bottom: 2px;
+    }
+    .vanpower-header .navbar-toggler {
+      width: 20px !important;
+      height: 20px !important;
+    }
+    .vanpower-header {
+      top: 87px;
+    }
   }
-}
+   @media (max-width: 1200px) {
+    .vanpower-header .d-lg-block {
+      display: none !important;
+    }
+    .vanpower-header .navbar-toggler {
+      display: block !important;
+    }
+    .vanpower-header .logo {
+      z-index: 101;
+      position: relative;
+      width: {{section.settings.logo_width_mobile}}px;
+    }
+    .vanpower-header .nav-buttons {
+      gap: 5px;
+    }
+    .vanpower-header .icon-header__search, .vanpower-header .icon-header__cart {
+      width: 24px;
+      height: auto;
+      margin-bottom: 2px;
+    }
+    .vanpower-header .navbar-toggler {
+      width: 24px;
+      height: 24px;
+    }
+    a.nav-logo {
+      margin-left: 25px;
+    }
+    .vanpower-header .nav-buttons .customerAccount-icon {
+      display: none;
+    }
+    .vanpower-header .dekstop-logo {
+      display: none;
+    }
+    .vanpower-header .mobile-logo {
+      display: block !important;
+      width: 167px !important;
+    }
+  }
+  @media (min-width: 768px) {
+    .vanpower-header .logo {
+      width: {{section.settings.logo_width}}px;
+    }
+    .vanpower-header .nav-buttons {
+      gap: 26px;
+    }
+  }
+  @media only screen and (min-width: 1920px) {
+    .header-container {
+      padding-left:0 !important;
+      padding-right:0 !important;
+    }
+  }
 </style>
 
 <script
   type="application/json"
   data-section-type="header"
   data-section-id="{{ section.id }}"
->
-</script>
+></script>
 <div class="vanpower-header">
-    <div class="nav-header">
-        <div class="container container-panel header-container">
-            <div class="navbar-toggler d-block d-lg-none position-relative">
-              <div class="navbar-icon" data-bs-toggle="offcanvas" href="#offcanvas_mobile_menu" role="button" aria-controls="offcanvas_mobile_menu"><div></div></div>
-            </div>
-
-            {% if section.settings.logo %}
-                <a class="nav-logo" href="{{ routes.root_url }}">
-                  <img src="{{ section.settings.logo | img_url: '2048x2048' }}"  class="logo dekstop-logo"  width="{{section.settings.logo_width}}" height="auto" title="{{shop.name}}" alt="{{ shop.name }}">
-                  <img src="{{ section.settings.mobile_logo | img_url: '2048x2048' }}"  class="logo mobile-logo"  width="{{section.settings.logo_width}}" height="auto" title="{{shop.name}}" alt="{{ shop.name }}">
-                </a>
-            {% else %}
-                <a class="nav-logo" href="{{ routes.root_url }}"><h1>{{ shop.name }}</h1></a>
-            {% endif %}
-            
-            <div class="nav-links-wrapper d-lg-block d-none">
-                {% render 'main-menu', menu_list: section.settings.menu %}
-            </div>
-            <div class="nav-buttons d-flex">
-                {%if section.settings.show_custom_button%}
-                <div class="header-icon d-lg-block  d-none" style="margin-right: 30px">
-                  <a href="{{section.settings.custom_button_link}}" class="find-a-store"><span class="p-small">{{section.settings.custom_button_text}}</span></a>
-                </div>
-                {%endif%}
-                <div class="header-icon d-lg-block d-none">
-                    <div class="region-selector dropdown">
-                        <img class="country-icon dropdown-toggle" src="{{'icon-us.png' | asset_url}}" alt="us flag" height="22" width="22" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="dropdown-menu dropdown-menu-end p-3 region-items-wrapper">
-                          {% render 'find-my-region', blocks : section.blocks %}
-                        </div>
-                    </div>
-                </div>
-                <div class="header-icon">
-                  <a href="/search">
-                    <img src="{{'icon-search.png' | asset_url}}" width="24" height="24" class="icon-header__search" alt="icon search">
-                  </a>
-                </div>
-                <div class="header-icon">
-                    <a href="#" class="site-header__icon" data-drawer-trigger aria-controls="drawer-name" aria-expanded="false">
-                       <img class=" icon-header__cart" src="{{'Cart-Icon.svg' | asset_url}}" width="24" height="24" alt="icon cart">
-                       <div id="CartCount" class="site-header__cart-count{% if cart.item_count == 0 %} hide d-none {% endif %} critical-hidden" data-cart-count-bubble>
-                        <span data-cart-count>{{ cart.item_count }}</span>
-                      </div>
-                    </a>
-                </div>
-                <div class="header-icon customerAccount-icon">
-                   <a href="/account" aria-label="customer account link"><img src="{{'person.svg' | asset_url}}" width="24" height="24" class="icon-header__account" alt="icon account"></a>
-                </div>
-                <!-- main menu mobile -->
-                {% render 'main-menu-mobile', menu_list: section.settings.menu %}
-            </div>             
+  <div class="nav-header">
+    <div class="container container-panel header-container">
+      <div class="navbar-toggler d-block d-lg-none position-relative">
+        <div
+          class="navbar-icon"
+          data-bs-toggle="offcanvas"
+          href="#offcanvas_mobile_menu"
+          role="button"
+          aria-controls="offcanvas_mobile_menu"
+        >
+          <div></div>
         </div>
+      </div>
+
+      {% if section.settings.logo %}
+        <a class="nav-logo" href="{{ routes.root_url }}">
+          <img
+            src="{{ section.settings.logo | img_url: '2048x2048' }}"
+            class="logo dekstop-logo"
+            width="{{section.settings.logo_width}}"
+            height="auto"
+            title="{{shop.name}}"
+            alt="{{ shop.name }}"
+          >
+          <img
+            src="{{ section.settings.mobile_logo | img_url: '2048x2048' }}"
+            class="logo mobile-logo"
+            width="{{section.settings.logo_width}}"
+            height="auto"
+            title="{{shop.name}}"
+            alt="{{ shop.name }}"
+          >
+        </a>
+      {% else %}
+        <a class="nav-logo" href="{{ routes.root_url }}">
+          <h1>{{ shop.name }}</h1>
+        </a>
+      {% endif %}
+
+      <div class="nav-links-wrapper d-lg-block d-none">
+        {% render 'main-menu', menu_list: section.settings.menu %}
+      </div>
+      <div class="nav-buttons d-flex">
+        {% if section.settings.show_custom_button %}
+          <div class="header-icon d-lg-block  d-none" style="margin-right: 30px">
+            <a href="{{section.settings.custom_button_link}}" class="find-a-store"
+              ><span class="p-small">{{ section.settings.custom_button_text }}</span></a
+            >
+          </div>
+        {% endif %}
+        <div class="header-icon d-lg-block d-none">
+          <div class="region-selector dropdown">
+            <img
+              class="country-icon dropdown-toggle"
+              src="{{'icon-us.png' | asset_url}}"
+              alt="us flag"
+              height="22"
+              width="22"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+            <div class="dropdown-menu dropdown-menu-end p-3 region-items-wrapper">
+              {% render 'find-my-region', blocks: section.blocks %}
+            </div>
+          </div>
+        </div>
+        <div class="header-icon">
+          <a href="/search">
+            <img
+              src="{{'icon-search.png' | asset_url}}"
+              width="24"
+              height="24"
+              class="icon-header__search"
+              alt="icon search"
+            >
+          </a>
+        </div>
+        <div class="header-icon">
+          <a href="#" class="site-header__icon" data-drawer-trigger aria-controls="drawer-name" aria-expanded="false">
+            <img
+              class=" icon-header__cart"
+              src="{{'Cart-Icon.svg' | asset_url}}"
+              width="24"
+              height="24"
+              alt="icon cart"
+            >
+            <div
+              id="CartCount"
+              class="site-header__cart-count{% if cart.item_count == 0 %} hide d-none {% endif %} critical-hidden"
+              data-cart-count-bubble
+            >
+              <span data-cart-count>{{ cart.item_count }}</span>
+            </div>
+          </a>
+        </div>
+        <div class="header-icon customerAccount-icon">
+          <a href="/account" aria-label="customer account link"
+            ><img
+              src="{{'person.svg' | asset_url}}"
+              width="24"
+              height="24"
+              class="icon-header__account"
+              alt="icon account"
+          ></a>
+        </div>
+        <!-- main menu mobile -->
+        {% render 'main-menu-mobile', menu_list: section.settings.menu %}
+      </div>
     </div>
+  </div>
 </div>
 <script>
   window.addEventListener("scroll", function () {
@@ -286,11 +342,11 @@
               // Check if scrolled back to the top
               header.classList.remove("sticky");
               header.style.position = "relative";
-          } else if (window.scrollY >= 100) { 
+          } else if (window.scrollY >= 100) {
               header.classList.add("sticky");
               header.style.position = "fixed";
               header.style.top = "0";
-              
+
           } else if (bottomOffset >= 0 && bottomOffset < 200) {
               // Inside the section, remove 'sticky' class
               header.classList.remove("sticky");
@@ -313,18 +369,16 @@
         header.classList.remove("sticky");
       }
     }
-    
+
   });
-
 </script>
-
 
 {% schema %}
 {
   "name": "Header",
   "class": "section-header",
   "settings": [
-   
+
     {
       "type": "image_picker",
       "id": "logo",
@@ -470,7 +524,7 @@
           "id": "url_1",
           "label": "Link (Leave Empty to Use Product Link)"
         },
-     
+
          {
           "type": "image_picker",
           "id": "product_image_1",
@@ -480,7 +534,7 @@
           "type": "paragraph",
           "content": "Product 2"
         },
-        
+
         {
           "type": "product",
           "id": "product_2",
@@ -505,7 +559,7 @@
           "type": "paragraph",
           "content": "Product 3"
         },
-       
+
         {
           "type": "product",
           "id": "product_3",
@@ -588,7 +642,7 @@
           "id": "product_title_6",
           "label": "Leave Empty to use Product Title"
         },
-       
+
          {
           "type": "image_picker",
           "id": "product_image_6",
@@ -598,7 +652,7 @@
           "type": "paragraph",
           "content": "Product 7"
         },
-        { 
+        {
           "type": "product",
           "id": "product_7",
           "label": "Select Product"
@@ -660,7 +714,7 @@
           "type": "url",
           "id": "featured1_link",
           "label": "Link"
-        },       
+        },
          {
           "type": "text",
           "id": "tab_2",
@@ -859,7 +913,7 @@
           "id": "custom_link_1",
           "label": "Custom Link"
         },
-        
+
         {
           "type": "paragraph",
           "content": "Card 2"
@@ -936,7 +990,7 @@
           "id": "custom_link_3",
           "label": "Custom Link"
         },
-        
+
         {
           "type": "paragraph",
           "content": "Card 4"
@@ -1154,42 +1208,38 @@
 {% endschema %}
 
 {% javascript %}
-  
+  if ($(window).width() < 1200) {
+      $('ul.gap-big .van-mm-item .mega-menu .mega-tab-content').remove();
+  }
 
-    if ($(window).width() < 1200) {
-        $('ul.gap-big .van-mm-item .mega-menu .mega-tab-content').remove();
-    }
+  function checkWindowWidth() {
+      if ($(window).width() < 1200) {
+          $('ul.gap-big .van-mm-item .mega-menu .mega-tab-content').remove();
+      }
+  }
 
-    function checkWindowWidth() {
-        if ($(window).width() < 1200) {
-            $('ul.gap-big .van-mm-item .mega-menu .mega-tab-content').remove();
-        }
-    }
+  checkWindowWidth();
 
-    checkWindowWidth();
+  $(window).resize(checkWindowWidth);
 
-    $(window).resize(checkWindowWidth);
+  jQuery(document).ready(function(){
 
-    jQuery(document).ready(function(){
+    $('.equipment-navItem a:first-child').addClass('active');
 
-      $('.equipment-navItem a:first-child').addClass('active');
+    $('.equipment-navItem a').click(function(e) {
+      e.preventDefault();
 
-      $('.equipment-navItem a').click(function(e) {
-        e.preventDefault();
-        
-        // Remove 'active' class from all anchor tags
-        $('.equipment-navItem a').removeClass('active');
-        
-        // Add 'active' class to the clicked anchor tag
-        $(this).addClass('active');
-      });
+      // Remove 'active' class from all anchor tags
+      $('.equipment-navItem a').removeClass('active');
 
-      $('.btn-close-mobile-menu').click(function(){
-        $('body').removeClass('custom-mobileMenu-open');
-      });
-      
+      // Add 'active' class to the clicked anchor tag
+      $(this).addClass('active');
     });
 
- 
-{%endjavascript%}
+    $('.btn-close-mobile-menu').click(function(){
+      $('body').removeClass('custom-mobileMenu-open');
+    });
+
+  });
+{% endjavascript %}
 {% include 'alireviews_aggregateRating' %}

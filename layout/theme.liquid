@@ -1,7 +1,12 @@
+{%- comment %}<locksmith:b7a1>{% endcomment -%}
+  {%- include 'locksmith' -%}
+{%- comment %}</locksmith:b7a1>{% endcomment -%}
+
 {% include 'shogun-content-handler' %}
 <!DOCTYPE html>
 <html>
     <head>
+ {{ locksmith_initializations }}
  {%- render 'ecom_header' -%}
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -246,31 +251,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {% endif %}
 
         <script>
-            $('[gp-data*="continue-shopping"] button.gp-button-atc').on('click', function (event) {
-                event.preventDefault();
-                let formData = $(this.form).serialize();
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/cart/add.js',
-                    data: formData,
-                    dataType: 'json',
-                    success: function (response) {
-                        refreshCart();
-                        
-                        document.querySelector('[data-drawer-trigger]')?.dispatchEvent(
-                            new Event("click", { bubbles: true, cancelable: true })
-                        );
-
-                        console.log("Success!");
-                        
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Error adding product to cart:', error);
-                    }
-                });
-            });
-          
             $('.ymal-form').on('submit', function (event) {
                 event.preventDefault();
                 let formData = $(this).serialize();

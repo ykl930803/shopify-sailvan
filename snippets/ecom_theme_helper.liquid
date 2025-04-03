@@ -32,7 +32,10 @@
 	{%- endif -%}
 {%- endif -%}
 {%- if tmpl ==  'page' and  page != blank  and page.metafields.ecomposer and page.metafields.ecomposer.featured_image  -%}
-	<meta property="og:image" content="{{page.metafields.ecomposer.featured_image.value}}" />
+	{%- comment %}<locksmith:00b3>{% endcomment -%}
+	  {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta property="og:image" content="{{page.metafields.ecomposer.featured_image.value}}" />{% endif -%}
+	  {%- comment %}original: <meta property="og:image" content="{{page.metafields.ecomposer.featured_image.value}}" />{%- endcomment %}
+	{%- comment %}</locksmith:00b3>{% endcomment -%}
 	<meta property="og:image:alt" content="{{page_title}}" />
 {%- endif -%}
 <style type="text/css" class="ecom-theme-helper">

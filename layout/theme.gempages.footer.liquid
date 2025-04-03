@@ -1,7 +1,12 @@
+{%- comment %}<locksmith:8ffc>{% endcomment -%}
+  {%- include 'locksmith' -%}
+{%- comment %}</locksmith:8ffc>{% endcomment -%}
+
 {% include 'shogun-content-handler' %}
 <!DOCTYPE html>
 <html>
     <head>
+ {{ locksmith_initializations }}
  {%- render 'ecom_header' -%}
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
