@@ -1,0 +1,480 @@
+{% assign product_form_id = 'product-form-' | append: product.id %}
+{%- liquid
+  assign zoom_size = 5000
+%}
+<section id="hnz-product-1">
+    <div class="container section-content">
+
+        <div class="row">
+            <div class="col-12 top-nav">
+                <a class="back-btn" href="{{ routes.root_url }}">
+                    <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+                <div class="breadcrumbs d-lg-inline d-md-none d-sm-none">
+                    <a href="{{ routes.root_url }}">Home</a>
+                    >
+                    <a href="{{ product.collections[0].url }}">{{ product.collections[0].title }}</a>
+                    >
+                    <a href="javascript:void(0)">Order</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row product-row">
+
+            <div class="col-lg-7 col-md-12 col-sm-12">
+                <div class="sticky">
+                    <div class="product-media">
+
+                        <div class="main-media position-relative">
+                            <div class="owl-carousel" id="main-carousel">
+                                {% for media in product.media %}
+                                    {% case media.media_type %}
+                                        {% when 'image' %}
+                                            <div class="product-image">
+                                                <img src="{{ media | img_url: 'master'}}" alt="{{ media.alt }}">
+                                            </div>
+                                    {% endcase %}
+                                {% endfor %}
+                            </div>
+                            <div class="float-nav f-media">
+                                <button type="button" role="presentation" class="owl-prev" disabled>
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button type="button" role="presentation" class="owl-next">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="owl-carousel" id="option-carousel">
+                            {% for media in product.media %}
+                                {% case media.media_type %}
+                                    {% when 'image' %}
+                                        <div class="product-image" data-media-id="{{ media.id }}">
+                                            <img src="{{ media | img_url: 'master'}}" alt="{{ media.alt }}">
+                                        </div>
+                                {% endcase %}
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-md-12 col-sm-12">
+                <div class="product-info">
+
+                    <h1 class="product-title">
+                        {{ product.title }}
+                    </h1>
+
+                    <div class="star-badge">
+                        <!-- Start of Judge.me code --> 
+                        <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+                            {{ product.metafields.judgeme.badge }} 
+                        </div> 
+                        <!-- End of Judge.me code -->
+                    </div>
+
+                    <div class="product-price">
+                        <div class="price">
+                            <span class="price-regular price-item--regular">
+                                {{ product.selected_or_first_available_variant.price | money }}
+                            </span>
+                            <span class="product-compare-price price-item--sale">
+                                {{ product.selected_or_first_available_variant.compare_at_price | money }}
+                            </span>
+                        </div>
+                        {% if product.metafields.custom.promotion != blank %}
+                            <span class="promotion">
+                                {{ product.metafields.custom.promotion }}
+                            </span>
+                        {% endif %}
+                    </div>
+
+                    {% if product.metafields.custom.compatible_with != blank %}
+                        <div class="compatible-with">
+                            Compatible With: 
+                            {% for cw in product.metafields.custom.compatible_with.value %}
+                                {{ cw.title }}{% unless forloop.last %}, {% endunless %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {% unless product.has_only_default_variant %}
+
+                        {% liquid
+                            assign variants_available_arr = product.variants | map: 'available'
+                            assign variants_option1_arr = product.variants | map: 'option1'
+                            assign variants_option2_arr = product.variants | map: 'option2'
+                            assign variants_option3_arr = product.variants | map: 'option3'
+                        %}
+
+                        <div class="variants">
+                            <variant-radios class="no-js-hidden variants" data-section="{{ product.id }}" data-url="{{ product.url }}">
+                                {% for option in product.options_with_values %}
+                                    
+                                    {% if option.name != 'Color' %}
+                                        <fieldset class="variant js product-form__input">
+                                            <legend class="variant-name form__label">
+                                                {{ option.name }}
+                                                {% if option.name == 'Size' %}
+                                                    <span class="variant-info variant--size"> - {{ product.selected_or_first_available_variant.metafields.custom.size }}</span>
+                                                {% endif %}
+                                            </legend>
+                                            {% for value in option.values %}
+
+                                                {% liquid
+                                                    assign option_disabled = true
+                                                
+                                                    for option1_name in variants_option1_arr
+                                                        case option.position
+                                                            when 1
+                                                                if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                            when 2
+                                                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                            when 3
+                                                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                        endcase
+                                                    endfor
+                                                %}
+
+                                                <span class="variants-selector {% if option.name == 'Size' and option.name != 'color' %} size {% else %} default {% endif %} {% if option.selected_value == value %}selected{% endif %} {% if option_disabled %}disabled{% endif %}" data-id="{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                                    {{ value }}
+                                                </span>
+                                                <span class="variants-option">
+                                                    <input type="radio" class="variant-radio {% if option_disabled %}disabled{% endif %}"
+                                                        id="{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}" 
+                                                        name="{{ option.name }}" 
+                                                        value="{{ value | escape }}" 
+                                                        form="{{ product_form_id }}" 
+                                                        {% if option.selected_value == value %}checked{% endif %}
+                                                    >
+                                                </span>
+                                            {% endfor %}
+                                        </fieldset>
+
+                                    {% elsif option.name == 'Color' %}
+
+                                        <fieldset class="variant js product-form__input">
+                                            <legend class="variant-name form__label">
+                                                {{ option.name }}
+                                                <span class="variant-info variant--color"> - {{ product.selected_or_first_available_variant.metafields.custom.color }}</span>
+                                            </legend>
+                                            
+                                            {% assign colorIndex = 0 %}
+
+                                            {% for value in option.values %}
+
+                                                {% liquid
+                                                    assign option_disabled = true
+                                                
+                                                    for option1_name in variants_option1_arr
+                                                        case option.position
+                                                            when 1
+                                                                if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                            when 2
+                                                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                            when 3
+                                                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                        endcase
+                                                    endfor
+                                                %}
+
+                                                {% assign swatchIndex = 0 %}
+                                                {% assign colorUrl = '' %}
+                                                
+                                                {% for color_swatch in product.metafields.custom.color_swatches.value %}
+                                                    {% if colorIndex == swatchIndex %}
+                                                        {% assign colorUrl = color_swatch %}
+                                                    {% endif %}
+
+                                                    {% assign swatchIndex = swatchIndex | plus: 1 %}
+                                                {% endfor %}
+
+                                                <span class="variants-selector color {% if option.selected_value == value %}selected{% endif %} {% if option_disabled %}disabled{% endif %}" data-id="{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                                    <div class="color-swatch" style="background: {{ colorUrl }}"></div>
+                                                </span>
+                                                <span class="variants-option">
+                                                    <input type="radio" class="variant-radio {% if option_disabled %}disabled{% endif %}"
+                                                        id="{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}" 
+                                                        name="{{ option.name }}" 
+                                                        value="{{ value | escape }}" 
+                                                        form="{{ product_form_id }}" 
+                                                        {% if option.selected_value == value %}checked{% endif %}
+                                                    >
+                                                </span>
+
+                                                {% assign colorIndex = colorIndex | plus: 1 %}
+
+                                            {% endfor %}
+                                        </fieldset>
+
+                                    {% endif %}
+
+                                {% endfor %}
+                                <script type="application/json">
+                                    {{ product.variants | json }}
+                                </script>
+                            </variant-radios>
+                            
+                        </div>
+                    {% endunless %}
+
+                    {% if section.settings.klana_message != blank %}
+                      {% render 'klana-message', message:section.settings.klana_message%}
+                    {% endif %}
+
+                    {% if product.metafields.custom.exclusive_offer != blank %}
+                        <h6 class="info-title">
+                            Exclusive Offer
+                        </h6>
+                        <div class="exclusive-offer">
+                            {% for offer in product.metafields.custom.exclusive_offer.value %}
+                                <div class="offer" data-id="{{ offer.selected_or_first_available_variant.id }}">
+                                    <img src="{{ offer.featured_image | img_url: 'master' }}">
+                                    <div class="details">
+                                        <div class="free">
+                                            <span>FREE</span>
+                                            <span>{{ offer.price | money }}</span>
+                                        </div>
+                                        <h6 class="title">
+                                            {{ offer.title }}
+                                        </h6>
+                                        <p class="body">
+                                            Limited Time: Until {{ product.metafields.custom.exclusive_offer_date_end | date: '%m/%d/%y' }}.
+                                            Save Up To {{ offer.price | money }} when you buy this product.
+                                        </p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                   {% endif %}
+
+                    {% if product.metafields.custom.shipping_time_description_1 != blank or product.metafields.custom.shipping_time_description_2 != blank %}
+                        <div class="delivery-info">
+                            <div class="delivery">
+                                {% if product.metafields.custom.shipping_time_description_1 != blank %}
+                                    <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/shipping_99c0c7f4-f324-4531-959b-35f6a18c4f4e.png?v=1716032202">
+                                    {{ product.metafields.custom.shipping_time_description_1 | metafield_tag }}
+                                {% endif %}
+                            </div>
+                            <div class="delivery">
+                                {% if product.metafields.custom.shipping_time_description_2 != blank %}
+                                    <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Delivery_a92280c2-bc42-4b74-b513-fa515fd209c0.png?v=1716032153">
+                                    {{ product.metafields.custom.shipping_time_description_2 | metafield_tag }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="quantity-container">
+                        <p class="qty-label">Quantity</p>
+                        <quantity-input class="quantity">
+                            <button name="minus" type="button" class="less_qty" style="margin-right: 5px;">-</button>
+                            <input class="qty quantity__input"
+                                type="number"
+                                name="quantity"
+                                id="Quantity-{{ product.id }}"
+                                min="1"
+                                value="1"
+                                form="{{ product_form_id }}"
+                            >
+                            <button name="plus" type="button" class="add_qty" style="margin-left: 5px;">+</button>
+                        </quantity-input>
+                    </div>
+
+                    <div class="product-form">
+                        <product-form>
+                            {% form 'product', product, id: product_form_id, class: 'atc-form form', novalidate: 'novalidate', data-type: 'add-to-cart-form', action: 'javascript:void(0)' %}
+                                <input type="hidden" name="id" id="main-id" value="{{ product.selected_or_first_available_variant.id }}">
+                                <div class="form-btn">
+                                    <button type='submit' name="add" class="btn btn-atc" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+                                        <span>
+                                            {% if product.selected_or_first_available_variant.available %}
+                                                Add To Cart
+                                            {% else %}
+                                                Out Of Stock
+                                            {% endif %}
+                                        </span>
+                                    </button>
+                                    <button type='button' class="btn buy-button" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+                                          <span>
+                                              {% if product.selected_or_first_available_variant.available %}
+                                                  Buy Now
+                                              {% else %}
+                                                  Out Of Stock
+                                              {% endif %}
+                                          </span>
+                                      </button>
+                                </div>
+                              <!-- {% if settings.enable_dynamic_checkout_button %}
+                              {{ form | payment_button }}
+                              {% endif %} -->
+                            {% endform %}
+                        </product-form>
+                    </div>
+
+                  {% liquid
+                    assign hide_payment = false
+                    if product.handle == 'black-friday-special-save-on-grandteton-ultra-limited-time-offer' or product.handle == 'black-friday-special-save-on-urbancross-pro-limited-time-offer' or product.handle == 'black-friday-voucher' or product.handle == 'vanpowers-cloudseat'
+                    assign hide_payment = true
+                    endif
+                  %}
+                  
+                  <!-- {% if hide_payment == false %}
+                      <div class="payments">
+                        <div class="payment">
+                            <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/paypal.png?v=1715660364">
+                            <span class="apr">
+                                {{ section.settings.paypal_apr }} APR
+                                </span>
+                            <span class="details">
+                                {{ section.settings.paypal_details }}
+                            </span>
+                        </div>
+                        <div class="payment">
+                            <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/klarna_a1e22cd4-9279-4b15-ab1d-2a9d543ee363.png?v=1715660364">
+                            <span class="apr">
+                                {{ section.settings.klarna_apr }} APR
+                                </span>
+                            <span class="details">
+                                {{ section.settings.klarna_details }}
+                            </span>
+                        </div>
+                    </div>
+                  {% endif %} -->
+                    
+                    <div class="payment-method">
+                        <h5 class="text">
+                            Other Payment Method. <a href="{{ section.settings.payment_url }}">Learn More</a>
+                        </h5>
+                        <div class="method">
+                            <img src="{{ section.settings.payment_method | img_url: 'master' }}">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="product-nav">
+    <div class="container">
+        <div class="row justify-content-between gy-lg-0 gy-md-3 gy-sm-3">
+            <div class="col-lg-7 col-md-12 col-sm-12 order-lg-1 order-md-2 order-sm-2">
+                <p class="shipping-1">
+                    <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/shipping.png?v=1715777128">
+                    {{ section.settings.shipping_1 }}
+                </p>
+                <p class="shipping-2">
+                    {{ section.settings.shipping_2 }}
+                </p>
+            </div>
+            <div class="col-lg-5 col-md-12 cols-m-12 order-lg-2 order-md-1 order-sm-1">
+                <div class="price-btn">
+                    <div class="price">
+                        {% if product.selected_or_first_available_variant.compare_at_price %}
+                            <div class="product-compare-price price-item--sale">
+                                {{ product.selected_or_first_available_variant.compare_at_price | money }}
+                            </div>
+                        {% endif %}
+                        <div class="price-regular price-item--regular">
+                            {{ product.selected_or_first_available_variant.price | money }}
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-black btn-atc" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+                            {% if product.selected_or_first_available_variant.available %}
+                                Add To Cart
+                            {% else %}
+                                Out Of Stock
+                            {% endif %}
+                        </button>
+                        <button class="btn btn-black hnz-modal" data-modal="email" {% if product.selected_or_first_available_variant.available %}style="display: none;"{% endif %}>
+                            Notify Me
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Product Section 1",
+        "settings": [
+            {
+                "type": "text",
+                "id": "paypal_apr",
+                "label": "Paypal APR Percentage"
+            },
+            {
+                "type": "text",
+                "id": "paypal_details",
+                "label": "Paypal Details"
+            },
+            {
+                "type": "text",
+                "id": "klarna_apr",
+                "label": "Klarna APR Percentage"
+            },
+            {
+                "type": "text",
+                "id": "klarna_details",
+                "label": "Klarna Details"
+            },
+            {
+                "type": "image_picker",
+                "id": "payment_method",
+                "label": "Payment Method"
+            },
+            {
+                "type": "url",
+                "id": "payment_url",
+                "label": "Other Payment Method URL"
+            },
+            {
+                "type": "text",
+                "id": "delivery_1",
+                "label": "Delivery Info 1"
+            },
+            {
+                "type": "text",
+                "id": "delivery_2",
+                "label": "Delivery Info 1"
+            },
+            {
+                "type": "text",
+                "id": "shipping_1",
+                "label": "Shipping Info 1"
+            },
+            {
+                "type": "text",
+                "id": "shipping_2",
+                "label": "Shipping Info 2"
+            },
+             {
+              "type": "text",
+              "id": "klana_message",
+              "label": "Klana Message"
+            }
+        ]
+    }
+{% endschema %}

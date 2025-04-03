@@ -1,0 +1,227 @@
+<div class="product-gallery-container position-relative tab-content"  tabindex="0">
+    <div class="tab-pane fade show active" id="nav-content-photos" role="tabpanel" aria-labelledby="nav-type-photos">
+        <div class="product-main-image">
+            <img id="main-product-image" src="{{ product.featured_image.src | product_img_url: 'large' }}" width="auto" height="auto" alt="{{ product.title }}" />
+        </div>
+
+        <div class="productThumbnail-holder">
+            <div class="product-thumbnail-slider swiper-container">
+                <div class="swiper-wrapper">
+                {% for image in product.images %}
+                    <div class="swiper-slide thumbnail-item {% if forloop.first %}active{% endif %}" data-main-image="{{ image.src | product_img_url: 'large' }}">
+                        <img width="auto" height="auto" src="{{ image.src | product_img_url: 'thumbnail' }}" alt="{{ product.title }}" />
+                    </div>
+                {% endfor %}
+                </div>
+                <div class="productThumbnail-navigation">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Add Navigation -->
+        <!--div class="productThumbnail-navigation">
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div-->
+    </div>
+     <div class="tab-pane fade" id="nav-content-threeD" role="tabpanel" aria-labelledby="nav-type-threeD">
+        <div class="product-3d-media">
+            {% assign glb_url = product.metafields.custom.model_viewer %}
+
+            {% if glb_url %}
+                <model-viewer src="{{ glb_url }}" alt="{{ product.title }}" auto-rotate camera-controls></model-viewer>
+            {% else %}
+                <p>No 3D model available for this product.</p>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+<nav>
+    <div class="d-flex justify-content-center" id="nav-tab-images" role="tablist">
+        <button class="btn nav-image active d-flex align-items-center" id="nav-type-photos" 
+            data-bs-toggle="tab" 
+            data-bs-target="#nav-content-photos" 
+            type="button" 
+            role="tab" 
+            aria-controls="nav-content-photos" 
+            aria-selected="true">
+            <span class="v-medium">Photos</span>
+        </button>
+        <button class="btn nav-image d-flex align-items-center" id="nav-type-threeD" 
+            data-bs-toggle="tab" 
+            data-bs-target="#nav-content-threeD" 
+            type="button" 
+            role="tab" 
+            aria-controls="nav-content-threeD" 
+            aria-selected="false">
+            <span class="v-medium">3D</span>
+        </button>
+    </div>
+</nav>
+
+<style>
+    #nav-tab-images{
+        gap: 15px;
+        padding-top: 30px;
+    }
+    .btn.nav-image{
+        background: #FAFAFB;
+        border: 0;
+    }
+    
+    .btn.nav-image#nav-type-photos::before {
+        content: "";
+
+        background-image: url("{{'photo_icon.png' | asset_url}}"); /* URL or path to your icon image */
+        margin-right: 5px; /* Adjust as needed */
+        margin-right: 5px;
+        height: 20px;
+        width: 20px;
+        background-size: cover;
+        -webkit-filter: invert(1);
+        filter: invert(1);
+    }
+    .btn.nav-image#nav-type-threeD::before {
+        content: "";
+        background-image: url("{{'3d_icon.png' | asset_url}}"); /* URL or path to your icon image */
+        margin-right: 5px; /* Adjust as needed */
+        margin-right: 5px;
+        height: 20px;
+        width: 20px;
+        background-size: cover;
+    }
+
+    .btn.nav-image.active{
+        background: #202020;
+        span{
+            color: #fff
+        }
+    }
+    .btn.nav-image.active:before{
+        -webkit-filter: brightness(0) invert(1) !important;
+        filter: brightness(0) invert(1) !important;
+    }
+ 
+    .productHolder {
+        padding-right: 120px;
+    }
+    .product-gallery-container {
+        background-color: #FAFAFB;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 5px;
+        padding: 40px 0;
+        min-height: 630px;
+    }
+    /*.productThumbnail-holder {
+        margin-top: 100px;
+    }*/
+    .product-thumbnail-slider {
+        width: 100%;
+        overflow: hidden;
+        max-width: 350px;
+        margin: 0 auto;
+        position: inherit;
+    }
+    .product-thumbnail-slider .swiper-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+    .product-main-image img {
+        width: 100%;
+    }
+    .product-main-image img, .product-thumbnail-slider img {
+        mix-blend-mode: multiply;
+    }
+    .product-main-image {
+        margin-bottom: 25px;
+    }
+    .productThumbnail-navigation .swiper-button-next,
+    .productThumbnail-navigation .swiper-button-prev {
+        position: absolute;
+        top: 47%;
+        width: 45px;
+        height: 45px;
+        margin-top: -10px;
+        background-color: #d9d9d9;
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 20px;
+        cursor: pointer;
+        z-index: 1;
+        transition: 0.4s ease;
+    }
+    .productThumbnail-navigation .swiper-button-next:hover,
+    .productThumbnail-navigation .swiper-button-prev:hover {
+        background-color: #B7011C;
+    }
+    .productThumbnail-navigation .swiper-button-disabled {
+        background-color: #d9d9d9;
+        opacity: 1;
+    }
+    .productThumbnail-navigation .swiper-button-prev {
+        left: 30px;
+    }
+    .productThumbnail-navigation {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        left: 50%;
+    }
+    /*.productThumbnail-navigation .swiper-button-next {
+        right: 30px;
+    }*/
+    .productThumbnail-navigation .swiper-button-next:after, 
+    .productThumbnail-navigation .swiper-button-prev:after {
+        font-size: 13px;
+    }
+    .product-thumbnail-slider .thumbnail-item {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        opacity: 0.5;
+        transition: 0.4s ease;
+        box-sizing: border-box;
+        /*width: 60px !important;*/
+    }
+    .product-thumbnail-slider .thumbnail-item.active {
+        opacity: 1;
+    }
+    .product-thumbnail-slider img {
+        border: 1px solid #333333;
+        border-radius: 10px;
+        width: 100%;
+        object-fit: contain;
+        height: 60px;
+    }
+    .product-thumbnail-slider .thumbnail-item:last-child {
+        margin-right: 0 !important;
+    }
+    .product-thumbnail-slider .swiper-button-next { right: 30px; }
+    .swiper-button-prev { left: 0; }
+    body.product-page #nav-tab-images {
+        display: none !important;
+    }
+    .product-3d-media model-viewer {
+        width: 600px;
+        height: 550px;
+    }
+    @media (max-width: 767px){
+        .product-main-image img {
+            height: 300px;
+            object-fit: cover;
+        }
+        .product-gallery-container {
+            min-height: auto;
+        }
+    }
+</style>

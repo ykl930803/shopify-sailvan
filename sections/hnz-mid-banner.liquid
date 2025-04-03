@@ -1,0 +1,53 @@
+<style>
+    @media only screen and (min-width: 0px) {
+        #hnz-mid-banner {
+            background: url('{{ section.settings.background_mobile | img_url: "master" }}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+    @media only screen and (min-width: 1280px) {
+        #hnz-mid-banner {
+            background: url('{{ section.settings.background_desktop | img_url: "master" }}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+</style>
+
+<section id="hnz-mid-banner">
+    <div class="container section-content h-100">
+        <div class="row align-items-lg-center align-items-md-start align-items-sm-start h-100">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <h1 class="title">
+                    {{ section.settings.title }}
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Mid Banner",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_desktop",
+                "label": "Background Desktop"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_mobile",
+                "label": "Background Mobile"
+            }
+        ]
+    }
+{% endschema %}

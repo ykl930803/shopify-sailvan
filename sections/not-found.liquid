@@ -1,0 +1,94 @@
+<div class="container-404">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex align-items-center">
+                <div class="text-start">
+                    <h1 class="fw-600">404</h1>
+                    <p class="h1 fw-600 mb-2 pt-4">Page Not Found </p>
+                    <p class="v-large mt-3 pt-3">It looks like the page you were trying to reach doesn't exist.</p>
+                    <button  onclick="window.location.href='{{shop.url}}'" class="btn btn--secondary mt-4">Back to home </button>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <!--div id="animation-container"></div-->
+                <img src="{{  '404.gif' | asset_url }}" alt="placeholder" class="error-image w-100">
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+:root {
+  --custom-height: 820px; /* calc(100vh - 80px); */
+}
+.container-404 {
+    min-height: 650px;
+    background-image: url('{{"404_bg.png" | asset_url}}');
+    display: flex;
+    align-items: center;
+}
+.container-404 .container{
+    height:  100%;
+}
+.container-404 .h1, .container-404 h1{
+        font-size: 70px;
+}
+.container-404 button {
+    background-color: #B7011C;
+}
+.error-image {
+    mix-blend-mode: darken;
+}
+
+@media (max-width: 767px) {
+    .container-404 {
+        padding: 75px 0 50px;
+    }
+    .container-404 .text-start {
+        display: table;
+        margin: auto;
+    }
+    .container-404 .text-start h1, .container-404 .text-start p {
+        text-align: center;
+    }
+    .container-404 button {
+        display: table;
+        margin: auto;
+    }
+}
+
+@media (max-width: 611px) {
+    .container-404 .text-start p.h1 {
+        padding-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    .container-404 .text-start p {
+        margin-top: 0 !important;
+    }
+}
+@media (max-width: 576px) {
+    .container-404 {
+        min-height: auto;
+        padding: 40px 0;
+    }
+    .container-404 .text-start h1 {
+        font-size: 45px;
+    }
+    .container-404 .text-start p.h1 {
+        font-size: 22px;
+    }
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js" defer></script>
+<!--script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Load the Lottie animation
+        var animation = lottie.loadAnimation({
+            container: document.getElementById('animation-container'), // Specify the container element
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '{{"404.json"| asset_url}}' // Path to your Lottie animation JSON file
+        });
+    });
+</script-->

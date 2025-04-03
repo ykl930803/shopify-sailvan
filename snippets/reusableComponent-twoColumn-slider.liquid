@@ -1,0 +1,53 @@
+<section id="shopify-section--{{ section.id }}" class="twoColumn-slider position-relative">
+    <div class="container">
+        <div class="row">
+            <div class="twoColum-sliderItem d-flex flex-direction-row">
+                <div class="col-8 left-imageWrapper">
+                    <div class="image-slider-container">
+                        <div class="swiper-container image-slider">
+                            <div class="swiper-wrapper">
+                                {%- for block in section.blocks -%}
+                                    <div class="swiper-slide">
+                                        <div class="leftImage-inner">
+                                            <div class="swiper-slide-inner" data-swiper-parallax="100%">
+                                                <!--div class="left-image" style="background-image: url('{{ block.settings.left_image | img_url: "master" }}');"></div-->
+                                                <img class="left-image swiper-lazy" src="{{ block.settings.left_image | img_url: 'master'}}" data-src="{{ block.settings.left_image | img_url: 'master'}}" alt="image-slider">
+                                            </div>
+                                        </div>
+                                    </div>
+                                {%- endfor -%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 right-headingTextWrapper">
+                    <div class="quote-slider-container">
+                        <div class="swiper-container quote-slider">
+                            <div class="swiper-wrapper">
+                                {%- for block in section.blocks -%}
+                                    <div class="swiper-slide">
+                                        <div class="quote-text-wrap">
+                                            <div class="quote-text">
+                                                {%- if block.settings.right_headingText != blank -%}
+                                                    <div class="right-headingText">
+                                                        {{ block.settings.heading_tags }}{{ block.settings.right_headingText }}
+                                                    </div>
+                                                {% endif %}
+                                                
+                                                {%- if block.settings.right_paragraph != blank -%}
+                                                    <div class="right-paragraph">
+                                                        {{ block.settings.right_paragraph }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {%- endfor -%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

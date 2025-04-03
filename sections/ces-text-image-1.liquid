@@ -1,0 +1,120 @@
+<div class="ifa-join-us-1">
+  <div class="text">
+    <div class="text-inner">
+      <h2 class="main-title">{{ section.settings.title }}</h2>
+      {% for block in section.blocks %}
+        <div class="content-item">
+          <h3 class="title">{{ block.settings.title }}</h3>
+          <p class="desc">{{ block.settings.desc }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="image"></div>
+</div>
+<style>
+  .ifa-join-us-1 {
+    display: flex;
+  }
+  .ifa-join-us-1 .text {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    background: #111214;
+    padding-left: 4%;
+  }
+  .ifa-join-us-1 .text-inner {
+    width: 80%;
+    word-break: break-word;
+  }
+  .ifa-join-us-1 .main-title {
+    color: #ffffff;
+    margin-bottom:30px;
+  }
+  .ifa-join-us-1 .title {
+    color: #A8D0FF;
+    font-size:20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .ifa-join-us-1 .desc {
+    color:  #ffffff;
+    font-size: 15px;
+  }
+  .ifa-join-us-1 .image {
+    flex: 1;
+    aspect-ratio: {{ section.settings.bg_pc.aspect_ratio }};
+    background-image: url('{{ section.settings.bg_pc | image_url}}');
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  .ifa-join-us-1 .content-item {
+    margin-bottom: 30px;
+  }
+  @media screen and (max-width:480px) {
+    .ifa-join-us-1 {
+      position: relative;
+    }
+    .ifa-join-us-1 .image {
+      aspect-ratio: {{ section.settings.bg_m.aspect_ratio }};
+      background-image: url('{{ section.settings.bg_m | image_url}}');
+      width: 100%;
+    }
+    .ifa-join-us-1 .text {
+      width: 100%;
+      padding: 0 4%;
+      position: absolute;
+      bottom: 50px;
+      background: transparent;
+      word-break: break-word;
+    }
+    .ifa-join-us-1 .main-title {
+      font-size: 24px;
+    }
+    .ifa-join-us-1 .text-inner {
+    width: 100%;
+  }
+    .ifa-join-us-1 .title {
+      font-size: 16px;
+    }
+    .ifa-join-us-1 .desc {
+      font-size: 13px;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "Join Us 1",
+  "settings": [
+    {
+  "type": "image_picker",
+  "id": "bg_pc",
+  "label": "Background PC"
+},
+{
+  "type": "image_picker",
+  "id": "bg_m",
+  "label": "Background M"
+},
+    {
+    "type": "text",
+    "id": "title",
+    "label": "Title"
+  }
+  ],
+  "blocks": [{
+    "type":"text",
+    "name": "Text",
+    "settings": [{
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },{
+      "type": "text",
+      "id": "desc",
+      "label": "Description"
+    }]
+  }],
+  "presets": [{"name": "Join Us 1"}]
+}
+{% endschema %}

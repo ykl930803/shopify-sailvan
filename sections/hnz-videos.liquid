@@ -1,0 +1,80 @@
+<section id="hnz-videos" style="background: {{ section.settings.background_color }}">
+    <div class="container section-content">
+        {% if section.settings.title != blank or section.settings.subtitle != blank %}
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="title">
+                        {{ section.settings.title }}
+                    </h2>
+                    <p class="subtitle">
+                        {{ section.settings.subtitle }}
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+        <div class="row videos-row">
+            {% for block in section.blocks limit:section.settings.max_item %}
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    {% assign youtube_link = block.settings.youtube_url %}
+                    {% assign youtube_id = youtube_link | split: 'watch?v=' | last %}
+                    <iframe class="video" src="https://www.youtube.com/embed/{{ youtube_id }}?&showinfo=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="video-details">
+                        <img class="author-photo" src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/avatar-empty.png?v=1717470899">
+                        <span class="author-name">Loading...</span>
+                    </div>
+                    <h2 class="video-title">Loading...</h2>
+                </div>
+            {% endfor %}
+        </div>
+      {% if section.blocks.size > section.settings.max_item %}
+          <div style="text-align:center;margin-top:30px;"><a class="btn" href="{{ section.settings.more_link }}" style="background:#1a1a1a;color:#ffffff;">More</a></div>
+        {% endif %}
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Videos",
+        "settings": [
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background Color",
+                "default": "#fff"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "subtitle",
+                "label": "Subtitle"
+            },
+          {
+                "type": "number",
+                "id": "max_item",
+                "label": "Maximum number of displays"
+            },
+          {
+            "type": "url",
+            "id": "more_link",
+            "label": "More Videos Link"
+          }
+        ],
+        "blocks": [
+            {
+                "type": "url",
+                "name": "Video",
+                "settings": [
+                    {
+                        "type": "url",
+                        "id": "youtube_url",
+                        "label": "Youtube URL"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

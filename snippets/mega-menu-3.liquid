@@ -1,0 +1,45 @@
+<div class="mega-menu">
+    <div class="mega-menu__content bg-white">
+        <div class="container container-panel mega-menu-content-wrapper sub-content-text d-flex">
+            <div class="nav_list-content two-columns row">
+                    {% for i in (1..5) %}
+                        {% assign card_title = 'card_title_' | append: i %}
+                        {% assign c_title = block.settings[card_title] %}
+                        {% assign card_subtitle = 'card_subtitle_' | append: i %}
+                        {% assign subtitle = block.settings[card_subtitle] %}
+                        {% assign card_image = 'card_icon_' | append: i %}
+                        {% assign icon = block.settings[card_image] %}
+                        {% assign text = 'card_text_' | append: i %}
+                        {% assign link_text = block.settings[text] %}
+                        {% assign card_url = 'card_url_' | append: i %}
+                        {% assign c_url = block.settings[card_url] %}
+                        {% assign parameter_link = 'custom_link_' | append: i %}
+                        {% assign __parameter_link = block.settings[parameter_link] %}
+                        <div class="col-3">
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <img src="{{icon | img_url : 'master'}}" width="42" height="42" title="Press">
+                                    <h5 class="card-title cardTitle-desktop">{{c_title}}</h5>
+    
+                                    <a href="{{c_url}}/{{__parameter_link}}" class="cardTitle-mobile link">
+                                        <h5 class="card-title">
+                                            {{c_title}}
+                                        </h5> <i class="arrow"></i>
+                                    </a>
+    
+                                    <p class="card-text">{{subtitle}}</p>
+                                    <a href="{{c_url}}/{{__parameter_link}}" class="link">{{link_text}} <i class="arrow"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    {%endfor%}
+            </div>
+            <div class="featured-image position-relative" style="width: 30%">
+                <a class="" href="{{block.settings.featured_link}}" target="_blank">
+                    <div class="featured-text text-white p-small position-absolute  bottom-0 start-0">{{block.settings.featured_text}}</div>
+                    <img src="{{ block.settings.featured_image | img_url: '2048x2048' }}" class="img-fluid" height="auto" width="236"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

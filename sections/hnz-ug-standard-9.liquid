@@ -1,0 +1,87 @@
+<section id="hnz-ug-standard-9" data-toggle="safety-intelligent" data-name="Safety & Intelligent" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content h-100">
+        <div class="row slides-row h-100 align-items-center">
+
+            <div class="col-12 d-lg-none d-md-block d-sm-block">
+                <h2 class="title text-center">
+                    {{ section.settings.title }}
+                </h2>
+                <div class="slides mobile">
+                    {% for block in section.blocks %}
+                        <div class="slide {% if forloop.first %}active{% endif %}">
+                            <img src="{{ block.settings.background_mobile | img_url: 'master' }}">
+                            <p class="body">
+                                {{ block.settings.title }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-lg-6 d-lg-block d-md-none d-sm-none">
+                <div class="slides">
+                    {% for block in section.blocks %}
+                        <img class="slide {% if forloop.first %}active{% endif %}" src="{{ block.settings.background_image | img_url: 'master' }}">
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-6 d-lg-block d-md-none d-sm-none">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                </h2>
+                <div class="toggles">
+                    {% for block in section.blocks %}
+                        <p class="toggle {% if forloop.first %}active{% endif %}">
+                            {{ block.settings.title }}
+                        </p>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "UG Standard Section 9",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "Image & Text",
+                "limit": 5,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "background_image",
+                        "label": "Image Desktop"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "background_mobile",
+                        "label": "Image Mobile"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "title",
+                        "label": "Title"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,729 @@
+<style>
+.compare-buttons {
+    margin:12px 23px;
+    justify-content: flex-end;
+    
+    .btns-wrapper{
+        display: flex;
+        gap: 77px;
+        align-items:center;
+    }
+    .vanpower-btn-gray{
+        color: #fff;
+        font-weight: bold;
+        padding: 17px 33px;
+        font-size: 22px;
+        background: lightgray;
+        border: 0;
+
+        &.active{
+            background: {{settings.text_color}}
+        }
+    }
+
+    .btn-reset{ 
+        font-size: 15px;
+        text-decoration: underline;
+        cursor: pointer;
+        &:hover{
+            color: #B7011C
+        }
+    }
+}
+
+.sticky-fixed {
+    position: fixed;
+    width: 100%; 
+    z-index: 1000; 
+}
+#compare_list_carousel_{{section.id}}{
+    margin-left: 0;
+    overflow: initial;
+    .swiper-wrapper{
+        padding-left: 0;        
+    }
+    .sticky{
+        position: sticky;
+        top: 0;
+        background-color: white; 
+        z-index: 1000;
+        border-bottom: 1px solid #cfcfcf;
+    }
+  
+}
+.swiper-navigations {
+    transition: 0.4s ease;
+
+    .navigation-button {
+        color: #333;
+        border: 1px solid #333;
+        border-radius: 50px;
+        width: 44px;
+        height: 44px;
+        transition: 0.4s ease;
+        background-color: #fff;
+        top: 15%;
+
+        &::after {
+            font-size: 13px;
+            transition: 0.4s ease;
+            -webkit-text-stroke-width: 1px;
+        }
+        &:hover{
+            background: #B7011C;
+                
+            &::after{
+                -webkit-filter: brightness(0) invert(1);
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+    .swiper-button-next {
+        right: -85px;
+
+        &::after {
+            margin-left: 3px;
+            background-image: url('{{'navigation-arrow.png' | asset_url}}');
+            font-size: 0;
+            width: 18px;
+            height: 18px;
+            display: block;
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+    .swiper-button-prev {
+        left: 17%;
+
+        &::after {
+            margin-right: 3px;
+            background-image: url('{{'navigation-arrow.png' | asset_url}}');
+            font-size: 0;
+            width: 18px;
+            height: 18px;
+            display: block;
+            background-size: cover;
+            background-position: center center;
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.compare-list{
+    margin: 52px 0;
+    &.scrolled{
+        .swiper-navigations{
+            display: none !important;
+        }
+        .header{
+            position: fixed;
+            top: 74px;
+            z-index: 3;
+            background: white;
+            border-right: 0;
+            .img-wrapper{
+                height: 100px !important;
+            }
+            
+        }
+        .compare-item-sticky,.compare-item{
+            .header{
+                height: 205px;
+                border-right: 0;
+
+            }
+         }
+    }
+    .list-group-item{
+        border: 0;
+    }
+}
+
+.compare-list-scrollable {
+    list-style: none;
+    display: flex;
+    border-radius: 0;
+    overflow-x: scroll;
+    overflow-y: auto;
+    scroll-snap-type: x mandatory;
+    max-height: 100vh;
+    transition: transform 0.5s ease; 
+
+    li{
+        padding: 0px;
+        border-radius: 0;
+        span{
+            padding: 16px 0;
+            display: block;
+            height: 59px;
+            font-weight: 500;
+        }
+        
+        &.compare-item-sticky{
+            position: -webkit-sticky;
+            position: sticky;
+            z-index: 2;
+            left: 0;
+            transition: all 0.2s;
+        }
+        .swiper-slide{
+            opacity: 1;
+            transform: translateY(0); /* Adjust the distance for sliding up */
+            transition: opacity 0.5s ease, transform 1s ease;
+            &.hide {
+                opacity: 1;
+                transition: opacity 0.5s ease, transform 0.5s ease;
+            }
+           
+        }
+      
+        .swiper-slide.hide.hide-effect {
+            opacity: 0;
+            transform: translateY(50px); /* Adjust the distance for sliding down */
+        }
+        &.compare-item{
+            transition: all 0.2s;
+            .list-group{
+                
+                border:0;
+                li{
+                    border: 1px solid #cfcfcf;
+                    border-bottom: 0;
+                }
+            }
+            .filter-item:checked ~ .compare-toggle {
+                background: {{settings.text_color}};
+            }
+            .btn-close{
+                box-shadow: none;
+            }
+            .compare-toggle{
+                height: 20px;
+                width: 20px;
+                border: 1px solid #ccc;
+                border-radius: 50%;
+                display: block;
+                margin: 18px auto 1rem;
+                cursor: pointer;
+               
+            }
+
+            .close {
+                position: absolute;
+                right: 7px;
+                cursor: pointer;
+                top: 16px;
+                font-size: 18px;
+            }
+
+        }
+    }
+    ul{
+        list-style: none;
+        border-radius: 0;
+    }
+    ul.label-list{
+        background: #f8f8f8 !important;
+
+    }
+    li{
+        &.compare-item{
+             .header{
+                height: 328px;
+                .img-wrapper{
+                    height: 217px;
+                    transition: 0.4s ease;
+                }
+                .thumbnail-image{
+                    object-fit: contain;
+                    height: 100%;
+                }
+                .title{
+                    font-size: 18px;
+                    padding-top: 5px;
+                }
+            }
+            ul li{
+            }
+        }
+        &.compare-item-sticky{
+            .list-group{
+                 border: 1px solid #cfcfcf;
+                 border-top:0;
+                 li{
+                    border-top: 1px solid #cfcfcf;
+                 }
+            }
+            .header{
+                padding: 15px 50px;
+                height: 328px;
+                &.blank{
+                    background: #fafafa !important;
+                }
+                &.sticky{
+                    position: sticky;
+                    top: 0;
+                    border-bottom: 1px solid #cfcfcf;
+                    background-color: white; /* Adjust as needed */
+                    z-index: 1000; /* Ensure it's on top of scrollable content */
+                }
+               
+            }
+            ul li{
+            }
+        }
+    }
+}
+
+
+.compare-list-scrollable::-webkit-scrollbar  {
+  height: 16px;
+}
+
+.compare-list-scrollable::-webkit-scrollbar-thumb ,
+.compare-list-scrollable::-webkit-scrollbar-track  {
+  border-radius: 0px;
+}
+
+.compare-list-scrollable::-webkit-scrollbar-thumb  {
+  background: #b5b5b5
+}
+
+.compare-list-scrollable::-webkit-scrollbar-track  {
+  background: #f6f6f6
+}
+
+.compare-list-scrollable::-webkit-scrollbar-thumb:vertical {
+  background: #fff
+}
+
+.compare-list-scrollable::-webkit-scrollbar-track:vertical {
+  background: #fff
+}
+@media (max-width: 768px) {
+    .compare-item {
+        width: calc(345px - 130px);
+       
+    }
+    .compare-item-sticky ul li{
+        width: calc(357px - 130px);
+    }
+     ul.label-list{
+        span{
+            padding: 16px 35px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .compare-item {
+        width: calc(345px - 130px);
+       
+    }
+    .compare-item-sticky ul li{
+        width: calc(357px - 130px);
+    }
+    .compare-list-scrollable {
+        li{
+            span{
+                font-size: 15px;
+            }
+        }
+        ul.label-list{
+            span{
+                padding: 16px 35px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+    .compare-item  {
+        width: calc(345px - 80px);
+        
+    }
+    .compare-item-sticky ul li{
+        width: calc(357px - 80px);
+    }
+    .compare-list{
+        .swiper-navigations{
+              .swiper-button-next {
+                right: -50px !important;
+              }
+        }
+    }
+    .compare-list-scrollable {
+        li{
+            span{
+                font-size: 16px;
+            }
+        }
+    }
+}
+@media (min-width: 1280px) {
+   .compare-item{
+        width: calc(345px - 85px);
+        
+    }
+    .compare-item-sticky ul li{
+        width: calc(357px - 85px);
+    }
+    .compare-list{
+        .swiper-navigations{
+              .swiper-button-next {
+                right: -60px !important;
+              }
+        }
+    }
+    
+}
+@media (min-width: 1536px) {
+    .compare-item{
+        width: calc(345px - 46px);
+    }
+    .compare-item-sticky ul li{
+        width: calc(357px - 46px);
+    }
+    .compare-list-scrollable {
+        li{
+            span{
+                font-size: 17px;
+            }
+        }
+    }
+    ul.label-list{
+        span{
+            padding: 16px 35px 16px 52px;
+        }
+    }
+}
+@media (min-width: 1600px) {
+    .compare-item {
+        width: 345px;
+    }
+    .compare-item-sticky ul li{
+        width: 357px
+    }
+}
+@media (min-width: 1920px){
+    .compare-list{
+        .swiper-navigations{
+              .swiper-button-next {
+                right: -85px !important;
+              }
+        }
+    }
+}
+.fixed-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.imagesScroll {
+    width: 100%;
+    height: 300vh;
+}
+
+.imagesScroll .rq {
+    width: 100%;
+    height: 100vh;
+    position: sticky;
+    top: 80px;
+}
+
+</style>
+<div class="page-template-section {{section.id}} container container-panel ">
+    <div class="section-wrapper">
+        <div class="section-title text-center">
+            <h1 class="page-title">{{ section.settings.title }}</h1>
+            <h6 class="page-subtitle">{{ section.settings.subtitle }}</h6>
+        </div>
+        <div class="row section-content">
+            <div class="col-lg-12 col-sm-12 page-content"  id="vanpower_compare_wrapper-{{section.id}}">
+                <div class="compare-buttons d-flex">
+                    <div class="btns-wrapper">
+                        <span class="btn-reset h3" id="btnReset">Reset</span>
+                        <button class="vanpower-btn-gray h3" disabled type="button" id="btnCompare">Compare</button>
+                    </div>
+                </div>
+               
+                <div class="position-relative main-compare-wrapper imagesScroll">
+                    {%- assign product_form_id = 'product-form-' | append: section.id -%}
+                    {% assign collection_handle= section.settings.collection%}
+                   
+                    <div class="compare-list rq">
+                        <div class="swiper-navigations d-none d-lg-block">
+                            <div class="swiper-button-next navigation-button"></div>
+                            <div class="swiper-button-prev navigation-button"></div>
+                        </div>
+                        <ul id="compare_list" class="list-group list-group-horizontal compare-list-scrollable ">
+                               
+                            <li class="list-group-item compare-item-sticky">
+                                <ul class="list-group label-list">
+                                    <li class="header blank sticky"></li>
+                                    {% for compare in section.blocks %}
+                                    <li class=""><span class="fw-bold">{{compare.settings.title}}</span></li>
+                                    {% endfor %}
+                                </ul>
+                            
+                            </li>   
+                                    
+                            <li class="swiper-container d-flex " id="compare_list_carousel_{{section.id}}">
+                                <ul  class="swiper-wrapper">
+                            {% for product in collections[collection_handle].products %}
+
+                                <li class="list-group-item compare-item swiper-slide">
+                                    <ul class="list-group">
+                                        <li class=" header sticky"> 
+                                            <div class="text-center value image">
+                                                <button class="close btn-close"></button>
+                                                <input style="display:none"  class="filter-item" type="checkbox"
+                                                        name="comparable"
+                                                        value="{{product.id}}"
+                                                        id="compare{{product.id}}"
+                                                    >
+                                                <label class="compare-toggle" for="compare{{product.id}}">
+                                                    </label>
+                                                <div class="img-wrapper">
+                                                    <a href="{{product.url}}" title="{{product.title}}" class="compare-link">
+                                                    {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+                                                    <img class="img-fluid thumbnail-image" width="auto" height="auto" src="{{ featured_image | img_url: '2048x2048' }}">  
+                                                    </a>
+                                                </div>
+                                                <p class="title grid-title fw-bold" style="cursor:pointer" >{{product.title}}</p>                            
+                                            </div>
+                                        </li>
+                                        
+                                    {% for compare in section.blocks %}
+                                        <li class="">
+                                            <span class="text-center value">
+                                                {{compare.settings.value}}
+                                            </span>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                </li>
+                            {%endfor%}
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    // swiper js
+  document.addEventListener('DOMContentLoaded', function() {
+   // const compareToggleManager = new CompareToggleManager('#vanpower_compare_wrapper-{{section.id}}');
+   
+
+    function initializeSwiper() {
+        try {
+             const swiper = new Swiper('#compare_list_carousel_{{section.id}}', {
+                direction: 'horizontal',
+                speed: 1000,
+                spaceBetween: 0,
+                autoplay: false,
+                navigation: {
+                    nextEl: '#vanpower_compare_wrapper-{{section.id}} .swiper-button-next',
+                    prevEl: '#vanpower_compare_wrapper-{{section.id}} .swiper-button-prev',
+                },
+                breakpoints: {
+                    200: { width: 195 },
+                    768: { width: 215},
+                    1024: { width: 260 },
+                    1280: { width: 265},
+                    1536: { width: 300 },
+                    1600: { width: 345 },
+                    1920: { width: 345 },
+                }
+            });
+
+             // Attach click event listener to hide buttons
+            const hideButtons = document.querySelectorAll('#vanpower_compare_wrapper-{{section.id}} .btn-close');
+            hideButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const currentSlide = button.closest('.swiper-slide');
+                    const visibleSlidesCount = countVisibleSlides();
+
+                    if (visibleSlidesCount > 2) {
+                        currentSlide.classList.add('hide', 'hide-effect'); // Apply hide effect
+                        setTimeout(function() {
+                            currentSlide.style.display = 'none'; // Hide the current slide after the effect
+                            swiper.update(); // Refresh the swiper
+                        }, 500); // Adjust the timeout to match the duration of the transition
+
+                    } else {
+                        alert('Cannot delete. Minimum two visible slides required.');
+                    }
+                });
+            });
+            
+            function countVisibleSlides() {
+                let visibleCount = 0;
+                swiper.slides.forEach(function(slide) {
+                    // Check if the slide is visible
+                    if (slide.offsetWidth > 0 && slide.offsetHeight > 0 && window.getComputedStyle(slide).display !== 'none') {
+                        visibleCount++;
+                    }
+                });
+                return visibleCount;
+            }
+            // Attach click event listener to reset button
+            const resetButton = document.querySelector('.btn-reset');
+            resetButton.addEventListener('click', function() {
+                document.querySelectorAll('.filter-item').forEach(function(checkbox) {
+                    checkbox.checked = false;
+                });
+                compareButton.disabled = true;
+                compareButton.classList.remove('active');
+                document.querySelectorAll('.swiper-slide.hide').forEach(function(slide) {
+                    slide.style.display = 'block'; // Show the hidden slides
+
+
+                });
+                setTimeout(function() {
+                    document.querySelectorAll('.swiper-slide.hide').forEach(function(slide) {
+                        slide.classList.remove('hide', 'hide-effect'); // Remove hide classes
+                    });
+                    swiper.update(); // Refresh swiper after animation
+                }, 500); // Adjust the timeout to match the duration of the transition
+            });
+
+            const slideCheckboxes = document.querySelectorAll('.filter-item');
+            const compareButton = document.getElementById('btnCompare');
+
+            // Add event listener to each slide checkbox
+            slideCheckboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    const checkedCount = document.querySelectorAll('.filter-item:checked').length;
+                    compareButton.disabled = checkedCount < 2; // Enable compare button if exactly 2 checkboxes are checked
+                    if (checkedCount >= 2) {
+                        compareButton.classList.add('active'); // Add 'active' class to compare button
+                    } else {
+                        compareButton.classList.remove('active'); // Remove 'active' class if not exactly 2 checkboxes are checked
+                    }
+                });
+            });
+
+            // Add event listener to compare button
+            compareButton.addEventListener('click', function() {
+                // Hide untoggled slides
+                document.querySelectorAll('.swiper-slide').forEach(function(slide) {
+                    const checkbox = slide.querySelector('.filter-item');
+                    if (!checkbox.checked) {
+                        slide.classList.add('hide', 'hide-effect'); 
+                        setTimeout(function() {
+                            slide.style.display = 'none'; 
+                            swiper.update(); 
+                        }, 500);
+                    }
+                });
+                swiper.update();
+            });
+
+        } catch (error) {
+            console.error('Swiper initialization failed:', error);
+            // Retry initialization after a delay
+            setTimeout(initializeSwiper, 2000); // Retry after 2 seconds
+        }
+    }
+
+    initializeSwiper(); // Call the function to start initialization
+
+   
+    const scrollableDiv = document.querySelector('.compare-list-scrollable');
+    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+        
+        if (scrollDirection === 'down') {
+            // Scroll down
+            scrollableDiv.scrollTop += 10; // Adjust the scroll amount as needed
+        } else {
+            // Scroll up
+            scrollableDiv.scrollTop -= 10; // Adjust the scroll amount as needed
+        }
+        
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+    });
+
+
+});
+   
+
+</script>
+	
+	
+
+{%- schema -%}
+	{
+	  "name": "Compare List",
+	  "tag": "div",
+	  "class": "shopify--comparison-items",
+	  "settings": [
+		{
+			"type": "text",
+			"label": "Title",
+            "id": "title",
+			"default": "{{page.title}}"
+		},
+		{
+			"type": "text",
+			"label": "subtitle",
+			"id": "subtitle",
+            "default":  "Outfit your bike with these handy essentials."
+
+		},
+        {
+            "type": "collection",
+            "label": "Collection to Compare",
+            "id": "collection"
+        }
+	  ],
+	
+	   "blocks": [
+		 {
+		   "name": "Compare Field",
+		   "type": "column",
+		   "settings": [
+			{
+				"type": "text",
+				"label": "Label",
+				"id": "title"
+			},
+            {
+				"type": "text",
+				"label": "Value",
+				"id": "value"
+			}
+		   ]
+		 }
+	  ],
+	  "presets": [
+		{
+        "name": "Compare List",
+        "blocks": [
+            {
+            "type": "column"
+            },
+            {
+            "type": "column"
+            }
+        ]
+        }
+	  ]
+	}
+{%- endschema -%}
+	

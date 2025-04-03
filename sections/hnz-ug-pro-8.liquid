@@ -1,0 +1,53 @@
+<section id="hnz-ug-pro-8" data-toggle="safety-intelligent" data-name="Safety & Intelligent" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="d-lg-block d-md-none d-sm-none">
+        <div class="container section-content">
+            <div class="row">
+
+                <div class="col-12 text-center">
+                    <h2 class="title">
+                        {{ section.settings.title }}
+                    </h2>
+                </div>
+
+            </div>
+        </div>
+        <img class="clip-image" src="{{ section.settings.image | img_url: 'master' }}">
+    </div>
+    <div class="d-lg-none d-md-block d-sm-block">
+        <div class="position-relative">
+            <img class="clip-mobile" src="{{ section.settings.image_mobile | img_url: 'master' }}">
+            <h2 class="float-title">
+                {{ section.settings.title }}
+            </h2>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "UG Pro Section 8",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image Desktop"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_mobile",
+                "label": "Image Mobile"
+            }
+        ]
+    }
+{% endschema %}

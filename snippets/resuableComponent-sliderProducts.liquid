@@ -1,0 +1,75 @@
+<section 
+    class="slider-products position-relative"
+    {%- if section.settings.section_id != blank -%} 
+        id="{{ section.settings.section_id }}"
+        {% else %}
+        id="shopify-section--{{ section.id }}"
+    {% endif %}
+>
+    <div class="container">
+        <div class="row swiper-container swiper-slider-products"  data-carousel-id="swiper-slider-products">
+            <div class="col-lg-12 swiper-wrapper">
+                {%- for block in section.blocks -%}
+                    {%- if block.settings.productTitle != blank -%}
+                        <div class="productSlider-item swiper-slide">
+                            <div class="productInfo-wrapper d-flex flex-direction-row">
+                                <div class="product-info w-100">
+                                    {%- if block.settings.productTitle != blank -%}
+                                        <h2 class="product-title">
+                                            {{ block.settings.productTitle }}
+                                        </h2>
+                                    {% endif %}
+
+                                    {%- if block.settings.product_description != blank -%}
+                                        <div class="product-description mt-3 mb-4">{{ block.settings.product_description }}</div>
+                                    {% endif %}
+
+                                    {%- if block.settings.product_url != blank -%}
+                                        <a href="{{ block.settings.product_url }}" class="btn btn-dark text-capitalized">Learn more</a>
+                                    {% endif %}
+                                </div>
+                                <div class="product-specs w-100 d-flex flex-direction-row justify-content-end">
+                                    {%- if block.settings.product_price != blank -%}
+                                        <div class="product-data">
+                                            <div class="specs-label">Price</div>
+                                            <span class="specs-value">{{ block.settings.product_price }}</span>
+                                        </div>
+                                    {% endif %}
+
+                                    {%- if block.settings.product_body != blank -%}
+                                        <div class="product-data">
+                                            <div class="specs-label">Body</div>
+                                            <span class="specs-value">{{ block.settings.product_body }}</span>
+                                        </div>
+                                    {% endif %}
+
+                                    {%- if block.settings.product_motor != blank -%}
+                                        <div class="product-data">
+                                            <div class="specs-label">Motor</div>
+                                            <span class="specs-value">{{ block.settings.product_motor }}</span>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    {%- if block.settings.product_battery != blank -%}
+                                        <div class="product-data">
+                                            <div class="specs-label">Battery</div>
+                                            <span class="specs-value">{{ block.settings.product_battery }}</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="product-image d-table mx-auto">
+                                {{ block.settings.product_image | image_url: width: 1024 | image_tag: srcset: nil }}
+                            </div>
+                        </div>
+                        
+                    {% endif %}
+                {%- endfor -%}
+            </div>
+            <div class="swiper-navigations d-none d-lg-block">
+                <div class="swiper-button-prev navigation-button"></div>
+                <div class="swiper-button-next navigation-button"></div>
+            </div>
+        </div>
+    </div>
+</section>

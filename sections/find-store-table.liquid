@@ -1,0 +1,108 @@
+<div class="find-store-table section-content container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2 class="title">
+          {{ section.settings.title }}
+      </h2>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <!-- <th scope="col">Dealer</th> -->
+        <th scope="col">Store Name</th>
+        <th scope="col">Store Hours</th>
+        <th scope="col">Address</th>
+        <!-- <th scope="col">Contact Person</th> -->
+        <!-- <th scope="col">Maintainance</th>
+        <th scope="col">Test Ride</th>
+        <th scope="col">Repair</th>
+        <th scope="col">Country</th>
+        <th scope="col">State</th>
+        <th scope="col">City</th>
+        <th scope="col">Postal Code</th> -->
+        <!-- <th scope="col">Street</th> -->
+        <th scope="col">Phone Number</th>
+        <!-- <th scope="col">Owener</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      {% for shop in shop.metaobjects.store_location.values %}
+        <tr>
+          <!-- <td scope="row">{{ shop.store_name }}</td> -->
+          <td>{{ shop.store_name }}</td>
+          <td>{{ shop.service_date_time }}</td>
+          <!-- <td>{{ shop.contact_person }}</td> -->
+          <!-- {% assign store_type = shop.store_type %} -->
+          <!-- {% assign is_maintenance = "no" %} -->
+          <!-- {% assign is_test_ride = "no" %} -->
+          <!-- {% assign is_repair = "no" %} -->
+          <!-- {% for type in store_type.value %} -->
+            <!-- {% if type == "Maintenance" %} -->
+              <!-- {% assign is_maintenance = 'yes' %} -->
+            <!-- {% endif %} -->
+            <!-- {% if type == "Test Ride" %} -->
+              <!-- {% assign is_test_ride = 'yes' %} -->
+            <!-- {% endif %} -->
+            <!-- {% if type == "Repair" %} -->
+              <!-- {% assign is_repair = 'yes' %} -->
+            <!-- {% endif %} -->
+          <!-- {% endfor %} -->
+          <!-- <td>{{ is_maintenance }}</td> -->
+          <!-- <td>{{ is_test_ride }}</td> -->
+          <!-- <td>{{ is_repair }}</td> -->
+          <!-- <td>{{ shop.country }}</td> -->
+          <!-- <td>{{ shop.state }}</td> -->
+          <!-- <td>{{ shop.city }}</td> -->
+          <!-- <td>{{ shop.postal_code }}</td> -->
+          <td>{{ shop.address }}</td>
+          <td>{{ shop.phone }}</td>
+          <!-- <td>{{ shop.owner }}</td> -->
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<style>
+  .find-store-table th, .find-store-table td {
+    padding:0 5px;
+    text-align:center;
+    border: 1px solid rgb(160 160 160);
+  }
+  .find-store-table table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+  }
+  .find-store-table .title {
+    margin-bottom:20px;
+  }
+  @media screen and (max-width: 1150px) {
+    .find-store-table table {
+      width: 100%;
+      margin: 0 auto;
+      display: block;
+      overflow-x: auto;
+      border-spacing: 0;
+    }
+    .find-store-table table tbody {
+      white-space: nowrap;
+    }
+    .find-store-table table th {
+      position: sticky;
+      top: 0;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "Find Store Table",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }
+    ],
+    "presets": [{"name": "Find Store Table"}]
+  }
+{% endschema %}

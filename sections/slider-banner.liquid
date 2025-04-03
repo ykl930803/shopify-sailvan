@@ -1,0 +1,211 @@
+{% render 'reusableComponent-sliderBanner' %}
+
+<style>
+    section.slider-banner {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+
+        .banner-slider {
+            height: 750px;
+
+            .slider-bannerImage {
+                width: 100%;
+                object-fit: cover;
+                object-position: 50% 50%;
+                height: 750px;
+            }
+        }
+
+        .sliderBanner-contents {
+            position: absolute;
+            bottom: 0;
+            width: auto;
+            height: 100%;
+            left: 0;
+            display: flex;
+            align-items: flex-end;
+    
+            .sliderBanner-contentsInner {
+                height: 330px;
+                overflow: hidden;
+            
+                .sliderBanner-content {
+                    padding-left: 70px;
+                    padding-bottom: 70px;
+
+                    .quote-text-wrap {
+                        max-width: 400px;
+                    
+                        .quote-text {
+                            align-self: center;
+                            transition: all 0.4s;
+                        }
+
+                        .slider-title h2 {
+                            font-size: 40px;
+                            margin-bottom: 30px;
+                        }
+                    }
+                    
+                    {%- for block in section.blocks -%}
+                        .slider-title h2, .slider-paragraph p {
+                            color: {{ block.settings.banner_textColor }};
+                        }
+                    {%- endfor -%}
+                }
+            }
+        }
+
+        .swiper-slide { 
+            position: relative;
+            overflow: hidden;
+            
+            .slider-bannerImageWrapper {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+
+                .slider-bannerImage {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: 50% 50%;
+                    min-height: 750px;
+                }
+            }
+            
+        }
+    }
+
+</style>
+
+{% javascript %}
+   
+    // Swiper js
+    var quoteSwiper = new Swiper('.sliderBanner-contentsInner', {
+        direction: "vertical",
+        effect: "slide",
+        autoHeight: true,
+        loop: true,
+        allowTouchMove: false,
+        speed: 800,
+        autoplay: true
+    });
+
+    var $Speed = 1000;
+
+    var imageSwiper = new Swiper('.banner-slider', {
+        effect: "fade",
+        mousewheel: false,
+        speed: $Speed,
+        loop: true,
+        longSwipesRatio: 0.01,
+        followFinger: false,
+        grabCursor: false, 
+        watchSlidesProgress: false,
+        parallax: false,
+        lazy: {
+            loadPrevNext: true,
+        },
+        autoplay: true,
+        /*navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }*/
+    });
+
+    imageSwiper.controller.control = this.quoteSwiper;
+
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Slider Banner",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Slider Banner Item",
+                "limit": 5,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "slider_bannerBg",
+                        "label": "Slider Banner Background"
+                    },
+                    {
+                        "type": "select",
+                        "id": "slider_headingTag",
+                        "label": "Slider Heading Tags",
+                        "options": [
+                            {
+                                "value": "<h1/>",
+                                "label": "H1"
+                            },
+                            {
+                                "value": "<h2/>",
+                                "label": "H2"
+                            },
+                            {
+                                "value": "<h3/>",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "<h4/>",
+                                "label": "H4"
+                            },
+                            {
+                                "value": "<h5/>",
+                                "label": "H5"
+                            }
+                        ],
+                        "default": "<h1/>"
+                    },
+                    {
+                        "type": "text",
+                        "id": "slider_title",
+                        "label": "Slider Title",
+                        "default": "Slider Title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "slider_paragraph",
+                        "label": "Slider Paragraph"
+                    },
+                    {
+                        "type": "color",
+                        "id": "banner_textColor",
+                        "label": "Banner Text Color",
+                        "default": "#333333"
+                    },
+                    {
+                        "type": "url",
+                        "id": "button_link",
+                        "label": "Button link"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Slider Banner"
+          }
+        ]
+    }
+{% endschema %}

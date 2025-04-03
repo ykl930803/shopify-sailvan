@@ -1,0 +1,154 @@
+{% render 'reusableComponent-textLeft-rightVideo' %}
+
+<style>
+    section.letfText-imageRight {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    }
+    section.letfText-imageRight .left-headingTextWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    section.letfText-imageRight .left-headingTextWrapper .left-headingText {
+        margin-bottom: 35px;
+    }
+    section.letfText-imageRight .left-headingTextWrapper .left-paragraph p {
+        font-size: 18px;
+    }
+    section.letfText-imageRight .video-wrapper .video-innerWrapper {
+        padding-left: 100px;
+        height: 460px;
+        overflow: hidden;
+    }
+    section.letfText-imageRight .video-wrapper .video-innerWrapper video {
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* Responsive */
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        section.letfText-imageRight {
+            padding-top: 85px;
+        }
+        section.letfText-imageRight .video-wrapper .video-innerWrapper {
+            padding-left: 50px;
+        }
+    }
+    
+    @media (max-width: 991px) {
+        section.letfText-imageRight {
+            padding-top: 75px;
+        }
+        section.letfText-imageRight .left-headingTextWrapper .left-headingText {
+            margin-bottom: 0;
+            margin-top: 30px;
+        }
+        section.letfText-imageRight .video-wrapper .video-innerWrapper {
+            padding-left: 0;
+        }
+        section.letfText-imageRight .row {
+            flex-direction: column-reverse;
+        }
+    }
+
+    @media (max-width: 767px) {
+        
+        section.letfText-imageRight {
+            padding-bottom: 0 !important;
+        }
+        section.letfText-imageRight .left-headingText h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+        section.letfText-imageRight .video-wrapper .video-innerWrapper {
+            height: 310px;
+        }
+        section.letfText-imageRight .video-wrapper .video-innerWrapper video {
+            border-radius: 7px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        section.letfText-imageRight .left-headingTextWrapper .left-paragraph p {
+            font-size: 16px;
+        }
+    }
+    
+    @media (max-width: 420px) {
+        section.letfText-imageRight .video-wrapper .video-innerWrapper {
+            height: 253px;
+        }
+    }
+</style>
+
+{% schema %}
+    {
+        "name": "Text Left Right Video",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            },
+            {
+                "type": "select",
+                "id": "heading_tags",
+                "label": "Select Heading Tags for Heading Text",
+                "options": [
+                    {
+                        "value": "<h1/>",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "<h2/>",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "<h3/>",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "<h4/>",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "<h5/>",
+                        "label": "H5"
+                    }
+                ],
+                "default": "<h1/>"
+            },
+            {
+                "type": "text",
+                "id": "left_headingText",
+                "label": "Left Heading Text",
+                "default": "Left Heading Text"
+            },
+            {
+                "type": "richtext",
+                "id": "left_paragraph",
+                "label": "Left Paragraph"
+            },
+            {
+                "type": "video",
+                "id": "video",
+                "label": "Video"
+            }
+        ],
+        "presets": [
+          {
+            "name": "Text Left Right Video"
+          }
+        ]
+    }
+{% endschema %}

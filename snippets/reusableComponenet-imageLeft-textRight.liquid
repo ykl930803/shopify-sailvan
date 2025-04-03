@@ -1,0 +1,53 @@
+<section id="shopify-section--{{ section.id }}" class="imageLeft-textRight">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                {%- if section.settings.section_title != blank -%}
+                    <div id="toggleBtn" class="section-title active">
+                        {{ section.settings.section_headingTags }}{{ section.settings.section_title }}
+                        <div class="arrow-wrapper">
+                            <img src="{{'up-arrow.png' | asset_url}}" alt="Up Arrow" class="up-arrow">
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container specContent">
+        <div class="row">
+            <div class="col-xl-6 geometry">
+                {%- if section.settings.image_left != blank -%}
+                    <div class="imageLeft-Content">
+                        <img src="{{ section.settings.image_left | img_url: 'master' }}" alt="{{ section.settings.section_title }}">
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="col-xl-6">
+                <div class="blocksRight-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Frame Size (mm)<div class="small">Ideal rider height</div></th>
+                                <th scope="col">S<br/>155-175cm<div class="small">(5'1"-5'9")</div></th>
+                                <th scope="col">L<br/>170-190cm<div class="small">(57"-6'3")</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%- assign letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" | split: "" -%}
+                            {%- for block in section.blocks -%}
+                                <tr>
+                                    <td><span class="alphabetical-name">{{ letters[forloop.index0] }}</span>{{ block.settings.frame_size }}</td>
+                                    <td>{{ block.settings.small }}</td>
+                                    <td>{{ block.settings.large }}</td>
+                                </tr>
+                            {%- endfor -%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,62 @@
+<section id="hnz-product-4" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+        <div class="row justify-content-center gy-lg-0 gy-md-4 gy-sm-4">
+
+            {% for block in section.blocks %}
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="service">
+                        <img src="{{ block.settings.icon | img_url: 'master'}}">
+                        <div class="text-lg-center text-md-start text-sm-start">
+                            <h4 class="title">
+                                {{ block.settings.title }}
+                            </h4>
+                            <p class="body">
+                                {{ block.settings.body }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "After Sale Terms",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            }
+        ],
+        "blocks": [
+            {
+                "type": "text",
+                "name": "Services",
+                "limit": 3,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "icon",
+                        "label": "Icon"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "body",
+                        "label": "Body"
+                    }
+                ]
+            }
+        ],
+      "presets": [{"name": "After Sale Terms"}]
+    }
+{% endschema %}

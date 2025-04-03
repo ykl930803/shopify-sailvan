@@ -1,0 +1,134 @@
+{% render 'reusableComponent-fourColumns-blockIcon' %}
+
+<style>
+    section.fourColumn-blockIcon {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    }
+    section.fourColumn-blockIcon .fourColumn-outerWrapper {
+        border-top: 1px solid #ddd;
+        padding-top: 75px;
+    }
+    .column_text {
+        text-align: center;
+        color: #333;
+        font-size: 18px;
+        font-weight: 500;
+        max-width: 280px;
+    }
+    .column-icon img {
+        max-width: 40px;
+        max-height: 40px;
+    }
+    .fourColumn-mobile {
+        display: none;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+    .fourColumn-mobile .swiper-pagination-bullets {
+        bottom: 0 !important;
+    }
+    .fourColumn-mobile .swiper-pagination-bullet {
+        background-color: #1A1A1A;
+        width: 27px;
+        height: 4px;
+        border-radius: 0;
+    }
+
+    @media (max-width: 991px) {
+        .column_text {
+            font-size: 16px;
+        }
+        .fourColumn-outerWrapper {
+            row-gap: 25px;
+        }
+    }
+    @media (max-width: 767px) {
+        section.fourColumn-blockIcon {
+            padding-top: 0 !important;
+        }
+        section.fourColumn-blockIcon .fourColumn-outerWrapper {
+            padding-top: 50px;
+        }
+    }
+    @media (max-width: 480px) {
+        .fourColumn-mobile {
+            display: flex;
+        }
+        .fourColumn-desktop {
+            display: none;
+        }
+        .column_text {
+            margin-bottom: 50px;
+            font-size: 20px;
+        }
+    }
+</style>
+
+{% javascript %}
+
+    //the mobile version
+    // swiper js
+    const swiper = new Swiper('.fourColumn-mobile', {
+        direction: 'horizontal',
+        loop: false,
+        speed: 1000,
+        spaceBetween: 20,
+        autoplay: false,
+        observer: true,
+        observeParents: true,
+        autoHeight: true,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable:'true'
+        }
+    });
+    
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Four Column Block Icon",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Column Item",
+                "limit": 5,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "column_icon",
+                        "label": "Column Icon"
+                    },
+                    {
+                        "type": "text",
+                        "id": "column_text",
+                        "label": "Column Text",
+                        "default": "Column Text"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Four Column Block Icon"
+          }
+        ]
+    }
+{% endschema %}

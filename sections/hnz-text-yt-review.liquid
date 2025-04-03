@@ -1,0 +1,91 @@
+<section id="hnz-text-yt">
+    <div class="container section-content">
+        <div class="row">
+
+            <div class="col-12 text-center">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                </h2>
+            </div>
+
+            <div class="col-12 position-relative">
+                <div class="owl-carousel">
+                    {% for block in section.blocks %}
+                        <div class="item">
+                            <div class="row row-yt">
+                                <div class="col-lg-5 col-md-12 col-sm-12 order-lg-1 order-md-2 order-sm-2">
+                                    <div class="yt">
+                                        <h5 class="yt-title">
+                                            {{ block.settings.title }}
+                                        </h5>
+                                        <h6 class="yt-subtitle">
+                                            {{ block.settings.subtitle }}
+                                        </h6>
+                                        <p class="yt-body">
+                                            {{ block.settings.body }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-12 col-sm-12 order-lg-2 order-md-1 order-sm-1">
+                                    {% assign youtube_link = block.settings.yt_url %}
+                                    {% assign youtube_id = youtube_link | split: 'watch?v=' | last %}
+                                    <iframe class="video" src="https://www.youtube.com/embed/{{ youtube_id }}?&showinfo=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="float-nav">
+                    <button type="button" role="presentation" class="owl-prev" disabled>
+                        <i class="fa-solid fa-arrow-left-long"></i>
+                    </button>
+                    <button type="button" role="presentation" class="owl-next">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Text & Youtube Review",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "text",
+                "name": "Text & YT",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "subtitle",
+                        "label": "Subtitle"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "body",
+                        "label": "Body"
+                    },
+                    {
+                        "type": "url",
+                        "id": "yt_url",
+                        "label": "Youtube URL"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,71 @@
+<section id="hnz-mvv">
+    <div class="container section-content">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <img class="icon" src="{{ section.settings.mission_icon | img_url: 'master' }}">
+                <h4 class="title">
+                    Mission
+                </h4>
+                <p class="body">
+                    {{ section.settings.mission_body }}
+                </p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <img class="icon" src="{{ section.settings.vision_icon | img_url: 'master' }}">
+                <h4 class="title">
+                    Vision
+                </h4>
+                <p class="body">
+                    {{ section.settings.vision_body }}
+                </p>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <img class="icon" src="{{ section.settings.values_icon |  img_url: 'master' }}">
+                <h4 class="title">
+                    Values
+                </h4>
+                <p class="body">
+                    {{ section.settings.values_body }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Mission Vision Values",
+        "settings": [
+            {
+                "type": "textarea",
+                "id": "mission_body",
+                "label": "Mission Body"
+            },
+            {
+                "type": "image_picker",
+                "id": "mission_icon",
+                "label": "Mission Icon"
+            },
+            {
+                "type": "textarea",
+                "id": "vision_body",
+                "label": "Vision Body"
+            },
+            {
+                "type": "image_picker",
+                "id": "vision_icon",
+                "label": "Vision Icon"
+            },
+            {
+                "type": "textarea",
+                "id": "values_body",
+                "label": "Values Body"
+            },
+            {
+                "type": "image_picker",
+                "id": "values_icon",
+                "label": "Values Icon"
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,104 @@
+<section id="hnz-why-vanpowers">
+    <div class="container section-content">
+        <div class="row align-items-center">
+            <div class="col-12 text-lg-start text-md-center text-sm-center">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                </h2>
+            </div>
+            <div class="col-12 d-lg-block d-md-none d-sm-none">
+                <img src="{{ section.settings.banner | img_url: 'master' }}">
+            </div>
+            <div class="col-12 d-lg-none d-md-block d-sm-block">
+                <img src="{{ section.settings.banner_mobile | img_url: 'master' }}">
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="texts">
+                    <h5 class="text-title">
+                        {{ section.settings.title_1 }}
+                    </h5>
+                    <p class="text-body">
+                        {{ section.settings.body_1 }}
+                    </p>
+                </div>
+                <div class="texts">
+                    <h5 class="text-title">
+                        {{ section.settings.title_2 }}
+                    </h5>
+                    <p class="text-body">
+                        {{ section.settings.body_2 }}
+                    </p>
+                </div>
+                <div class="texts">
+                    <h5 class="text-title">
+                        {{ section.settings.title_3 }}
+                    </h5>
+                    <p class="text-body">
+                        {{ section.settings.body_3 }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <img src="{{ section.settings.image | img_url: 'master' }}">
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Why Vanpowers",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "image_picker",
+                "id": "banner",
+                "label": "Banner Desktop"
+            },
+            {
+                "type": "image_picker",
+                "id": "banner_mobile",
+                "label": "Banner Mobile"
+            },
+            {
+                "type": "text",
+                "id": "title_1",
+                "label": "1. Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body_1",
+                "label": "1. Body"
+            },
+            {
+                "type": "text",
+                "id": "title_2",
+                "label": "2. Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body_2",
+                "label": "2. Body"
+            },
+            {
+                "type": "text",
+                "id": "title_3",
+                "label": "3. Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body_3",
+                "label": "3. Body"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,198 @@
+{% render 'reusableComponent-fullWidth-sliderFade' %}
+
+<style>
+    .fullWidth-sliderFade {
+        background-color: #000000;
+    }
+    .fullBanner {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
+    .fullWidth-sliderFade .fullBanner-sliderItem:first-child {
+        opacity: 1;
+    }
+    .fullWidth-sliderFade .fullBanner-sliderItem {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        text-align: center;
+        padding-top: 90px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    .fullWidth-sliderFade .fullBanner-sliderItem.active {
+        opacity: 1;
+    }
+    .banner-headingText h2, .banner-texts p {
+        color: #fff;
+    }
+    .fullBanner-sliderItem img {
+        width: 100%;
+    }
+    section.mobile-data {
+        display: none;
+    }
+    
+    @media (max-width: 480px) {
+        section.desktop-data {
+            display: none;
+        }
+        section.mobile-data {
+            display: block;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            padding-bottom: 25px !important;
+        }
+        .data-item {
+            height: 547px;
+            background-size: contain;
+            margin-bottom: 30px;
+            background-repeat: no-repeat;
+            background-color: #000;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px 30px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .data-item:last-child {
+            margin-bottom: 0;
+        }
+        .data-headingText h2 {
+            margin-bottom: 20px;
+        }
+        .data-headingText h2, .data-texts p {
+            color: #fff;
+        }
+        .data-imageBanner {
+            width: 100%;
+            object-fit: cover;
+            height: 400px;
+            margin-bottom: 35px;
+        }
+        .data-item:nth-child(3) img.data-imageBanner {
+            height: 300px;
+        }
+    }
+
+</style>
+
+{%  javascript  %} 
+
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Full Width Slider Fade",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "showSlider_pagination",
+                "label": "Show Slider Pagination?",
+                "default": true
+            },
+            {
+                "type": "select",
+                "id": "sliderContent_alignment",
+                "label": "Slider Content Alignment",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": "Left"
+                    },
+                    {
+                    "value": "middle",
+                    "label": "Middle"
+                    },
+                    {
+                        "value": "top",
+                        "label": "Top"
+                    }
+                
+                ],
+                "default": "left"
+            }
+
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Slider Item",
+                "settings": [
+                    {
+                        "type": "color",
+                        "id": "bg_color",
+                        "label": "Background Color",
+                        "default": "#0A0A0A"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "slider_image",
+                        "label": "Slider Image"
+                    },
+                    {
+                        "type": "select",
+                        "id": "banner_headingTags",
+                        "label": "Banner Heading Tags",
+                        "options": [
+                            {
+                                "value": "<h1/>",
+                                "label": "H1"
+                            },
+                            {
+                                "value": "<h2/>",
+                                "label": "H2"
+                            },
+                            {
+                                "value": "<h3/>",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "<h4/>",
+                                "label": "H4"
+                            },
+                            {
+                                "value": "<h5/>",
+                                "label": "H5"
+                            }
+                        ],
+                        "default": "<h1/>"
+                    },
+                    {
+                        "type": "text",
+                        "id": "banner_title",
+                        "label": "Banner Title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "banner_text",
+                        "label": "Banner"
+                    },
+                    {
+                        "type": "color",
+                        "id": "banner_textColor",
+                        "label": "Banner Text Color",
+                        "default": "#ffffff"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Full Width Slider Fade"
+          }
+        ]
+    }
+{% endschema %}

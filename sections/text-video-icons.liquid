@@ -1,0 +1,224 @@
+<section id="shopify-section--{{ section.id }}" class="position-relative">
+    <div class="banner-outerWrapper">
+        <div class="banner-wrapper">
+            <div class="container">
+                {%- if section.settings.title != blank -%}
+                    <div class="section-title text-center mx-auto fw-bold">{{ section.settings.heading_tags }}{{ section.settings.title }}</div>
+                {% endif %}
+                <div class="text-center mx-auto section-subtitle">{{section.settings.banner_subtitle}}</div>
+            </div>
+            <div class="video-wrapper position-relative container section-content">
+                <div class="video-innerWrapper">
+                    {% assign section_id = 'video_' | append: section.id %}
+                    {{ section.settings.video | video_tag: controls: false, autoplay: true, loop: true, id: section_id  }}
+                </div>
+                <div class="banner-items position-absolute bottom-0">
+                    <div class="d-flex  flex-direction-row justify-content-evenly">
+                        {% for block in section.blocks%}
+                        <div class="banner-item text-center">
+                            {% if block.settings.icon !=blank%}
+                            <div class="banner-icon">
+                                {{ block.settings.icon | image_url: width: 74 | image_tag: srcset: nil }}
+                            </div>
+                            {%endif%}
+                            <div class="banner-text">
+                                {% if block.settings.value !=blank%}
+                                    <span class="h4 fw-bold text-white d-block mb-1">{{block.settings.value}}</span>
+                                {%endif%}
+
+                                {% if block.settings.title !=blank%}
+                                    <span class="p-extra-small text-white d-block">{{block.settings.title}}<span>
+                                {%endif%}
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    section#shopify-section--{{ section.id }} {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+        .section-title{
+            h1,h2{
+                font-weight: bold;
+                text-transform: capitalize;
+                line-height: 1.5;
+                padding: 02 29%;
+            }
+        }
+        .section-subtitle{
+            padding:43px 26% 108px;
+            p{
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+        video{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .banner-items{
+            padding-bottom: 63px;
+            .banner-icon{
+                margin-bottom: 7px;
+            }
+        }
+    }
+    @media (max-width: 768px){
+        section#shopify-section--{{ section.id }} {
+            .section-title{
+            h1,h2{
+                    padding: 0 30px;
+                }
+            }
+            .section-subtitle{
+                padding: 20px 30px;
+            }
+        }
+    }
+    @media (min-width: 768px){
+        section#shopify-section--{{ section.id }} {
+            .section-title{
+            h1,h2{
+                    padding: 0 30px;
+                }
+            }
+            .section-subtitle{
+                padding:43px 30px 58px;
+            }
+        }
+    }
+    @media (min-width: 1024px) and (orientation: landscape) {
+        section#shopify-section--{{ section.id }} {
+            .section-title{
+            h1,h2{
+                    padding: 0 15%;
+                }
+            }
+            .section-subtitle{
+                padding:43px 10% 58px;
+            }
+        }
+    }
+    @media (min-width: 1280px) {
+        section#shopify-section--{{ section.id }} {
+            .section-title{
+            h1,h2{
+                    padding: 0 10%;
+                }
+            }
+            .section-subtitle{
+                padding:43px 10% 108px;
+            }
+        }
+    }
+    @media (min-width: 1536px) {
+        section#shopify-section--{{ section.id }} {
+            .section-title{
+            h1,h2{
+                    padding: 0 20%;
+                }
+            }
+            .section-subtitle{
+                padding:43px 15% 108px;
+            }
+        }
+    }
+</style>
+{% schema %}
+    {
+        "name": "Text Video Icons",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            },
+            {
+                "type": "select",
+                "id": "heading_tags",
+                "label": "Select Heading Tags for the Title",
+                "options": [
+                    {
+                        "value": "<h1/>",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "<h2/>",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "<h3/>",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "<h4/>",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "<h5/>",
+                        "label": "H5"
+                    }
+                ],
+                "default": "<h1/>"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Banner Title",
+                "default": "Banner Title"
+            },
+            {
+                "type": "richtext",
+                "id": "banner_subtitle",
+                "label": "Sub Title"
+            },
+            {
+                "type": "video",
+                "id": "video",
+                "label": "Video"
+            }
+        ],
+        "blocks":[
+            {
+                "type": "icon",
+                "name": "Icon",
+                "settings": [
+                    {
+                    "type": "image_picker",
+                    "id": "icon",
+                    "label": "Icon"
+                    },
+                    {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                    },
+                    {
+                    "type": "text",
+                    "id": "value",
+                    "label": "Value"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Text Video Icons"
+          }
+        ]
+    }
+{% endschema %}

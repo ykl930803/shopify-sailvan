@@ -1,0 +1,159 @@
+{% for geometry in shop.metaobjects.product_geometry.values %}
+    {% if geometry.product.value.id == product.id %}
+        <div class="mdl-container" data-id="size-fit">
+            <div class="mdl">
+                <div class="mdl-header-mobile d-lg-none d-md-flex d-sm-flex">
+                    <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Mobile-Logo.png?v=1712901571">
+                    <span class="mdl-close close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
+                </div>
+                <div class="mdl-header d-lg-flex d-md-none d-sm-none">
+                    <h6 class="mdl-title">
+                        Size & Fit
+                    </h6>
+                    <span class="mdl-close close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
+                </div>
+                <div class="mdl-body">
+                    <div class="row d-lg-none d-md-flex d-sm-flex">
+                        <div class="col-12 text-center mb-4">
+                            <h6 class="mdl-title">
+                                Size & Fit
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="geo-toggle">
+                                <div class="toggle active">
+                                    S <br> <span>{{ geometry.small_size_details }}</span>
+                                </div>
+                                <div class="toggle">
+                                    L <br> <span>{{ geometry.large_size_details }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>A</td>
+                                        <td>Seat Post Length</td>
+                                        {% assign item = geometry.seat_post_length | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>B</td>
+                                        <td>Frame Length</td>
+                                        {% assign item = geometry.frame_length | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>C</td>
+                                        <td>Bottom Bracket Drop</td>
+                                        {% assign item = geometry.bottom_bracket_drop | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>D</td>
+                                        <td>Head Tube Length</td>
+                                        {% assign item = geometry.head_tube_length | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>E</td>
+                                        <td>Seat Tube Angle</td>
+                                        {% assign item = geometry.seat_tube_angle | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F</td>
+                                        <td>Head Tube Angle</td>
+                                        {% assign item = geometry.head_tube_angle | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>G</td>
+                                        <td>Rear Wheel To Center</td>
+                                        {% assign item = geometry.rear_wheel_to_center | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>H</td>
+                                        <td>Front Wheel To Center</td>
+                                        {% assign item = geometry.front_wheel_to_center | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I</td>
+                                        <td>Wheelbase</td>
+                                        {% assign item = geometry.wheelbase | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>J</td>
+                                        <td>Reach</td>
+                                        {% assign item = geometry.reach | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>K</td>
+                                        <td>Stack</td>
+                                        {% assign item = geometry.stack | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>L</td>
+                                        <td>Fork Length</td>
+                                        {% assign item = geometry.fork_length | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>M</td>
+                                        <td>Fork Offset</td>
+                                        {% assign item = geometry.fork_offset | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>N</td>
+                                        <td>Trail</td>
+                                        {% assign item = geometry.trail | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>O</td>
+                                        <td>Standover Height</td>
+                                        {% assign item = geometry.standover_height | newline_to_br | split: '<br />' %}
+                                        <td class="text-center value-cell">{{ item[0] }}</td>
+                                        <td class="text-center hide value-cell">{{ item[1] }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-8 col-md-12 col-sm-12">
+                            <img src="{{ geometry.image_reference | img_url: 'master' }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

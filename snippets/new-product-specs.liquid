@@ -1,0 +1,119 @@
+<div class="mdl-container" data-id="specs">
+    <div class="mdl">
+        <div class="mdl-header-mobile d-lg-none d-md-flex d-sm-flex">
+            <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Mobile-Logo.png?v=1712901571">
+            <span class="mdl-close close">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
+        </div>
+        <div class="mdl-header-new d-lg-flex d-md-none d-sm-none">
+            {% comment %} <h6 class="mdl-title">
+                Specification
+            </h6> {% endcomment %}
+            <span class="mdl-close close">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
+        </div>
+        <div class="mdl-body">
+            {% comment %} <div class="row d-lg-none d-md-flex d-sm-flex">
+                <div class="col-12 text-center mb-4">
+                    <h6 class="mdl-title">
+                        Specifications
+                    </h6>
+                </div>
+            </div> {% endcomment %}
+            <div class="specs-item">
+                <div class="title">
+                    <div class="mdl-title">Performance</div>
+                    <div class="title-line"></div>
+                </div>
+                <div class="specs-body">
+                    {% for performance in product.metafields.custom.performance.value.performance %}
+                        <div class="content-item spec">
+                            <h5 class="spec-title">
+                                {{ performance.name }}
+                            </h5>
+                            <h5 class="spec-body">
+                                {{ performance.value }}
+                            </h5>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="specs-item">
+                <div class="title">
+                    <div class="mdl-title">Electronics</div>
+                    <div class="title-line"></div>
+                </div>
+                <div class="specs-body">
+                    {% for performance in product.metafields.custom.performance.value.Electronics %}
+                        <div class="content-item spec">
+                            <h5 class="spec-title">
+                                {{ performance.name }}
+                            </h5>
+                            <h5 class="spec-body">
+                                {{ performance.value | newline_to_br }}
+                            </h5>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="specs-item">
+                <div class="title">
+                    <div class="mdl-title">Component</div>
+                    <div class="title-line"></div>
+                </div>
+                <div class="specs-body">
+                    {% for performance in product.metafields.custom.performance.value.Component %}
+                        <div class="content-item spec">
+                            <h5 class="spec-title">
+                                {{ performance.name }}
+                            </h5>
+                            <h5 class="spec-body">
+                                {{ performance.value | newline_to_br }}
+                            </h5>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.mdl-container .specs-item {
+    margin-bottom: 40px;
+}
+.mdl-container .mdl-header-new {
+    justify-content: flex-end;
+}
+.specs-item .title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.specs-item .title .mdl-title {
+    margin-right: 20px;
+}
+.specs-item .title .title-line {
+    height: 2px;
+    flex: 1;
+    background: #EDEDED;
+}
+.specs-item .specs-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+.specs-item .specs-body .content-item {
+    flex: 0 0 calc(33.33%);
+    padding: 0 5px;
+}
+.specs-body .spec-body {
+    line-height: 22.4px;
+}
+@media screen and (max-width: 767px) {
+    .specs-item .specs-body .content-item {
+        flex: 0 0 calc(50%);
+    }
+}
+</style>

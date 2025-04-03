@@ -1,0 +1,219 @@
+{% assign geometry = 0 %}
+
+{% for entry in shop.metaobjects.product_geometry.values %}
+    {% if entry.product.value.id == section.settings.product.id %}
+        {% assign geometry = 1 %}
+    {% endif %}
+{% endfor %}
+
+<section id="hnz-ug-ultra-12" data-toggle="specs-geometry" data-name="Specs & Geometry" 
+                                    {% if geometry == 1 %}
+                                        {% if section.settings.show == false %}
+                                            style="display: none;"
+                                        {% endif %}
+                                    {% else %}
+                                        style="display: none;"
+                                    {% endif %}
+                                >
+    <div class="container section-content">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                    <i class="fa-solid fa-chevron-down"></i>
+                </h2>
+            </div>
+        </div>
+        <div class="row align-items-center table-row">
+            {% for geometry in shop.metaobjects.product_geometry.values %}
+                {% if geometry.product.value.id == section.settings.product.id %}
+                    <div class="col-lg-7 col-md-12 col-sm-12">                        
+                        <img src="{{ geometry.image_reference | img_url: 'master' }}">
+                    </div>
+                    <div class="col-lg-5 col-md-12 col-sm-12">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        {{ section.settings.heading }}
+                                        <small>
+                                            {{ section.settings.subheading }}
+                                        </small>
+                                    </th>
+                                    <th class="text-center">
+                                        S
+                                        <small>
+                                            {{ geometry.small_size_details | newline_to_br }}
+                                        </small>
+                                    </th>
+                                    <th class="text-center">
+                                        L
+                                        <small>
+                                            {{ geometry.large_size_details | newline_to_br }}
+                                        </small>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>Seat Post Length</td>
+                                    {% assign item = geometry.seat_post_length | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>Frame Length</td>
+                                    {% assign item = geometry.frame_length | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>C</td>
+                                    <td>Bottom Bracket Drop</td>
+                                    {% assign item = geometry.bottom_bracket_drop | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>D</td>
+                                    <td>Head Tube Length</td>
+                                    {% assign item = geometry.head_tube_length | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>E</td>
+                                    <td>Seat Tube Angle</td>
+                                    {% assign item = geometry.seat_tube_angle | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>F</td>
+                                    <td>Head Tube Angle</td>
+                                    {% assign item = geometry.head_tube_angle | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>G</td>
+                                    <td>Rear Wheel To Center</td>
+                                    {% assign item = geometry.rear_wheel_to_center | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>H</td>
+                                    <td>Front Wheel To Center</td>
+                                    {% assign item = geometry.front_wheel_to_center | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>I</td>
+                                    <td>Wheelbase</td>
+                                    {% assign item = geometry.wheelbase | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>J</td>
+                                    <td>Reach</td>
+                                    {% assign item = geometry.reach | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>K</td>
+                                    <td>Stack</td>
+                                    {% assign item = geometry.stack | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>L</td>
+                                    <td>Fork Length</td>
+                                    {% assign item = geometry.fork_length | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>M</td>
+                                    <td>Fork Offset</td>
+                                    {% assign item = geometry.fork_offset | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>N</td>
+                                    <td>Trail</td>
+                                    {% assign item = geometry.trail | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>O</td>
+                                    <td>Standover Height</td>
+                                    {% assign item = geometry.standover_height | newline_to_br | split: '<br />' %}
+                                    {% for item in item %}
+                                        <td class="text-center">{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "UG Ultra Section 12",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading"
+            },
+            {
+                "type": "text",
+                "id": "subheading",
+                "label": "Sub Heading"
+            },
+            {
+                "type": "product",
+                "id": "product",
+                "label": "Product Geometry Reference"
+            }
+        ]
+    }
+{% endschema %}

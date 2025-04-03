@@ -1,0 +1,58 @@
+<section id="hnz-two-image">
+    <div class="container section-content">
+        <div class="row gx-lg-5 gx-md-0 gx-sm-0 gy-lg-0 gy-md-4 gy-sm-4 align-items-center">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="row align-items-center g-lg-5 g-md-3 g-sm-3">
+                    <div class="col-5">
+                        <img src="{{ section.settings.image_small | img_url: 'master' }}">
+                    </div>
+                    <div class="col-7">
+                        <img src="{{ section.settings.image_large | img_url: 'master' }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 col-sm-12 ms-lg-4 ms-md-0 ms-sm-0">
+                        <h2 class="title">
+                            {{ section.settings.title }}
+                        </h2>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 ms-auto">
+                        <p class="body">
+                            {{ section.settings.body | newline_to_br }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Two Image",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body",
+                "label": "Body"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_small",
+                "label": "Image Small"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_large",
+                "label": "Image Large"
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,497 @@
+<script>
+
+    var compare_products = [
+        {% if shop.metaobjects['compare_models_specification'].values_count > 0 %}
+            {% for entries in shop.metaobjects['compare_models_specification'].values %}
+                {
+                    id: "{{ entries.product.value.id }}",
+                    title: "{{ entries.product.value.title }}",
+                    featured_image: "{{ entries.product.value.featured_image | img_url: 'master' }}",
+                    url: "{{ entries.product.value.url }}",
+                    color: "{{ entries.color }}",
+                    frame_size: "{{ entries.frame_size }}",
+                    mode: "{{ entries.mode }}",
+                    power: "{{ entries.power }}",
+                    battery_capacity: "{{ entries.battery_capacity }}",
+                    assist_speed: "{{ entries.assist_speed }}",
+                    range: "{{ entries.range }}",
+                    front_fork: "{{ entries.front_fork }}",
+                    motor: "{{ entries.motor }}",
+                    sensor: "{{ entries.sensor }}",
+                    charger: "{{ entries.charger }}",
+                    throttle: "{{ entries.throttle }}",
+                    rear_derailleur: "{{ entries.rear_derailleur }}",
+                    brakes: "{{ entries.brakes }}",
+                    stem: "{{ entries.stem }}",
+                    seat_post: "{{ entries.seat_post }}",
+                }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+        {% endif %}
+    ];
+
+    var compare = []; 
+    
+</script>
+
+<section id="hnz-compare-2" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+
+        <div class="hozscroll">
+            <div class="sticky">
+                <div class="selection">
+                    <div class="row align-items-center flex-nowrap">
+                        <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                            <h6 class="model">
+                                Model
+                            </h6>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <button class="btn-select" data-selected="">
+                                <div>Select</div>
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <button class="btn-select" data-selected="">
+                                <div>Select</div>
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <button class="btn-select" data-selected="">
+                                <div>Select</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="models">
+                    {% if shop.metaobjects['compare_models_specification'].values_count > 0 %}
+                        <div class="row g-4">
+                            {% for entries in shop.metaobjects['compare_models_specification'].values %}
+                                <div class="col-lg-6 col-md-4 col-sm-6">
+                                    <div class="model" data-model="{{ entries.product.value.id }}">
+                                        <img src="{{ entries.product.value.featured_image | img_url: 'master' }}">
+                                        <p class="title">
+                                            {{ entries.product.value.title }}
+                                        </p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="row align-items-center h-100">
+                            <div class="col-12 text-center">
+                                <h4 class="no-model">
+                                    No models on the record yet.
+                                </h4>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="compare">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                            
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="data--product">
+                                <a href="">
+                                    <img src="">
+                                    <p class="product-title"></p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="data--product">
+                                <a href="">
+                                    <img src="">
+                                    <p class="product-title"></p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="data--product">
+                                <a href="">
+                                    <img src="">
+                                    <p class="product-title"></p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="compare">
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Color
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Color
+                        </div>
+                        <p class="spec-value data data--color"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--color"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--color"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Frame Size
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Frame Size
+                        </div>
+                        <p class="spec-value data data--frame_size"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--frame_size"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--frame_size"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Mode
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Mode
+                        </div>
+                        <p class="spec-value data data--mode"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--mode"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--mode"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Power
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Power
+                        </div>
+                        <p class="spec-value data data--power"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--power"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--power"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Battery Capacity
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Battery Capacity
+                        </div>
+                        <p class="spec-value data data--battery_capacity"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--battery_capacity"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--battery_capacity"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Assist Speed
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Assist Speed
+                        </div>
+                        <p class="spec-value data data--assist_speed"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--assist_speed"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--assist_speed"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Range
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Range
+                        </div>
+                        <p class="spec-value data data--range"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--range"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--range"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Front Fork
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Front Fork
+                        </div>
+                        <p class="spec-value data data--front_fork"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--front_fork"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--front_fork"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Motor
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Motor
+                        </div>
+                        <p class="spec-value data data--motor"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--motor"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--motor"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Sensor
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Sensor
+                        </div>
+                        <p class="spec-value data data--sensor"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--sensor"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--sensor"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Charger
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Charger
+                        </div>
+                        <p class="spec-value data data--charger"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--charger"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--charger"></p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Throttle
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Throttle
+                        </div>
+                        <p class="spec-value data data--throttle"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--throttle"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--throttle"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Rear Derailleur
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Rear Derailleur
+                        </div>
+                        <p class="spec-value data data--rear_derailleur"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--rear_derailleur"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--rear_derailleur"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Brakes
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Brakes
+                        </div>
+                        <p class="spec-value data data--brakes"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--brakes"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--brakes"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Stem
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Stem
+                        </div>
+                        <p class="spec-value data data--stem"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--stem"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--stem"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none">
+                        <h6 class="spec-title">
+                            Seat Post
+                        </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="spec-title mb-3 d-lg-none d-md-block d-sm-block">
+                            Seat Post
+                        </div>
+                        <p class="spec-value data data--seat_post"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--seat_post"></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="mb-3 d-lg-none d-md-block d-sm-block">&nbsp;</div>
+                        <p class="spec-value data data--seat_post"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Compare Models Section 1",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            }
+        ]
+    }
+{% endschema %}

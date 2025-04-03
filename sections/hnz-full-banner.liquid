@@ -1,0 +1,61 @@
+<style>
+    @media only screen and (min-width: 0px) {
+        #hnz-full-banner {
+            background: url('{{ section.settings.background_mobile | img_url: "master" }}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+    @media only screen and (min-width: 1280px) {
+        #hnz-full-banner {
+            background: url('{{ section.settings.background_desktop | img_url: "master" }}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+</style>
+
+<section id="hnz-full-banner">
+    <div class="container section-content h-100">
+        <div class="row align-items-lg-center align-items-md-end align-items-sm-end h-100">
+            <div class="col-lg-7 col-md-12 col-sm-12">
+                <h1 class="title">
+                    {{ section.settings.title }}
+                </h1>
+                <p class="body">
+                    {{ section.settings.body | newline_to_br }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Full Banner",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body",
+                "label": "Body"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_desktop",
+                "label": "Background Desktop"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_mobile",
+                "label": "Background Mobile"
+            }
+        ]
+    }
+{% endschema %}

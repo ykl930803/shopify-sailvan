@@ -1,0 +1,255 @@
+<style>
+.page-template-section{
+    --bs-gutter-x: 36px;
+}
+.page-content {
+  padding-top: 30px;
+  padding-bottom: 60px;
+  font-size: 16px;
+  color: #666;
+}
+
+.page-content .return-introduction {
+  display: block;
+}
+.page-content .content-heading {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  padding: 40px 0 5px 0;
+  display: block;
+}
+.page-content a {
+  color: #333;
+  text-decoration: none;
+}
+.page-content ol {
+  line-height: 2.5;
+  padding-left: 20px;
+}
+.page-content ol li {
+  padding-left: 20px;
+}
+.page-content ol li::marker {
+  color: #000;
+}
+.page-content table tr th, .page-content table tr td {
+  padding: 15px 20px;
+}
+.page-content .scrollable {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-collapse: collapse;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.page-content .scrollable::-webkit-scrollbar {
+  background-color: transparent;
+  height: 2px;
+}
+.page-content .scrollable::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.table-striped{
+  --bs-table-striped-bg: rgba(245,245,245,1);
+  --bs-table-striped-color: rgba(102, 102, 102, 1);
+  --bs-border-color: #dfdfdf;
+  --bs-table-color : #666;
+}
+.table-striped th{
+  color: #333;
+}
+@media (max-width: 767px){
+  .page-content .content-heading{
+    padding: 10px 0 5px 0;
+  }
+  ul.shipping-terms-item{
+    padding-left: 0px;
+  }
+    
+  .page-content h1.van-page-large-title{
+    --font-h1-desktop: 30 !important;
+    padding-top: 100px !important;
+    padding-bottom: 34px;
+  }
+}
+.page-content .van-p-title{
+  padding: 0;
+  margin-top: 19px !important;
+  margin-bottom: 5px !important;
+}
+.page-content .van-p-title .content-heading{
+  padding: 0;
+}
+.page-content .van-p-title.content-heading{
+  padding-bottom: 15px !important;
+  margin-bottom: 0;
+}
+.page-content ul{
+  padding-left: 20px;
+}
+.page-content ul li{
+  line-height: 2;
+  padding-bottom: 10px;
+  position: relative;
+}
+.page-content ul li::marker{
+   color: #333;
+   font-size: 28px;
+}
+.page-content ul li span{
+    bottom : 4px;
+    position: relative;
+}
+.page-content ul li:last-child {
+ padding-bottom: 0;
+}
+.page-content p{
+  line-height: 2;
+}
+.page-content table .heading{
+  font-weight: bold;
+  color: #333;
+}
+.page-content .shipping-terms-item .highlight{
+  text-decoration: none !important;
+  font-weight: bold
+}
+ ul.shipping-terms-item, .shipping-text{
+  padding-top: 4px;
+  padding-left: 22px !important;
+  margin-bottom:0;
+
+}
+ul.shipping-terms-item p{
+  margin-bottom:0;
+}
+.page-content img{
+  max-width: 100%;
+}
+
+.page-content h1.van-page-large-title{
+  --font-h1-desktop: 60;
+  --font-size-base: 16;
+  font-size: calc(((var(--font-h1-desktop)) /(var(--font-size-base)))* 1em) !important;
+  padding-top: 170px;
+  padding-bottom: 34px;
+}
+/** terms and conditions **/
+/** note : add 'terms-conditions' in the css class for terms and conditions page **/
+.terms-conditions .page-content p{
+  line-height: 2;
+  padding-bottom: 15px;
+}
+.terms-conditions .page-content .van-p-title{
+  margin-bottom: 0;
+  padding-bottom: 5px;
+}
+.terms-conditions .page-content .van-p-title .content-heading, .terms-conditions .page-content .van-p-title.content-heading{
+  padding-bottom: 5px !important;
+}
+
+.terms-conditions .page-content ul {
+  line-height: 2.5
+}
+.terms-conditions .page-content ul li{
+  padding-bottom: 0;
+}
+.terms-conditions .page-content .shipping-terms-no-b-margin p{
+ margin-bottom: 0;
+ padding-bottom: 0
+}
+.terms-conditions .page-content ul.list_or, .txt-or{
+}
+.txt-or{
+  margin-bottom: 0px;
+  padding-bottom: 0px !important;
+}
+/** end terms and conditions **/
+.privacy-policy .page-content p{
+  line-height: 2;
+  padding-bottom: 15px;
+}
+.privacy-policy .page-content .van-p-title{
+  padding-bottom: 0 !important;
+}
+@media (min-width: 1536px){
+  .page-template-section.container{
+    max-width: 1440px;
+  }
+}
+</style>
+<div class="page-template-section {{section.id}} {{section.settings.layout}} overflow-hidden {{section.settings.css_class}}">
+    <div class="section-wrapper">
+        <div class="section-title text-center">
+            <h1 class="page-title">{{ section.settings.title }}</h1>
+            <h6 class="page-subtitle">{{ section.settings.subtitle }}</h6>
+        </div>
+
+        <div class="row section-content">
+            <div class="col-lg-12 col-sm-12 page-content">{{ section.settings.content }}</div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page Policy Content",
+  "tag": "div",
+  "class": "shopify--page-content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "{{page.title}}"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub Title"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "default": "container",
+      "options": [
+        {
+          "value": "",
+          "label": "Full Width"
+        },
+        {
+          "value": "container",
+          "label": "Boxed"
+        }
+      ]
+     },
+    {
+      "type": "liquid",
+      "id": "content",
+      "label": "Content",
+      "default": "{{page.content}}"
+    }, 
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Content"
+    }
+  ],
+  "locales": {
+    "en": {
+      "title": "Page Content"
+    }
+  },
+  "enabled_on": {
+    "templates": ["page"]
+  }
+}
+{% endschema %}

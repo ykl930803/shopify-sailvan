@@ -1,0 +1,92 @@
+{% render 'reusableComponent-bannerPromotion' %}
+
+<style>
+    section.promotion-banner {
+        background-image: url('{{ section.settings.background_banner | img_url: "master" }}');
+        background-size: 2000px auto, cover;
+        background-repeat: no-repeat;
+        background-position: -{{ section.settings.x_axis }}px {{ section.settings.y_axis }}%;
+        min-height: 400px;
+    }
+
+    @media (max-width: 1400px) {
+        section.promotion-banner {
+            background-position: center center;
+            background-size: cover;
+        }
+    }
+
+    @media (max-width: 767px) {
+        section.promotion-banner {
+            background-image: url('{{ section.settings.banner_backgroundMobile | img_url: "master" }}');
+            background-position: 50% {{ section.settings.mobile_y_axis }}%;
+            min-height: 270px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        section.promotion-banner {
+            min-height: 220px; 
+        }
+    }
+</style>
+
+
+{% schema %}
+    {
+        "name": "Promotion Banner",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show_promotionBanner",
+                "label": "Show Promotion Banner",
+                "default": true
+            },
+            {
+                "type": "range",
+                "id": "x_axis",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "px",
+                "label": "Desktop Banner X-axis position",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "y_axis",
+                "min": 5,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "label": "Desktop Banner Y-axis position",
+                "default": 50
+            },
+            {
+                "type": "image_picker",
+                "id": "background_banner",
+                "label": "Background Banner"
+            },
+            {
+                "type": "range",
+                "id": "mobile_y_axis",
+                "min": 5,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "label": "Mobile Banner Y-axis position",
+                "default": 50
+            },
+            {
+                "type": "image_picker",
+                "id": "banner_backgroundMobile",
+                "label": "Banner Background Mobile"
+            }
+        ],
+        "presets": [
+          {
+            "name": "Promotion Banner"
+          }
+        ]
+    }
+    {% endschema %}

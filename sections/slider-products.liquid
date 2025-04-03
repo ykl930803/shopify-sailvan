@@ -1,0 +1,252 @@
+{% render 'resuableComponent-sliderProducts.liquid' %}
+
+<style>
+  
+    section.slider-products {
+        background-color: {{ section.settings.bg_color }};
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+
+        &::after {
+            content: "";
+            display: block;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            width: 812px;
+            height: 770px;
+            position: absolute;
+            z-index: 0;
+            bottom: 50px;
+            transform: translate(-50%, 0);
+            left: 50%;
+            {% if section.settings.show_background_image %} background-image: url('{{ section.settings.background_image | img_url: "master"}}');{% endif %}
+        }
+
+        .productSlider-item {
+            z-index: 2;
+            position: relative;
+
+            .product-title {
+                font-weight: 700;
+                font-size: 35px;
+            }
+            .product-description {
+                max-width: 450px;
+            }
+            .product-specs {
+                gap: 70px;
+                .specs-label {
+                    color: #999999;
+                    text-transform: uppercase;
+                    font-weight: 400;
+                    position: relative;
+                    padding: 0 0 6px;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        width: 68px;
+                        height: 1px;
+                        background-color: #545452;
+                        position: absolute;
+                        bottom: 0;
+                        z-index: 1;
+                    }
+                }
+                .specs-value {
+                    margin-top: 12px;
+                    display: table;
+                    font-size: 18px;
+                    text-transform: capitalize;
+
+                    p {
+                        font-size: 18px;
+                        margin: 0 !important;
+                    }
+                }
+            }
+            .product-image img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+        .swiper-slider-products{
+            .swiper-slide {
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+            }
+
+            .swiper-slide-active {
+                opacity: 1;
+            }
+
+            .swiper-navigations {
+                position: absolute;
+                bottom : 28px;
+                right: 0px;
+                width: 125px;
+                display: inline-flex !important;
+                justify-content : space-between;
+
+                .navigation-button {
+                   height: 44px;
+                   width: 44px;
+                   background-size: cover;
+                   opacity: 1;
+                }
+                .swiper-button-next {
+                    background-image: url('{{'right_black.png' | asset_url}}');
+
+                    &::after {
+                       content: ""
+                    }
+                }
+                .swiper-button-next:hover{
+                    background-image: url('{{'right_red.png' | asset_url}}');
+
+                }
+                .swiper-button-prev {
+                    background-image: url('{{'left.png' | asset_url}}');
+
+                    &::after {
+                    content: ""
+                    }
+                    &.dark{
+                        background-image: url('{{'left_black.png' | asset_url}}');
+                    }
+                }
+                   
+                .swiper-button-prev:hover{
+                    background-image: url('{{'left_red.png' | asset_url}}');
+
+                }
+                
+            }
+
+        }
+    }
+    
+</style>
+
+{% javascript %}
+
+  var swiper_slider_p = new Swiper('.swiper-slider-products', {
+    effect: 'slide',
+    autoplay: false,
+    on: {
+      slideChangeTransitionStart: function() {
+        var previousSlide = this.slides[this.previousIndex];
+        previousSlide.style.opacity = 0;
+      },
+      slideChangeTransitionEnd: function() {
+        var activeSlide = this.slides[this.activeIndex];
+        activeSlide.style.opacity = 1;
+      }
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    }
+  }); 
+  swiper_slider_p.on('slideNextTransitionStart', function() {
+    var previousButton = document.querySelector('.swiper-slider-products .swiper-button-prev');
+    previousButton.classList.add('dark');
+  });
+
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Slider Products",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            },
+            {
+                "type": "checkbox",
+                "id": "show_background_image",
+                "label": "Show Backgrund Image?"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_image",
+                "label": "Section Background Image"
+            },
+            {
+                "type": "color",
+                "id": "bg_color",
+                "label": "Background Color"
+            },
+            {
+                "type": "text",
+                "id": "section_id",
+                "label": "Enter section id here"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Product Item",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "productTitle",
+                        "label": "Product Title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "product_description",
+                        "label": "Product Description"
+                    },
+                    {
+                        "type": "url",
+                        "id": "product_url",
+                        "label": "Product URL"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "product_image",
+                        "label": "Product Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "product_price",
+                        "label": "Product Price",
+                        "default": "Product Price"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "product_body",
+                        "label": "Product Body"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "product_motor",
+                        "label": "Product Motor"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "product_battery",
+                        "label": "Product Battery"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Slider Products"
+          }
+        ]
+    }
+{% endschema %}

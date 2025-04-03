@@ -1,0 +1,169 @@
+<style>
+  .cart-sidebar-discount {
+    display: flex;
+    {% comment %} flex-direction: column; {% endcomment %}
+    {% comment %} width:300px; {% endcomment %}
+  }
+  .cart-sidebar-discount input {
+    margin-top:20px;
+    background: white;
+    border: 1px solid gray;
+    height:50px;
+    outline: none;
+    font-size: 18px;
+    letter-spacing: .75px;
+    text-align: left;
+  }
+  .cart-sidebar-discount .row-1 {
+    flex-direction: row-reverse;
+  }
+  #apply-discount-btn {
+     
+    font-size: 14px;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: .75px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color:white;
+  }
+
+  span.applied-discount-code-value>small {
+    background: #eee;
+    padding: 0px 10px;
+    color: #000;
+    font-weight: bold;
+    border-radius: 20px;
+  }
+  .loader {
+    border: 5px solid #f3f3f3;
+    border-top: 4px solid #000;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    animation: spin .5s linear infinite;
+  }
+  #discount-code-error {
+    background: #ff00004f;
+    color: #e22120;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1;
+  }
+  .applied-discount-code-wrapper {
+    display: none;
+    background: #ddd;
+    padding: 3px 6px;
+    border-radius: 25px;
+  }
+  .applied-discount-code-value {
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  
+  #discount-code-error:empty {
+    display: none;
+  }
+  .applied-discount-code-value:empty+button {
+    display: none;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .discount{
+  margin-bottom:20px;
+  }
+    .containers {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+
+    .rounded-containers {
+        display: flex;
+        border-radius: 50px;
+        overflow: hidden;
+        border: 1px solid gray;
+        width:100%;
+        margin-bottom:10px;
+
+        
+    }
+
+    .rounded-containers input[type="text"] {
+        padding: 10px;
+        border: none;
+        outline: none;
+        width:100%;
+    }
+
+    .rounded-containers button {
+        padding: 10px 20px 10px 10px;
+        border: none;
+        background-color: #1a1a1a;
+        color: white;
+        cursor: pointer;
+    }
+    .label-discounts{
+      color:black;
+      margin-bottom:30px;
+      font-weight:500;
+      font-size:13px;
+    }
+    #clear-discount-btn{
+      border:none;
+      background-color:transparent;
+      font-weight:700;
+      font-size:12px;
+    }
+    #cart__total_discount{
+      color:#1a1a1a;
+    }
+</style>
+
+
+
+
+
+<div class="discount">
+  <p class="label-discounts">Discount - Limited to one code per order</p>
+  <div class="containers">
+    <div class="rounded-containers">
+        <input type="text" placeholder="Enter a coupon" id="discount-code-input" autocomplete="on" value="">
+        <button id="apply-discount-btn">APPLY</button>
+    </div>
+    </div>
+    <span id="applied-discount-code">
+      <span class="applied-discount-code-wrapper">
+        <span class="applied-discount-code-value"></span>
+        <button id="clear-discount-btn">X</button>
+      </span>
+    </span>
+        <span id="discount-code-error"></span>
+</div>
+
+{% comment %} 
+<div class="discount">
+      <p class="label-discounts">Discount - Limited to one code per order</p>
+    <div class="containers">
+    <div class="rounded-containers">
+        <input type="text" placeholder="Enter a coupon" id="discount-code-input" autocomplete="on" value="">
+        <button id="apply-discount-btn btn-dark">APPLY</button>
+    </div>
+    </div>
+     <span id="applied-discount-code">
+        <span class="applied-discount-code-wrapper">
+          <span class="applied-discount-code-value"></span>
+          <button id="clear-discount-btn">X</button>
+        </span>
+      </span>
+      
+</div>
+<small id="discount-code-error"></small> {% endcomment %}

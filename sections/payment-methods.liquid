@@ -1,0 +1,389 @@
+<div class="page-template-section {{section.id}} {{section.settings.layout}}">
+    <div class="section-wrapper">
+        <div class="section-title text-center">
+            <h1 class="page-title">{{ section.settings.title }}</h1>
+            <h6 class="page-subtitle">{{ section.settings.subtitle }}</h6>
+        </div>
+        <div class="page-content">
+              <div class="row"><div class="col-lg-12 col-12">{{ section.settings.content }}</div></div>
+              {%- for block in section.blocks -%}
+
+                {%- case block.type -%}
+                {% when 'two-columns'%}
+                  <div class="row subcontent {{block.settings.css_class}} {%if block.settings.flex_direction==true%}flex-row-reverse {%endif%} align-items-center">
+                    <div class="col-lg-6 col-12 img-col">
+                      <div class="img-wrapper">
+                        <img src="{{block.settings.image | img_url : '2048x2048'}}" class="img-fluid" width="auto" height="auto" alt="">
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-12 subcontent-col">
+                      <div class="subcontent-wrapper">
+                        <h5 class="subcontent-title fw-bold">{{block.settings.title | strip_html}}</h5>
+                        <div class="subcontent-text">{{block.settings.html}}</div>
+                      </div>
+                    </div>
+                    {%style%}
+                      {{block.settings.css}}
+                    {%endstyle%}
+                  </div>
+                 
+                    {% when '1column'%}
+                    <div class="row">
+                      <div class="col-lg-12 col-12">
+                        {{block.settings.content}}
+                      </div>
+                    </div>
+                    {% when '1column-image'%}
+                    <div class="row">
+                      <div class="col-lg-12 col-12">
+                          {%if block.settings.image!=nil%}
+                            <img src="{{block.settings.image | img_url : '2048x2048'}}" width="auto" height="auto" alt=""  class="img-fluid {%if block.settings.image_mv!= nil %} d-none d-lg-block {%endif%}">
+
+                            {%- if block.settings.image_mv != nil -%}
+                                <img 
+                                  src="{{block.settings.image_mv | image_url : width: 2048}}"
+                                  alt="{{block.settings.image_mv.alt | escape}}"
+                                  class="img-fluid d-block d-lg-none"
+                                  width="auto"
+                                  height= "auto">
+                            {% endif %}
+                          {% endif %}
+
+                      </div>
+                    </div>
+                    {% when 'html'%}
+                    <div class="row">
+                      <div class="col-lg-12 col-12">
+                        {{block.settings.text}}
+                      </div>
+                    </div>
+                {% endcase %}
+              {%- endfor -%}
+          </div>
+    </div>
+</div>
+<style>
+.page-template-section{
+    --bs-gutter-x: 36px;
+}
+.page-content {
+  padding-top: 112px;
+  padding-bottom: 30px;
+  font-size: 16px;
+  color: #666;
+}
+.page-content p{
+  font-weight: 500;
+}
+.page-content .content-heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  padding: 40px 0 5px 0;
+  display: block;
+}
+.page-content a {
+  color: #333;
+}
+.page-content .scrollable{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-collapse: collapse;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.page-content .scrollable::-webkit-scrollbar {
+  background-color: transparent;
+  height: 2px;
+}
+.page-content .scrollable::-webkit-scrollbar-thumb {
+  background-color: transparent;
+
+}
+.page-content table {
+  --bs-table-striped-bg: #F5F5F7;
+  min-width: 1097px;
+}
+.page-content table .col-1 {
+  width: 10.5%;
+}
+.page-content table .col-2 {
+  width: 18%;
+}
+.page-content table .col-3, .page-content table .col-4 {
+  width: 19.5%;
+}
+.page-content table tr th, .page-content table tr td {
+  padding: 15px 20px;
+}
+.page-content .subcontent {
+  padding-bottom: 90px;
+}
+
+.page-content .subcontent .img-col {
+  width: 48%;
+}
+.page-content .subcontent .subcontent-col {
+  width: 52%;
+}
+.page-content .subcontent .img-wrapper {
+  width: 97%;
+}
+.page-content .subcontent .img-wrapper img {
+  border-radius: 10px;
+}
+.page-content .subcontent .subcontent-wrapper {
+  padding-left: 0px;
+}
+.page-content .subcontent .subcontent-wrapper .subcontent-title {
+  text-transform: capitalize;
+  font-size: 21px;
+  line-height: 1.75;
+}
+.page-content .subcontent .subcontent-wrapper .subcontent-text {
+  padding-top: 22px;
+}
+.page-content .subcontent .subcontent-wrapper .subcontent-text ul, .page-content .subcontent .subcontent-wrapper .subcontent-text ol {
+  padding-left: 17px;
+}
+.page-content .subcontent .subcontent-wrapper .subcontent-text ul li::marker{
+  font-size: 18px;
+}
+.page-content .subcontent .subcontent-wrapper .subcontent-text ul li, .page-content .subcontent .subcontent-wrapper .subcontent-text ol li {
+  font-size: 16px;
+  padding-bottom: 24px;
+}
+.page-content .subcontent .subcontent-wrapper .subcontent-text ul li:last-child, .page-content .subcontent .subcontent-wrapper .subcontent-text ol li:last-child {
+  padding-bottom: 0;
+}
+.page-content .subcontent.flex-row-reverse .img-col {
+  display: flex;
+  justify-content: flex-end;
+}
+.page-content .subcontent.flex-row-reverse .subcontent-wrapper {
+  padding-left: 0;
+  padding-right: 18px;
+}
+
+.check {
+  transform: rotate(225deg);
+  display: inline-block;
+  height: 16px;
+  width: 10px;
+  border-top: 2px solid #333;
+  border-left: 2px solid #333;
+}
+
+.cross {
+  position: relative;
+}
+
+.cross:before, .cross:after {
+  position: absolute;
+  left: 7px;
+  content: " ";
+  height: 21px;
+  width: 2px;
+  background-color: #333;
+}
+
+.cross:before {
+  transform: rotate(45deg);
+}
+
+.cross:after {
+  transform: rotate(-45deg);
+}
+.klarna-items-wrapper {
+  background: #fafafa;
+  padding: 50px;
+  gap: 10px;
+}
+.klarna-items-wrapper .btn-dark {
+  width: 80%;
+  padding: 5px;
+}
+.klarna-items-wrapper h6 {
+  color: #666;
+  padding-top: 20px;
+}
+@media (max-width: 768px){
+    .page-content{
+      padding-top: 40px;
+    }
+    
+    .page-content .subcontent{
+      padding-bottom: 40px;
+    }
+    .page-content .subcontent .subcontent-title{
+      padding-top: 15px;
+      margin-bottom: 0;
+    }
+
+    .page-content .subcontent .img-col {
+      width: 100%;
+    }
+    .page-content .subcontent .subcontent-col {
+      width: 100%;
+    }
+    .page-content .subcontent .img-wrapper {
+      width: 100%;
+    }
+
+    .page-content table .col-1 {
+      width: 10.5%;
+    }
+    .page-content table .col-2 {
+      width: 18.8%;
+    }
+    .page-content table .col-3, .page-content table .col-4 {
+      width: 19.5%;
+    }
+    .klarna-items-wrapper {
+      flex-direction: column;
+      margin-top: 35px;
+      gap: 25px;
+
+    }
+}
+@media (min-width: 1600px){
+    .{{section.id}}.container{
+        max-width: 1410px
+    }
+}
+</style>
+{% schema %}
+{
+  "name": "Payment Methods",
+  "tag": "div",
+  "class": "shopify--page-content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "{{page.title}}"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub Title",
+      "default": "Outfit your bike with these handy essentials."
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "default": "container",
+      "options": [
+        {
+          "value": "",
+          "label": "Full Width"
+        },
+        {
+          "value": "container",
+          "label": "Boxed"
+        }
+      ]
+     },
+    {
+      "type": "liquid",
+      "id": "content",
+      "label": "Content",
+      "default": "{{page.content}}"
+    }
+  ],
+    "blocks": [
+     {
+      "type": "two-columns",
+      "name": "Two Columns",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Html Heading"
+        },
+        {
+          "type": "html",
+          "id": "html",
+          "label": "Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "flex_direction",
+          "label": "Row Reverse",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "css_class",
+          "label": "CSS Class"
+        },
+        {
+          "type": "html",
+          "id": "css",
+          "label": "Custom CSS"
+        }
+      ]
+     },
+    
+     {
+      "type": "1column",
+      "name": "Single Column Text",
+      "settings": [
+        {
+          "type": "html",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+     },
+     {
+      "type": "1column-image",
+      "name": "Single Column Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+         {
+          "type": "image_picker",
+          "id": "image_mv",
+          "label": "Image (for Mobile)"
+        }
+      ]
+     },
+      {
+      "type": "html",
+      "name": "Html",
+      "settings": [
+        {
+          "type": "html",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+     }
+  ],
+  "presets": [
+    {
+      "name": "Payment Method"
+    }
+  ],
+  "locales": {
+    "en": {
+      "title": "Payment Method"
+    }
+  },
+  "enabled_on": {
+    "templates": ["page"]
+  }
+}
+{% endschema %}

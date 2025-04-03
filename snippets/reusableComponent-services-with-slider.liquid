@@ -1,0 +1,202 @@
+<section id="shopify-section--{{ section.id }}" class="services-with-slider position-relative">
+    <div id="services-holder" class="container-fluid px-0">
+        <div class="row">
+            <div class="services-outerWrapper">
+                <div class="services-wrapper">
+                    <div class="col-12">
+                        {%- if section.settings.section_title != blank -%}
+                            <div class="section-title text-center">{{ section.settings.section_headingTags }}{{ section.settings.section_title }}</div>
+                        {% endif %}
+
+                        {%- if section.settings.service_paragraph != blank -%}
+                            <div class="service-paragraph text-center d-table mx-auto">{{ section.settings.service_paragraph }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="services-items d-flex flex-direction-row mt-5">
+                      {% if section.settings.service_icon1 %}
+                        <div class="service-item col">
+                          <a href="{{ section.settings.service_1_link }}">
+                            <div class="service-icon mb-3 text-center">
+                                {{ section.settings.service_icon1 | image_url: width: 68 | image_tag: srcset: nil }}
+                            </div>
+                            <div class="service_text">
+                                {{ section.settings.service_1 }}
+                            </div>
+                          </a>
+                        </div>
+                      {% endif %}
+                      {% if section.settings.service_icon2 %}
+                        <div class="service-item col">
+                          <a href="{{ section.settings.service_2_link }}">
+                            <div class="service-icon mb-3 text-center">
+                                {{ section.settings.service_icon2 | image_url: width: 68 | image_tag: srcset: nil }}
+                            </div>
+                            <div class="service_text">
+                                {{ section.settings.service_2 }}
+                            </div>
+                          </a>
+                        </div>
+                      {% endif %}
+                      {% if section.settings.service_icon3 %}
+                        <div class="service-item col">
+                          <a href="{{ section.settings.service_3_link }}">
+                            <div class="service-icon mb-3 text-center">
+                                {{ section.settings.service_icon3 | image_url: width: 68 | image_tag: srcset: nil }}
+                            </div>
+                            <div class="service_text">
+                                {{ section.settings.service_3 }}
+                            </div>
+                          </a>
+                        </div>
+                      {% endif %}
+                      {% if section.settings.service_icon4 %}
+                        <div class="service-item col">
+                          <a href="{{ section.settings.service_4_link }}">
+                            <div class="service-icon mb-3 text-center">
+                                {{ section.settings.service_icon4 | image_url: width: 68 | image_tag: srcset: nil }}
+                            </div>
+                            <div class="service_text">
+                                {{ section.settings.service_4 }}
+                            </div>
+                          </a>
+                        </div>
+                      {% endif %}
+                      {% if section.settings.service_icon5 %}
+                        <div class="service-item col">
+                          <a href="{{ section.settings.service_5_link }}">
+                            <div class="service-icon mb-3 text-center">
+                                {{ section.settings.service_icon5 | image_url: width: 68 | image_tag: srcset: nil }}
+                            </div>
+                            <div class="service_text">
+                                {{ section.settings.service_5 }}
+                            </div>
+                          </a>
+                        </div>
+                      {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row sliderBanner-ImageBlock">
+            <div class="col-12">
+                <div class="sliderBannerImage animation_1 imagesScroll">
+                    <div class="rq">   
+                        <div class="imgsSection">    
+                        {%- for block in section.blocks -%}
+                            {%- if block.settings.slider_bannerBg != blank -%}
+                                <div class="slide-inner position-relative" style="display:{% if forloop.index == 1 %}table{% else %}none{% endif %};" >
+                                    <img class="slider-bannerImage swiper-lazy" src="{{ block.settings.slider_bannerBg | img_url: 'master'}}" data-src="{{ block.settings.slider_bannerBg | img_url: 'master'}}" alt="image-slider">
+                                    <div class="sliderBanner-contentWrapper container container-panel">
+                                        <div class="sliderBanner-contents">
+                                            <div class="sliderBanner-contentsInner">
+                                                <div class="quote-text-wrap {% if forloop.index == 1 %}animate-me animate__slideInUp{% endif %}" >
+                                                    <div class="quote-text">
+                                                        {%- if block.settings.slider_title != blank -%}
+                                                            <div class="slider-title">
+                                                                {{ block.settings.slider_headingTag }}{{ block.settings.slider_title }}
+                                                            </div>
+                                                        {% endif %}
+
+                                                        {%- if block.settings.slider_paragraph != blank -%}
+                                                            <div class="slider-paragraph">
+                                                                {{ block.settings.slider_paragraph }}
+                                                            </div>
+                                                        {% endif %}
+
+                                                        {%- if block.settings.button_link != blank -%}
+                                                            <a href="{{ block.settings.button_link }}" class="btn btn-light mt-4">
+                                                                Learn more
+                                                            </a>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {%- endfor -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Version -->
+        <div class="row sliderBannerMobile-ImageBlock">
+            <div class="col-12">
+                <div class="bannerMobile-block">
+                    <div class="swiper-wrapper">
+                        {%- for block in section.blocks -%}
+                            <div class="bannerMobile-blockItem swiper-slide">
+                                {%- if block.settings.slider_bannerBgMobile != blank -%}
+                                    <div class="block-bannerHolder position-relative">
+                                        <img class="slider-bannerImage swiper-lazy" 
+                                            src="{{ block.settings.slider_bannerBgMobile | img_url: 'master'}}"
+                                            alt="image-slider">       
+
+                                            <div class="block-bannerContent">
+                                                {%- if block.settings.slider_title != blank -%}
+                                                    <div class="slider-title">
+                                                        {{ block.settings.slider_headingTag }}{{ block.settings.slider_title }}
+                                                    </div>
+                                                {% endif %}
+
+                                                {%- if block.settings.slider_paragraph != blank -%}
+                                                    <div class="slider-paragraph">
+                                                        {{ block.settings.slider_paragraph }}
+                                                    </div>
+                                                {% endif %}
+
+                                                {%- if block.settings.button_link != blank -%}
+                                                    <a href="{{ block.settings.button_link }}" class="btn btn-light mt-4">
+                                                        Learn more
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {%- endfor -%}
+                    </div>
+
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+</section>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <script>
+        var windowHeight = $(window).outerHeight();
+        $(window).scroll(function () {
+            var $animation_1 = $('.animation_1');
+            if ($(window).scrollTop() > $animation_1.offset().top) {
+                var idx = parseInt((($(window).scrollTop() - $animation_1.offset().top) / (
+                    $animation_1.outerHeight() - windowHeight)) * $animation_1.find('.imgsSection .slide-inner').length);
+                if (idx >= 0) {
+                    var $slides = $animation_1.find('.imgsSection .slide-inner');
+                    $slides.eq(idx).fadeIn().addClass('animate-me animate__fadeIn ').siblings().fadeOut();
+                    var $visibleFrame = $slides.filter(':visible').first();
+                    var currentFrame = $slides.index($visibleFrame);
+                
+
+                /// Show the .quote-text-wrap element of the visible slide with fade-in and slide-in-up effect
+                    //$visibleFrame.find('.quote-text-wrap').addClass('animate-me animate__slideInUp').fadeIn();
+                    $slides.eq(idx).find('.quote-text-wrap').fadeIn().addClass('animate-me animate__slideInUp');
+
+                    // Hide .quote-text-wrap elements of other slides
+                    //$slides.not($visibleFrame).find('.quote-text-wrap').removeClass('animate-me animate__slideInUp').fadeOut();
+                    
+                }
+            }
+        });
+
+    </script>

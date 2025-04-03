@@ -1,0 +1,147 @@
+<div class="banner-swiper-wrapper">
+  <div class="swiper swiper-banner">
+    <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide swiper-slide-{{ forloop.index0 }}" {% if block.settings.banner_link %}data-link="{{ block.settings.banner_link }}"{% endif %} {% if block.settings.open_modal %}data-open-link="{{ block.settings.open_modal }}"{% endif %}>
+            <picture>
+              <source media="(max-width: 768px)" srcset="{{ block.settings.banner_m | image_url }}" />
+              <source media="(min-width: 769px)" srcset="{{ block.settings.banner_pc | image_url }}" />
+              <img src="{{ block.settings.banner_pc | image_url }}" width="100%" height=""/>
+            </picture>
+          </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var headerBannerSwiper = new Swiper('.swiper-banner', {
+        autoplay:{% if section.settings.autoplay %}true{% else %}false{% endif %},
+        loop:true,
+        speed: {{ section.settings.swiper_speed}},
+        pagination: {
+          el: ".swiper-banner .swiper-pagination",
+          dynamicBullets: true,
+        },
+      }
+      );
+    
+      // 获取所有具有 .my-button 类的元素
+      const banners = document.querySelectorAll('.swiper-banner .swiper-slide');
+
+      // 为每个按钮添加点击事件
+      banners.forEach(function(banner) {
+        banner.addEventListener('click', function() {
+          const link = this.getAttribute('data-link');
+          const openModal = this.getAttribute('data-open-link');
+          if (!link) return;
+          if (openModal == 'true') {
+            var videoUrl = $(this).attr('data-link')
+            var content = `<video src="${videoUrl}" autoplay controls style="width:100%;"></video>`
+            var modal = MyModal.getInstance()
+            modal.show(content)
+          } else {
+           window.location.href = link; 
+          }
+        });
+      });
+  });
+</script>
+<style>
+  .banner-swiper-wrapper {
+    overflow: hidden;
+    padding-top: {{section.settings.padding_top}}px;
+  }
+  .banner-swiper-wrapper .swiper-banner {
+    width: 100%;
+    position: relative;
+  }
+  .swiper-banner .swiper-slide {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size:100%;
+    max-width: 100%;
+    cursor: pointer;
+  }
+  /* {% for block in section.blocks %}
+    .swiper-banner .swiper-slide-{{ forloop.index0 }} {
+      background-image: url('{{ block.settings.banner_pc | image_url}}');
+      aspect-ratio: {{ block.settings.banner_pc.aspect_ratio }};
+      {% if block.settings.banner_link %}
+        cursor: pointer;
+      {% endif %}
+    }
+  {% endfor %}
+
+  @media (max-width: 480px) {
+    {% for block in section.blocks %}
+      .swiper-banner .swiper-slide-{{ forloop.index0 }} {
+        background-image: url('{{ block.settings.banner_m | image_url}}');
+        aspect-ratio: {{ block.settings.banner_m.aspect_ratio }};
+      }
+    {% endfor %}
+  } */
+</style>
+
+
+{% schema %}
+{
+    "name": "Banner Swiper",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Autoplay",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "default": 75
+      },
+      {
+        "type": "number",
+        "id": "swiper_speed",
+        "label": "Duration of transition between slides (in ms)",
+        "default": 300
+      }
+    ],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "banner_pc",
+            "label": "Banner PC"
+          },
+          {
+            "type": "image_picker",
+            "id": "banner_m",
+            "label": "Banner M"
+          },
+          {
+            "type": "url",
+            "id": "banner_link",
+            "label": "Banner Link"
+          },
+          {
+            "type": "checkbox",
+            "id": "open_modal",
+            "label": "Open In Modal",
+            "default": false,
+            "info": "For Video"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner Swiper"
+      }
+    ]
+}
+{% endschema %}

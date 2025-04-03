@@ -1,0 +1,785 @@
+{% render 'reusableComponent-services-with-slider.liquid' %}
+
+<style>
+   
+    .imagesScroll {
+        width: 100%;
+        height: 200vh;
+    }
+    .imagesScroll .rq {
+        width: 100%;
+        position: sticky;
+        top: 0;
+        overflow: hidden;
+    }
+    .imagesScroll .slide-inner.active {
+        opacity: 1;
+    }
+    .imagesScroll .imgsSection {
+        width: 100%;
+        position: relative;
+        /*display: flex;*/
+        height: 100%;
+    }
+    .imagesScroll .imgsSection .quote-text-wrap {
+        display: none;
+        /* Hide by default */
+    }
+    .imagesScroll .imgsSection .slide-innerWrapper {
+        width: 100%;
+        vertical-align: middle;
+    }
+
+    section.services-with-slider {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+
+        #services-holder {
+            width: 68%;
+            will-change: width;
+            margin: auto;
+            transition: width 0.5s ease;
+        }
+
+        .section-title {
+            margin-bottom: 35px;
+            h2 {
+                font-size: 50px;
+            }
+        }
+        
+        .services-outerWrapper {
+            padding: 0 12px 0 12px;
+        }
+        .services-outerWrapper .services-wrapper {
+            background-color: {{ section.settings.bg_color }};
+            border-radius: 42px 42px 0px 0px;
+            padding-top: {{ section.settings.container_paddingTop }}px;
+            padding-bottom: {{ section.settings.container_paddingBottom }}px;
+        }
+        .services-outerWrapper .services-wrapper .service-paragraph {
+            width: 755px;
+        }
+        .services-outerWrapper .services-wrapper .service-paragraph p {
+            font-size: 19px;
+            font-weight: 600;
+        }
+        .services-outerWrapper .services-wrapper .services-items {
+            padding: 0px;
+            margin: auto;
+        }
+        .services-outerWrapper .services-wrapper .services-items .service-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+      .services-outerWrapper .services-wrapper .services-items .service-item a {
+        text-decoration:none;
+      }
+        .services-outerWrapper .services-wrapper .services-items .service-item .service-icon img {
+            transition: 0.4s ease;
+        }
+        .services-outerWrapper .services-wrapper .services-items .service-item .service_text {
+            color: #333333;
+            transition: 0.4s ease;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .services-outerWrapper .services-wrapper .services-items .service-item:hover .service_text {
+            color: #d30909;
+        }
+        .services-outerWrapper .services-wrapper .services-items .service-item:hover .service-icon img {
+            filter: brightness(0) saturate(100%) invert(8%) sepia(98%) saturate(6484%) hue-rotate(7deg) brightness(106%) contrast(93%);
+        }
+
+        .slide-inner {
+            display: table;
+            width: 100%;
+        }
+        .slide-inner .sliderBanner-contentWrapper {
+            margin: auto;
+            width: 100%;
+        }
+        .slide-inner .sliderBanner-contentWrapper .sliderBanner-contents {
+            position: absolute;
+            bottom: 150px;
+            z-index: 1;
+            padding: 0 20px;
+            max-width: 450px;
+            display: flex;
+            align-items: flex-end;
+            height: 100%;
+        }
+        .slide-inner .sliderBanner-contentWrapper .sliderBanner-contents .sliderBanner-contentsInner {
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+
+        {%- for block in section.blocks -%}
+            .sliderBanner-contentsInner .slider-title h1, 
+            .sliderBanner-contentsInner .slider-title h2, 
+            .sliderBanner-contentsInner .slider-title h3, 
+            .sliderBanner-contentsInner .slider-title h4, 
+            .sliderBanner-contentsInner .slider-title h5, 
+            .sliderBanner-contentsInner .slider-paragraph p {
+                color: {{ block.settings.banner_textColor }} !important;
+            }
+        {%- endfor -%}
+
+        .slide-inner .sliderBanner-contentWrapper .sliderBanner-contents .sliderBanner-contentsInner .quote-text-wrap {
+            max-width: 400px;
+        }
+        .slide-inner .sliderBanner-contentWrapper .sliderBanner-contents .sliderBanner-contentsInner .quote-text-wrap .quote-text {
+            align-self: center;
+            transition: all 0.4s;
+        }
+        .slide-inner .sliderBanner-contentWrapper .sliderBanner-contents .sliderBanner-contentsInner .quote-text-wrap .slider-title h2 {
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+        .sliderBannerImage.swiper-container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+        .sliderBannerMobile-ImageBlock {
+            display: none;
+        }
+        .sliderBannerMobile-ImageBlock .block-bannerHolder a.btn {
+            background-color: transparent;
+            color: #ffffff;
+        }
+            
+    }
+
+    /* Responsive */
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        section.services-with-slider .services-outerWrapper .services-wrapper {
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+        section.services-with-slider .service-paragraph {
+            width: 80% !important;
+        }
+        section.services-with-slider .slide-inner .sliderBanner-contentWrapper {
+            max-width: 100%;
+            padding: 0 12px;
+        }
+        section.services-with-slider .slide-inner .sliderBanner-contentWrapper .sliderBanner-contents {
+            bottom: 85px;
+        }
+    }
+
+    @media (max-width: 991px) {
+        section.services-with-slider {
+            padding-top: 60px;
+        }
+        section.services-with-slider #services-holder {
+            width: calc(100% - 20px) !important;
+        }
+        section.services-with-slider #services-holder .sliderBannerImage.swiper-container {
+            margin-top: 50px;
+            border-radius: 13px;
+        }
+        section.services-with-slider #services-holder .services-wrapper {
+            background-color: {{ section.settings.bg_color }};
+            padding-top: 60px;
+            padding-bottom: 60px;
+            border-radius: 17px;
+        }
+        section.services-with-slider #services-holder .services-wrapper .section-title {
+            margin-bottom: 0;
+        }
+        section.services-with-slider #services-holder .services-wrapper .section-title h2 {
+            font-size: 40px;
+        }
+        section.services-with-slider #services-holder .services-wrapper .services-items {
+            max-width: 100%;
+            padding: 0 20px;
+            margin-top: 25px !important;
+        }
+        section.services-with-slider #services-holder .services-wrapper .service-paragraph {
+            width: 100% !important;
+            padding: 0 20px;
+        }
+        section.services-with-slider #services-holder .slide-inner .sliderBanner-contentWrapper {
+            max-width: 100%;
+            padding: 0 12px;
+        }
+        section.services-with-slider #services-holder .slide-inner .sliderBanner-contentWrapper .sliderBanner-contents {
+            bottom: 85px;
+        }
+        section.services-with-slider #services-holder .sliderBanner-ImageBlock {
+            display: none;
+        }
+        section.services-with-slider .sliderBannerMobile-ImageBlock {
+            display: block;
+            margin-top: 50px;
+        }
+        section.services-with-slider .sliderBannerMobile-ImageBlock .block-bannerHolder img {
+            width: 100%;
+            border-radius: 17px;
+        }
+        section.services-with-slider .sliderBannerMobile-ImageBlock .bannerMobile-block {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        section.services-with-slider .sliderBannerMobile-ImageBlock .bannerMobile-block .block-bannerContent {
+            position: absolute;
+            bottom: 70px;
+            width: 100%;
+            padding: 0 30px;
+        }
+        {%- for block in section.blocks -%}
+            .block-bannerContent .slider-title h1, 
+            .block-bannerContent .slider-title h2, 
+            .block-bannerContent .slider-title h3, 
+            .block-bannerContent .slider-title h4, 
+            .block-bannerContent .slider-title h5,
+            .block-bannerContent .slider-paragraph p {
+                color: {{ block.settings.banner_textColor }} !important;
+            }
+        {%- endfor -%}
+
+        section.services-with-slider .sliderBannerMobile-ImageBlock .bannerMobile-block .swiper-pagination {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 0 10px;
+            max-width: max-content;
+            bottom: 15px;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+        section.services-with-slider .sliderBannerMobile-ImageBlock .bannerMobile-block .swiper-pagination .swiper-pagination-bullet {
+            background-color: #fff;
+            opacity: 0.3;
+            width: 9px;
+            height: 9px;
+        }
+        section.services-with-slider .sliderBannerMobile-ImageBlock .bannerMobile-block .swiper-pagination .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 767px) {
+        section.services-with-slider {
+            padding-top: 0 !important;
+        }
+        section.services-with-slider #services-holder {
+            max-width: 700px !important;
+        }
+        section.services-with-slider #services-holder .services-wrapper .section-title h2 {
+            font-size: 30px;
+        }
+        section.services-with-slider #services-holder .services-wrapper .services-items {
+            display: table !important;
+            text-align: center;
+        }
+        section.services-with-slider #services-holder .services-wrapper .services-items .service-item {
+            float: left;
+            width: 50%;
+            margin-bottom: 30px;
+        }
+        section.services-with-slider #services-holder .services-wrapper .services-items .service-item:last-child {
+            /* width: 100% !important; */
+            margin-bottom: 0;
+        }
+        section.services-with-slider #services-holder .services-wrapper .services-items .service-item .service_text {
+            font-weight: 600;
+        }
+        section.services-with-slider .quote-text-wrap {
+            max-width: 350px !important;
+        }
+        section.services-with-slider .slider-title h2 {
+            font-size: 30px !important;
+        }
+        section.services-with-slider .slide-inner {
+            width: 100%;
+        }
+        section.services-with-slider .slide-inner .slider-bannerImage {
+            display: none;
+        }
+        section.services-with-slider .slide-inner .sliderBanner-contents {
+            bottom: 60px !important;
+            padding: 0 15px !important;
+        }
+        section.services-with-slider .sliderBannerImage.swiper-container {
+            height: auto;
+        }
+    }
+
+    @media (max-width: 480px) {
+        section.services-with-slider {
+            padding: 40px 0;
+        }
+        section.services-with-slider .services-outerWrapper .services-wrapper .service-paragraph p {
+            font-size: 16px;
+        }
+        section.services-with-slider #services-holder .services-wrapper .services-items .service-item .service_text {
+            font-size: 15px;
+        }
+        section.services-with-slider .sliderBanner-contents {
+            padding: 0 15px !important;
+        }
+    }
+
+    @media (min-width: 1024px) and (orientation: landscape) {
+        .services-outerWrapper .services-wrapper .service-paragraph {
+            width: 655px !important;
+        }
+        .services-outerWrapper .services-wrapper .service-paragraph p {
+            font-size: 16px !important;
+            font-weight: 600;
+        }
+        .services-outerWrapper .services-wrapper .services-items {
+            max-width: 900px !important;
+        }
+        .services-outerWrapper .services-wrapper .services-items .service-icon img {
+            width: 42px;
+            height: auto;
+        }
+        .services-outerWrapper .services-wrapper .services-items .service_text {
+            font-size: 14px !important;
+        }
+    }
+
+    @media (min-width: 1440px){
+        .services-outerWrapper .services-wrapper .service-paragraph {
+            width: 755px !important;
+        }
+        .services-outerWrapper .services-wrapper .service-paragraph p {
+            font-size: 19px !important;
+            font-weight: 600;
+        }
+        .services-outerWrapper .services-wrapper .services-items {
+            max-width: 1340 !important;
+        }
+        .services-outerWrapper .services-wrapper .services-items .service-icon img {
+            width: 68px;
+            height: auto;
+        }
+        .services-outerWrapper .services-wrapper .services-items .service_text {
+            font-size: 18px !important;
+        }
+    }
+
+    @media (min-width: 1600px){
+        .services-outerWrapper .services-wrapper .service-paragraph {
+            width: 755px !important;
+        }
+        .services-outerWrapper .services-wrapper .service-paragraph p {
+            font-size: 19px !important;
+            font-weight: 600;
+        }
+        .services-outerWrapper .services-wrapper .services-items {
+            max-width: 1500px !important;
+        }
+        .services-outerWrapper .services-wrapper .services-items .service-icon img {
+            width: 68px;
+            height: auto;
+        }
+        .services-outerWrapper .services-wrapper .services-items .service_text {
+            font-size: 18px !important;
+        }
+    }
+</style>
+
+<script>
+
+    // Initialize the Intersection Observer
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const isHalfVisible = entry.intersectionRatio >= 0.5;
+
+            if (isHalfVisible) {
+                // Initialize Swiper when the element is half visible
+                //initSwiper();
+                // Disconnect the observer to stop observing once initialized
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    // Target element with the class .sliderBannerImage
+    const targetElement = document.querySelector('.sliderBannerImage');
+
+    // Start observing the target element
+    observer.observe(targetElement);
+
+    // Function to initialize Swiper
+    function initSwiper() {
+        var swiper = new Swiper('.sliderBannerImage.swiper-container', {
+            effect: "fade",
+            speed: 800,
+            mousewheelControl: true,
+            watchSlidesProgress: true,
+            mousewheel: {
+                releaseOnEdges: true,
+                allowSwipeToNext: function () {
+                    return swiper.isEnd; // Allow swipe to next only if it's the last slide
+                },
+                eventsTarged: '.slider-bannerImage', // Set the target for mousewheel events
+            },
+            on: {
+                progress: function () {
+                    let swiper = this;
+
+                    for (let i = 0; i < swiper.slides.length; i++) {
+                        let slideProgress = swiper.slides[i].progress;
+                        let opacity = 1 - Math.abs(slideProgress);
+
+                        swiper.slides[i].querySelector(".slide-inner").style.opacity = opacity;
+                    }
+                },
+                setTransition: function (slider, speed) {
+                    let swiper = this;
+                    for (let i = 0; i < swiper.slides.length; i++) {
+                        swiper.slides[i].querySelector(".slide-inner").style.transition = "opacity " + speed + "ms";
+                    }
+                }
+            }
+        });
+    }
+
+    // Enlarge section when scrolling
+    const expandDiv = document.getElementById("services-holder");
+
+    // Set the original width and maximum width
+    const originalWidth = 80;
+    const maxWidth = 100;
+
+    // Function to check if at least half of the element is visible in the viewport
+    function isElementHalfVisible(element) {
+        const rect = element.getBoundingClientRect();
+        if (document.querySelector('.vanpower-header.sticky'))
+            var headerHeight = document.querySelector('.vanpower-header.sticky').offsetHeight; // Get the height of the sticky header
+        else
+            var headerHeight=0;
+
+        const threshold = (window.innerHeight -headerHeight) / 2;
+        return rect.top <= threshold && rect.bottom >= threshold;
+
+    }
+
+    // Function to check if the target element is intersecting with the viewport
+    function isElementIntersecting(element) {
+        if (!element) return false;
+        if (document.querySelector('.vanpower-header.sticky'))
+            var headerHeight = document.querySelector('.vanpower-header.sticky').offsetHeight; // Get the height of the sticky header
+        else
+            var headerHeight=0;
+
+        const rect = element.getBoundingClientRect();
+        return rect.top < (window.innerHeight - headerHeight) && rect.bottom >= 0;
+
+    }
+
+
+    // Function to handle the expansion of the element based on scroll position
+    function expandElement() {
+
+        const isTargetIntersecting = isElementIntersecting(targetElement);
+        const isHalfVisible = isElementHalfVisible(expandDiv);
+        const isTargetHalfVisible = isElementHalfVisible(targetElement);
+    
+
+            if (isHalfVisible || isTargetIntersecting) {
+                const maxWidth = 88;
+                // Adjust the width based on the scroll position, with a maximum width of 100%
+                const scrolltop = window.pageYOffset;
+                const newWidth = Math.min(originalWidth + scrolltop * 0.01, maxWidth);
+                expandDiv.style.width = newWidth + "%";
+
+                // Add inline style to body tag to hide horizontal overflow
+                document.body.style.overflowX = 'hidden';
+            } else {
+                // Revert to the original size when not visible
+                expandDiv.style.width = originalWidth + "%";
+
+                // Remove inline style from body tag to restore overflow
+                document.body.style.overflowX = '';
+            }
+
+            if (isTargetIntersecting  && isTargetHalfVisible) {
+                const scrolltop = window.pageYOffset;
+                const newWidth = Math.min(88 + scrolltop * 0.01, 100);
+                expandDiv.style.width = newWidth + "%";
+
+                document.body.style.overflowX = 'hidden';
+                expandDiv.classList.add("expanded");
+            }
+        
+    }
+
+    // Event listener for scroll events, using requestAnimationFrame for smoother animations
+    function handleScroll() {
+        requestAnimationFrame(expandElement);
+    }
+
+    // Event listener for scroll events
+    window.addEventListener('scroll', handleScroll);
+
+    // Event listener for resize events to recheck visibility
+    window.addEventListener('resize', function () {
+        if (isElementHalfVisible(expandDiv)) {
+            expandElement();
+        }
+    });
+
+    // Initial check on page load
+    expandElement();
+
+</script>
+
+{% javascript %}
+
+    //the mobile version
+    // swiper js
+    const swiper = new Swiper('.bannerMobile-block', {
+        direction: 'horizontal',
+        loop: false,
+        speed: 1000,
+        spaceBetween: 20,
+        autoplay: false,
+        observer: true,
+        observeParents: true,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable:'true'
+        }
+    });
+    
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Services with slider",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "container_paddingTop",
+                "label": "Container Padding Top",
+                "default": 110
+            },
+            {
+                "type": "number",
+                "id": "container_paddingBottom",
+                "label": "Container Padding Bottom",
+                "default": 110
+            },
+            {
+                "type": "color",
+                "id": "bg_color",
+                "label": "Background Color",
+                "default": "#F8F8F8"
+            },
+            {
+                "type": "select",
+                "id": "section_headingTags",
+                "label": "Select Heading Tags for Heading Text",
+                    "options": [
+                        {
+                            "value": "<h1/>",
+                            "label": "H1"
+                        },
+                        {
+                            "value": "<h2/>",
+                            "label": "H2"
+                        },
+                        {
+                            "value": "<h3/>",
+                            "label": "H3"
+                        },
+                        {
+                            "value": "<h4/>",
+                            "label": "H4"
+                        },
+                        {
+                            "value": "<h5/>",
+                            "label": "H5"
+                        }
+                    ],
+                    "default": "<h1/>"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Section Title"
+            },
+            {
+                "type": "richtext",
+                "id": "service_paragraph",
+                "label": "Service Paragraph"
+            },
+            {
+                "type": "image_picker",
+                "id": "service_icon1",
+                "label": "Service Icon 1"
+            },
+            {
+                "type": "text",
+                "id": "service_1",
+                "label": "Service 1",
+                "default": "Service 1"
+            },
+          {
+            "type": "url",
+            "id": "service_1_link",
+            "label": "Service1 1 Link"
+          },
+            {
+                "type": "image_picker",
+                "id": "service_icon2",
+                "label": "Service Icon 2"
+            },
+            {
+                "type": "text",
+                "id": "service_2",
+                "label": "Service 2",
+                "default": "Service 2"
+            },
+          {
+            "type": "url",
+            "id": "service_2_link",
+            "label": "Service1 2 Link"
+          },
+            {
+                "type": "image_picker",
+                "id": "service_icon3",
+                "label": "Service Icon 3"
+            },
+            {
+                "type": "text",
+                "id": "service_3",
+                "label": "Service 3",
+                "default": "Service 3"
+            },
+          {
+            "type": "url",
+            "id": "service_3_link",
+            "label": "Service1 3 Link"
+          },
+            {
+                "type": "image_picker",
+                "id": "service_icon4",
+                "label": "Service Icon 4"
+            },
+            {
+                "type": "text",
+                "id": "service_4",
+                "label": "Service 4",
+                "default": "Service 4"
+            },
+          {
+            "type": "url",
+            "id": "service_4_link",
+            "label": "Service1 4 Link"
+          },
+            {
+                "type": "image_picker",
+                "id": "service_icon5",
+                "label": "Service Icon 5"
+            },
+            {
+                "type": "text",
+                "id": "service_5",
+                "label": "Service 5",
+                "default": "Service 5"
+            },
+          {
+            "type": "url",
+            "id": "service_5_link",
+            "label": "Service1 5 Link"
+          },
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Slider Banner Item",
+                "limit": 5,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "slider_bannerBg",
+                        "label": "Slider Banner Background"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "slider_bannerBgMobile",
+                        "label": "Slider Banner Background Mobile"
+                    },
+                    {
+                        "type": "select",
+                        "id": "slider_headingTag",
+                        "label": "Slider Heading Tags",
+                        "options": [
+                            {
+                                "value": "<h1/>",
+                                "label": "H1"
+                            },
+                            {
+                                "value": "<h2/>",
+                                "label": "H2"
+                            },
+                            {
+                                "value": "<h3/>",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "<h4/>",
+                                "label": "H4"
+                            },
+                            {
+                                "value": "<h5/>",
+                                "label": "H5"
+                            }
+                        ],
+                        "default": "<h1/>"
+                    },
+                    {
+                        "type": "text",
+                        "id": "slider_title",
+                        "label": "Slider Title",
+                        "default": "Slider Title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "slider_paragraph",
+                        "label": "Slider Paragraph"
+                    },
+                    {
+                        "type": "color",
+                        "id": "banner_textColor",
+                        "label": "Banner Text Color",
+                        "default": "#333333"
+                    },
+                    {
+                        "type": "url",
+                        "id": "button_link",
+                        "label": "Button link"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Services with slider"
+          }
+        ]
+    }
+{% endschema %}

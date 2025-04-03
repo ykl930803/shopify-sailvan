@@ -1,0 +1,60 @@
+<section id="hnz-product-2">
+  <div class="container section-content parameters-content">
+    <div class="row d-lg-flex d-md-none d-sm-none justify-content-between">
+      {% for block in product.metafields.custom.parameters.value.list %}
+        {% comment %} col-lg-2 col-md-4 col-sm-6  {% endcomment %}
+        {% comment %} <div class="flex-grow-1"> {% endcomment %}
+        <div class="spec parameters-item">
+          <img src="{{ block.image }}">
+          <div class="d-flex flex-column">
+            <h5 class="title">
+              {{ block.title }}
+            </h5>
+            <p class="value">
+              {{ block.value }}
+            </p>
+          </div>
+        </div>
+        {% comment %} </div> {% endcomment %}
+      {% endfor %}
+    </div>
+    <div class="specs d-lg-none d-md-flex d-sm-flex">
+      <div class="row gy-4">
+        {% for block in product.metafields.custom.parameters.value.list %}
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="spec">
+              <img src="{{ block.image }}" width="50px">
+              <div class="d-flex flex-column">
+                <h5 class="title">
+                  {{ block.title }}
+                </h5>
+                <p class="value">
+                  {{ block.value }}
+                </p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .flex-1 {
+    flex: 1;
+  }
+  .parameters-item {
+    width:unset;
+  }
+  @media only screen and (min-width: 1920px) {
+     .parameters-content {
+       padding-left:0 !important;
+      padding-right:0 !important;
+    } 
+  }
+</style>
+{% schema %}
+  {
+    "presets": [{"name": "Parameters"}]
+  }
+{% endschema %}

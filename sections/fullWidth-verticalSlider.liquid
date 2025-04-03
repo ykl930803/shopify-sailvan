@@ -1,0 +1,377 @@
+{% render 'reusableComponent-fullWidth-verticalSlider' %}
+
+<style>
+    section.fullWidth-verticalSlider {
+
+        {%- for block in section.blocks -%}
+            .fullBanner-sliderItem {
+                background-color: {{ block.settings.bg_color }};
+    
+                .banner-content {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center !important;
+                    align-items: flex-end;
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    max-width: 1320px;
+                    margin: auto;
+                    padding-left: 70px;
+
+                    .bannerContent-inner {
+                        display: table;
+
+                        .banner-headingText {
+
+                            margin-bottom: 20px;
+                                                
+                            h1, h2, h3, h4, h5 {
+                                color: {{ block.settings.banner_textColor }};
+                            }
+                            h2 {
+                                font-size: 60px;
+                                font-weight: 600;
+                            }
+                        }
+                        .banner-texts {
+                            max-width: 456px;
+                        
+                            p {
+                                color: {{ block.settings.banner_textColor }};
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+        {%- endfor -%}
+
+        .fullVertical-slider.swiper-container {
+            width: 100%;
+            height: 100vh;
+
+            .slider {
+                min-height: 100%;
+
+                .swiper-slide {
+                    background: #ccc;
+                    overflow: hidden;
+                    position: relative;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                
+                    .slide-inner {
+                        position: absolute;
+                        width: 100%;
+                        height: 100vh;
+                        left: 0;
+                        top: 0;
+
+                        img {
+                            position: absolute;
+                            width: 100%;
+                            left: 0;
+                            top: 0;
+                            bottom: 0;
+                            margin: auto;
+                            object-fit: cover;
+                            object-position: center center;
+                            height: 100%;
+                            min-height: 100%;
+                        }
+                    }
+                }
+
+            }
+        
+            .swiperPagination-container {
+                width: 100%;
+                max-width: 1320px;
+                height: 100%;
+                transform: translate(-50%, 0);
+                left: 50%;
+                position: absolute;
+                top: 0;
+                z-index: 1;
+                display: flex;
+                align-items: center;
+            }
+
+            .swiper-pagination {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                width: 3px;
+                position: absolute;
+                z-index: 3;
+                left: 0;
+                background-color: #707070;
+                height: 80%;
+            }
+            .swiper-pagination-bullet {
+                background-color: transparent;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                opacity: 1 !important;
+                align-items: center;
+
+                .custom-bullet {
+                    background-color: #707070;
+                    width: 3px;
+                    height: 100%;
+                    border-radius: 0;
+                    position: relative;
+                }
+                .nav-title {
+                    width: auto;
+                    height: auto;
+                    writing-mode: vertical-rl;
+                    text-orientation: mixed;
+                    text-wrap: nowrap;
+                    margin-top: 8px;
+                    margin-bottom: 15px;
+                    color: #333;
+                }
+
+                .custom-bullet {
+                    transition: 0.4s ease;
+                }
+            }
+            .swiper-pagination-bullet-active .custom-bullet {
+                background-color: #ffffff !important;
+                
+                &::after {
+                    content: "";
+                    display: block;
+                    background-color: #fff;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+                &::before {
+                    content: "";
+                    display: block;
+                    background-color: #fff;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+            }
+            .swiper-pagination-bullet .nav-title {
+                display: none;
+            }
+            .swiper-pagination-bullet-active .nav-title  {
+                display: block;
+            }
+        }
+        
+    }
+
+    section.fullWidth-verticalSlider .banner-content.middle {
+        display: flex;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center;
+        padding-left: 0;
+    }
+    section.fullWidth-verticalSlider .banner-content.middle .banner-texts {
+        margin: auto;
+    }
+</style>
+
+{%  javascript  %} 
+
+    const interleaveOffset = 0.75;
+
+    var swiper = new Swiper('.fullVertical-slider', {
+        direction: 'vertical',
+        speed: 800,
+        mousewheelControl: true,
+        watchSlidesProgress: true,
+        mousewheel: {
+            releaseOnEdges: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            type: 'bullets',
+
+            renderBullet: function (index, className) {
+                return '<span class="' + className + '"><div class="custom-bullet"></div></span>';
+            }
+        },
+
+        on: {
+            progress: function () {
+                let swiper = this;
+
+                for (let i = 0; i < swiper.slides.length; i++) {
+                    let slideProgress = swiper.slides[i].progress;
+                    let innerOffset = swiper.height * interleaveOffset;
+                    let innerTranslate = slideProgress * innerOffset;
+
+                    TweenMax.set(swiper.slides[i].querySelector(".fullBanner-sliderItem .slide-inner"), {
+                        y: innerTranslate,
+                    });
+
+                    // Adding slow fade-up effect for banner content
+                    TweenMax.fromTo(swiper.slides[i].querySelector(".bannerContent-inner"), 2, {
+                        opacity: 0,
+                        y: 50
+                    }, {
+                        opacity: 1,
+                        y: 0,
+                        ease: Power2.easeOut
+                    });
+                }
+            },
+            setTransition: function (slider, speed) {
+                let swiper = this;
+                for (let i = 0; i < swiper.slides.length; i++) {
+                    swiper.slides[i].style.transition = speed + "ms";
+                    swiper.slides[i].querySelector(".fullBanner-sliderItem .slide-inner").style.transition =
+                        speed + "ms";
+                }
+            },
+            reachEnd: function () {
+                let swiper = this;
+                scrollToNextSection();
+            }
+        }
+    });
+
+
+
+    function scrollToNextSection() {
+        var videoInnerWrapper = jQuery('.video-innerWrapper');
+
+        if (isElementVisible(videoInnerWrapper)) {
+            videoInnerWrapper.addClass('resize');
+        }
+    }
+
+    function isElementVisible(element) {
+        var windowHeight = jQuery(window).height();
+        var elementTop = element.offset().top;
+        var elementBottom = elementTop + element.height();
+
+        return (elementBottom <= (windowHeight + jQuery(window).scrollTop()) && elementTop >= jQuery(window).scrollTop());
+    }
+
+    // Call scrollToNextSection on scroll events
+    jQuery(window).scroll(scrollToNextSection);
+
+
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Full Vertical Slider V2",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "showSlider_pagination",
+                "label": "Show Slider Pagination?",
+                "default": true
+            },
+            {
+                "type": "select",
+                "id": "sliderContent_alignment",
+                "label": "Slider Content Alignment",
+                "options": [
+                    {
+                    "value": "middle",
+                    "label": "Middle"
+                    },
+                    {
+                        "value": "left",
+                        "label": "Left"
+                    }
+                ],
+                "default": "left"
+            }
+
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Slider Item",
+                "settings": [
+                    {
+                        "type": "color",
+                        "id": "bg_color",
+                        "label": "Background Color",
+                        "default": "#0A0A0A"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "slider_image",
+                        "label": "Slider Image"
+                    },
+                    {
+                        "type": "select",
+                        "id": "banner_headingTags",
+                        "label": "Banner Heading Tags",
+                        "options": [
+                            {
+                                "value": "<h1/>",
+                                "label": "H1"
+                            },
+                            {
+                                "value": "<h2/>",
+                                "label": "H2"
+                            },
+                            {
+                                "value": "<h3/>",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "<h4/>",
+                                "label": "H4"
+                            },
+                            {
+                                "value": "<h5/>",
+                                "label": "H5"
+                            }
+                        ],
+                        "default": "<h1/>"
+                    },
+                    {
+                        "type": "text",
+                        "id": "banner_title",
+                        "label": "Banner Title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "banner_text",
+                        "label": "Banner"
+                    },
+                    {
+                        "type": "color",
+                        "id": "banner_textColor",
+                        "label": "Banner Text Color",
+                        "default": "#ffffff"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Full Vertical Slider V2"
+          }
+        ]
+    }
+{% endschema %}

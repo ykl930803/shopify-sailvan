@@ -1,0 +1,177 @@
+<section id="hnz-dealer-form">
+    <div class="container section-content">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3 class="title">
+                    {{ section.settings.title }}
+                </h3>
+                <p class="body">
+                    {{ section.settings.body }}
+                </p>
+            </div>
+        </div>
+        {% form 'contact', id: 'form-notify' %}
+            <input type="hidden" name="contact[form]" value="Vanpowers - Become A Dealer">
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>First Name <span>*</span></label>
+                        <input type="text" name="contact[first_name]" placeholder="Enter your first name" required>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Last Name <span>*</span></label>
+                        <input type="text" name="contact[last_name]" placeholder="Enter your kast name" required>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Phone <span>*</span></label>
+                        <input type="text" name="contact[phone]" placeholder="Enter your phone" required>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Email <span>*</span></label>
+                        <input type="email" name="contact[email]" placeholder="Enter your email" required>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Store Name <span>*</span></label>
+                        <input type="text" name="contact[store_name]" placeholder="Enter your store name" required>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Website <span>*</span></label>
+                        <input type="text" name="contact[website]" placeholder="Enter your website" required>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label>Country <span>*</span></label>
+                        <select name="contact[country]" required>
+                            <option value="" selected disabled>Please Select</option>
+                            {{ all_country_option_tags }}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>City <span>*</span></label>
+                        <input type="text" name="contact[city]" placeholder="Enter your city" required>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>State/Prov/Region <span>*</span></label>
+                        <input type="text" name="contact[region]" placeholder="Enter your state/prov/region" required>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Postal/Zip <span>*</span></label>
+                        <input type="text" name="contact[zip]" placeholder="Enter your postal/zip" required>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>What Is Our Interest In Vanpowers?</label>
+                        <select name="contact[interest]">
+                            <option value="" selected disabled>Please Select</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Do You Currently Sell Ebikes?</label>
+                        <select name="contact[sell_ebikes]">
+                            <option value="" selected disabled>Please Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label>How Did You Hear About Us?</label>
+                        <div class="checkbox-radio">
+                            <input type="checkbox" name="contact[heard_from_1]" value="facebook"> Facebook
+                        </div>
+                        <div class="checkbox-radio">
+                            <input type="checkbox" name="contact[heard_from_2]" value="Instagram"> Instagram
+                        </div>
+                        <div class="checkbox-radio">
+                            <input type="checkbox" name="contact[heard_from_3]" value="Youtube"> Youtube
+                        </div>
+                        <div class="checkbox-radio">
+                            <input type="checkbox" name="contact[heard_from_4]" value="Press Release"> Press Release
+                        </div>
+                        <div class="checkbox-radio">
+                            <input type="checkbox" name="contact[heard_from_5]" value="Referral"> Referral
+                        </div>
+                        <div class="checkbox-radio">
+                            <input type="checkbox" name="contact[heard_from_6]" value="Other"> Other
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label>Anything Else You'd Like To Share?</label>
+                        <textarea name="contact[body]" rows="3" minlength="50" maxlength="250" placeholder="Enter Your Answer (50-250 Characters)"></textarea>
+                    </div>
+                </div>
+                <div class="col-12 success-hide">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-modal">SUBMIT</button>
+                    </div>
+                </div>
+                {% if form.posted_successfully? %}
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            document.querySelector('.success-hide').style.display = 'none';
+                        });
+                    </script>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div class="alert success">
+                                You're in! Thank you for submitting your request.
+                            </div>
+                        </div>
+                    </div>
+                {% elsif form.errors %}
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div class="alert error">
+                                There's a problem sending your request. Try again.
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endform %}
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Become Dealer Form",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body",
+                "label": "Body"
+            }
+        ]
+    }
+{% endschema %}

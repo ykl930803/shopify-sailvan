@@ -1,0 +1,63 @@
+<section id="hnz-ug-standard-2" data-toggle="product-highlights" data-name="Product Highlights" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+        <div class="row justify-content-center g-4">
+
+            {% for block in section.blocks %}
+                <div class="col-4">
+                    <div class="icon-text">
+                        <img src="{{ block.settings.icon | img_url: 'master' }}">
+                        <p class="title">
+                            {{ block.settings.title }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <img class="bg-image d-lg-block d-md-none d-sm-none" src="{{ section.settings.image | img_url: 'master' }}">
+    <img class="bg-image d-lg-none d-md-block d-sm-block" src="{{ section.settings.image_mobile | img_url: 'master' }}">
+</section>
+
+{% schema %}
+    {
+        "name": "UG Standard Section 2",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image Desktop"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_mobile",
+                "label": "Image Mobile"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "Icon & Text",
+                "limit": 6,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "icon",
+                        "label": "Icon"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

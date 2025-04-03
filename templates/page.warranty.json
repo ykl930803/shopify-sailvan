@@ -1,0 +1,1 @@
+{"sections":{"banner":{"type":"small-banner","settings":{"image_url":"shopify:\/\/shop_images\/warranty_banner.png","heading_tags":"<h1\/>","title":"","banner_textColor":"#000000"}},"main-content":{"type":"page-policy-content","settings":{"title":"{{ page.title }}","subtitle":"","layout":"container","content":"{{page.content}}","css_class":""}}},"order":["banner","main-content"]}

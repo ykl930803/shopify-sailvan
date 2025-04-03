@@ -1,0 +1,202 @@
+<section id="shopify-section--{{ section.id }}" class="manualGuides-downloads">
+  <div class="container container-panel">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="manualGuides-Wrapper">
+          {%- if section.settings.section_headingTag != blank -%}
+            <div class="testimonial-heading text-center">
+              {{ section.settings.section_headingTag }}{{ section.settings.section_headingText }}
+            </div>
+          {% endif %}
+
+          <div class="manual-attributes">
+
+            {% assign products = section.settings.product_lists | limit: 10 %}
+            {% for product in products %}
+              <div class="manualItem-row d-flex justify-content-between">
+                {% assign productManual = product.metafields.custom.manuals_guidance_download.value %}
+
+                {% if productManual %}
+
+                  <div class="productManual-info">
+                    <div class="productManual-name">
+                      {{ productManual.product_name }}
+                    </div>
+                    {%- if productManual.product_image != blank -%}
+                      <div class="productManual-image">
+                        <img src="{{ productManual.product_image | image_url: width: 280 }}" alt="{{ productManual.product_name }}">
+                      </div>
+                    {% endif %}
+                  </div>
+                  
+                  <div class="productManual-pdfWrapper">
+                    {% assign childDivCount = 0 %}
+
+                    {%- if productManual.ultra_english_version != blank or productManual.ultra_spanish_version != blank -%}
+                      {% assign childDivCount = childDivCount | plus: 1 %}
+                    {% endif %}
+
+                    {%- if productManual.pro_english_version != blank or productManual.pro_spanish_version != blank -%}
+                      {% assign childDivCount = childDivCount | plus: 1 %}
+                    {% endif %}
+
+                    {%- if productManual.standard_english_version != blank or productManual.standard_spanish_version != blank -%}
+                      {% assign childDivCount = childDivCount | plus: 1 %}
+                    {% endif %}
+
+                    {%- if productManual.app_english_version != blank or productManual.app_spanish_version != blank -%}
+                      {% assign childDivCount = childDivCount | plus: 1 %}
+                    {% endif %}
+
+                    {%- if productManual.user_english_version != blank or productManual.user_spanish_version != blank or productManual.user_france_version != blank or productManual.user_german_version != blank -%}
+                      {% assign childDivCount = childDivCount | plus: 1 %}
+                    {% endif %}
+
+                    {%- if productManual.display_user_english_version != blank -%}
+                      {% assign childDivCount = childDivCount | plus: 1 %}
+                    {% endif %}
+
+                    <div class="productManual-pdf{% if childDivCount > 1 %} multiple-child{% endif %}">
+                      
+                      {%- if
+                        productManual.ultra_english_version != blank or 
+                        productManual.ultra_spanish_version != blank or
+                        productManual.pro_english_version != blank or 
+                        productManual.pro_spanish_version != blank or
+                        productManual.standard_english_version != blank or 
+                        productManual.standard_spanish_version != blank or
+                        productManual.app_english_version != blank or 
+                        productManual.app_spanish_version or
+                        productManual.user_english_version != blank or 
+                        productManual.user_spanish_version != blank or 
+                        productManual.user_france_version != blank or 
+                        productManual.user_german_version != blank or
+                        productManual.display_user_english_version != blank
+                      
+                      -%}
+                      
+                        {%- if productManual.ultra_english_version != blank or productManual.ultra_spanish_version != blank -%}
+                          <div class="pdf-data ultra">
+                            <label>Ultra:</label>
+                            <ul>
+                              {%- if productManual.ultra_english_version != blank -%}
+                                <li><a href="{{ productManual.ultra_english_version | file_url }}" target="_blank">English Version</a></li>
+                              {% endif %}
+                              {%- if productManual.ultra_spanish_version != blank -%}
+                                <li><a href="{{ productManual.ultra_spanish_version | file_url }}" target="_blank">Spanish Version</a></li>
+                              {% endif %}
+                            </ul>
+                          </div>
+                        {% endif %}
+
+                        {%- if productManual.pro_english_version != blank or productManual.pro_spanish_version != blank -%}
+                          <div class="pdf-data pro">
+                            <label>Pro:</label>
+                            <ul>
+                              {%- if productManual.pro_english_version != blank -%}
+                                <li><a href="{{ productManual.pro_english_version | file_url }}" target="_blank">English Version</a></li>
+                              {% endif %}
+                              {%- if productManual.pro_spanish_version != blank -%}
+                                <li><a href="{{ productManual.pro_spanish_version }}" target="_blank"> Spanish Version</a></li>
+                              {% endif %}
+                            </ul>
+                          </div>
+                        {% endif %}
+
+                        {%- if productManual.standard_english_version != blank or productManual.standard_spanish_version != blank -%}
+                          <div class="pdf-data standard">
+                            <label>Standard:</label>
+                            <ul>
+                              {%- if productManual.standard_english_version != blank -%}
+                                <li><a href="{{ productManual.standard_english_version | file_url }}" target="_blank">English Version</a></li>
+                              {% endif %}
+                              {%- if productManual.standard_spanish_version != blank -%}
+                                <li><a href="{{ productManual.standard_spanish_version | file_url }}" target="_blank">Spanish Version</a></li>
+                              {% endif %}
+                            </ul>
+                          </div>
+                        {% endif %}
+
+                        {%- if productManual.app_english_version != blank or productManual.app_spanish_version != blank -%}
+                          <div class="pdf-data app">
+                            <label>App:</label>
+                            <ul>
+                              {%- if productManual.app_english_version != blank -%}
+                                <li><a href="{{ productManual.app_english_version | file_url }}" target="_blank">English Version</a></li>
+                              {% endif %}
+                              {%- if productManual.app_spanish_version != blank -%}
+                                <li><a href="{{ productManual.app_spanish_version | file_url }}" target="_blank">Spanish Version</a></li>
+                              {% endif %}
+                            </ul>
+                          </div>
+                        {% endif %}
+
+                        {%- if productManual.user_english_version != blank or productManual.user_spanish_version != blank or productManual.user_france_version != blank or productManual.user_german_version != blank -%}
+                          <div class="pdf-data user">
+                            <label>User:</label>
+                            <ul>
+                              {%- if productManual.user_english_version != blank -%}
+                                <li><a href="{{ productManual.user_english_version | file_url }}" target="_blank">English Version</a></li>
+                              {% endif %}
+                              {%- if productManual.user_spanish_version != blank -%}
+                                <li><a href="{{ productManual.user_spanish_version | file_url }}" target="_blank">Spanish Version</a></li>
+                              {% endif %}
+                              {%- if productManual.user_france_version != blank -%}
+                                <li><a href="{{ productManual.user_france_version | file_url }}" target="_blank">France Version</a></li>
+                              {% endif %}
+                              {%- if productManual.user_german_version != blank -%}
+                                <li><a href="{{ productManual.user_german_version | file_url }}" target="_blank">German Version</a></li>
+                              {% endif %}
+                            </ul>
+                          </div>
+                        {% endif %}
+
+                        {%- if productManual.display_user_english_version != blank -%}
+                          <div class="pdf-data user">
+                            <label>Display User:</label>
+                            <ul>
+                              {%- if productManual.display_user_english_version != blank -%}
+                                <li><a href="{{ productManual.display_user_english_version | file_url }}" target="_blank">English Version</a></li>
+                              {% endif %}
+                            </ul>
+                          </div>
+                        {% endif %}
+
+                        {% else %}
+                          <div class="coming-soon"><strong>Coming Soon!</strong></div>
+
+                      {% endif %}
+                      
+                    </div>
+
+                  </div>
+
+                  <div class="productManual-video">
+                    {%- if productManual.youtube_video != blank -%}
+                      <div class="iframe-video position-relative">
+                        <iframe width="100%" height="100%" src="{{ productManual.youtube_video }}" allow="fullscreen;"></iframe>
+                      </div>
+                      {% else %}
+                        <p>No Youtube video available!</p>
+                    {% endif %}
+                  </div>
+
+                  {% else %}
+                    <p>No manuals & guidance metafield assign for this product. Please go to the product and assign.</p>
+                {% endif %}
+              </div>
+            {% endfor %}
+            <!--{% assign product_manuals = shop.metaobjects.manuals_guidance_download.values %} 
+              {% for product_manual in product_manuals %} 
+              <div>
+                {{ product_manual.product_name }}
+                <img src="{{ product_manual.product_image | img_url: 'master' }}" alt="{{ product_manual.product_name }}">
+              </div>
+            {% endfor %}-->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

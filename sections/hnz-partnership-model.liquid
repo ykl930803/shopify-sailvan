@@ -1,0 +1,78 @@
+<section id="hnz-partnership-model">
+    <div class="container section-content">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                </h2>
+            </div>
+            <div class="col-lg-11 col-md-12 col-sm-12 mx-auto">
+                <div class="row models-row">
+                    {% for block in section.blocks %}
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="model">
+                                <div class="model-header">
+                                    <img src="{{ block.settings.icon | img_url: 'master' }}">
+                                    <div class="model-text">
+                                        <h5>{{ block.settings.title }}</h5>
+                                        <p>{{ block.settings.description }}</p>
+                                    </div>
+                                </div>
+                                <div class="model-body">
+                                    {% assign bodies = block.settings.body | newline_to_br | split: '<br />' %}
+                                    {% for body in bodies %}
+                                        <p class="body">
+                                            <i class="fa-solid fa-check"></i>
+                                            {{ body }}
+                                        </p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Partnership Model",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "text",
+                "name": "Model",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "description",
+                        "label": "Description"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "icon",
+                        "label": "Icon"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "body",
+                        "label": "Body"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

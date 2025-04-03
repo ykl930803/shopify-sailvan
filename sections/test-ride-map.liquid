@@ -1,0 +1,1694 @@
+{% comment %}test ride map in product page{% endcomment %}
+
+<style>
+    .gm-fullscreen-control {
+      display: none;
+    }
+    .map-title {
+      /* height: 200px;
+      line-height: 200px; */
+      padding-top: 50px;
+      font-size: 56px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .test-ride-map-wrapper {
+      position: relative;
+      /* margin: 0 calc(150 / 1280 * 100vw); */
+      box-shadow: 3px 4px 8px 0px
+      rgba(25, 28, 31, 0.08),
+      -4px -3px 8px 0px
+      rgba(25, 28, 31, 0.08);
+      border-radius: 4px;
+      color: #0f141f;
+      display: flex;
+      flex-direction: row-reverse;
+      /* margin-bottom: calc(80 / 1280 * 100vw); */
+    }
+    .test-ride-map-wrapper .google-map-box {
+      flex: 1;
+      position: relative;
+    }
+    .test-ride-map-wrapper .google-map-box #googleMap {
+      width: 100%;
+      height:calc(600 / 1280 * 100vw);
+      overflow: hidden;
+    }
+    .test-ride-map-wrapper .filter-store-wrapper {
+      position: absolute;
+      z-index: 2;
+      right: calc(14 / 1280 * 100vw);
+      left: calc(14 / 1280 * 100vw);
+      top: 0;
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-column-gap: 5px;
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store .filter-item {
+      display: flex;
+      background: #ffffff;
+      height: calc(68 / 1280 * 100vw);
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      font-family: PolestarUnica77-Medium;
+      font-size: calc(18 / 1280 * 100vw);
+      transition: all .3s linear;
+      color: #0f141f;
+      cursor: pointer;
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store .filter-item:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      background: #e4cf1e;
+      left:0;
+      right:0;
+      bottom:0;
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store .filter-item.on:after {
+      background: #000000;
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store .filter-item.on {
+      {% comment %} background: {{ settings.color_brand_main }}; {% endcomment %}
+      background: #d4202b;
+      color: #fff;
+      height: calc(88 / 1280 * 100vw);
+      margin-top: calc(-10 / 1280 * 100vw);
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store .filter-item img {
+      width: 22px;
+      margin-right: 5px;
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store .filter-item .img-normal {
+      display: none;
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store .filter-item.on .img-normal {
+      display: inherit;
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store .filter-item.on .img-on {
+      display: none;
+    }
+    .test-ride-map-wrapper aside {
+      width:calc(318 / 1280 * 100vw);
+      z-index: 2;
+      background: #ffffff;
+      font-family: PolestarUnica77-light;
+      color: #000000;
+      height: calc(600 / 1280 * 100vw);
+      overflow-y: auto;
+      padding: calc(20 / 1280 * 100vw) calc(25 / 1280 * 100vw);
+    }
+    .test-ride-map-wrapper aside .header{
+      font-size: calc(20 / 1280 * 100vw);
+      margin-bottom: calc(15 / 1280 * 100vw);
+      font-family: PolestarUnica77-Bold;
+      font-weight: 600;
+    }
+    .test-ride-map-wrapper aside .location-search-box {
+      display: flex;
+      align-items:center;
+      margin-bottom: calc(20 / 1280 * 100vw);
+    }
+    .test-ride-map-wrapper aside .location-search-box input {
+      padding: 0 calc(50 / 1280 * 100vw);
+      width: 100%;
+      height:calc(56 / 1280 * 100vw);
+      font-size: max(calc(14 / 1280 * 100vw),14px);
+      border-radius: 6px;
+      border: solid 1px #0f141f;
+      outline: none;
+    }
+    .test-ride-map-wrapper aside .location-search-box {
+      position: relative;
+    }
+    .test-ride-map-wrapper aside .location-search-box .search-btn {
+        cursor:pointer;
+        position: absolute;
+        left: calc(16 / 1280 * 100vw);
+        width:  calc(17 / 1280 * 100vw);
+        height:  calc(17 / 1280 * 100vw);
+        display: flex;
+        align-items: center;
+      }
+    .test-ride-map-wrapper aside .location-search-box .search-close-btn {
+        cursor:pointer;
+        position: absolute;
+        right:  calc(16 / 1280 * 100vw);
+        width:  calc(14 / 1280 * 100vw);
+        height:  calc(14 / 1280 * 100vw);
+        display: flex;
+        align-items: center;
+     }
+    .test-ride-map-wrapper aside .filter-by-store-box {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    .test-ride-map-wrapper aside .filter-by-store-box .filter-name {
+      margin-right: 10px;
+    }
+    .test-ride-map-wrapper aside .filter-by-store-box .filter-content {
+      display:flex;
+    }
+    .test-ride-map-wrapper aside .filter-by-store-box .filter-content .filter-label {
+      display: flex;
+      margin-right: 12px;
+      align-items:center;
+    }
+
+    .test-ride-map-wrapper aside .address {
+      margin: 0;
+    }
+    .test-ride-map-wrapper aside ul {
+      margin: 0;
+      padding: 0;
+    }
+    .test-ride-map-wrapper aside ul li {
+      list-style: none;
+    }
+    .test-ride-map-wrapper aside ul li {
+      border-top: 1px solid #d1d2d3;
+      padding : calc(20 / 1280 * 100vw) 0;
+      cursor: pointer;
+      position: relative;
+    }
+    .test-ride-map-wrapper aside ul li:hover .right-arrow{
+      right: -8px;
+    }
+    .test-ride-map-wrapper aside ul li .right-arrow {
+      position: absolute;
+      top: 50%;
+      right:0;
+      width: calc(9 / 1280 * 100vw);
+      height: calc(17 / 1280 * 100vw);
+      transition: .5s cubic-bezier(.42,0,.002,1);
+    }
+    .test-ride-map-wrapper aside ul li .shop-name{
+      /* font-size: calc(20 / 1280 * 100vw);
+      color: #0f141f;
+      font-family: PolestarUnica77-Bold; */
+      display: flex;
+      justify-content: space-between;
+    }
+    .test-ride-map-wrapper aside ul li .shop-name-label {
+      flex: 1;
+      font-size: calc(20 / 1280 * 100vw);
+      color: #0f141f;
+      font-weight: 600;
+    }
+    .test-ride-map-wrapper aside ul li .right-box {
+      display: flex;
+      margin-left: 10px;
+      display: none;
+    }
+    .test-ride-map-wrapper aside ul li .right-box .distance {
+      font-size: 12px;
+      line-height: 25px;
+    }
+    .test-ride-map-wrapper aside ul li .shop-name img{
+      width: 25px;
+      height: 25px;
+      margin-left: 5px;
+    }
+    .test-ride-map-wrapper aside ul li .ordinary-label {
+      color: #979898;
+      display: flex;
+      font-size: calc(14 / 1280 * 100vw);
+      max-width: calc(200 / 1280 * 100vw);
+    }
+    .test-ride-map-wrapper aside ul li .ordinary-label a {
+      color: #979898;
+      text-decoration: none;
+    }
+    .test-ride-map-wrapper aside ul li .ordinary-label.address img {
+      width: 11px;
+      height: 15px;
+      margin-right: 8px;
+      margin-top: 4px;
+    }
+    .test-ride-map-wrapper aside ul li .ordinary-label.phone {
+      align-items: center;
+    }
+    .test-ride-map-wrapper aside ul li .ordinary-label.phone img {
+      width: 13px;
+      height: 13px;
+      margin-right: 8px;
+    }
+    .test-ride-map-wrapper aside ul li .book-btn-wrapper {
+     text-align: center;
+     margin-top: 10px;
+      display: flex;
+      justify-content:space-between;
+    }
+    .test-ride-map-wrapper aside ul li .book-btn-wrapper .book-btn {
+      min-width: calc(105 / 1280 * 100vw);
+      {% comment %} background-color: {{ settings.color_brand_main }}; {% endcomment %}
+      background-color: #d4202b;
+      color: #fff;
+      display: inline-block;
+      height: calc(28 / 1280 * 100vw);
+      line-height: calc(28 / 1280 * 100vw);
+      padding: 0 10px;
+      border-radius: calc(14 / 1280 * 100vw);
+      cursor: pointer;
+      font-size: calc(16 / 1280 * 100vw);
+      font-family: PolestarUnica77-Medium;
+    }
+
+    .test-ride-map-wrapper aside ul li .book-btn-wrapper .view-street-btn {
+      display: inline-block;
+      height: 2.125vw;
+      line-height: 2.125vw;
+      padding-left: 1vw;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 18px;
+      text-decoration: underline;
+      display: none;
+    }
+
+  /*   预约弹窗-start */
+    .test-ride-modal{
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right:0;
+      z-index: 100;
+      bottom: 0;
+    }
+    .test-ride-modal .modal-content {
+      width: 90%;
+      background: #f6f6f6;
+      border-radius: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+   .test-ride-modal .test-ride-modal__content{
+      position: relative;
+    }
+    .test-ride-modal  .test-ride-modal__content .content-box {
+      padding: 40px;
+      height: 80vh;
+      overflow-y: auto;
+    }
+    .test-ride-modal .test-ride-modal__content .tip {
+      text-align: center;
+      color: #33333366;
+      font-size: 1.171875vw;
+    }
+    .test-ride-modal .test-ride-modal__content .description {
+      font-size: 2.9296875vw;
+      color: #000;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box {
+      display: flex;
+      word-break: break-word;
+      gap: 20px;
+      justify-content: center;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box .product-box {
+      padding: 10px;
+      border: 1px solid #e9e9e9;
+      border-radius: 8px;
+      max-width:280px;
+      flex: 1;
+      cursor: pointer;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box .product-box.product-box-hidden {
+      display:none;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box .product-box.on {
+       border: 1px solid #d4202b;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box .product-box .product-img-box{
+      background: #b5b2a9;
+      border-radius: 8px;
+      height:150px;
+      padding:10px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box .product-box .product-img-box .check {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 25px;
+      height: 25px;
+      padding: 5px;
+      text-align: center;
+      line-height: 20px;
+      background: #dcdedf;
+      color: #000;
+      border-radius: 50%;
+      opacity: 0.4;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box .product-box.on .product-img-box .check {
+      background: #d4202b;
+      opacity: 1;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box .product-box .product-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box .product-box .bike-name{
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box .product-box .bike-desc {
+      color: #333333B3;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+    .test-ride-modal .test-ride-modal__content .book-test-ride-btn-box {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .test-ride-modal .test-ride-modal__content .book-test-ride-btn-box div{
+      text-align: center;
+      min-width: 9.25vw;
+      display: inline-block;
+      height: 3.125vw;
+      line-height:3.125vw;
+      padding: 0 2vw;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1.3vw;
+      opacity: 0.4;
+      background: #808080;
+      color: #ffffff;
+      pointer-events: none;
+    }
+    .test-ride-modal .test-ride-modal__content .book-test-ride-btn-box.on div {
+      background: #d4202b;
+      color: #ffffff;
+      opacity: 1;
+      pointer-events: all;
+    }
+    .test-ride-modal .test-ride-modal-close-btn {
+      position: absolute;
+      top: 0px;
+      right: 20px;
+      font-size: 40px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .test-ride-modal__backdrop {
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      background-color: rgba(51,51,51,.5);
+      overflow-y: auto;
+      overscroll-behavior: none;
+      cursor: pointer;
+    }
+  /* 预约弹窗-end */
+
+    /* calendly弹窗 */
+    .calendly-modal{
+      display:none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right:0;
+      z-index: 100;
+      bottom: 0;
+    }
+    .calendly-modal .calendly-modal-content {
+      width: 90%;
+      background: #f6f6f6;
+      border-radius: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .calendly-modal .calendly-modal__content{
+      position: relative;
+    }
+    .calendly-modal  .calendly-modal__content .calendly-content-box {
+      padding: 40px;
+      height: 80vh;
+      overflow-y: hidden;
+    }
+   .calendly-modal .calendly-modal-close-btn {
+      position: absolute;
+      top: 0px;
+      right: 20px;
+      font-size: 40px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .calendly-modal__backdrop {
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      background-color: rgba(51,51,51,.5);
+      overflow-y: auto;
+      overscroll-behavior: none;
+      cursor: pointer;
+    }
+    .hidden-header-important {
+      display: none !important;
+    }
+
+    .calendly-spinner {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      text-align: center;
+      z-index: -1;
+    }
+    .calendly-spinner div {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background-color: #e1e1e1;
+        border-radius: 50%;
+        vertical-align: middle;
+        animation: calendly-bouncedelay 1.4s infinite ease-in-out;
+        animation-fill-mode: both;
+      }
+    .calendly-spinner .calendly-bounce1 {
+      animation-delay: -0.32s;
+    }
+    .calendly-spinner .calendly-bounce2 {
+      animation-delay: -0.16s;
+    }
+    @keyframes calendly-bouncedelay {
+      0%,
+      80%,
+      100% {
+        transform: scale(0.0);
+      }
+      40% {
+        transform: scale(1.0);
+      }
+    }
+    .test-ride-map-wrapper .close-street-view {
+        position: absolute;
+        z-index: 2;
+        top: 20px;
+        right: 10px;
+        font-size: 40px;
+        cursor: pointer;
+        line-height: 36px;
+        color: #b3b3b3;
+        background: black;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        text-align: center;
+    }
+    /* 自定义地图缩放按钮 */
+    .test-ride-map-wrapper .custom-zoom-button-wrap {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 3.125vw;
+      left: 12px;
+      top: 45vh;
+    }
+    .test-ride-map-wrapper .custom-zoom-button-wrap div {
+      cursor: pointer;
+      width: 40px;
+      background: #fff;
+      border-radius: 50%;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 0px 12px rgb(0 0 0 / 10%);
+      margin-bottom: 10px;
+    }
+    .test-ride-map-wrapper .custom-zoom-button-wrap img{
+      width: 20px;
+    }
+    .test-ride-map-wrapper .get-current-position {
+      position: absolute;
+      top: 20px;
+      left: 3.125vw;
+      left: 12px;
+      cursor: pointer;
+      width: 40px;
+      background: #fff;
+      border-radius: 50%;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 0px 12px rgb(0 0 0 / 10%);
+  }
+    .test-ride-map-wrapper .get-current-position img {
+      width: 20px;
+    }
+    .test-ride-map-wrapper #pano {
+      position:absolute;
+      height: 100vh;
+      width: calc(100vw - 12px);
+    }
+  @media only screen and (max-width: 749px) {
+    .map-title {
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      font-size: 28px;
+      padding-top: 20px;
+      font-weight: 700;
+    }
+     .test-ride-map-wrapper aside ul li .ordinary-label.address img {
+       margin-top: 2px;
+     }
+    .test-ride-map-wrapper {
+      flex-direction:column;
+      margin: 0;
+      box-shadow: unset;
+      border-radius: 0;
+    }
+    .test-ride-map-wrapper .google-map-box #googleMap {
+      height:calc(556 / 390 * 100vw);
+    }
+    .test-ride-map-wrapper #pano {
+      width: 100vw;
+    }
+    .test-ride-map-wrapper aside {
+      position: relative;
+      top: 0;
+      right: 0;
+      max-height: unset;
+      border-radius: 0px;
+      width: unset;
+      box-shadow: unset;
+      height: unset;
+      padding: calc(30 / 390 * 100vw);
+      padding-bottom: calc(60 / 390 * 100vw);
+    }
+    .test-ride-map-wrapper aside ul li:last-child {
+      border-bottom: 1px solid #d1d2d3;
+    }
+    .test-ride-map-wrapper aside .header {
+      font-size: calc(20 / 390 * 100vw);
+      text-align: center;
+      margin-bottom: calc(20 / 390 * 100vw);
+      font-weight: 600;
+    }
+    .test-ride-map-wrapper .filter-store-wrapper {
+      top: unset;
+      bottom: 14px;
+      left: calc(17 / 390 * 100vw);
+      right: calc(17 / 390 * 100vw);
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store {
+      grid-template-columns: repeat(2,1fr);
+      grid-column-gap: 12px;
+      grid-row-gap: 20px;
+      align-items: end;
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store .filter-item {
+      height: calc(42 / 390 * 100vw);
+      font-size: calc(16 / 390 * 100vw);
+    }
+    .test-ride-map-wrapper .filter-store-wrapper .filter-store .filter-item.on {
+      margin-top: unset;
+      height: calc(56 / 390 * 100vw);
+    }
+
+    .test-ride-map-wrapper aside .location-search-box {
+      margin-bottom: calc(30 / 390 * 100vw);
+    }
+    .test-ride-map-wrapper aside .location-search-box input {
+      height: calc(46 / 390 * 100vw);
+      padding: 0 calc(50 / 390 * 100vw);
+    }
+    .test-ride-map-wrapper aside ul li {
+      padding: calc(18 / 390 * 100vw) 0;
+    }
+    .test-ride-map-wrapper aside ul li .right-arrow {
+      display: none;
+    }
+    .test-ride-map-wrapper aside ul li .book-btn-wrapper .book-btn {
+      min-width: calc(105 / 390 * 100vw);
+      height: calc(28 / 390 * 100vw);
+      border-radius: calc(14 / 390 * 100vw);
+      line-height: calc(28 / 390 * 100vw);
+      font-size: calc(16 / 390 * 100vw);
+    }
+    .test-ride-map-wrapper aside .location-search-box .search-btn {
+      width: calc(17 / 390 * 100vw);
+      height: calc(17 / 390 * 100vw);
+      left: calc(16 / 390 * 100vw)
+    }
+    .test-ride-map-wrapper aside .location-search-box .search-close-btn {
+      right: calc(16 / 390 * 100vw);
+      width: calc(14 / 390 * 100vw);
+      height: calc(14 / 390 * 100vw);
+    }
+    .test-ride-map-wrapper aside ul li .book-btn-wrapper .view-street-btn {
+      height: 7.125vw;
+      line-height: 7.125vw;
+      font-size: 18px;
+    }
+    .test-ride-map-wrapper aside ul li .shop-name .shop-name-label {
+      font-size: calc(20 / 390 * 100vw);
+    }
+    .test-ride-map-wrapper aside ul li .ordinary-label {
+      font-size: calc(14/ 390 * 100vw);
+      max-width: unset;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box {
+      flex-direction: column;
+    }
+    .test-ride-modal .test-ride-modal__content .tip {
+      font-size: 4.171875vw;
+    }
+    .test-ride-modal .test-ride-modal__content .description {
+      font-size: 6.929688vw;
+    }
+    .test-ride-modal .test-ride-modal-close-btn {
+      right:10px;
+    }
+    .test-ride-modal .test-ride-modal__content .products-box .product-box .bike-desc {
+      font-size: 14px;
+    }
+    .test-ride-modal .test-ride-modal__content .book-test-ride-btn-box div {
+      min-width: 9.25vw;
+      height: 10.125vw;
+      line-height: 10.125vw;
+      padding: 0 5vw;
+      font-size: 5.3vw;
+    }
+    .calendly-modal .calendly-modal-close-btn {
+      right: 10px;
+    }
+    .calendly-modal .calendly-modal__content .calendly-content-box {
+      padding: 10px;
+      padding-top: 48px;
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    .test-ride-wrapper {
+      padding: 40px 0 !important;
+    }
+  }
+</style>
+<script>
+  var shopList = [];
+</script>
+<div class="map-title">
+  {{section.settings.map_title }}
+</div>
+{% assign block = section.blocks %}
+<div class="container section-content test-ride-wrapper">
+  <section class="test-ride-map-wrapper" id="googleMapWrap">
+  <div style="display:none;" id="pano"></div>
+
+  <div class="google-map-box">
+    <div id="googleMap"></div>
+    <!-- <div class="filter-store-wrapper">
+      <div class="filter-store">
+        <div class="filter-item on" key="all">
+          <img
+            class="img-normal"
+            src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/store_3X_f4a455fd-82db-4ea6-8fec-d68ccfadcd73.png?v=1698459314"
+          >
+          <img
+            class="img-on"
+            src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/store1_3x_8797b43c-69af-452d-a18a-12afb89cf75a.png?v=1698459519"
+          >
+          <span>All Stores</span>
+        </div>
+        <div class="filter-item" key="dealer">
+          <img
+            class="img-normal"
+            src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/dealer_3x_caf1dcf2-1ae4-4fc7-b27c-f7876358bf4a.png?v=1698459314"
+          >
+          <img
+            class="img-on"
+            src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/dealer1_3x_ff6555fe-fdc5-43d1-a77b-1aa535e48e0e.png?v=1698459519"
+          >
+          <span>Dealer</span>
+        </div>
+        <div class="filter-item" key="testRide">
+          <img
+            class="img-normal"
+            src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/bike1_3x_f533c4ed-da49-4c2e-9cb4-ae951fdac511.png?v=1698459314"
+          >
+          <img
+            class="img-on"
+            src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/bike_3x_3b07d9b9-f11c-4634-bb3e-8e1208eb0289.png?v=1698459518"
+          >
+          <span>Test Ride</span>
+        </div>
+        <div class="filter-item" key="maintenance">
+          <img
+            class="img-normal"
+            src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/support_3x_023febdf-22b2-4bc6-a3b1-09cc44ce4c42.png?v=1698459314"
+          >
+          <img
+            class="img-on"
+            src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/support1_3x_163d3158-bf70-4599-9250-b7fca7a796cb.png?v=1698459519"
+          >
+          <span>Maintenance</span>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <!--
+    <div class="get-current-position">
+        <img title ="Find my location" src="{{ section.settings.current_position_img | img_url: "master" }}" />
+    </div>
+  -->
+  <div class="close-street-view" style="display:none">×</div>
+  <!--
+    <div class="custom-zoom-button-wrap">
+      <div class="enlarge-button">
+        <img src="{{ section.settings.enlarge_img | img_url: "master" }}" />
+      </div>
+      <div class="narrow-button">
+        <img src="{{ section.settings.narrow_img | img_url: "master" }}" />
+      </div>
+    </div>
+  -->
+  <aside class="list-wrapper">
+    <div class="header">{{ section.settings.header }}</div>
+    <div class="location-search-box">
+      <input id="addressAutocomplete" class="search-key" placeholder="Enter a location">
+      <div class="search-btn">
+        <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/search_3x_be8765de-28df-4a1a-9eae-a41c8af39359.png?v=1678779963" width="100%">
+      </div>
+      <div class="search-close-btn">
+        <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/close_3x_78725128-1ad8-45c3-9006-0bea3654aadd.png?v=1678779971" width="100%">
+      </div>
+    </div>
+    <ul class="shops-box" id="shopListBox" data-product-handle="{{ product.handle }}">
+      {% assign current_product_id = product.handle %}
+      {% for shop in shop.metaobjects.store_location.values %}
+        {% if shop.product != blank and shop.store_type.value contains "Test Ride"%}
+          {% for product_in_shop in shop.product.value %}
+            {% if product_in_shop.handle == current_product_id %}
+
+              <script>
+                shopList.push({
+                  name: `{{ shop.store_name }}`,
+                  lat: `{{ shop.latitude }}`,
+                  long: `{{ shop.longitude }}`,
+                  {% comment %} icon: `{{ shop.settings.marker_img_url | img_url : 'master' }}`,
+                  shop_id: `{{ shop.id }}`,
+                  id: `{{ shop.id }}`, {% endcomment %}
+                  // shop_name: `{{ shop.store_name }}`,
+                  {% comment %} shop_icon: `{{ shop.settings.shop_icon | img_url:'master' }}`, {% endcomment %}
+                  daily: `{{ shop.service_date_time }}`,
+                  // address_icon: `{{ section.settings.address_icon | img_url:'master' }}`,
+                  address_google_map_share_url: `{{ shop.google_map_share_url }}`,
+                  address: `{{ shop.address }}`,
+                  {% comment %} phone_icon: `{{ section.settings.phone_icon | img_url:'master' }}`, {% endcomment %}
+                  phone: `{{ shop.phone }}`,
+                  {% comment %} link_products: `{{ shop.settings.link_products }}`, {% endcomment %}
+                  shop_book_common_url: `{{ shop.calendly_url.value | first }}`,
+                  {% comment %} book_btn_name: `{{ shop.settings.book_btn_name }}`, {% endcomment %}
+                  {% comment %} street_long: `{{ shop.settings.street_long }}`, {% endcomment %}
+                  {% comment %} street_lat: `{{ shop.settings.street_lat }}`, {% endcomment %}
+                  {% comment %} street_pov: `{{ shop.settings.street_pov }}`, {% endcomment %}
+                  {% comment %} street_view_btn_name: `{{ shop.settings.street_view_btn_name }}`, {% endcomment %}
+                  {% comment %} is_test_ride: `{{ shop.settings.is_test_ride }}`, {% endcomment %}
+                  {% comment %} is_dealer: `{{ shop.settings.is_dealer }}`, {% endcomment %}
+                  {% comment %} is_maintenance: `{{ shop.settings.is_maintenance }}`, {% endcomment %}
+                });
+              </script>
+
+              <li id="{{shop.id}}" class="shop-item" data-long="{{shop.longitude}}" data-lat="{{shop.latitude}}">
+                <div class="shop-name">
+                  <span class="shop-name-label font-bolder">{{ shop.store_name }}</span>
+                  <div class="right-box"></div>
+                </div>
+                {% if shop.service_date_time %}
+                  <div class="ordinary-label daily">Daily: {{ shop.service_date_time }}</div>
+                {% endif %}
+                <div class="ordinary-label address">
+                  <img class="address-icon" src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/maps2_2eff3741-0fdd-4a16-a82c-742c6223d7f0.png?v=1698459519">
+                  <a href="{{ shop.address_google_map_share_url }}" target="_blank"
+                    >Address: {{ shop.address -}}
+                  </a>
+                </div>
+                <div class="ordinary-label phone">
+                  <img class="phone-icon" src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/phone_3x_baf5d34e-6c5f-43ab-b4cc-5770866dffd4.png?v=1698459518">
+                  <a href="tel:{{shop.phone}}">Phone: {{ shop.phone }}</a>
+                </div>
+                {% comment %} {% if shop.settings.book_btn_name %} {% endcomment %}
+                  {% comment %} {% assign product = product %} {% endcomment %}
+                  {%- assign calendly_url = shop.calendly_url.value | first -%}
+                  <div class="book-btn-wrapper">
+                    <div
+                      class="book-btn font-bolder"
+                      data-link-products="{{shop.product}}"
+                      data-shop-book-common-url="{{calendly_url}}"
+                    >
+                      {% comment %} {{ shop.settings.book_btn_name }} {% endcomment %}
+                       Book
+                    </div>
+                    {% comment %} <div
+                      data-street-long="{{shop.settings.street_long}}"
+                      data-street-lat="{{shop.settings.street_lat}}"
+                      data-street-pov-heading="{{shop.settings.street_pov}}"
+                      class="view-street-btn font-bolder"
+                    >
+                      {{ shop.settings.street_view_btn_name }}
+                    </div> {% endcomment %}
+                  </div>
+                {% comment %} {% endif %} {% endcomment %}
+                <img
+                  class="right-arrow"
+                  src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Black_right-arrow_3x_f077af66-428f-4608-9df1-74a9f1478aa7.png?v=1678793456"
+                >
+              </li>
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+      {% comment %} {% for shop in block %}
+        <script>
+          shopList.push({
+            name: `{{ shop.settings.shop_name }}`,
+            lat: `{{ shop.settings.lat }}`,
+            long: `{{ shop.settings.long }}`,
+            icon: `{{ shop.settings.marker_img_url | img_url : 'master' }}`,
+            shop_id: `{{ shop.id }}`,
+            id: `{{ shop.id }}`,
+            shop_name: `{{ shop.settings.shop_name }}`,
+            shop_icon: `{{ shop.settings.shop_icon | img_url:'master' }}`,
+            daily: `{{ shop.settings.daily }}`,
+            address_icon: `{{ section.settings.address_icon | img_url:'master' }}`,
+            address_google_map_share_url: `{{ shop.settings.address_google_map_share_url }}`,
+            address: `{{ shop.settings.address }}`,
+            phone_icon: `{{ section.settings.phone_icon | img_url:'master' }}`,
+            phone: `{{ shop.settings.phone }}`,
+            link_products: `{{ shop.settings.link_products }}`,
+            shop_book_common_url: `{{ shop.settings.shop_book_common_url }}`,
+            book_btn_name: `{{ shop.settings.book_btn_name }}`,
+            street_long: `{{ shop.settings.street_long }}`,
+            street_lat: `{{ shop.settings.street_lat }}`,
+            street_pov: `{{ shop.settings.street_pov }}`,
+            street_view_btn_name: `{{ shop.settings.street_view_btn_name }}`,
+            is_test_ride: `{{ shop.settings.is_test_ride }}`,
+            is_dealer: `{{ shop.settings.is_dealer }}`,
+            is_maintenance: `{{ shop.settings.is_maintenance }}`,
+          });
+        </script>
+        <li id="{{shop.id}}" class="shop-item" data-long="{{shop.settings.long}}" data-lat="{{shop.settings.lat}}">
+          <div class="shop-name">
+            <span class="shop-name-label font-bolder">{{ shop.settings.shop_name }}</span>
+            <div class="right-box"></div>
+          </div>
+          {% if shop.settings.daily %}
+            <div class="ordinary-label daily">Daily: {{ shop.settings.daily }}</div>
+          {% endif %}
+          <div class="ordinary-label address">
+            <img class="address-icon" src="{{section.settings.address_icon | img_url:'master'}}">
+            <a href="{{shop.settings.address_google_map_share_url}}" target="_blank"
+              >Address: {{ shop.settings.address -}}
+            </a>
+          </div>
+          <div class="ordinary-label phone">
+            <img class="phone-icon" src="{{section.settings.phone_icon | img_url:'master'}}">
+            <a href="tel:{{shop.settings.phone}}">Phone: {{ shop.settings.phone }}</a>
+          </div>
+          {% if shop.settings.book_btn_name %}
+            {% assign product = product %}
+            <div class="book-btn-wrapper">
+              <div
+                class="book-btn font-bolder"
+                data-link-products="{{shop.settings.link_products}}"
+                data-shop-book-common-url="{{shop.settings.shop_book_common_url}}"
+              >
+                {{ shop.settings.book_btn_name }}
+              </div>
+              <div
+                data-street-long="{{shop.settings.street_long}}"
+                data-street-lat="{{shop.settings.street_lat}}"
+                data-street-pov-heading="{{shop.settings.street_pov}}"
+                class="view-street-btn font-bolder"
+              >
+                {{ shop.settings.street_view_btn_name }}
+              </div>
+            </div>
+          {% endif %}
+          <img
+            class="right-arrow"
+            src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Black_right-arrow_3x_f077af66-428f-4608-9df1-74a9f1478aa7.png?v=1678793456"
+          >
+        </li>
+      {% endfor %} {% endcomment %}
+    </ul>
+  </aside>
+
+  {% comment %} <div class="test-ride-modal">
+    <div class="modal-content">
+      <div class="test-ride-modal__content">
+        <div class="content-box">
+          <div class="tip">
+            {{ section.settings.test_ride_modal_tip }}
+          </div>
+          <div class="description font-bolder">
+            {{ section.settings.test_ride_modal_desc }}
+          </div>
+
+          {% assign bikeProducts = collections[section.settings['product-collections-handle']].products %}
+          <div class="products-box">
+            {% for bikeProduct in bikeProducts %}
+              {% assign variant = bikeProduct.variants[0] %}
+              {% if variant.image.src %}
+                {% assign img_url = variant.image.src %}
+              {% else %}
+                {% assign img_url = bikeProduct.featured_image %}
+              {% endif %}
+              <div class="product-box" data-product-handle="{{ bikeProduct.handle }}">
+                <div class="product-img-box">
+                  <img class="product-img" src="{{ img_url | img_url : 'master' }}">
+                  <img class="check" src="{{ 'checked.png' | asset_img_url }}">
+                </div>
+                <div class="bike-name font-bolder">{{ bikeProduct.title }}</div>
+                <div class="bike-desc">{{ bikeProduct.metafields.product.short_desc }}</div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="book-test-ride-btn-box">
+            <div class="book-test-ride-btn">{{ section.settings.test_ride_modal_btn }}</div>
+          </div>
+        </div>
+        <div class="test-ride-modal-close-btn">×</div>
+      </div>
+    </div>
+    <div class="test-ride-modal__backdrop"></div>
+  </div> {% endcomment %}
+
+  <!-- calendly弹窗 -->
+  <div class="calendly-modal">
+    <div class="calendly-modal-content">
+      <div class="calendly-modal__content">
+        <div class="calendly-content-box">
+          <div class="calendly-spinner">
+            <div class="calendly-bounce1"></div>
+            <div class="calendly-bounce2"></div>
+            <div class="calendly-bounce3"></div>
+          </div>
+          <iframe src="" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+        <div class="calendly-modal-close-btn">×</div>
+      </div>
+    </div>
+    <div class="calendly-modal__backdrop"></div>
+  </div>
+</section>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script>
+  var map;
+  var markers = [];
+  var geocoder;
+  var productHandle = document.getElementById('shopListBox').getAttribute('data-product-handle');
+  var shopBookCommonURl;
+  function getLatLng(lat, long) {
+    return new google.maps.LatLng(lat, long);
+  }
+  /**
+   * 终点经度 end_lon
+   * 终点纬度 end_lat
+   * 起点经度 start_lon
+   * 起点纬度 start_lat
+   */
+  function calculateDistance(end_lon, end_lat, cLng, cLat) {
+    var start_lat = cLat || currentLat;
+    var start_lon = cLng || currentLong;
+    let radLat1 = (start_lat * Math.PI) / 180.0;
+    let radLat2 = (Number(end_lat) * Math.PI) / 180.0;
+    let a = radLat1 - radLat2;
+    let b = (start_lon * Math.PI) / 180.0 - (Number(end_lon) * Math.PI) / 180.0;
+    let s =
+      2 *
+      Math.asin(
+        Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2))
+      );
+    s = s * 6378.137; // 地球半径;
+    s = Math.round(s * 10000) / 10000; // 千米/公里
+    s = s * 0.621371; // 英里
+    return s.toFixed(2);
+  }
+  var mapMarkerData = shopList;
+  {% comment %} console.log('mapMarkerData',mapMarkerData) {% endcomment %}
+  var dataList;
+  function initMap() {
+    var myLatlng = getLatLng(`{{ section.settings.first_lat }}`, `{{ section.settings.first_long }}`);
+    var mapProp = {
+      center: myLatlng,
+      zoom: Number(`{{ section.settings.first_zoom }}`),
+      mapId: '{{ section.settings.mapId }}',
+      // mapTypeId: google.maps.MapTypeId.ROADMAP,
+      fullscreenControl: false,
+      streetViewControl: false,
+      streetViewControlOptions: {
+        position: google.maps.ControlPosition.LEFT_BOTTOM,
+      },
+      mapTypeControl: false,
+      panControl: false,
+      zoomControl: false,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.LEFT_CENTER,
+      },
+    };
+    map = new google.maps.Map(document.getElementById('googleMap'), mapProp);
+    geocoder = new google.maps.Geocoder();
+    mapMarkerData.forEach(function (v, i) {
+      var icon = {
+        url: v.icon, // url
+        scaledSize: new google.maps.Size(27, 35), // scaled size
+      };
+      var marker = new google.maps.Marker({
+        position: getLatLng(v.lat, v.long),
+        map: map,
+        icon: icon,
+      });
+      marker.addListener('click', function () {
+        //  map.setZoom(14);
+        //  map.setCenter(marker.getPosition());
+        //  var targetClass = '.test-ride-map-wrapper aside #'+v.shop_id
+        //  var targetOffset = $(targetClass).position().top;
+        //  $('.test-ride-map-wrapper .list-wrapper ul li').removeClass('on')
+        //  $(targetClass).addClass('on')
+        //  $('.test-ride-map-wrapper aside').animate({
+        //      scrollTop: targetOffset
+        // }, 500);
+      });
+      markers.push(marker);
+    });
+    var places = new google.maps.places.Autocomplete(document.getElementById('addressAutocomplete'));
+    google.maps.event.addListener(places, 'place_changed', function () {
+      let _g_location = places.getPlace().geometry.location;
+      renderSortListHtml({ lat: _g_location.lat(), lng: _g_location.lng() });
+    });
+
+    // google.maps.event.addListener(map.getStreetView(), 'visible_changed', function(){
+    // if (this.getVisible()) {
+    //   $('.custom-zoom-button-wrap').hide()
+    //   if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    //   console.log('M端不隐藏')
+    //   } else {
+    //     $('.test-ride-map-wrapper .list-wrapper').hide()
+    //   }
+    //  } else {
+    //     $('.custom-zoom-button-wrap').show()
+    //     $('.test-ride-map-wrapper .list-wrapper').show()
+    //   }
+    // })
+  }
+
+  // 关闭预约弹窗
+  function handleCloseModal() {
+    document.body.classList.remove('noscroll');
+    $('.test-ride-modal').hide();
+    $('.test-ride-modal .book-test-ride-btn-box').removeClass('on');
+    $('.test-ride-modal .product-box').removeClass('on');
+  }
+
+  // 关闭预约填写弹窗
+  function handleCalendlyCloseModal() {
+    document.body.classList.remove('noscroll');
+    $('.calendly-modal').hide();
+    $('.calendly-modal iframe').attr('src', ' ');
+  }
+  // 消除onmouseover和onmouseout重复执行
+  function isMouseLeaveOrEnter(e, handler) {
+    if (e.type != 'mouseout' && e.type != 'mouseover') return false;
+    var reltg = e.relatedTarget ? e.relatedTarget : e.type == 'mouseout' ? e.toElement : e.fromElement;
+    while (reltg && reltg != handler) reltg = reltg.parentNode;
+    return reltg != handler;
+  }
+
+  // book点击打开弹窗
+  $(document).on('click', '.test-ride-map-wrapper aside ul li .book-btn-wrapper .book-btn', function () {
+    shopBookCommonURl = $(this).attr('data-shop-book-common-url');
+    var productLinks = $(this).attr('data-link-products');
+    var productLinksArr = productLinks.split(',');
+    $('.test-ride-modal .product-box').addClass('product-box-hidden');
+    productLinksArr.forEach(function (v, i) {
+      var index = Number(v) - 1;
+      $('.test-ride-modal .product-box').eq(index).removeClass('product-box-hidden');
+    });
+    // $('.test-ride-modal').show();
+    // document.body.classList.add('noscroll')
+
+    // new feature
+    {% comment %} var productLink = $('#googleMapWrap').attr('data-product'); {% endcomment %}
+    // var productLink = $(this).attr('data-product-handle');
+    {% comment %} console.log('productLink', productLink); {% endcomment %}
+    $('.calendly-modal iframe').attr('src', shopBookCommonURl + '-' + productHandle);
+    $('.calendly-modal').show();
+    document.body.classList.add('noscroll');
+  });
+  // 查看街景
+  $(document).on('click', '.test-ride-map-wrapper aside ul li .book-btn-wrapper .view-street-btn', function () {
+    $('#pano').show();
+    $('.test-ride-map-wrapper .close-street-view').show();
+    $('.test-ride-map-wrapper .custom-zoom-button-wrap').hide();
+    $('.test-ride-map-wrapper .get-current-position').hide();
+    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      console.log('M端不隐藏');
+    } else {
+      $('.test-ride-map-wrapper .list-wrapper').hide();
+    }
+    const fenway = { lat: Number($(this).attr('data-street-lat')), lng: Number($(this).attr('data-street-long')) };
+    const panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'), {
+      position: fenway,
+      pov: {
+        heading: Number($(this).attr('data-street-pov-heading')),
+        pitch: 0,
+      },
+    });
+    map.setStreetView(panorama);
+  });
+  // 关闭街景
+  $(document).on('click', '.test-ride-map-wrapper .close-street-view', function () {
+    map.getStreetView().setVisible(false);
+    $('#pano').hide();
+    $('.test-ride-map-wrapper .close-street-view').hide();
+    $('.test-ride-map-wrapper .custom-zoom-button-wrap').show();
+    $('.test-ride-map-wrapper .get-current-position').show();
+    $('.test-ride-map-wrapper aside').show();
+  });
+  $(document).on('click', '.test-ride-modal-close-btn', function () {
+    handleCloseModal();
+  });
+  $(document).on('click', '.test-ride-modal__backdrop', function () {
+    handleCloseModal();
+  });
+  $(document).on('click', '.test-ride-modal .product-box', function (e) {
+    $(this).siblings().removeClass('on');
+    $(this).addClass('on');
+    productHandle = $(this).attr('data-product-handle');
+    $('.test-ride-modal .book-test-ride-btn-box').addClass('on');
+  });
+  // 预约按钮
+  $(document).on('click', '.test-ride-modal .book-test-ride-btn-box .book-test-ride-btn', function () {
+    handleCloseModal();
+    $('.calendly-modal iframe').attr('src', shopBookCommonURl + productHandle);
+    $('.calendly-modal').show();
+    document.body.classList.add('noscroll');
+  });
+  $(document).on('click', '.calendly-modal-close-btn', function () {
+    handleCalendlyCloseModal();
+  });
+  $(document).on('click', '.calendly-modal__backdrop', function () {
+    handleCalendlyCloseModal();
+  });
+  $(document).on('click', '.test-ride-map-wrapper .custom-zoom-button-wrap .enlarge-button', function () {
+    var zoom = map.getZoom() + 1;
+    map.setZoom(zoom);
+  });
+  $(document).on('click', '.test-ride-map-wrapper .custom-zoom-button-wrap .narrow-button', function () {
+    var zoom = map.getZoom() - 1;
+    map.setZoom(zoom);
+  });
+  $(document).on('mouseover', '.test-ride-map-wrapper .list-wrapper ul li', function (ev) {
+    var ev = ev || window.event;
+    if (!isMouseLeaveOrEnter(ev, this)) {
+      return false;
+    }
+    var long = $(this).attr('data-long');
+    var lat = $(this).attr('data-lat');
+    map.setCenter(getLatLng(lat, long));
+  });
+  function renderSortListHtml(searchObj = {}, lists) {
+    var listsArr = lists || dataList || mapMarkerData;
+    var _shopList = listsArr.map(function (v, i) {
+      return { ...v, distance: calculateDistance(v.long, v.lat, searchObj.lng, searchObj.lat) };
+    });
+    if (searchObj.lng) {
+      _shopList.sort(function (a, b) {
+        return a['distance'] - b['distance'];
+      });
+    }
+    var listHtmlArr = [];
+    _shopList.forEach((shop, i) => {
+      let listItemHtml =
+        "<li id='" +
+        shop.id +
+        "' class='shop-item' data-long='" +
+        shop.long +
+        "' data-lat='" +
+        shop.lat +
+        "'>" +
+        "<div class='shop-name'>" +
+        "<span class='shop-name-label font-bolder'>" +
+        shop.name +
+        '</span>' +
+        "<div class='right-box'>" +
+        "<div class='distance'>" +
+        shop.distance +
+        ' miles</div>' +
+        '</div>' +
+        '</div>';
+      if (shop.daily) {
+        listItemHtml = listItemHtml + "<div class='ordinary-label daily'>Daily: " + shop.daily + '</div>';
+      }
+      listItemHtml =
+        listItemHtml +
+        "<div class='ordinary-label address'>" +
+        "<img class='address-icon' src='" +
+        "https://cdn.shopify.com/s/files/1/0625/2684/9277/files/maps2_2eff3741-0fdd-4a16-a82c-742c6223d7f0.png?v=1698459519" +
+        "' />" +
+        "<a href='" +
+        shop.address_google_map_share_url +
+        "' target='_blank'>Address: " +
+        shop.address +
+        '</a>' +
+        '</div>' +
+        "<div class='ordinary-label phone'>" +
+        "<img class='phone-icon' src='" +
+        "https://cdn.shopify.com/s/files/1/0625/2684/9277/files/phone_3x_baf5d34e-6c5f-43ab-b4cc-5770866dffd4.png?v=1698459518" +
+        "' />" +
+        "<a href='tel:" +
+        shop.phone +
+        "'>Phone: " +
+        shop.phone +
+        '</a>' +
+        '</div>';
+      // if (shop.book_btn_name) {
+        listItemHtml =
+          listItemHtml +
+          "<div class='book-btn-wrapper'>" +
+          "<div class='book-btn font-bolder' data-link-products='" +
+          shop.link_products +
+          "' data-shop-book-common-url='" +
+          shop.shop_book_common_url +
+          "' >" +
+          "Book" +
+          '</div>' +
+          "<div data-street-long='" +
+          shop.street_long +
+          "' data-street-lat='" +
+          shop.street_lat +
+          "' data-street-pov-heading='" +
+          shop.street_pov +
+          "' class='view-street-btn font-bolder'>" +
+          shop.street_view_btn_name +
+          '</div>' +
+          '</div>';
+      // }
+      listItemHtml =
+        listItemHtml +
+        "<img class='right-arrow' src='https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Black_right-arrow_3x_f077af66-428f-4608-9df1-74a9f1478aa7.png?v=1678793456' />" +
+        '</li>';
+      listHtmlArr.push(listItemHtml);
+    });
+    $('.test-ride-map-wrapper .list-wrapper ul').replaceWith("<ul class='shops-box'>" + listHtmlArr.join('') + '</ul>');
+  }
+  function setAllMap(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
+  function clearMarkers() {
+    setAllMap(null);
+  }
+  var currentLat;
+  var currentLong;
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      currentLat = position.coords.latitude;
+      currentLong = position.coords.longitude;
+      // renderSortListHtml();
+    });
+  } else {
+    alert('Your browser does not support geolocation targeting！');
+  }
+  $('.test-ride-map-wrapper .get-current-position').click(function () {
+    if (currentLat) {
+      var current_marker = new google.maps.Marker({
+        position: getLatLng(currentLat, currentLong),
+        map: map,
+        icon: {
+          url: `{{ section.settings.current_position_icon | img_url : 'master' }}`,
+          scaledSize: new google.maps.Size(30, 30), // scaled size
+        },
+      });
+      map.setCenter(getLatLng(currentLat, currentLong));
+      map.setZoom(12);
+    } else {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          currentLat = position.coords.latitude;
+          currentLong = position.coords.longitude;
+          map.setCenter(getLatLng(position.coords.latitude, position.coords.longitude));
+          map.setZoom(12);
+          var current_marker = new google.maps.Marker({
+            position: getLatLng(currentLat, currentLong),
+            map: map,
+            icon: {
+              url: `{{ section.settings.current_position_icon | img_url : 'master' }}`,
+              scaledSize: new google.maps.Size(30, 30), // scaled size
+            },
+          });
+        });
+      } else {
+        alert('Your browser does not support geolocation targeting！');
+      }
+    }
+  });
+  function geocode(request) {
+    if (request && request.address) {
+      geocoder
+        .geocode(request)
+        .then((result) => {
+          const { results } = result;
+          console.log({ lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() });
+          renderSortListHtml({ lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() });
+        })
+        .catch((e) => {
+          alert('Geocode was not successful for the following reason: ' + e);
+        });
+    }
+  }
+  function filterAction(_filterKey) {
+    dataList = [];
+    if (_filterKey == 'testRide') {
+      dataList = mapMarkerData.filter((item) => item.is_test_ride == 'true');
+    } else if (_filterKey == 'dealer') {
+      dataList = mapMarkerData.filter((item) => item.is_dealer == 'true');
+    } else if (_filterKey == 'maintenance') {
+      dataList = mapMarkerData.filter((item) => item.is_maintenance == 'true');
+    } else {
+      dataList = mapMarkerData;
+    }
+    renderSortListHtml({}, dataList);
+    clearMarkers();
+    markers = [];
+    dataList.forEach(function (v, i) {
+      var icon = {
+        url: v.icon, // url
+        scaledSize: new google.maps.Size(27, 35), // scaled size
+      };
+      var marker = new google.maps.Marker({
+        position: getLatLng(v.lat, v.long),
+        map: map,
+        icon: icon,
+      });
+      marker.addListener('click', function () {
+        //  map.setZoom(14);
+        //  map.setCenter(marker.getPosition());
+        //  var targetClass = '.test-ride-map-wrapper aside #'+v.shop_id
+        //  var targetOffset = $(targetClass).position().top;
+        //  $('.test-ride-map-wrapper .list-wrapper ul li').removeClass('on')
+        //  $(targetClass).addClass('on')
+        //  $('.test-ride-map-wrapper aside').animate({
+        //      scrollTop: targetOffset
+        // }, 500);
+      });
+      markers.push(marker);
+    });
+  }
+  $(' .test-ride-map-wrapper aside .location-search-box .search-btn').click(function () {
+    geocode({ address: $('.test-ride-map-wrapper aside .location-search-box input').val() });
+  });
+  $('.test-ride-map-wrapper aside .location-search-box .search-close-btn').click(function () {
+    $('.test-ride-map-wrapper aside .location-search-box input').val('');
+    $('.filter-store .filter-item').removeClass('on');
+    $('.filter-store .filter-item').first().addClass('on');
+    filterAction();
+  });
+  $('.filter-store .filter-item').click(function () {
+    $(this).addClass('on');
+    $(this).siblings('.filter-store .filter-item').removeClass('on');
+    var _filterKey = $(this).attr('key');
+    filterAction(_filterKey);
+  });
+
+  $(function () {
+    var _testRideModalDoc = $('.test-ride-map-wrapper .test-ride-modal');
+    $('.test-ride-map-wrapper .test-ride-modal').remove();
+    $('body').append(_testRideModalDoc);
+    var _calendlyModalDoc = $('.test-ride-map-wrapper .calendly-modal');
+    $('.test-ride-map-wrapper .calendly-modal').remove();
+    $('body').append(_calendlyModalDoc);
+  });
+</script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxd7IX1wjzcBA2j55d_Qmx4b7ITrvsy4w&callback=initMap&libraries=places&language=en"
+></script>
+
+{% schema %}
+{
+  "name": "Test ride map",
+  "settings": [
+    {
+      "type": "text",
+      "id": "map_title",
+      "label": "test ride map title",
+      "default": "Test Ride"
+    },
+    {
+      "type": "text",
+      "id": "product_handle",
+      "label": "预约产品handle配置"
+    },
+    {
+      "type": "text",
+      "id": "first_long",
+      "label": "地图首次渲染位置的经度",
+      "default": "34.771225254990874"
+    },
+    {
+      "type": "text",
+      "id": "first_lat",
+      "label": "地图首次渲染位置的纬度",
+      "default": "103.77091751708724"
+    },
+    {
+      "type": "text",
+      "id": "mapId",
+      "label": "关联地图样式的地图ID"
+    },
+    {
+      "type": "text",
+      "id": "first_zoom",
+      "label": "地图首次渲染的放大倍数",
+      "default": "4"
+    },
+    {
+      "type": "text",
+      "id": "header",
+      "label": "侧边栏标题",
+      "default": "Select your city"
+    },
+    {
+      "type": "image_picker",
+      "id": "address_icon",
+      "label": "侧边栏Address小图标"
+    },
+    {
+      "type": "image_picker",
+      "id": "phone_icon",
+      "label": "侧边栏Phone小图标"
+    },
+    {
+      "type": "text",
+      "id": "test_ride_modal_tip",
+      "label": "预约弹窗小标题",
+      "default": "TEST RIDE IN WIEN (ZENTRUM / SUD / WEST)"
+    },
+    {
+      "type": "text",
+      "id": "test_ride_modal_desc",
+      "label": "预约弹窗标题",
+      "default": "Pick which model you'd like to test"
+    },
+    {
+      "type": "text",
+      "id": "test_ride_modal_btn",
+      "label": "预约弹窗按钮",
+      "default": "Book a test ride"
+    },
+    {
+      "type": "header",
+      "content": "下列元素已弃用"
+    },
+    {
+      "type": "image_picker",
+      "id": "current_position_icon",
+      "label": "地图当前位置标记图标"
+    },
+    {
+      "type": "image_picker",
+      "id": "enlarge_img",
+      "label": "地图放大按钮"
+    },
+    {
+      "type": "image_picker",
+      "id": "narrow_img",
+      "label": "地图缩小按钮"
+    },
+    {
+      "type": "image_picker",
+      "id": "current_position_img",
+      "label": "获取当前定位图标"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "shop",
+      "name": "shop",
+      "settings": [
+        {
+          "type": "radio",
+          "id": "is_test_ride",
+          "label": "是否提供test ride",
+          "options": [
+            {
+              "label": "是",
+              "value": "true"
+            },
+            {
+              "label": "否",
+              "value": "false"
+            }
+          ],
+          "default": "true"
+        },
+        {
+          "type": "radio",
+          "id": "is_dealer",
+          "label": "是否Dealer",
+          "options": [
+            {
+              "label": "是",
+              "value": "true"
+            },
+            {
+              "label": "否",
+              "value": "false"
+            }
+          ],
+          "default": "true"
+        },
+        {
+          "type": "radio",
+          "id": "is_maintenance",
+          "label": "是否提供Maintenance",
+          "options": [
+            {
+              "label": "是",
+              "value": "true"
+            },
+            {
+              "label": "否",
+              "value": "false"
+            }
+          ],
+          "default": "true"
+        },
+        {
+          "type": "text",
+          "id": "shop_name",
+          "label": "商店名称"
+        },
+        {
+          "type": "text",
+          "id": "shop_book_common_url",
+          "label": "预约通用url"
+        },
+        {
+          "type": "text",
+          "id": "book_btn_name",
+          "label": "按钮文案",
+          "default": "book"
+        },
+        {
+          "type": "text",
+          "id": "long",
+          "label": "经度"
+        },
+        {
+          "type": "text",
+          "id": "lat",
+          "label": "纬度"
+        },
+        {
+          "type": "text",
+          "id": "link_products",
+          "label": "商店可预约产品,输入配置的产品系列中产品序号,以英文逗号分隔",
+          "default": "1"
+        },
+        {
+          "type": "text",
+          "id": "daily",
+          "label": "营业时间"
+        },
+        {
+          "type": "text",
+          "id": "address",
+          "label": "地址"
+        },
+        {
+          "type": "text",
+          "id": "address_google_map_share_url",
+          "label": "该商店谷歌地图分享的链接"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "联系电话"
+        },
+        {
+          "type": "image_picker",
+          "id": "marker_img_url",
+          "label": "商店在地图中的标记图标"
+        },
+        {
+          "type": "header",
+          "content": "下列元素已弃用"
+        },
+        {
+          "type": "image_picker",
+          "id": "shop_icon",
+          "label": "商店的图标"
+        },
+        {
+          "type": "text",
+          "id": "street_long",
+          "label": "街景经度",
+          "default": "-117.9380982"
+        },
+        {
+          "type": "text",
+          "id": "street_lat",
+          "label": "街景纬度",
+          "default": "34.1067281"
+        },
+        {
+          "type": "text",
+          "id": "street_pov",
+          "label": "街景镜头角度",
+          "default": "215.34"
+        },
+        {
+          "type": "text",
+          "id": "street_view_btn_name",
+          "label": "查看街景按钮文案",
+          "default": "street view"
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Test Ride In Product" }]
+}
+{% endschema %}

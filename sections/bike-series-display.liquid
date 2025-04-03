@@ -1,0 +1,414 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<div class="bike-series-display-wrapper">
+  <h2 class="title text-center">{{ section.settings.title }}</h2>
+  <div class="bike-series-display swiper swiper-bike">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% assign product = block.settings.bike %}
+        <div class="swiper-slide">
+          <div class="product-info">
+            <div class="product-info-left">
+              <div class="product-title">{{ block.settings.product_title }}</div>
+              <div class="product--sub-title">{{ block.settings.product_sub_title }}</div>
+              {% if block.settings.show_price %}<div class="product-price">{{ block.settings.product_price }}</div>{% endif %}
+              {% if block.settings.show_btn %}<a class="leran-more-btn" href="{{ block.settings.show_page.url }}">Learn More</a>{% endif %}
+            </div>
+            <div class="product-info-right">
+              <div class="info-item"><div class="info-title">{{ section.settings.info_1_title }}</div><div class="info-desc">{{ block.settings.info_1 }}</div></div>
+              <div class="info-item"><div class="info-title">{{ section.settings.info_2_title }}</div><div class="info-desc">{{ block.settings.product_battery }}</div></div>
+              <div class="info-item"><div class="info-title">{{ section.settings.info_3_title }}</div><div class="info-desc">{{ block.settings.product_motor }}</div></div>
+            </div>
+          </div>
+          <div class="logo-text">{{ block.settings.bg_text }}</div>
+          <div class="product-media">
+            <div class="color-tabs">
+              {% if product.options.size > 0 -%}
+              {% for option in product.options_with_values -%}
+                {% assign name = option.name | downcase %}
+                {% assign index = forloop.index0 %}
+                {% if name == 'color' %}
+                {% for item in option.values %}
+                  <div class="color-tab-item {% if forloop.index0 == 0 %}active{% else%}no_active{% endif %}">
+                    {% for variant in product.variants %}
+                      {% if variant.options contains item.name  %}
+                          {% assign p_img = variant.image | image_url %}
+                          <div class="color-bg" data-img="{{ p_img }}" style="border: 2px solid {{  variant.metafields.variant.color }};">
+                            <div class="color-bg-inner" style="background:{{  variant.metafields.variant.color }};"></div>
+                          </div>
+                          <!-- <div class="color-name">{{ item.name }}</div> -->
+                          {% break %}
+                        {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+                {% endif %}
+              {%- endfor %}
+            {%- endif %}
+            </div>
+            <div class="bike-img-box">
+              {% if product.options.size > 0 -%}
+              {% for option in product.options_with_values -%}
+                {% assign name = option.name | downcase %}
+                {% if name == 'color' %}
+                {% for item in option.values %}
+                    {% assign index = forloop.index0 %}
+                    {% for variant in product.variants %}
+                      {% if variant.options contains item.name and index == 0  %}
+                          <img class="bike-img" src="{{ variant.image | image_url }}" />
+                          {% break %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                {% endif %}
+              {%- endfor %}
+            {%- endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-prev swiper-button"></div>
+    <div class="swiper-button-next swiper-button"></div>
+  </div>
+</div>
+<style>
+  .bike-series-display-wrapper {
+    padding: 60px 4%;
+  }
+  .bike-series-display-wrapper .title {
+     font-size: 46px; 
+    margin-bottom: 60px;
+    }
+  .bike-series-display {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .bike-series-display .product-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .bike-series-display .product-title {
+     margin-bottom: 10px;
+    font-size: 36px;
+    font-weight: 700; 
+  }
+  .bike-series-display .product-price {
+    font-weight: 700;
+    font-size: 28px;
+  }
+  .bike-series-display .leran-more-btn {
+    display: inline-block;
+    border: 1px solid #0067e2;
+    color: #0067e2;
+    text-align: center;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 60px;
+    width: 185px;
+    height: 46px;
+    padding: 0;
+    line-height: 46px;
+    text-decoration:none;
+  }
+  .bike-series-display-wrapper .logo-text {
+    z-index: 0;
+    color: rgba(0, 0, 0, .03);
+    text-align: center;
+    word-break: break-word;
+    font-family: Magistral, sans-serif;
+    font-weight: 700;
+    position: absolute;
+    top: 30%;
+    bottom: auto;
+    left: 0%;
+    right: 0%;
+    letter-spacing: 1ch;
+    font-size: 9rem;
+  }
+  .bike-series-display .leran-more-btn:hover {
+     background-color: #0067e2;
+    color: #ffffff;
+    text-decoration: none; 
+  }
+  .bike-series-display .product-info-right {
+    display: flex;
+  }
+  .bike-series-display .info-item {
+    max-width: 250px;
+    margin-right: 100px;
+  }
+  .bike-series-display .info-title {
+    border-bottom: 1px solid #000;
+    font-size: 20px;
+  }
+  .bike-series-display .info-desc {
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .bike-series-display-wrapper .product-media {
+    position: relative;
+  }
+  .bike-series-display-wrapper .product-media .color-tabs {
+    grid-column-gap: 1rem;
+    grid-row-gap: 8px;
+    color: #787e8c;
+    border-radius: 50px;
+    /* flex-direction: column; */
+    display: flex;
+    position: absolute;
+    top: 0%;
+    bottom: auto;
+    left: 0%;
+    right: auto;
+  }
+  .bike-series-display-wrapper .product-media .color-tabs .color-tab-item {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+  }
+  .bike-series-display-wrapper .product-media .color-tabs .color-tab-item .color-bg {
+    width: 36px;
+    height: 36px;
+    padding: 3px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .bike-series-display-wrapper .product-media .color-tabs .color-tab-item.no_active:hover .color-bg {
+    border-color:#0067e2 !important;
+  }
+  .bike-series-display-wrapper .product-media .color-tabs .color-tab-item.no_active .color-bg {
+    border-color: #f5f5f2 !important;
+  }
+   .bike-series-display-wrapper .product-media .color-tabs .color-tab-item .color-bg .color-bg-inner{
+    width:100%;
+    height:100%;
+    border-radius: 50%;
+  }
+  .bike-series-display-wrapper .product-media .color-tabs .color-tab-item .color-name {
+    display:none;
+    margin-left:10px;
+  }
+  .bike-series-display-wrapper .product-media .color-tabs .color-tab-item.active .color-name {
+    display:inline-block;
+  }
+  .bike-series-display-wrapper .product-media .bike-img-box {
+    height:80vh;
+  }
+  .bike-series-display-wrapper .product-media .bike-img-box .bike-img{
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    margin: auto;
+    display:block;
+  }
+  .bike-series-display-wrapper .swiper-bike {
+    padding-bottom: 50px;
+  }
+  .swiper-bike .swiper-button {
+    width: 50px;
+    height:50px;
+    background-size: 100%;
+    bottom: 0;
+    top: auto;
+  }
+  .swiper-bike .swiper-button-prev {
+    background-image: url('{{ 'swiper-btn-prev.png' | asset_url}}');
+    right: 80px;
+    left: auto;
+  }
+  .swiper-bike .swiper-button-next {
+    background-image: url('{{ 'swiper-btn-next.png' | asset_url}}');
+    right: 0;
+  }
+  .swiper-bike .swiper-button-prev:hover {
+    background-image: url('{{ 'swiper-btn-prev-active.png' | asset_url}}');
+  }
+  .swiper-bike .swiper-button-next:hover {
+    background-image: url('{{ 'swiper-btn-next-active.png' | asset_url}}');
+  }
+  .swiper-button-next:after, .swiper-button-prev:after {
+    display: none !important;
+  }
+  @media screen and (max-width: 991px) {
+    .bike-series-display-wrapper .title {
+     font-size: 30px;
+      margin-bottom: 30px;
+    }
+    .bike-series-display-wrapper .swiper-bike {
+      padding-bottom:70px;
+    }
+    .bike-series-display .product-info {
+      display: block;
+    }
+    .bike-series-display .leran-more-btn {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom:-60px;
+    }
+    .bike-series-display .product-info-right {
+      justify-content: space-between;
+    }
+    .bike-series-display .info-item {
+      margin-right: 0;
+      max-width: 135px;
+    }
+    .bike-series-display .info-title {
+      font-size: 12px;
+    }
+    .bike-series-display .info-desc {
+      font-size: 12px;
+    }
+    .bike-series-display .product-title {
+       margin-bottom: 6px;
+      font-size: 22px;
+      font-weight: 700; 
+    }
+      .bike-series-display .product-price {
+        font-size: 15px;
+      }
+    .bike-series-display-wrapper .product-media .bike-img-box {
+       height:40vh;
+     }
+     .bike-series-display-wrapper .product-media .bike-img-box .bike-img {
+       object-position: bottom;
+     }
+    .bike-series-display-wrapper .logo-text {
+        letter-spacing: .2ch;
+        font-size: 3rem;
+        top:58%;
+      }
+    .swiper-bike .swiper-button {
+      width: 30px;
+      height:30px;
+      bottom: 165px;
+    }
+    .swiper-bike .swiper-button-prev {
+      right: auto;
+    }
+  }
+</style>
+<script>
+  $(document).ready(function() {
+    const productSwiper = new Swiper('.swiper-bike', {
+      loop: true,
+      slidesPerView: 1,
+      navigation: {
+        nextEl: '.swiper-bike .swiper-button-next',
+        prevEl: '.swiper-bike .swiper-button-prev'
+      },
+    })
+
+    $('.bike-series-display-wrapper .product-media .color-tabs .color-tab-item').click(function() {
+      $(this).closest('.bike-series-display-wrapper').find('.product-media .color-tabs .color-tab-item').addClass('no_active').removeClass('active');
+      if($(this).hasClass('active')) {
+        $(this).addClass('no_active').removeClass('active')
+      } else {
+        $(this).addClass('active').removeClass('no_active')
+      }
+      $(this).closest('.product-media').find('.bike-img-box .bike-img').eq(0).attr('src',$(this).find('.color-bg').attr('data-img'))
+    });
+  })
+</script>
+{% schema %}
+  {
+    "name": "Bike Series Display",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "info_1_title",
+        "label": "参数1标题",
+        "default": "Price"
+      },
+      {
+        "type": "text",
+        "id": "info_2_title",
+        "label": "参数2标题",
+        "default": "Battery"
+      },
+      {
+        "type": "text",
+        "id": "info_3_title",
+        "label": "参数3标题",
+        "default": "Motor"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "bike",
+        "name": "Bike",
+        "settings": [
+          {
+            "type": "product",
+            "id": "bike",
+            "label": "Product"
+          },
+          {
+            "type": "text",
+            "id": "product_title",
+            "label": "Product Title"
+          },
+          {
+            "type": "text",
+            "id": "product_sub_title",
+            "label": "Product Sub Title"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_price",
+            "label": "Show Price",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "product_price",
+            "label": "Product Price"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_btn",
+            "label": "Show Learn More Button",
+            "default": true
+          },
+          {
+            "type": "product",
+            "id": "show_page",
+            "label": "Learn More Page",
+          },
+          {
+            "type": "text",
+            "id": "bg_text",
+            "label": "图片背景标题"
+          },
+          {
+            "type": "text",
+            "id": "info_1",
+            "label": "参数1数值"
+          },
+          {
+            "type": "text",
+            "id": "product_battery",
+            "label": "参数2数值"
+          },
+          {
+            "type": "text",
+            "id": "product_motor",
+            "label": "参数3数值"
+          },
+        ]
+      }
+    ],
+    "presets": [{"name": "Bike Series Display"}]
+  }
+{% endschema %}

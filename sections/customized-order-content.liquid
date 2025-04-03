@@ -1,0 +1,182 @@
+{% render 'product-breadcrumb' %}
+<section id="shopify-section--{{ section.id }}" class="fullProduct-detail">
+  <div class="container container-panel">
+    <div class="row">
+      <div class="productHolder col-xl-7">
+        {% render 'productImage', product: product %}
+      </div>
+      <div class="productData col-xl-5">
+        {% render 'productInfo', product: product %}
+      </div>
+    </div>
+  </div>
+</section>
+{% render 'product-features'%}
+{% render 'businessDays-with-addTocart' %}
+{%style%}
+  section.fullProduct-detail {
+    padding-top: {{ section.settings.section_paddingTop }}px;
+    padding-bottom: {{ section.settings.section_paddingBottom }}px;
+  }
+  body.customizedProduct-page .jdgm-rev-widg__title {
+    display: none;
+  }
+
+.back-btn {
+  margin-left: 52px;
+  color: #333;
+  border: 1px solid #DADADA;
+  border-radius: 50px;
+  width: 41px;
+  height: 41px;
+  transition: 0.4s ease;
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-link:hover span{
+  color:  #B7011C
+}
+.back-link:hover .back-btn {
+  background: #B7011C;
+}
+.back-link:hover  .back-btn::after {
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}
+
+.back-btn::after{
+  content: "";
+  background-image: url('{{ 'left-arrow.png' | asset_url }}');
+  width: 20px;
+  height: 14px;
+   background-size: cover;
+  background-position: center center;
+}
+body.customizedProduct-page section.fullProduct-detail {
+    padding-top: 0;
+  }
+
+{%endstyle%}
+
+{% javascript %}
+  // add/remove active state for the product variation color
+  $(document).ready(function() {
+    $('.customVariant-color').click(function() {
+      // Remove active class from all customVariantColor-items
+      $('.customVariantColor-item').removeClass('active');
+      // Add active class to the parent customVariantColor-item of the clicked customVariant-color
+      $(this).closest('.customVariantColor-item').toggleClass('active');
+    });
+
+    //.custom-size-group by 2 
+    var elements = $('.custom-size-group');
+    for(var i = 0; i < elements.length; i += 2) {
+        elements.slice(i, i + 2).wrapAll('<div class="customSize-groupWrapper"></div>');
+    }
+  });
+
+
+  // Add active class to the default custom-size element
+  $(document).ready(function() {
+      $('.customSize-groupWrapper:first-child .custom-size-group:first-child .custom-size, .customSize-groupWrapper:first-child .custom-size-group:first-child .size-button').addClass('active');
+  });
+
+  // Handle click event to toggle active class based on data-metafield
+  $('.size-button').click(function() {
+      var metafield = $(this).data('metafield');
+      $('.custom-size-group').each(function() {
+          if ($(this).data('metafield') === metafield) {
+            $(this).find('.custom-size, .size-button').addClass('active');
+
+          } else {
+            $(this).find('.custom-size, .size-button').removeClass('active');
+          }
+      });
+  });
+  
+{% endjavascript %}
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    var mainImage = document.querySelector('.product-main-image img');
+
+    // Add 'active' class to the first thumbnail initially
+    document.querySelector('.thumbnail-item').classList.add('active');
+
+    // Set fixed width for thumbnails through CSS
+    var style = document.createElement('style');
+    style.innerHTML = '.thumbnail-item { width: 60px !important; }';
+    document.head.appendChild(style);
+
+    var thumbnailSlider = new Swiper('.product-thumbnail-slider', {
+        slidesPerView: 5,
+        spaceBetween: 10,
+        freeMode: false,
+        //loop: true,
+        //loopedSlides: 6,
+        allowTouchMove: false,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    thumbnailSlider.on('click', function (e) {
+        // Remove 'active' class from all thumbnails
+        document.querySelectorAll('.thumbnail-item').forEach(function(item) {
+            item.classList.remove('active');
+        });
+
+        // Add 'active' class to the clicked thumbnail
+        var clickedSlide = thumbnailSlider.clickedIndex;
+        thumbnailSlider.slides[clickedSlide].classList.add('active');
+
+        var newMainImage = thumbnailSlider.slides[clickedSlide].getAttribute('data-main-image');
+        mainImage.src = newMainImage;
+    });
+
+    // Remove 'swiper-slide-active' class on slide change
+    thumbnailSlider.on('slideChange', function () {
+        document.querySelector('.swiper-slide-active').classList.remove('swiper-slide-active');
+    });
+  });
+
+</script>
+
+{% schema %}
+  {
+    "name": "Default Product Section",
+    "class": "section-order",
+    "limit" : 1,
+    "settings": [
+        {
+          "type": "number",
+          "id": "section_paddingTop",
+          "label": "Section Padding Top",
+          "default": 100
+        },
+        {
+          "type": "number",
+          "id": "section_paddingBottom",
+          "label": "Section Padding Bottom",
+          "default": 100
+        },
+        {
+          "type": "checkbox",
+          "id": "show_quantity_selector",
+          "label": "Show quantity selector",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_payment_button",
+          "label": "Show dynamic checkout button",
+          "default": true,
+          "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+        }
+    ]
+  }
+{% endschema %}

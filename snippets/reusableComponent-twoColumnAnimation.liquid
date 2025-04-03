@@ -1,0 +1,69 @@
+<section id="shopify-section--{{ section.id }}" class="twoColumn-animation wrap d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+    
+            <!-- Desktop Version -->
+            <div class="twoColumn-desktopAnimation">
+                <div class="col-lg-8 images-wrapper">
+                    <div class="images">
+                        {%- assign image_classes = 'one,two,three' | split: ',' -%}
+                        {%- assign class_index = 0 -%}
+
+                        {%- for block in section.blocks -%}
+                            <div class="{{ image_classes[class_index] }}">
+                                <img src="{{ block.settings.left_image | img_url: 'master'}}">
+                            </div>
+
+                            {%- assign class_index = class_index | plus: 1 -%}
+                            {%- if class_index >= image_classes.size -%}
+                                {%- assign class_index = 0 -%}
+                            {%- endif -%}
+                        {%- endfor -%}
+                    </div>
+                </div>
+
+                <div class="col-lg-4 right-headingText d-flex align-items-center">
+                    <div class="title">
+                        {%- assign text_classes = 'one,two,three' | split: ',' -%}
+                        {%- assign textClass_index = 0 -%}
+
+                        {%- for block in section.blocks -%}
+                            <span class="{{ text_classes[textClass_index] }}">
+                            {{ block.settings.right_headingText }}
+                            {{ block.settings.right_paragraph }}
+                            </span>
+                            {%- assign textClass_index = textClass_index | plus: 1 -%}
+                            {%- if textClass_index >= text_classes.size -%}
+                                {%- assign textClass_index = 0 -%}
+                            {%- endif -%}
+                        {%- endfor -%}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Version -->
+            <div class="twoColumn-mobileAnimation">
+                <div class="swiper-wrapper">
+                    {%- for block in section.blocks -%}
+                        <div class="twColumn-item swiper-slide">
+                            <div class="twoColumn-image">
+                                <img src="{{ block.settings.left_image | img_url: 'master'}}">
+                            </div>
+                            <div class="right-headingText">
+                                <div class="title">
+                                    <h2>{{ block.settings.right_headingText }}</h2>
+                                    {{ block.settings.right_paragraph }}
+                                </div>
+                            </div>
+                        </div>
+                    {%- endfor -%}
+                </div>
+                <!-- swiper navigation -->
+                <div class="swiper-navigations">
+                    <div class="swiper-button-next navigation-button"><img src="{{ 'right-arrow.png' | asset_url }}" alt="Next"></div>
+                    <div class="swiper-button-prev navigation-button"><img src="{{ 'left-arrow.png' | asset_url }}" alt="Previous"></div>
+                </div>        
+            </div>
+        </div>
+    </div>
+</section>

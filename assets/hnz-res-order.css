@@ -1,0 +1,7136 @@
+/* MOBILES ----------------------------------------------------------------------------------- */
+.mdl-container .mdl {
+    display: flex;
+    flex-direction: column;
+}
+.mdl-container .mdl .mdl-body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.form-btn {
+  margin-bottom: 10px;
+}
+@media only screen and (min-width: 0px) {
+    .product-nav .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 12px;
+    }
+    .product-nav .price-btn {
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 12px !important;
+        min-width: 130px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 16px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 100px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: unset;
+        left: 0;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 40px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 15px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -28px;
+        width: 38px;
+        height: 38px;
+        font-size: 12px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 5px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 100px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 16px;
+    }
+
+  #hnz-product-1 .product-collections {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #hnz-product-1 .product-collections .product-item {
+        display: block;
+        width: 166px;
+        padding: 0 8px;
+        margin-right: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #E7E7E7;
+        border-radius: 8px;
+        font-size: 13px;
+    }
+    #hnz-product-1 .product-collections .active {
+        border-color: #3C3F42;
+      font-weight:600;
+    }
+    #hnz-product-1 .product-collections .product-item > a {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        color: #000000;
+        text-decoration: none;
+    }
+    #hnz-product-1 .product-collections .product-item .product-thumbnail {
+        margin-right: 10px;
+        display: inline-block;
+        width: 55px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 100%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 18px;
+      color: rgb(214 0 0);
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 12px;
+        margin-left: 5px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 12px;
+        padding: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 30px;
+        padding: 2px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 10px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 6px 2px;
+        min-width: 95px;
+        font-size: 16px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 24px;
+        height: 24px;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 10px;
+        padding: 10px;
+      text-decoration:none;
+    }
+    #hnz-product-1 .exclusive-offer .save {
+      font-size: 14px;
+      font-weight: 600;
+      color: #d60000;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 85px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .details .price-line {
+        text-decoration:line-through;
+        margin-right: 10px;
+    }
+  #hnz-product-1 .accessories .details .discount-price {
+        color: rgb(214 0 0);
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 22px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 10px;
+        text-decoration:none;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 75px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 16px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -20px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    #hnz-product-1 .payments .payment > span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 0;
+    }
+    .mdl-container .mdl {
+        width: 100%;
+        max-height: 100%;
+        height: 100%;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 100%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 18px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 18px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 15px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 100%;
+    }
+
+    #hnz-product-2 {
+        background: #fff;
+    }
+    #hnz-product-2 .spec {
+        gap: 10px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 50px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 12px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 14px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: row;
+        gap: 20px;
+        padding: 0;
+    }
+    #hnz-product-4 .service img {
+        height: 80px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 15px;
+        padding: 30px 20px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 30px;
+        overflow-y: auto;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 90%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 18px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 14px;
+        width: 100%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 54px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 16px;
+        padding: 25px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 16px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 25px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .product-nav .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 12px;
+    }
+    .product-nav .price-btn {
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 12px !important;
+        min-width: 130px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 16px;
+      color: rgb(214 0 0);
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 100px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: unset;
+        left: 0;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 40px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 15px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -28px;
+        width: 38px;
+        height: 38px;
+        font-size: 12px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 5px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 100px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 16px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 100%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 18px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 12px;
+        margin-left: 5px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 12px;
+        padding: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 30px;
+        padding: 2px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 12px;
+    }
+    #hnz-product-1 .shipping-message {
+        /* max-width: 260px; */
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        margin-bottom: 10px;
+    }
+  #hnz-product-1 .shipping-message span {
+     font-weight: 600; 
+  }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 10px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 6px 2px;
+        min-width: 95px;
+        font-size: 16px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 24px;
+        height: 24px;
+    }
+
+  #hnz-product-1 .shipping-message {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .shipping-message .line {
+        display: inline-block;
+        height: 18px;
+        width: 2px;
+        background-color: #333;
+        opacity: 40%;
+        margin: 0 5px;
+        vertical-align: text-bottom;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 10px;
+        padding: 10px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 85px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 22px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 10px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 75px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 16px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -20px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    #hnz-product-1 .payments .payment > span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 0;
+    }
+    .mdl-container .mdl {
+        width: 100%;
+        max-height: 100%;
+        height: 100%;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 100%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 18px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 18px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 15px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 100%;
+    }
+
+    #hnz-product-2 {
+        background: #fff;
+    }
+    #hnz-product-2 .spec {
+        gap: 10px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 50px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 12px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 14px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: row;
+        gap: 20px;
+        padding: 0;
+    }
+    #hnz-product-4 .service img {
+        height: 80px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 15px;
+        padding: 30px 20px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 30px;
+        overflow-y: auto;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 90%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 18px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 14px;
+        width: 100%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 54px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 16px;
+        padding: 25px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 16px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 25px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 390px) {
+    .product-nav .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 12px;
+    }
+    .product-nav .price-btn {
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 12px !important;
+        min-width: 130px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 16px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 100px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: unset;
+        left: 0;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 40px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 15px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -28px;
+        width: 38px;
+        height: 38px;
+        font-size: 12px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 5px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 100px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 16px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 100%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 18px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 12px;
+        margin-left: 5px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 12px;
+        padding: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 30px;
+        padding: 2px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 10px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 6px 2px;
+        min-width: 95px;
+        font-size: 16px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 24px;
+        height: 24px;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 10px;
+        padding: 10px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 85px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 22px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 10px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 75px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 16px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -20px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    #hnz-product-1 .payments .payment > span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 0;
+    }
+    .mdl-container .mdl {
+        width: 100%;
+        max-height: 100%;
+        height: 100%;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 100%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 18px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 18px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 15px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 100%;
+    }
+
+    #hnz-product-2 {
+        background: #fff;
+    }
+    #hnz-product-2 .spec {
+        gap: 10px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 50px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 12px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 14px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: row;
+        gap: 20px;
+        padding: 0;
+    }
+    #hnz-product-4 .service img {
+        height: 80px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 15px;
+        padding: 30px 20px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 30px;
+        overflow-y: auto;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 90%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 18px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 14px;
+        width: 100%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 54px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 16px;
+        padding: 25px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 16px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 25px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    .product-nav .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 12px;
+    }
+    .product-nav .price-btn {
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 12px !important;
+        min-width: 130px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 16px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 100px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: unset;
+        left: 0;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 40px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 15px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -28px;
+        width: 38px;
+        height: 38px;
+        font-size: 12px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 5px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 100px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 16px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 100%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 18px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 12px;
+        margin-left: 5px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 12px;
+        padding: 10px 20px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 30px;
+        padding: 2px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 10px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 6px 2px;
+        min-width: 95px;
+        font-size: 16px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 24px;
+        height: 24px;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 10px;
+        padding: 10px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 85px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 22px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 10px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 75px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 16px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -20px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    #hnz-product-1 .payments .payment > span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 0;
+    }
+    .mdl-container .mdl {
+        width: 100%;
+        max-height: 100%;
+        height: 100%;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 100%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 18px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 18px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 15px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 100%;
+    }
+
+    #hnz-product-2 {
+        background: #fff;
+    }
+    #hnz-product-2 .spec {
+        gap: 10px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 50px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 12px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 14px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: row;
+        gap: 20px;
+        padding: 0;
+    }
+    #hnz-product-4 .service img {
+        height: 80px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 15px;
+        padding: 30px 20px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 30px;
+        overflow-y: auto;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 90%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 18px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 14px;
+        width: 100%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 54px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 16px;
+        padding: 25px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 16px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 25px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 428px) {
+    .product-nav .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 12px;
+    }
+    .product-nav .price-btn {
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 12px !important;
+        min-width: 130px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 16px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 100px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: unset;
+        left: 0;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 40px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 15px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -28px;
+        width: 38px;
+        height: 38px;
+        font-size: 12px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 5px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 100px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 16px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 100%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 20px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 14px;
+        margin-left: 5px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 35px;
+        padding: 4px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 10px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 6px 2px;
+        min-width: 95px;
+        font-size: 16px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 24px;
+        height: 24px;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 10px;
+        padding: 10px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 85px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 22px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 10px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 75px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 16px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -20px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    #hnz-product-1 .payments .payment > span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 0;
+    }
+    .mdl-container .mdl {
+        width: 100%;
+        max-height: 100%;
+        height: 100%;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 100%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 18px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 18px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 15px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 100%;
+    }
+
+    #hnz-product-2 {
+        background: #fff;
+    }
+    #hnz-product-2 .spec {
+        gap: 10px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 50px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 12px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 14px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: row;
+        gap: 20px;
+        padding: 0;
+    }
+    #hnz-product-4 .service img {
+        height: 80px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 15px;
+        padding: 30px 20px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 30px;
+        overflow-y: auto;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 90%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 18px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 14px;
+        width: 100%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 54px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 16px;
+        padding: 25px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 16px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 25px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    .product-nav .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 12px;
+    }
+    .product-nav .price-btn {
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 12px !important;
+        min-width: 130px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 16px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 100px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: unset;
+        left: 0;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 40px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 15px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -28px;
+        width: 38px;
+        height: 38px;
+        font-size: 12px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 5px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 40px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 100px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 16px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 100%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 20px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 14px;
+        margin-left: 5px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 35px;
+        padding: 4px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 10px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 6px 2px;
+        min-width: 95px;
+        font-size: 16px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 24px;
+        height: 24px;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 10px;
+        padding: 10px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 85px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 22px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 10px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 75px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 16px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -20px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    #hnz-product-1 .payments .payment > span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 0;
+    }
+    .mdl-container .mdl {
+        width: 100%;
+        max-height: 100%;
+        height: 100%;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 100%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 18px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 18px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 15px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 100%;
+    }
+
+    #hnz-product-2 {
+        background: #fff;
+    }
+    #hnz-product-2 .spec {
+        gap: 10px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 50px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 12px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 14px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: row;
+        gap: 20px;
+        padding: 0;
+    }
+    #hnz-product-4 .service img {
+        height: 80px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 15px;
+        padding: 30px 20px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 30px;
+        overflow-y: auto;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 90%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 18px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 14px;
+        width: 100%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 54px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 16px;
+        padding: 25px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 16px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 25px;
+        font-size: 14px;
+    }
+}
+
+/* TABLETS ----------------------------------------------------------------------------------- */
+
+
+/* COMPUTERS --------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 1280px) {
+    .product-nav .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 12px;
+    }
+    .product-nav .price-btn {
+        justify-content: flex-end;
+        gap: 30px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 14px !important;
+        min-width: 150px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 16px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 100px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: unset;
+        left: 0;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 60px;
+        --bs-gutter-y: 0;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 40px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 20px;
+        width: calc(100% - 60px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -24px;
+        width: 42px;
+        height: 42px;
+        font-size: 12px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 10px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 60px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 100px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 16px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 100%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 20px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 12px;
+        margin-left: 5px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 35px;
+        padding: 4px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 10px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 6px 2px;
+        min-width: 95px;
+        font-size: 16px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 24px;
+        height: 24px;
+    }
+  #hnz-product-1 .shipping-message {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24.2px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .shipping-message .line {
+        height: 18px;
+        width: 2px;
+        background-color: #333;
+        opacity: 40%;
+        margin: 0 5px;
+        vertical-align: text-bottom;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 10px;
+        padding: 10px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 85px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 22px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 10px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 75px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 16px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -25px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    #hnz-product-1 .payments .payment > span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 20px;
+    }
+    .mdl-container .mdl {
+        width: 60%;
+        max-height: 100%;
+        height: auto;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 45%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 18px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 18px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 15px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 40px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 85%;
+    }
+
+    #hnz-product-2 {
+        background: #f8f8f8;
+    }
+    #hnz-product-2 .spec {
+        gap: 10px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 50px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 12px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 14px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: column;
+        gap: 0px;
+        padding: 0 30px;
+    }
+    #hnz-product-4 .service img {
+        height: 62px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 20px;
+        padding: 60px 40px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 0;
+        overflow-y: visible;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 60%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 20px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 14px;
+        width: 80%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 60px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 16px;
+        padding: 25px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 16px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 25px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    .product-nav .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 12px;
+    }
+    .product-nav .price-btn {
+        justify-content: flex-end;
+        gap: 30px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 14px !important;
+        min-width: 140px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 16px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 100px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: unset;
+        left: 0;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 60px;
+        --bs-gutter-y: 0;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 40px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 20px;
+        width: calc(100% - 60px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -24px;
+        width: 42px;
+        height: 42px;
+        font-size: 12px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 10px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 60px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 100px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 16px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 100%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 34px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 22px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 35px;
+        padding: 4px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 10px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 6px 2px;
+        min-width: 95px;
+        font-size: 16px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 24px;
+        height: 24px;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 10px;
+        padding: 10px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 85px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 22px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 10px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 75px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 16px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -25px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    #hnz-product-1 .payments .payment > span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 20px;
+    }
+    .mdl-container .mdl {
+        width: 55%;
+        max-height: 80%;
+        height: auto;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 40%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 18px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 18px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 15px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 40px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 85%;
+    }
+
+    #hnz-product-2 {
+        background: #f8f8f8;
+    }
+    #hnz-product-2 .spec {
+        gap: 10px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 50px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 12px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 14px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: column;
+        gap: 0px;
+        padding: 0 30px;
+    }
+    #hnz-product-4 .service img {
+        height: 62px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 20px;
+        padding: 60px 40px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 0;
+        overflow-y: visible;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 60%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 20px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 14px;
+        width: 80%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 60px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 16px;
+        padding: 25px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 16px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 25px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .product-nav .container {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 12px;
+    }
+    .product-nav .price-btn {
+        justify-content: flex-end;
+        gap: 30px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 14px !important;
+        min-width: 150px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 16px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 100px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: unset;
+        left: 0;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 60px;
+        --bs-gutter-y: 0;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 40px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 20px;
+        width: calc(100% - 60px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -24px;
+        width: 42px;
+        height: 42px;
+        font-size: 12px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 10px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 60px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 100px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 16px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 100%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 22px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 35px;
+        padding: 4px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 15px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 6px 2px;
+        min-width: 95px;
+        font-size: 16px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 24px;
+        height: 24px;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 15px;
+        padding: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 90px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 22px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 15px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 75px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 16px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -25px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    #hnz-product-1 .payments .payment > span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 20px;
+    }
+    .mdl-container .mdl {
+        width: 55%;
+        max-height: 80%;
+        height: auto;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 40%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 18px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 18px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 15px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 40px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 85%;
+    }
+
+    #hnz-product-2 {
+        background: #f8f8f8;
+    }
+    #hnz-product-2 .spec {
+        gap: 10px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 52px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 12px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 14px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 44px;
+        margin-bottom: 40px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: column;
+        gap: 0px;
+        padding: 0 40px;
+    }
+    #hnz-product-4 .service img {
+        height: 66px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 44px;
+        margin-bottom: 40px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 20px;
+        padding: 60px 40px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 44px;
+        margin-bottom: 40px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 0;
+        overflow-y: visible;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 60%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 20px !important;
+        width: 20px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 22px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 14px;
+        width: 80%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 65px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 44px;
+        margin-bottom: 40px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 16px;
+        padding: 25px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 16px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 25px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    .product-nav .container {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 12px;
+    }
+    .product-nav .price-btn {
+        justify-content: flex-end;
+        gap: 30px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 14px !important;
+        min-width: 150px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 18px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 100px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: unset;
+        left: 0;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 80px;
+        --bs-gutter-y: 0;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 40px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 20px;
+        width: calc(100% - 60px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -28px;
+        width: 42px;
+        height: 42px;
+        font-size: 12px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 10px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 60px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 100px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 16px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 100%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 38px;
+        margin-bottom: 10px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 24px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 35px;
+        padding: 4px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 16px;
+    }
+    #hnz-product-1 .shipping-message {
+        /* max-width: 360px; */
+        /* font-weight: 600; */
+        font-size: 16px;
+        line-height: 24.2px;
+        margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+  #hnz-product-1 .shipping-message span {
+    font-weight: 600;
+  }
+    #hnz-product-1 .shipping-message .line {
+        height: 18px;
+        width: 2px;
+        background-color: #333;
+        opacity: 40%;
+        margin: 0 5px;
+    }
+    #hnz-product-1 .product-collections {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #hnz-product-1 .product-collections .product-item {
+        display: block;
+        width: 250px;
+        padding: 0 6px;
+        margin-right: 6px;
+        margin-bottom: 10px;
+        border: 1px solid #E7E7E7;
+        border-radius: 8px;
+      font-size: 16px;
+    }
+    #hnz-product-1 .product-collections .active {
+        border-color: #3C3F42;
+      font-weight:600;
+    }
+    #hnz-product-1 .product-collections .product-item > a {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        color: #000000;
+        text-decoration: none;
+    }
+    #hnz-product-1 .product-collections .product-item .product-thumbnail {
+        margin-right: 10px;
+        display: inline-block;
+        width: 82px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 15px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 6px 2px;
+        min-width: 95px;
+        font-size: 16px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 24px;
+        height: 24px;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 16px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 15px;
+        padding: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 95px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 26px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 15px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 80px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 16px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -25px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    #hnz-product-1 .payments .payment > span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 20px;
+    }
+    .mdl-container .mdl {
+        width: 55%;
+        max-height: 80%;
+        height: auto;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 40%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 18px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 18px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 15px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 40px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 85%;
+    }
+    
+    #hnz-product-2 {
+        background: #f8f8f8;
+    }
+    #hnz-product-2 .spec {
+        gap: 10px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 52px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 12px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 14px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 46px;
+        margin-bottom: 50px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: column;
+        gap: 0px;
+        padding: 0 60px;
+    }
+    #hnz-product-4 .service img {
+        height: 70px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 46px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 20px;
+        padding: 60px 40px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 46px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 0;
+        overflow-y: visible;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 70%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 20px !important;
+        width: 20px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 24px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 16px;
+        width: 60%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 70px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 46px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 18px;
+        padding: 30px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 18px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 30px;
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .product-nav .container {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 12px;
+    }
+    .product-nav .price-btn {
+        justify-content: flex-end;
+        gap: 30px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 14px !important;
+        min-width: 150px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 18px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 100px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: unset;
+        left: 0;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 16px;
+        width: 36px;
+        height: 36px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 80px;
+        --bs-gutter-y: 0;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 50px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 20px;
+        width: calc(100% - 80px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -30px;
+        width: 45px;
+        height: 45px;
+        font-size: 14px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 10px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 80px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 12px;
+        padding: 12px;
+        min-width: 100px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 16px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 95%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 26px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 35px;
+        padding: 4px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 15px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 6px 2px;
+        min-width: 100px;
+        font-size: 16px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 28px;
+        height: 28px;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 16px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 15px;
+        padding: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 95px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 12px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 26px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 15px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 80px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 16px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 12px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -25px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    #hnz-product-1 .payments .payment > span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 20px;
+    }
+    .mdl-container .mdl {
+        width: 50%;
+        max-height: 80%;
+        height: auto;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 40%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 18px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 20px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 15px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 12px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 40px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 85%;
+    }
+
+    #hnz-product-2 {
+        background: #f8f8f8;
+    }
+    #hnz-product-2 .spec {
+        gap: 10px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 52px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 12px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 14px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 50px;
+        margin-bottom: 50px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: column;
+        gap: 0px;
+        padding: 0 60px;
+    }
+    #hnz-product-4 .service img {
+        height: 70px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 20px;
+        padding: 60px 40px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 0;
+        overflow-y: visible;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 70%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 20px !important;
+        width: 20px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 24px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 16px;
+        width: 60%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 70px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 18px;
+        padding: 30px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 18px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 30px;
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .product-nav .container {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 24px;
+        margin-right: 10px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 14px;
+    }
+    .product-nav .price-btn {
+        justify-content: flex-end;
+        gap: 30px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 14px !important;
+        min-width: 155px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 20px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 120px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: absolute;
+        left: -130px;
+        margin-right: 0;
+        font-size: 16px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 16px;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 80px;
+        --bs-gutter-y: 0;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 60px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 20px;
+        width: calc(100% - 100px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -30px;
+        width: 50px;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 10px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 100px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 15px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 14px;
+        padding: 12px;
+        min-width: 110px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 18px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 95%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 44px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 28px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 16px;
+        margin-left: 20px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 35px;
+        padding: 4px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 15px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 8px 2px;
+        min-width: 110px;
+        font-size: 18px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 28px;
+        height: 28px;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 16px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 15px;
+        padding: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 100px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 12px;
+        padding: 2px 6px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 14px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 26px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 15px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 90px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 18px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 14px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -25px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    hnz-product-1 .payments .payment > span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 20px;
+    }
+    .mdl-container .mdl {
+        width: 45%;
+        max-height: 80%;
+        height: auto;
+        border-radius: 10px;
+        padding: 30px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 35%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 20px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 14px;
+        padding: 5px 18px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 24px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 20px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 50px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 85%;
+    }
+
+    #hnz-product-2 {
+        background: #f8f8f8;
+    }
+    #hnz-product-2 .spec {
+        gap: 15px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 55px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 14px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 16px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 54px;
+        margin-bottom: 80px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 60px;
+    }
+    #hnz-product-4 .service img {
+        height: 75px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 16px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 54px;
+        margin-bottom: 80px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 20px;
+        padding: 60px 40px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 54px;
+        margin-bottom: 80px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 0;
+        overflow-y: visible;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 70px;
+        margin-bottom: 70px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 80%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 22px !important;
+        width: 22px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 26px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 16px;
+        width: 60%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 80px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 54px;
+        margin-bottom: 80px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 18px;
+        padding: 30px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 18px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 30px;
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    .product-nav .container {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .product-nav .shipping-1 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    .product-nav .shipping-1 img {
+        width: 24px;
+        margin-right: 10px;
+    }
+    .product-nav .shipping-2 {
+        font-size: 14px;
+    }
+    .product-nav .price-btn {
+        justify-content: flex-end;
+        gap: 30px;
+    }
+    .product-nav .price-btn button {
+        border-radius: 5px !important;
+        padding: 10px !important;
+        font-size: 14px !important;
+        min-width: 155px !important;
+    }
+    .product-nav .price .product-compare-price {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+    .product-nav .price .price-regular {
+        font-size: 20px;
+    }
+
+    #hnz-product-1 .container {
+        padding-top: 120px;
+    }
+
+    #hnz-product-1 .sticky {
+        position: sticky;
+    }
+    
+    #hnz-product-1 .top-nav {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .top-nav .back-btn {
+        position: absolute;
+        left: -130px;
+        margin-right: 0;
+        font-size: 16px;
+    }
+    #hnz-product-1 .top-nav .back-btn i {
+        font-size: 16px;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .top-nav .breadcrumbs {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-row {
+        --bs-gutter-x: 80px;
+        --bs-gutter-y: 0;
+    }
+    
+    #hnz-product-1 .product-media {
+        padding: 60px;
+    }
+    #hnz-product-1 .product-media #main-carousel {
+        margin: auto auto 20px;
+        width: calc(100% - 100px);
+    }
+    
+    #hnz-product-1 .product-media .float-nav button {
+        --btn-pos: -30px;
+        width: 50px;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    #hnz-product-1 .product-media #option-carousel {
+        --img-d: 50px;
+        --img-m: 15px;
+        
+        --owl-w: calc((65px * 5) - 15px);
+    }
+
+    #hnz-product-1 .product-media #option-carousel .product-image {
+        border-radius: 10px;
+    }
+    #hnz-product-1 .product-media .model-3d {
+        margin: auto auto 20px;
+        width: calc(100% - 100px);
+    }
+    
+    #hnz-product-1 .media-toggle {
+        margin-top: 20px;
+        gap: 15px;
+    }
+    #hnz-product-1 .media-toggle .toggle {
+        font-size: 14px;
+        padding: 12px;
+        min-width: 110px;
+    }
+    #hnz-product-1 .media-toggle .toggle img {
+        width: 18px;
+    }
+    
+    #hnz-product-1 .product-info {
+        width: 95%;
+    }
+    #hnz-product-1 .product-title {
+        font-size: 44px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .star-badge {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .star-badge .jdgm-prev-badge__text {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    
+    #hnz-product-1 .product-price {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .product-price .price-regular {
+        font-size: 28px;
+    }
+    #hnz-product-1 .product-price .product-compare-price {
+        font-size: 16px;
+        margin-left: 20px;
+    }
+    #hnz-product-1 .product-price .promotion {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    #hnz-product-1 .sale-ends {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .sale-ends span:first-child {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    #hnz-product-1 .sale-ends span:last-child {
+        padding: 2px;
+        gap: 10px;
+    }
+    #hnz-product-1 .sale-ends span:last-child > div {
+        width: 35px;
+        padding: 4px 0;
+    }
+    #hnz-product-1 .sale-ends .countdown,
+    #hnz-product-1 .sale-ends .countdown > * {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .variants {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .variants .variant .variant-name {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .variants .variant .variant-info {
+        font-size: 14px;
+    }
+    #hnz-product-1 .variants .variant{
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .variants .variant > .variants-selector:not(:last-child) {
+        margin-right: 15px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.size {
+        border-radius: 30px;
+        padding: 8px 2px;
+        min-width: 110px;
+        font-size: 18px;
+    }
+    #hnz-product-1 .variants .variant .variants-selector.color .color-swatch {
+        width: 28px;
+        height: 28px;
+    }
+    
+    #hnz-product-1 .recommendation {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+    }
+    #hnz-product-1 .recommendation .reco-title {
+        font-size: 16px;
+    }
+    #hnz-product-1 .recommendation .btn {
+        margin-top: 20px;
+        min-width: 220px !important;
+    }
+    #hnz-product-1 .recommendation .btn img {
+        width: 20px;
+        margin-right: 5px;
+    }
+    #hnz-product-1 .recommendation .bordered.active {
+        padding: 15px;
+    }
+    
+    #hnz-product-1 .info-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-1 .exclusive-offer {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .exclusive-offer .offer {
+        gap: 15px;
+        padding: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #hnz-product-1 .exclusive-offer .offer img {
+        width: 100px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:first-child {
+        border-radius: 4px;
+        font-size: 12px;
+        padding: 2px 6px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .exclusive-offer .free span:last-child {
+        font-size: 14px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .title {
+        font-size: 14px;
+    }
+    #hnz-product-1 .exclusive-offer .offer .body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .accessories {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .accessories .accessory .add {
+        font-size: 26px;
+        padding: 8px;
+    }
+    #hnz-product-1 .accessories .details {
+        padding: 15px;
+    }
+    #hnz-product-1 .accessories .details img {
+        width: 90px;
+        margin-right: 10px;
+    }
+    #hnz-product-1 .accessories .details .product-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .accessories .details .price {
+        font-size: 18px;
+    }
+    #hnz-product-1 .accessories .details .sum,
+    #hnz-product-1 .accessories .details .sum span {
+        font-size: 14px;
+    }
+    #hnz-product-1 .accessories .float-nav button {
+        --btn-pos: -25px;
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .product-form {
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .product-form .btn-atc span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .payments {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .payments .payment {
+        padding: 14px;
+        gap: 14px;
+    }
+    #hnz-product-1 .payments .payment img {
+        height: 20px;
+    }
+    hnz-product-1 .payments .payment > span {
+        font-size: 16px;
+    }
+    
+    #hnz-product-1 .mdl-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .mdl-toggle .item {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .mdl-container {
+        padding: 20px;
+    }
+    .mdl-container .mdl {
+        width: 40%;
+        max-height: 80%;
+        height: auto;
+        border-radius: 10px;
+        padding: 30px;
+    }
+    .mdl-container[data-id="measurement"] .mdl,
+    .mdl-container[data-id="recommendation"] .mdl,
+    .mdl-container[data-id="email"] .mdl{
+        width: 30%;
+    }
+    .mdl-container .mdl .mdl-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .mdl-container .mdl .mdl-title {
+        font-size: 20px;
+    }
+    .mdl-container .mdl .mdl-close {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+    }
+    
+    #hnz-product-1 .measurement-toggle {
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .measurement-toggle .toggle {
+        font-size: 14px;
+        padding: 5px 18px;
+    }
+    #hnz-product-1 .form-group label {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .form-group input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    #hnz-product-1 .btn-modal {
+        margin-top: 15px;
+    }
+    
+    #hnz-product-1 .recommended {
+        padding: 15px;
+    }
+    #hnz-product-1 .recommended .rec {
+        font-size: 24px;
+    }
+    #hnz-product-1 .recommended .divider {
+        margin: 20px 0;
+    }
+    
+    #hnz-product-1 .geo-toggle {
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-product-1 .geo-toggle .toggle {
+        font-size: 16px;
+        padding: 6px 28px;
+    }
+    #hnz-product-1 .geo-toggle .toggle span {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .spec:not(:last-child) {
+        margin-bottom: 50px;
+    }
+    #hnz-product-1 .spec-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-1 .spec-body {
+        font-size: 14px;
+    }
+    
+    #hnz-product-1 .payment-method .text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-1 .payment-method .method {
+        padding: 10px;
+    }
+    #hnz-product-1 .payment-method .method img {
+        width: 85%;
+    }
+
+    #hnz-product-2 {
+        background: #f8f8f8;
+    }
+    #hnz-product-2 .spec {
+        gap: 15px;
+    }
+    #hnz-product-2 .spec img {
+        /* height: 55px; */
+    }
+    #hnz-product-2 .spec .title {
+        font-size: 14px;
+    }
+    #hnz-product-2 .spec .value {
+        font-size: 16px;
+    }
+    
+    #hnz-product-3 {
+        overflow: hidden;
+    }
+    #hnz-product-3 .title {
+        font-size: 54px;
+        margin-bottom: 80px;
+    }
+    
+    #hnz-product-4 .service {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 60px;
+    }
+    #hnz-product-4 .service img {
+        height: 75px;
+    }
+    #hnz-product-4 .service .title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-4 .service .body {
+        font-size: 16px;
+    }
+    
+    #hnz-product-5 .title {
+        font-size: 54px;
+        margin-bottom: 80px;
+    }
+    #hnz-product-5 .box {
+        border-radius: 20px;
+        padding: 60px 40px;
+    }
+    #hnz-product-5 .box img {
+        width: 100%;
+    }
+    #hnz-product-5 .box .box-title {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    
+    #hnz-product-6 .title {
+        font-size: 54px;
+        margin-bottom: 80px;
+    }
+    #hnz-product-6 .hozscroll {
+        padding-bottom: 0;
+        overflow-y: visible;
+    }
+    #hnz-product-6 .compare .row {
+        margin-top: 70px;
+        margin-bottom: 70px;
+    }
+    #hnz-product-6 .compare .row > * {
+        text-align: center;
+    }
+    #hnz-product-6 .compare img {
+        width: 80%;
+    }
+    #hnz-product-6 .compare .product-title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .description {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .price {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    #hnz-product-6 .compare .variant-colors {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    #hnz-product-6 .compare .variant-colors li span {
+        height: 22px !important;
+        width: 22px !important;
+    }
+    #hnz-product-6 .compare .sizes {
+        font-size: 26px;
+    }
+    #hnz-product-6 .compare .value {
+        font-size: 16px;
+        width: 60%;
+    }
+    #hnz-product-6 .compare .icon {
+        width: 80px;
+        margin-bottom: 15px;
+    }
+    
+    #hnz-product-8 .title {
+        font-size: 54px;
+        margin-bottom: 80px;
+    }
+    #hnz-product-8 .accordion-button {
+        font-size: 18px;
+        padding: 30px 0;
+        padding-right: 20px;
+    }
+    #hnz-product-8 .accordion-button::after {
+        font-size: 18px;
+    }
+    #hnz-product-8 .accordion-body {
+        padding: 0 0 30px;
+        font-size: 16px;
+    }
+}
+
+// 主图放大相关
+.gallery-viewer-modal.modal {
+  z-index: 10000;
+}
+.gallery-viewer-modal .modal__window {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  overflow: hidden;
+}
+.gallery-viewer-modal .modal__content {
+  padding: 0;
+}
+.gallery-viewer-modal .modal__close-btn {
+  z-index: 3;
+}
+
+.gallery-viewer {
+  display: block;
+  position: relative;
+  height: 100%;
+}
+
+.gallery-viewer__zoom-container {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-in;
+}
+
+.gallery-viewer__zoom-container--loading::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 20px / 2);
+  left: calc(50% - 20px / 2);
+  width: 20px;
+  height: 20px;
+  animation: galleryViewerSpinner 1s linear infinite;
+  border: 1px solid transparent;
+  border-radius: 100%;
+  border-left-color: currentColor;
+  opacity: 0.75;
+}
+
+@keyframes galleryViewerSpinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.gallery-viewer__zoom-image {
+  position: absolute;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+}
+
+.gallery-viewer__thumbs {
+  position: absolute;
+  z-index: 2;
+  bottom: 20px;
+  left: 10px;
+  width: calc(100% - 10px);
+  padding-right: 10px;
+  overflow: auto;
+  line-height: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+.gallery-viewer__thumb img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+@media (max-width: 600px) {
+  .gallery-viewer__thumbs {
+    bottom: 10px;
+  }
+}
+
+.gallery-viewer__thumb {
+  display: inline-block;
+  width: 69px;
+  padding: 4px;
+  background: #fff;
+}
+.gallery-viewer__thumb[hidden] {
+  display: none;
+}
+.gallery-viewer__thumb:not(:first-child) {
+  margin-left: -4px;
+}
+@media (max-width: 600px) {
+  .gallery-viewer__thumb {
+    width: 60px;
+  }
+}
+
+.gallery-viewer__thumb--active {
+  position: relative;
+}
+.gallery-viewer__thumb--active::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  height: 3px;
+  background: #000;
+}
+
+.gallery-viewer__controls {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  pointer-events: none;
+}
+
+.gallery-viewer__button {
+  position: absolute;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #000;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.gallery-viewer__button svg {
+  width: 34px;
+  height: 34px;
+  stroke-width: 1;
+}
+.gallery-viewer__button .feather {
+  stroke: #000;
+}
+@media (max-width: 600px) {
+  .gallery-viewer__button svg {
+    width: 26px;
+    height: 26px;
+    stroke-width: 1.4;
+  }
+}
+
+.gallery-viewer__close {
+  top: 0;
+  right: 0;
+}
+
+.gallery-viewer__prev,
+.gallery-viewer__next {
+  top: calc(50% - 17px);
+}
+@media (max-width: 600px) {
+  .gallery-viewer__prev,
+.gallery-viewer__next {
+    top: calc(50% - 13px);
+  }
+}
+
+.gallery-viewer__prev {
+  left: 45px;
+}
+[dir=rtl] .gallery-viewer__prev {
+  left: auto;
+  right: 0;
+}
+
+.gallery-viewer__next {
+  right: 45px;
+}
+[dir=rtl] .gallery-viewer__next {
+  left: 0;
+  right: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .gallery-viewer__prev {
+    left: 0;
+  }
+  .gallery-viewer__next {
+    right: 0;
+  }
+}
+
+.gallery-viewer--single-image .gallery-viewer__prev,
+.gallery-viewer--single-image .gallery-viewer__next,
+.gallery-viewer--single-image .gallery-viewer__thumbs {
+  display: none;
+}
+
+
+.modal {
+  visibility: hidden;
+  z-index: 8002;
+  transition: visibility 0s 0.4s, background-color 0.3s ease 0.1s;
+  background-color: rgba(var(--modal-overlay-color)/0);
+}
+.modal[open], [open]:not(.is-closing) .modal {
+  visibility: visible;
+  transition-delay: 0s;
+  background-color: rgba(var(--modal-overlay-color)/var(--modal-overlay-opacity));
+  background-color: #ffffff;
+}
+
+.modal__window {
+  width: 100%;
+  max-width: 800px;
+  min-height: 240px;
+  max-height: calc(var(--viewport-height) - var(--gutter) * 2);
+  margin: var(--gutter);
+  overflow: auto;
+  transform: scale(0.8);
+  transition: transform 0.15s ease-in 0s, opacity 0.15s 0s;
+  border-radius: var(--modal-border-radius);
+  opacity: 0;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+[open]:not(.is-closing) .modal__window {
+  transform: scale(1);
+  transition: transform 0.15s ease-out 0.1s, opacity 0.15s 0.1s;
+  opacity: 1;
+}
+
+.modal__close-btn {
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  border-radius: var(--btn-border-radius);
+  background-color: inherit;
+  color: currentColor;
+}
+
+.modal__content {
+  padding: 64px var(--gutter) var(--gutter);
+}
+
+.modal__image {
+  flex: 0 0 50%;
+  max-width: 360px;
+}
+
+@media (--sm-up) {
+  .modal__window {
+    width: auto;
+    min-width: 480px;
+  }
+}
+@media (--md-down) {
+  .modal .rte table {
+    width: auto;
+    margin-right: calc(var(--gutter) * -1);
+    margin-left: calc(var(--gutter) * -1);
+  }
+}
+@media (--md-up) {
+  .modal__content {
+    padding: 64px var(--gutter) var(--gutter);
+  }
+}
+.modal {
+  transition: visibility 0s 0.4s, background-color 0.3s ease 0.1s;
+}
+
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.w-full {
+    width: 100%;
+}
+.h-full {
+    height: 100%;
+}
+.flex {
+    display: flex;
+}
+.top-0 {
+    top: 0;
+}
+.left-0 {
+    left: 0;
+}
+.fixed {
+    position: fixed;
+}
+.klana-message {
+    margin-bottom: 15px;
+    border: 1px solid #E7E7E7;
+}

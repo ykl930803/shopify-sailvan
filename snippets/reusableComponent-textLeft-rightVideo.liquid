@@ -1,0 +1,23 @@
+<section id="shopify-section--{{ section.id }}" class="letfText-imageRight">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5 col-md-12 left-headingTextWrapper">
+                {%- if section.settings.heading_tags != blank -%}
+                    <div class="left-headingText">
+                       {{ section.settings.heading_tags }}{{ section.settings.left_headingText }}
+                    </div>
+                    <div class="left-paragraph">
+                        {{ section.settings.left_paragraph }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-xl-8 col-lg-7 col-md-12 video-wrapper">
+                {%- if section.settings.heading_tags != blank -%}
+                    <div class="video-innerWrapper">
+                        {{ section.settings.video | video_tag: controls: false, autoplay: true, loop: true }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

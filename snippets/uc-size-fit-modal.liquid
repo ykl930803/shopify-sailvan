@@ -1,0 +1,70 @@
+{% assign data =  product.metafields.custom.size_fit.value %}
+<div class="mdl-container" data-id="size-fit">
+  <div class="mdl">
+    <div class="mdl-header-mobile d-lg-none d-md-flex d-sm-flex">
+      <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Mobile-Logo.png?v=1712901571">
+      <span class="mdl-close close">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
+    </div>
+    <div class="mdl-header d-lg-flex d-md-none d-sm-none">
+      <h6 class="mdl-title">Size & Fit</h6>
+      <span class="mdl-close close">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
+    </div>
+    <div class="mdl-body">
+      <div class="row d-lg-none d-md-flex d-sm-flex">
+        <div class="col-12 text-center mb-4">
+          <h6 class="mdl-title">Size & Fit</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="geo-toggle">
+            {% comment %} {% assign max_index = data.title | size %} {% endcomment %}
+            {% for size in data.title %}
+              {% comment %} {% assign size = data.title | slice: i | first %} {% endcomment %}
+              <div class="toggle{% if forloop.first == true%} active{% endif %}">
+                {{ size.size_name }}
+                <br>
+                <span>{{ size.size_des }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center uc-size-content">
+        <div class="col-lg-4 col-md-12 col-sm-12 uc-size-text">
+          <table>
+            <tbody>
+              {% for desc in data.detail_list %}
+                <tr>
+                  <td style="font-weight:600;color:#000000;">{{ desc.num }}</td>
+                  <td style="font-weight:600;color:#000000;">{{ desc.name }}</td>
+                  {% assign max_index = desc.value | size %}
+                  {% for det in desc.value %}
+                    <td style="color:#000000;" class="value-cell text-center{% if forloop.first != true %} hide{% endif %}">{{ det }}</td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-lg-8 col-md-12 col-sm-12 uc-size-image">
+          <img src="{{ data.image }}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  @media (max-width: 767px) {
+    .uc-size-content .uc-size-text {
+      order: 2;
+    }
+    .uc-size-content .uc-size-image {
+      order: 1;
+    }
+  }
+</style>

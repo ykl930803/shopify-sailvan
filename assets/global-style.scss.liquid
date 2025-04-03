@@ -1,0 +1,199 @@
+/* Theme styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+body:not( :has(.gps)) {
+  background-color: {{ settings.bg }};
+  font-family: 'Montserrat'
+  , sans-serif;
+
+  /* paragraph */
+  p,
+  span {
+    font-family: 'Montserrat'
+    , sans-serif;
+    font-size: 16px;
+    color: {{ settings.text_color }};
+    font-weight: 400;
+  }
+
+  /* Headings */
+  h1 {
+    font-size: 60px;
+    font-family: 'Montserrat'
+    , sans-serif;
+    line-height: 53px;
+    color: #333333;
+  }
+  h2 {
+    font-family: 'Montserrat'
+    , sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #333333;
+  }
+  h4 {
+    color: #333333;
+    font-size: 29px;
+    line-height: 41px;
+  }
+  h5 {
+    color: #333333;
+    font-weight: 600;
+  }
+  h6 {
+    color: #333333;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  /* buttons */
+  .btn {
+    border-radius: 24px;
+    padding: 11px 29px;
+    font-family: 'Montserrat'
+    , sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .btn-light {
+    color: #1A1A1A;
+  }
+  .btn-dark {
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+
+  /* Tracking form for track orders page */
+  #as-root {
+    display: table;
+    margin: auto;
+  }
+  #as-root .as-track-button ._innerContainer_sgm6c_19,
+  #as-root .as-track-button ._innerContainer_sgm6c_19 iframe#track-button0 {
+    max-width: 100% !important;
+  }
+
+  /* Hide currency widget */
+  .locale-selectors__container {
+    display: none !important;
+  }
+}
+.jdgm-star {
+  font-family: 'JudgemeStar' !important;
+}
+
+.van--gallery-nav-buttons .navigation-button::after {
+  background-image: url('{{'gallery-arrow.svg' | asset_url}}');
+}
+
+/* Image HotSpot */
+.iactiveImg {
+  max-width: 900px;
+  display: table;
+  margin: auto;
+}
+.iactiveImg .pointBoxDesc {
+  font-size: 14px;
+  line-height: 1.3em;
+}
+.iactiveImg img {
+  border-radius: 20px;
+}
+.iactiveImg .pointBox {
+  border-radius: 20px 20px;
+  padding: 10px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+}
+.iactiveImg .pointBoxTxt {
+  padding: 20px 10px 15px;
+}
+.iactiveImg .pointBoxTitle {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 17px;
+}
+.iactiveImg .pointBoxCloseIcon:hover {
+  opacity: 1 !important;
+}
+
+
+/* responsive */
+@media only screen and (min-width: 992px) and(max-width: 1199px) {
+  body {
+    h2 {
+      font-size: 40px;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  body {
+    h2 {
+      font-size: 40px;
+    }
+  }
+  .container,
+  .container-md,
+  .container-sm {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 991px) {
+  .jdgm-widget.jdgm-review-widget .jdgm-rev-widg__summary {
+    text-align: left;
+  }
+  .jdgm-histogram.jdgm-temp-hidden {
+    text-align: left;
+    margin: 18px 0 50px;
+  }
+  .jdgm-widget-actions-wrapper {
+    text-align: left !important;
+  }
+  #judgeme_product_reviews,
+  .jdgm-rev-widg__actions {
+    padding: 0 !important;
+  }
+  .jdgm-rev-widg {
+    padding-bottom: 0 !important;
+  }
+  .jdgm-rev-widg {
+    padding: 24px 0 !important;
+  }
+  .jdgm-widget.jdgm-review-widget .jdgm-widget-actions-wrapper a {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    h1 {
+      font-size: 36px;
+      line-height: 45px;
+    }
+    h2 {
+      font-size: 30px;
+    }
+    h4 {
+      font-size: 20px;
+      line-height: 30px;
+    }
+    section {
+      padding: 50px 0 !important;
+    }
+    .container,
+    .container-md,
+    .container-sm {
+      max-width: 700px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    h1 {
+      line-height: 37px;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+<div class="card product-item ">
+    {% if product.compare_at_price > product.price %}
+        <span class="vanpowers-badge-sale badge position-absolute">Sale</span>
+    {% endif %}
+    <div class="card-img-wrapper">  
+        {% if product.variants.size > 1 %}
+            {% for variant in product.variants limit:1 %}
+                <div class="card-image variant-img-item">
+                    <a href="{{ product.url }}">
+                        <img src="{{ variant.image | product_img_url: 'master' }}" 
+                        width="400" 
+                        height="auto"
+                        class="img-fluid img-fluid-collection" 
+                        alt="{{ product.title }}" />
+                    </a>
+                </div>
+            {% endfor %}
+        {%else%}
+            <div class="card-image">
+              <a href="{{ product.url }}">
+                <img src="{{ product.featured_image | product_img_url: 'master' }}" 
+                    width="400" 
+                    height="auto"
+                    class="img-fluid img-fluid-collection" 
+                    alt="{{ product.title }}" />
+              </a>
+            </div>
+        {%endif%}
+    </div>
+    <div class="card-body">
+        {% if product.variants.size > 1 %}
+            {% comment %} <div class="variant-colors-wrapper">
+                {% render 'product-variant-colors', product: product %}
+            </div> {% endcomment %}
+        {% endif %}
+        
+        <h5 class="card-title p-name"><a href="{{ product.url }}">{{product.title}} </a></h5>
+        {% comment %}Start automatically added Judge.me widget{% endcomment %}
+        {% comment %} {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: true, product: product %} {% endcomment %}
+        {% comment %}End automatically added Judge.me widget{% endcomment %} 
+        {% assign product_shortDescription = product.metafields.custom.product_short_description %}
+        {% if product_shortDescription %}
+            <p class="card-text">{{ product_shortDescription }}</p>
+        {% endif %}
+    </div>
+    <div class="card-footer">
+        <div class="price-box">
+            {% for variant in product.variants limit:1 %}
+                {% if variant.compare_at_price and  variant.compare_at_price != variant.price %}
+                   <div class="money-wrapper"><span class="discounted-price" id="discounted_price">{{ variant.price | money }}</span> <span class="original-price" id="original_price"><s>{{ variant.compare_at_price | money }}</s></span></div>
+                {%else%}
+                    <div class="money-wrapper"><span class="price">{{ variant.price | money }}</span></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <a href="{{product.url}}" class="btn-s vanpowers-btn-dark">Shop Now</a>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<section id="shopify-section--{{ section.id }}" class="threeColumnsIcon-withText">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="threeColumn-wrapper">
+                    {%- for block in section.blocks -%}
+                        <div class="threeColumnIcon-item">
+                            {%- if block.settings.threeColumn_icon != blank -%}
+                                <div class="threeColumn-icon mb-3">
+                                    {{ block.settings.threeColumn_icon | image_url: width: 68 | image_tag: srcset: nil }}
+                                </div>
+                            {% endif %}
+
+                            {%- if block.settings.threeColumn_text != blank -%}
+                                <div class="threeColumn-text">
+                                    {{ block.settings.threeColumn_text }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {%- endfor -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

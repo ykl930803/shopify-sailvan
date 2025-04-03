@@ -1,0 +1,32 @@
+<section id="hnz-product-5">
+    <div class="container section-content">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title">
+                    {{ product.metafields.custom.what_s_in_the_box.value.title }}
+                </h2>
+            </div>
+
+            <div class="col-12">
+                <div class="box">
+                    <div class="row">
+                        {% for block in product.metafields.custom.what_s_in_the_box.value.list %}
+                            <div class="col-lg-3 col-md-4 col-sm-6 text-center">
+                                <img src="{{ block.image }}">
+                                <h5 class="box-title">
+                                    {{ block.title }}
+                                </h5>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% schema %}
+  {
+    "presets": [{"name": "In the box"}]
+  }
+  {% endschema %}

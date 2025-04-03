@@ -1,0 +1,258 @@
+<section class="{{section.id}} highlights-section  overflow-hidden">
+	<div class="container container-panel">
+		<div class="section-title">
+			<h1 class="fw-bold">{{section.settings.title}}</h1>
+		</div>
+	</div>
+	<div class="container container-panel highlights-slider position-relative">
+        <div class="swiper-container d-flex highlights-innerSlider position-absolute ">
+            <div class="swiper-wrapper">
+                {% for slide in section.blocks %}
+                <div class="swiper-slide">
+                    {%if slide.settings.image !=blank %}
+                    {{ slide.settings.image | image_url: width: 1325 | image_tag: srcset: nil }}
+                    {%endif%}
+                    <h4 class="fw-bold">{{slide.settings.title}}</h4>
+                    <p class="p-medium">{{slide.settings.subtitle}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="swiper-navigations d-none d-lg-block">
+            <div class="swiper-button-prev navigation-button"></div>
+            <div class="swiper-button-next navigation-button"></div>
+        </div>
+        <div class="swiper-pagination position-absolute bottom-0"></div>
+	</div>
+</section>
+  
+<style>
+	
+	.highlights-section{
+        padding-top:  {{section.settings.section_paddingTop}}px;
+        padding-bottom: {{section.settings.section_paddingBottom}}px;
+        .highlights-slider{
+            padding-top: 20px 
+        }
+        .swiper-container{
+            padding-top: 39px;
+        }
+        .swiper-slide {
+            img{
+                height: auto;
+                width: 100%;
+                border-radius: 37px;
+                margin-bottom: 38px;
+            }
+        }
+        .swiper-navigations {
+            top: 50%;
+            .navigation-button {
+                color: #333;
+                border: 1px solid #DADADA;
+                border-radius: 50px;
+                width: 44px;
+                height: 44px;
+                transition: 0.4s ease;
+                background-color: #fff;
+        
+                &::after {
+                    font-size: 13px;
+                    transition: 0.4s ease;
+                    -webkit-text-stroke-width: 1px;
+                }
+            }
+            .swiper-button-next {
+                right: 0px;
+        
+                &::after {
+                    margin-left: 3px;
+                    background-image: url('{{'navigation-arrow.png' | asset_url}}');
+                    font-size: 0;
+                    width: 18px;
+                    height: 18px;
+                    display: block;
+                    background-size: cover;
+                    background-position: center center;
+                }
+            }
+            .swiper-button-prev {
+                left: -40px;
+        
+                &::after {
+                    margin-right: 3px;
+                    background-image: url('{{'navigation-arrow.png' | asset_url}}');
+                    font-size: 0;
+                    width: 18px;
+                    height: 18px;
+                    display: block;
+                    background-size: cover;
+                    background-position: center center;
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        .swiper-pagination{
+           
+            gap: 18px;
+            display: flex;
+            background: #F8F8F8;
+            padding: 31px;
+            border-radius: 31px;
+            .swiper-pagination-bullet{
+                background: #707073;
+                opacity: 1;
+            }
+            .swiper-pagination-bullet-active{
+                width: 54px;
+                border-radius: 31px;
+            }
+
+        }
+	}
+    @media (max-width: 768px){
+        .highlights-section .highlights-slider{
+            height: 420px;
+        }
+    }
+    @media (max-width: 767px){
+        .highlights-slider {
+            padding-top: 0 !important;
+        }
+        .highlights-innerSlider {
+            padding-top: 30px !important;
+        }
+        .highlights-slider .swiper-slide img {
+            object-fit: cover;
+            height: 200px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .highlights-slider .swiper-slide h4 {
+            font-size: 18px;
+        }
+    }
+    @media (min-width: 1024px) and (orientation: landscape) {
+        .highlights-section{
+            .highlights-slider{
+                height: 745px;
+            }
+            .swiper-navigations
+            .swiper-button-next{
+                right: 65px;
+            }
+            .swiper-pagination{
+                padding: 20px;
+            }
+        }
+    }
+      @media (min-width: 1600px){
+        .highlights-section{
+            .highlights-slider{
+                height: 915px;
+            }
+            .swiper-navigations
+            .swiper-button-next{
+                right: 0px;
+            }
+            .swiper-pagination{
+                padding: 31px;
+            }
+        }
+    }
+	
+</style>
+{% javascript %}
+	   
+    // swiper js
+    document.addEventListener('DOMContentLoaded', function() {  
+        return new Swiper('.highlights-innerSlider', {
+            direction: 'horizontal',
+            speed: 1000,
+            spaceBetween: 100,
+            autoplay: false,
+            navigation: {
+                nextEl: '.highlights-slider .swiper-button-next',
+                prevEl: '.highlights-slider .swiper-button-prev',
+            },
+          
+            pagination: {
+                el: '.highlights-slider .swiper-pagination',
+                clickable: true,
+                type: 'bullets'
+            },
+
+            breakpoints: {
+                200: { width: 300, spaceBetween: 20, },
+                768: { width: 500 , spaceBetween: 30},
+                1024: { width: 900, spaceBetween: 50 },
+                1280: { width: 1100 , spaceBetween: 70},
+                1536: { width: 1100, spaceBetween: 70 },
+                1600: { width: 1325, spaceBetween: 100 },
+                1920: { width: 1325, spaceBetween: 100 },
+            }
+        });
+        
+    });
+	
+  
+
+{%endjavascript%}
+	
+	
+{%- schema -%}
+	{
+	  "name": "Highlights",
+	  "tag": "div",
+	  "class": "shopify--highlights-section",
+	  "settings": [
+		{
+			"type": "text",
+			"label": "title",
+			"id": "title"
+		},
+        {
+            "type": "number",
+            "id": "section_paddingTop",
+            "label": "Section Padding Top",
+            "default": 100
+        },
+        {
+            "type": "number",
+            "id": "section_paddingBottom",
+            "label": "Section Padding Bottom",
+            "default": 100
+        }
+	  ],
+	
+	   "blocks": [
+		 {
+		   "name": "Slide",
+		   "type": "slide",
+		   "settings": [
+			{
+				"type": "image_picker",
+				"label": "Image",
+				"id": "image"
+			},
+			{
+			   "type": "text",
+			   "id": "title",
+			   "label": "Title"
+			 },
+             {
+			   "type": "text",
+			   "id": "subtitle",
+			   "label": "Sub Title"
+			 }
+		   ]
+		 }
+	  ],
+	  "presets": [
+		{
+		  "name": "Highlights"
+		}
+	  ]
+	}
+{%- endschema -%}
+	

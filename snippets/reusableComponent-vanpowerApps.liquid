@@ -1,0 +1,9 @@
+<section  id="{%- if section.settings.section_id != blank -%}custom-{{ section.settings.section_id }}{% else %}shopify-section--{{ section.id }}{% endif %}" class="vanpower-apps">
+    {%- if section.settings.section_title != blank -%}
+        <div class="app-title text-center">{{ section.settings.section_headingTags }}{{ section.settings.section_title }}</div>
+    {% endif %}
+
+    {%- for block in section.blocks -%}
+      {% render block %}
+    {%- endfor -%}
+</section>

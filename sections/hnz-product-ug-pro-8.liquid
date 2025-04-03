@@ -1,0 +1,81 @@
+<section id="hnz-product-8" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+        <div class="row">
+
+            <div class="col-12">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                </h2>
+            </div>
+
+            <div class="col-12">
+                <div class="accordion" id="accordion-faq">
+
+                    {% assign counter = 1 %}
+
+                    {% for block in section.blocks %}
+
+                        {% assign counter = counter | plus: 1 %}
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-{{ counter }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-{{ counter }}" aria-expanded="false" aria-controls="collapse-{{ counter }}">
+
+                                    {{ block.settings.title }}
+
+                                </button>
+                            </h2>
+                            <div id="collapse-{{ counter }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ counter }}" data-bs-parent="#accordion-faq">
+                                <div class="accordion-body">
+
+                                    {{ block.settings.answer | newline_to_br }}
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Product Section 8",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "text",
+                "name": "FAQ",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Question"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "answer",
+                        "label": "Answer"
+                    }
+                ]
+            }
+        ],
+      "presets": [{"name": "FAQ Section"}]
+    }
+{% endschema %}

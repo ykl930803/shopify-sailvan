@@ -1,0 +1,51 @@
+<style>
+    .hnz-recently-viewed .container {
+        max-width: 1570px;
+    }
+</style>
+
+<section id="hnz-ug-ultra-15" class="hnz-recently-viewed" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+        <div class="row">
+
+            <div class="col-12">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                </h2>
+            </div>
+            <div class="col-12 mx-auto position-relative">
+                <div class="owl-carousel">
+                    
+                </div>
+                <div class="float-nav d-lg-block d-md-none d-sm-none">
+                    <button type="button" role="presentation" class="owl-prev" disabled>
+                        <i class="fa-solid fa-arrow-left-long"></i>
+                    </button>
+                    <button type="button" role="presentation" class="owl-next">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Recently Viewed Products",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            }
+        ]
+    }
+{% endschema %}

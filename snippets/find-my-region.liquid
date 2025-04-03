@@ -1,0 +1,128 @@
+{% assign domain_url = shop.domain | prepend: "https://"%}
+
+{% style %}
+.find-my-region-content .button{
+    margin-top: 14px; 
+}
+
+.region-items-wrapper{
+    width: 300px;
+    margin-top: 20px !important;
+    border: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16); /* Horizontal offset, vertical offset, blur radius, color with opacity */
+
+}
+.region-list{
+    border: 1px solid #dadada;
+    border-radius: 5px;
+}
+.region-list .current{
+    padding: 12px 14px;
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.region-list .dropdown-item:focus,.region-list .dropdown-item:active{
+    background: none;
+}
+.region-list .dropdown-item:hover .region-text span {
+    font-weight: 600;
+}
+.region-list .current:after{
+    margin-left: auto;
+}
+.region-list-items{
+    width: 100%;
+    padding: 0;
+    background: white;
+    border: 1px solid #dadada;
+    border-top: 0;
+}
+.region-list-items .dropdown-item{
+    --bs-dropdown-item-padding-x: 14px;
+    --bs-dropdown-item-padding-y : 12px;
+}
+.region-item{
+    gap: 14px;
+    align-items: center;
+    text-decoration: none;
+    row-gap: 10px;
+}
+{% endstyle %}
+
+<h5 class="find-my-region-title v-medium">Find My Region</h5>
+<div class="find-my-region-content py-3 position-relative">
+     <div class="region-list dropdown">
+        <a class="dropdown-item dropdown-toggle current" href="#" id="regionSelected" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img id="currentRegionIcon" class="region-icon img-fluid" width="35" height="35" style="border-radius: 24px" src="//vanpowers-bike.myshopify.com/cdn/shop/files/icon-us.png?v=1709285602">
+            <span id="currentRegionText" class="v-large fw-bold">United States</span>
+        </a>
+        <ul class="region-list-items dropdown-menu" aria-labelledby="regionSelected">
+           {% for block in blocks %}
+                {% assign domain_url_without_www = domain_url | replace: 'https://www.', 'https://' %}
+                {% assign language_url_without_www = block.settings.language_url | replace: 'https://www.', 'https://' %}
+                {% if block.type == "language_item"%}
+                        {% assign current=false%}
+                    {% if language_url_without_www == domain_url_without_www  %}
+                        {% assign current=true%}
+                    {% endif %}
+                   
+                <li class="dropdown-item region-item d-flex" role="button" data-current-language="{{current}}" data-language-url="{{block.settings.language_url}}">
+                    <img class="region-icon img-fluid" width="35" height="35" style="border-radius: 24px" src="{{ block.settings.language_icon | img_url:'master' }}" />
+                    <div class="region-text">
+                        <span class="v-medium">{{ block.settings.language_name }}</span>
+                    </div>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="button text-center">
+        <button type="button"  id="btnSetRegion" class="btn btn-dark w-100">Save</button>
+    </div>
+</div>
+
+<script>
+  // Prevent parent dropdown from closing when clicking on nested dropdown toggle
+  document.querySelector('.region-list').addEventListener('click', function(event) {
+    event.stopPropagation();
+  });
+    // Get the region list dropdown items
+    var dropdownItems = document.querySelectorAll('.region-item');
+    var regionElement = document.getElementById('regionSelected');
+
+    // Add click event listener to each dropdown item
+    dropdownItems.forEach(function(item) {
+        item.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action
+
+            // Get the text and icon of the clicked dropdown item
+            var regionText = item.querySelector('.region-text .v-medium').textContent;
+            var regionIconSrc = item.querySelector('.region-icon').src;
+
+            // Update the current region text and icon
+            var currentRegionText = document.getElementById('currentRegionText');
+            var currentRegionIcon = document.getElementById('currentRegionIcon');
+            currentRegionText.textContent = regionText;
+            currentRegionIcon.src = regionIconSrc;
+            var languageUrl = item.getAttribute('data-language-url');
+
+            regionElement.href = languageUrl;
+
+            // Hide the region list
+            var regionList = document.querySelector('.region-list-items');
+            regionList.classList.remove('show');
+        });
+    });
+    var saveButton = document.getElementById('btnSetRegion');
+
+    // Add click event listener to the "Save" button
+    saveButton.addEventListener('click', function() {
+        var activeLanguageItem = document.getElementById('regionSelected');
+        var activeLanguageUrl = activeLanguageItem.getAttribute('data-language-url');
+        var activeLanguageUrl = regionElement.getAttribute('href');
+
+        window.open(activeLanguageUrl, '_blank');
+    });
+</script>

@@ -1,0 +1,57 @@
+<section id="shopify-section--{{ section.id }}" class="partnersTestimonial-carousel">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="partners-testimony">
+                    <div class="swiper-wrapper">
+                        {%- for block in section.blocks -%}
+                            {%- if block.settings.testimonial_paragraph != blank -%}
+                                <div class="testimonyTexts-item swiper-slide d-table mx-auto text-center">
+                                    <div class="swiper-slide-container">
+                                        <div class="testimony-texts position-relative">
+                                            <div class="static-quote quote-before">
+                                                <img src="{{'quotes.png' | asset_url}}" alt="double-quotes">
+                                            </div>
+                                            
+
+                                            <h4>{{ block.settings.testimonial_paragraph }}</h4>
+
+                                            <div class="static-quote quote-after">
+                                                <img src="{{'quotes.png' | asset_url}}" alt="double-quotes">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {%- endfor -%}
+                    </div>
+                </div>
+                
+                <div class="partnerLogos-wrapper d-flex flex-direction-column">
+                    <div class="partner-logos d-flex align-items-center pt-5">
+                        <div class="swiper-wrapper">
+                            {%- for block in section.blocks -%}
+                                {%- if block.settings.partner_logo != blank -%}
+                                    <div class="swiper-slide logo-item d-flex justify-content-center">
+                                        <div class="swiper-slide-container">
+                                            {% assign image_object = block.settings.partner_logo %}
+                                            {% assign alt_text = image_object.alt | default: "Partner Logo" %}
+                                            <img 
+                                                src="{{ block.settings.partner_logo | img_url: 'master' }}" 
+                                                alt="{{ alt_text | escape }}" 
+                                                {%- if block.settings.enable_width != blank -%}
+                                                    style="width: {{ block.settings.logo_width }}px;"
+                                                {% endif %}
+                                            >
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {%- endfor -%}
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>

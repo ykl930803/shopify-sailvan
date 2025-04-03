@@ -1,0 +1,91 @@
+<div class="image-swiper">
+  <h1 class="title">{{ section.settings.title }}</h1>
+  <div class="swiper swiper-action">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide"><img src="{{ block.settings.image | image_url }}" width="100%" height=""></div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<style>
+  .image-swiper {
+    background: rgb({{section.settings.bg_color.rgb}});
+    padding: 3vw 0;
+  }
+  .image-swiper .title {
+    color: #ffffff;
+    font-size: 46px;
+    margin-bottom: 3vw;
+    text-align: center;
+  }
+  .image-swiper .swiper {
+    height: 400px;
+  }
+  .image-swiper .swiper-wrapper {
+    height: 100%;
+    display: flex;
+  }
+  @media screen and (max-width:480px) {
+     .image-swiper .swiper {
+      height: 300px;
+    }
+    .image-swiper .title {
+      font-size: 30px;
+    }
+  }
+</style>
+<script>
+  (function() {
+    $(document).ready(function() {
+   const swiper = new Swiper('.swiper-action', {
+        slidesPerView: 1.5,
+      spaceBetween: 12,
+      speed: 7000,
+      loop: true,
+      autoplay: {
+        delay: 0,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      	},
+      breakpoints: {
+        750: {
+          slidesPerView: 2.5,
+          spaceBetween: 12,
+        },
+        1024: {
+          slidesPerView: 3.5,
+          spaceBetween: 16,
+        },
+      }
+      })
+    })
+  })()
+</script>
+{% schema %}
+{
+  "name": "previous action",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background"
+    }
+  ],
+  "blocks": [{
+    "type": "image",
+    "name": "Image",
+    "settings": [{
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }]
+  }],
+  "presets": [{"name": "previous action"}]
+}
+{% endschema %}

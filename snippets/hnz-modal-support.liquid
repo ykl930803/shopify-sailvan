@@ -1,0 +1,112 @@
+<div class="mdl-container" data-id="support">
+    <div class="mdl">
+        <div class="mdl-header-mobile d-lg-none d-md-flex d-sm-flex">
+            <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Mobile-Logo.png?v=1712901571">
+            <span class="mdl-close close">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
+        </div>
+        <div class="mdl-header d-lg-flex d-md-none d-sm-none">
+            <h6 class="mdl-title">
+                Submit A Request
+            </h6>
+            <span class="mdl-close close">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
+        </div>
+        <div class="mdl-body">
+            <div class="row d-lg-none d-md-flex d-sm-flex">
+                <div class="col-12 text-center mb-4">
+                    <h6 class="mdl-title">
+                        Submit A Request
+                    </h6>
+                </div>
+            </div>
+            {% form 'contact' %}
+                <input type="hidden" name="contact[form]" value="Vanpowers - Support">
+                <div class="row gy-3">
+                    <div class="col-12 mb-4 success-hide">
+                        <div class="form-group">
+                            <div class="alert success">
+                                Providing as much information as possible in your request will allow us to help you faster.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Tell us how can we help <span>*</span></label>
+                            <input type="text" name="contact[help]" required readonly>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Your email address <span>*</span></label>
+                            <input type="email" name="contact[email]" required>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Subject <span>*</span></label>
+                            <input type="text" name="contact[subject]" required>
+                        </div>
+                    </div>
+                    <div class="col-12 ">
+                        <div class="form-group">
+                            <label>Order Number <span>*</span></label>
+                            <input type="text" name="contact[order_number]" required>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Description <span>*</span></label>
+                            <textarea name="contact[body]" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Bike Version <span>*</span></label>
+                            <input type="text" name="contact[bike_version]" required>
+                        </div>
+                    </div>
+                    <div class="col-12 success-hide">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-modal">Submit</button>
+                        </div>
+                    </div>
+
+                    {% if form.posted_successfully? %}
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                document.querySelector('.mdl-container[data-id="support"]').style.display = 'block';
+                                document.querySelectorAll('.mdl-container .success-hide').forEach(function(element) {
+                                    element.style.display = 'none';
+                                });
+                            });
+                        </script>
+                        <div class="col-12 open-hide">
+                            <div class="form-group">
+                                <div class="alert success">
+                                    Your request has been submitted. <a class="close" href="javascript:void(0)">Close</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% elsif form.errors %}
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                document.querySelector('.mdl-container[data-id="support"]').style.display = 'block';
+                            });
+                        </script>
+                        <div class="col-12 open-hide">
+                            <div class="form-group">
+                                <div class="alert error">
+                                    There's a problem sending your request. Try again.
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                </div>
+            {% endform %}
+        </div>
+    </div>
+</div>

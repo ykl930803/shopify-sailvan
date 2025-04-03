@@ -1,0 +1,706 @@
+<div class="{{section.id}}">
+ <div class="container container-panel">
+		<div class="section-title text-center">
+			<h1>{{section.settings.heading_text}}</h1>
+		</div>
+		<nav class="mx-auto">
+			<div class="best-sale-nav-tabs nav nav-tabs" id="nav-tab" role="tablist">
+				{% for tab in section.blocks %}
+				<button class="nav-link {% if forloop.first %}active{% endif %}" id="nav-type-{{forloop.index0}}" 
+					data-bs-toggle="tab" 
+					data-bs-target="#nav-content-{{forloop.index0}}" 
+					type="button" 
+					role="tab" 
+					aria-controls="nav-content-{{forloop.index0}}" 
+					aria-selected="false">
+				<span class="h5">{{tab.settings.tablabel}}</span>
+				</button>
+				{% endfor %}
+				<a href="{{section.settings.custom_button_link}}" class="explore-link">{{section.settings.custom_button_text}}<img src="{{'enter_48x48.png '| asset_url}}" width="24" height="24" alt="enter"></a>
+			</div>
+		</nav>
+	</div>  
+	<div class="container container-panel tab-content best-sale-content" id="nav-tabContent"  tabindex="0">
+		{% for tab in section.blocks %}
+		<div class="tab-pane fade {% if forloop.first %}show active{% endif %}" 
+			id="nav-content-{{forloop.index0}}" 
+			role="tabpanel" 
+			aria-labelledby="nav-type-{{forloop.index0}}">
+			{% assign collection = tab.settings.collection %}
+			{% assign filteredProducts = collection.products %}
+		
+            <div class="swiper-container position-absolute overflow-hidden  d-flex swiper-best-sale" data-carousel-id="carousel_{{forloop.index0}}">
+              <div class="swiper-wrapper">
+                  {% assign product_count = 0 %}
+                  {% for product in filteredProducts %}
+                      {% if product_count < 6 %}
+                        <div class="swiper-slide">{%render 'product-card-grid', product: product%} </div>
+                        {% assign product_count = product_count | plus: 1 %}
+                      {% endif %}
+                  {% endfor %}
+                              </div>
+                              <div class="swiper-pagination container container-panel d-none d-lg-block"></div>
+                          </div>
+                            <div class="swiper-navigations d-none d-lg-block">
+                                <div class="swiper-button-prev navigation-button"></div>
+                                <div class="swiper-button-next navigation-button"></div>
+                            </div>
+                          </div>
+                    {%endfor%}
+        
+       
+	</div>
+</div>
+  
+<style>
+.{{section.id}} {
+  margin: 60px auto;
+  overflow: hidden;
+}
+.{{section.id}} .section-title h1 {
+  font-size: 60px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 80px;
+  padding-bottom: 30px;
+}
+.{{section.id}} .best-sale-nav-tabs {
+  gap: 75px;
+  display: flex;
+  justify-content: space-between;
+}
+.{{section.id}} .best-sale-nav-tabs button {
+  background: none;
+  border: 0;
+  padding: 0;
+  display: flex;
+  padding-top: 15px;
+  height: 90px;
+}
+.{{section.id}} .best-sale-nav-tabs button span {
+  font-size: 22px;
+  line-height: 39px;
+  color: #999;
+}
+.{{section.id}} .best-sale-nav-tabs button.nav-link.active {
+  border-bottom: 3px solid #1a1a1a;
+}
+.{{section.id}} .best-sale-nav-tabs button.nav-link.active span {
+  font-weight: bold;
+  color: #333333;
+}
+.{{section.id}} .explore-link {
+  margin-left: auto;
+  text-decoration: none;
+  color: #666;
+  margin-top: 20px;
+  font-size: 20px;
+  display: flex;
+  gap: 11px;
+  align-items: start;
+}
+.{{section.id}} .explore-link img {
+  margin-top: 3px;
+}
+.{{section.id}} .tab-content {
+  padding-top: 53px;
+  position: relative;
+  height: 708px;
+}
+.{{section.id}} .tab-content .card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.{{section.id}} .tab-content .card .vanpowers-badge-sale {
+  background: #DB1629;
+  font-size: 12px;
+  border-radius: 10px;
+  top: 29px;
+  left: 22px;
+  padding: 5px 7px;
+}
+.{{section.id}} .tab-content .card .card-img-wrapper {
+  background: #f8f8f8;
+  padding: 28px 50px;
+  width: 100%;
+  text-align: center;
+}
+.{{section.id}} .tab-content .card .card-img-wrapper .card-image {
+  height: 290px;
+  width: 100%;
+}
+.{{section.id}} .tab-content .card .card-img-wrapper .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 5px;
+}
+.{{section.id}} .tab-content .card .card-body {
+  padding: 14px 30px;
+}
+.{{section.id}} .tab-content .card .card-body .card-title {
+  --bs-card-title-spacer-y: 4px;
+}
+.{{section.id}} .tab-content .card .card-body .card-title a {
+  text-decoration: none;
+  color: #333333;
+  font-size: 20px;
+}
+.{{section.id}} .tab-content .card .card-body .variant-colors-wrapper {
+  height: 30px;
+  margin: 17px 0 13px;
+}
+.{{section.id}} .tab-content .card .card-body .card-text {
+  font-size: 12px;
+}
+.{{section.id}} .tab-content .card .jdm-review-wrapper {
+  gap: 7px;
+  align-items: center;
+}
+.{{section.id}} .tab-content .card .jdm-review-wrapper .review-count {
+  font-size: 14px;
+}
+.{{section.id}} .tab-content .card .jdgm-prev-badge {
+  display: block !important;
+}
+.{{section.id}} .tab-content .card .jdgm-prev-badge .jdgm-prev-badge__text {
+  display: none;
+}
+.{{section.id}} .tab-content .card .jdgm-preview-badge[data-template=index] {
+  display: block !important;
+  margin-bottom: 4px;
+}
+.{{section.id}} .tab-content .card .jdgm-prev-badge__text {
+  font-size: max(calc(12 / 1280 * 100vw), 12px);
+  color: #333;
+  margin-left: 4px;
+  text-decoration: underline;
+}
+.{{section.id}} .tab-content .card .jdgm-preview-badge .jdgm-star.jdgm-star {
+  font-size: max(17px, calc(12 / 1280 * 100vw));
+  color: #F0C417;
+}
+.{{section.id}} .tab-content .card .jdgm-preview-badge .jdgm-star.jdgm--off {
+  color: #333;
+}
+.{{section.id}} .tab-content .card .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 6px 20px 23px 32px;
+}
+.{{section.id}} .tab-content .card .card-footer .price-box .price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #DB1629;
+}
+.{{section.id}} .tab-content .card .card-footer .price-box .discounted-price {
+  color: #DB1629;
+  font-size: 20px;
+  font-weight: 700;
+}
+.{{section.id}} .tab-content .card .card-footer .price-box .original-price {
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
+}
+.{{section.id}} .tab-content .card .card-footer .vanpowers-btn-dark {
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 12px;
+  padding: 12px 22px;
+}
+	
+.swiper-best-sale {
+  padding-bottom: 35px;
+}
+.swiper-best-sale .swiper-slide {
+  width: 500px;
+}
+.swiper-best-sale .swiper-pagination {
+  bottom: 0px;
+  top: unset;
+  height: 7px;
+  border-radius: 5px;
+  background: none;
+}
+.swiper-best-sale .swiper-pagination .swiper-pagination-progressbar-fill {
+  --swiper-theme-color: #1a1a1a;
+  border-radius: 5px;
+}
+
+.best-sale-content .swiper-navigations .navigation-button {
+  color: #fff;
+  border: 1px solid #DADADA;
+  border-radius: 50px;
+  width: 44px;
+  height: 44px;
+  transition: 0.4s ease;
+  background-color: #fff;
+  opacity: 1;
+}
+.best-sale-content .swiper-navigations .navigation-button::after {
+  font-size: 13px;
+  transition: 0.4s ease;
+  -webkit-text-stroke-width: 1px;
+}
+.best-sale-content .swiper-navigations .navigation-button:hover {
+  background: #DB1629;
+}
+.best-sale-content .swiper-navigations .navigation-button:hover::after {
+  filter: brightness(100);
+}
+.best-sale-content .swiper-navigations .swiper-button-next {
+  right: 70px;
+}
+.best-sale-content .swiper-navigations .swiper-button-next::after {
+  margin-left: 3px;
+  background-image: url('{{'navigation-arrow.png' | asset_url}}');
+  font-size: 0;
+  width: 21px;
+  height: 21px;
+  display: block;
+  background-size: cover;
+  background-position: center center;
+}
+.best-sale-content .swiper-navigations .swiper-button-prev {
+  left: -40px;
+}
+.best-sale-content .swiper-navigations .swiper-button-prev::after {
+  margin-right: 3px;
+  background-image: url('{{'navigation-arrow.png' | asset_url}}');
+  font-size: 0;
+  width: 18px;
+  height: 18px;
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  transform: rotate(180deg);
+}
+	
+	/* FOR MOBILE PHONE */
+    @media only screen and (min-width: 0px) {
+      
+    }
+    @media only screen and (min-width: 375px) {
+    }
+    @media only screen and (min-width: 390px) {
+    }
+    @media only screen and (max-width: 414px) {
+        .best-sale-nav-tabs {
+            gap: 20px !important;
+        }
+        .best-sale-nav-tabs .nav-link .h5 {
+            font-size: 13px !important;
+            margin-bottom: 10px !important;
+        }
+        .best-sale-nav-tabs .nav-link span {
+        line-height: 1;
+        }
+        .best-sale-nav-tabs .explore-link {
+            font-size: 13px !important;
+            margin-top: 3px !important;
+            align-items: center !important;
+            gap: 5px;
+        }
+        .best-sale-nav-tabs .explore-link img {
+            margin-top: 0px;
+            width: 20px;
+            height: auto;
+        }
+    }
+    @media only screen and (min-width: 428px) {
+    }
+    @media only screen and (min-width: 480px) {
+      
+    }
+    
+	@media only screen and (max-width: 767px) {
+	    .{{section.id}} {
+            margin: 30px auto;
+            margin-bottom:0;
+        }
+        .{{section.id}} .section-title h1 {
+            font-size: 30px;
+            line-height: 1;
+        }
+        .{{section.id}} .tab-content {
+            height: 670px;
+        }
+        .{{section.id}} .tab-content .card .vanpowers-badge-sale {
+            font-size: 16px;
+            border-radius: 15px;
+            padding: 7px 16px;
+            font-weight: 600;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper {
+            padding: 28px 22px;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper .card-image {
+            height: 190px;
+            width: 100%;
+        }
+        .{{section.id}} .tab-content .card .card-body {
+            padding: 14px 22px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title {
+            --bs-card-title-spacer-y: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title a {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-body .variant-colors-wrapper {
+            height: 30px;
+            margin: 6px 0 13px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper {
+            gap: 7px;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper .review-count {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .{{section.id}} .tab-content .card .jdgm-preview-badge[data-template=index] {
+            margin-bottom: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-footer {
+            padding: 6px 20px 23px 22px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .discounted-price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .original-price {
+            font-size: 14px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .vanpowers-btn-dark {
+            font-size: 14px;
+            padding: 8px 18px;
+        }
+        .{{section.id}} .swiper-best-sale .swiper-navigations {
+            display: none;
+        }
+        .{{section.id}} .swiper-best-sale .vanpowers-btn-dark {
+            padding: 10px 20px;
+        }
+        .{{section.id}} .best-sale-nav-tabs {
+            gap: 26px;
+            justify-content: flex-start;
+        }
+        .{{section.id}} .best-sale-nav-tabs .nav-link {
+            height: auto;
+        }
+        .{{section.id}} .best-sale-nav-tabs .nav-link.active {
+            border-bottom: 3px solid #DB1629 !important;
+        }
+        .{{section.id}} .best-sale-nav-tabs .nav-link .h5 {
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        .{{section.id}} .best-sale-nav-tabs .nav-link span {
+            line-height: 1;
+        }
+        .{{section.id}} .best-sale-nav-tabs .explore-link {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 0px;
+            align-items: center;
+        }
+	}
+	 /* TABLETS  */ 
+	@media only screen and (min-width: 768px) {
+        .{{section.id}} {
+            margin: 30px auto;
+            padding-left: 20px;
+        }
+        .{{section.id}} .tab-content {
+            height: 600px;
+        }
+        .{{section.id}} .tab-content .card .vanpowers-badge-sale {
+            font-size: 10px;
+            font-weight: 600;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper {
+            padding: 28px 30px;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper .card-image {
+            height: 190px;
+            width: 100%;
+        }
+        .{{section.id}} .tab-content .card .card-body {
+            padding: 14px 30px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title {
+            --bs-card-title-spacer-y: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title a {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-body .variant-colors-wrapper {
+            height: 30px;
+            margin: 17px 0 13px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-text {
+            font-size: 12px;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper {
+            gap: 7px;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper .review-count {
+            font-size: 14px;
+        }
+        .{{section.id}} .tab-content .card .jdgm-preview-badge[data-template=index] {
+            margin-bottom: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-footer {
+            padding: 6px 20px 23px 32px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .discounted-price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .original-price {
+            font-size: 14px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .vanpowers-btn-dark {
+            font-size: 10px;
+            padding: 8px 18px;
+        }
+	}
+	
+	@media (min-width: 1024px) and (orientation: portrait) {
+        .{{section.id}} .swiper-best-sale .flex-item {
+            width: 300px;
+        }
+	}
+	 /* COMPUTERS */
+	@media (min-width: 1024px) and (orientation: landscape) {
+        .{{section.id}} {
+            margin: 50px auto;
+        }
+        .{{section.id}} .best-sale-content .swiper-navigations .navigation-button {
+            height: 35px;
+            width: 35px;
+        }
+	}
+	@media (min-width: 1280px) {
+	    .{{section.id}} {
+            margin: 50px auto;
+        }
+	}
+	@media only screen and (min-width: 1536px) {
+	    .{{section.id}} {
+            margin: 60px auto 110px auto;
+        }
+        .{{section.id}} .tab-content {
+            height: 708px;
+        }
+        .{{section.id}} .tab-content .card .vanpowers-badge-sale {
+            font-size: 12px;
+            padding: 5px 7px;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper {
+            padding: 28px 50px;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper .card-image {
+            height: 290px;
+            width: 100%;
+        }
+        .{{section.id}} .tab-content .card .card-body {
+            padding: 14px 30px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title {
+            --bs-card-title-spacer-y: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title a {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-body .variant-colors-wrapper {
+            height: 30px;
+            margin: 17px 0 13px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-text {
+            font-size: 12px;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper {
+            gap: 7px;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper .review-count {
+            font-size: 14px;
+        }
+        .{{section.id}} .tab-content .card .jdgm-preview-badge[data-template=index] {
+            margin-bottom: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-footer {
+            padding: 6px 20px 23px 32px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .discounted-price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .original-price {
+            font-size: 14px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .vanpowers-btn-dark {
+            font-size: 16px;
+            padding: 12px 22px;
+        }
+        .{{section.id}} .best-sale-content .swiper-navigations .navigation-button {
+            height: 44px;
+            width: 44px;
+        }
+	}
+	@media only screen and (min-width: 1600) {
+        .{{section.id}} {
+            margin: 60px auto;
+        }
+	}
+	@media only screen and (min-width: 1920px) {
+	    .{{section.id}} .best-sale-content .swiper-navigations .swiper-button-next {
+            right: -20px !important;
+        }
+	}
+</style>
+{% javascript %}
+	   
+    // swiper js
+    document.addEventListener('DOMContentLoaded', function() {  
+        function initializeSwiper(selector) {
+        return new Swiper(selector, {
+            direction: 'horizontal',
+            speed: 1000,
+            width: 500,
+            spaceBetween: 30,
+            autoplay: false,
+            navigation: {
+                nextEl: '.best-sale-content .swiper-button-next',
+                prevEl: '.best-sale-content .swiper-button-prev',
+            },
+            pagination: {
+                el: selector +' .swiper-pagination',
+                type: 'progressbar',
+            },
+            breakpoints: {
+                200: { width: 330, spaceBetween: 15 },
+                430: { width: 330, spaceBetween: 15 },
+                768: { width: 305 },
+                1024: { width: 330 },
+                1280: { width: 350 },
+                1536: { width: 400 },
+                1600: { width: 475 },
+                1920: { width: 500 },
+            },
+        });
+        }
+
+        function initializeSwiperForTab(tab) {
+        const carousel = tab.querySelector('.swiper-best-sale');
+        const carouselId = carousel.dataset.carouselId;
+        initializeSwiper(`[data-carousel-id="${carouselId}"]`);
+        }
+
+        function initializeSwipersForActiveTab() {
+        const activeTab = document.querySelector('.best-sale-content .tab-pane.active');
+        if (activeTab) {
+            initializeSwiperForTab(activeTab);
+        }
+        }
+
+        document.querySelectorAll('.best-sale-nav-tabs .nav-link').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.best-sale-nav-tabs .nav-link').forEach(tab => {
+            tab.classList.remove('active');
+            });
+            tab.classList.add('active');
+            initializeSwipersForActiveTab();
+        });
+        });
+
+        initializeSwipersForActiveTab();
+    
+        //toggle variant colors
+        var colorItems = document.querySelectorAll('.variant-option-block .variant-colors .variant-color-item');
+
+        colorItems.forEach(function(colorItem) {
+            colorItem.addEventListener('click', function() {
+
+            var siblings = this.parentElement.querySelectorAll('.variant-color-item');
+            siblings.forEach(function(sibling) {
+                sibling.classList.remove('on');
+            });
+
+            this.classList.add('on');
+
+            var productItem = this.closest('.product-item');
+            var imgItem = productItem.querySelector('.variant-img-item img');
+            imgItem.src = this.getAttribute('data-product-img');
+            });
+        });
+    });
+	
+{%endjavascript%}
+	
+	
+{%- schema -%}
+	{
+	  "name": "Tab Collection Items",
+	  "tag": "div",
+	  "class": "shopify--tab-collection-items",
+	  "settings": [
+		{
+			"type": "text",
+			"label": "Heading",
+			"id": "heading_text"
+		},
+		{
+			"type": "text",
+			"label": "Custom Button Text",
+			"id": "custom_button_text",
+			"default": "Explore"
+		},
+		 {
+			"type": "url",
+			"label": "Custom Button Link",
+			"id": "custom_button_link"
+		}
+	  ],
+	
+	   "blocks": [
+		 {
+		   "name": "Tab",
+		   "type": "column",
+		   "settings": [
+			{
+				"type": "collection",
+				"label": "Collection",
+				"id": "collection"
+			},
+			{
+			   "type": "text",
+			   "id": "tablabel",
+			   "label": "Tab Title"
+			 }
+		   ]
+		 }
+	  ],
+	  "presets": [
+		{
+		  "name": "Tab Collection Items"
+		}
+	  ]
+	}
+{%- endschema -%}
+	

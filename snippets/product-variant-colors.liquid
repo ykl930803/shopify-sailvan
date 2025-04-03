@@ -1,0 +1,31 @@
+{% assign index = 0 %}
+{% assign option_index  = 0 %}
+{% assign color_option_size = 0 %}
+{% for option in product.options_with_values %}
+  {% assign index = option_index | plus:1 %}
+  {% assign _option = option.name | downcase  %}
+  {% if _option == 'color' %}
+  {% assign color_option_size = option.values.size %}
+  {% assign option_index = index %}
+  {% endif %}
+{% endfor %}
+
+{% if option_index > 0 %}
+  {% assign optionKey = 'option'| append: option_index  %}
+  {% if product.variants.size > 1 %}
+  <div class="variant-option-block {% if color_option_size == 1 %} one-color {% endif %}">
+    <ul class="variant-colors">
+      {% for variant in product.variants %}
+      {% unless color contains variant[optionKey] %}
+        {% if variant[optionKey] or variant.metafields.variant.color %}
+        <li data-color="{{ variant.id }}" class="{% if forloop.index == 1%}on{% endif %} variant-color-item color-item-{{ variant.id }} {% if product.variants[0] and variant.id == product.variants[0].id  %} active {% endif %}" data-id="{{ variant.id }}"  data-product-img="{{ variant.image.src | img_url : '800x' }}" title="{{ variant[optionKey] }}">
+          <span class="variant-color-box" style="background: {%if variant.metafields.variant.color %} {{ variant.metafields.variant.color }} {%else%}{{ variant[optionKey] }} {%endif%}"></span>
+        </li> 
+        {% endif %}
+      {% endunless %}
+      {% assign color = color | append: variant[optionKey] | append: ',' %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+{% endif %}

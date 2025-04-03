@@ -1,0 +1,835 @@
+/* MOBILES ----------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 0px) {
+    #hnz-partnership-model .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-partnership-model .model {
+        padding: 30px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 54px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 18px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-support-service .service {
+        padding: 30px;
+        gap: 15px;
+    }
+    #hnz-support-service .service img {
+        height: 48px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    #hnz-text-image .body {
+        font-size: 16px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    #hnz-partnership-model .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-partnership-model .model {
+        padding: 30px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 54px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 18px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-support-service .service {
+        padding: 30px;
+        gap: 15px;
+    }
+    #hnz-support-service .service img {
+        height: 48px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    #hnz-text-image .body {
+        font-size: 16px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 390px) {
+    #hnz-partnership-model .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-partnership-model .model {
+        padding: 30px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 54px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 18px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-support-service .service {
+        padding: 30px;
+        gap: 15px;
+    }
+    #hnz-support-service .service img {
+        height: 48px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    #hnz-text-image .body {
+        font-size: 16px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    #hnz-partnership-model .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-partnership-model .model {
+        padding: 30px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 56px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 18px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-support-service .service {
+        padding: 30px;
+        gap: 15px;
+    }
+    #hnz-support-service .service img {
+        height: 50px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+    #hnz-text-image .body {
+        font-size: 16px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 428px) {
+    #hnz-partnership-model .title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-partnership-model .model {
+        padding: 30px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 56px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 18px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-support-service .service {
+        padding: 30px;
+        gap: 15px;
+    }
+    #hnz-support-service .service img {
+        height: 50px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    #hnz-text-image .body {
+        font-size: 16px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    #hnz-partnership-model .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-partnership-model .model {
+        padding: 30px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 56px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 18px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-support-service .service {
+        padding: 30px;
+        gap: 15px;
+    }
+    #hnz-support-service .service img {
+        height: 50px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    #hnz-text-image .body {
+        font-size: 16px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}
+
+/* COMPUTERS --------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 1280px) {
+    #hnz-partnership-model .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 50px;
+        --bs-gutter-y: 50px;
+    }
+    #hnz-partnership-model .model {
+        padding: 50px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 58px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 18px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-support-service .service {
+        padding: 30px 20px;
+        gap: 20px;
+    }
+    #hnz-support-service .service img {
+        height: 52px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-text-image .body {
+        font-size: 16px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    #hnz-partnership-model .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 50px;
+        --bs-gutter-y: 50px;
+    }
+    #hnz-partnership-model .model {
+        padding: 50px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 58px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 18px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-support-service .service {
+        padding: 30px 20px;
+        gap: 20px;
+    }
+    #hnz-support-service .service img {
+        height: 52px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-text-image .body {
+        font-size: 16px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    #hnz-partnership-model .title {
+        font-size: 44px;
+        margin-bottom: 40px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 50px;
+        --bs-gutter-y: 50px;
+    }
+    #hnz-partnership-model .model {
+        padding: 50px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 62px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 18px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 44px;
+        margin-bottom: 40px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-support-service .service {
+        padding: 40px 30px;
+        gap: 20px;
+    }
+    #hnz-support-service .service img {
+        height: 54px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    #hnz-text-image .body {
+        font-size: 16px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 44px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    #hnz-partnership-model .title {
+        font-size: 46px;
+        margin-bottom: 50px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 60px;
+        --bs-gutter-y: 60px;
+    }
+    #hnz-partnership-model .model {
+        padding: 60px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 66px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 20px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 46px;
+        margin-bottom: 50px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-support-service .service {
+        padding: 40px 30px;
+        gap: 20px;
+    }
+    #hnz-support-service .service img {
+        height: 58px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-text-image .body {
+        font-size: 16px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 46px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    #hnz-partnership-model .title {
+        font-size: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 60px;
+        --bs-gutter-y: 60px;
+    }
+    #hnz-partnership-model .model {
+        padding: 60px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 66px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 20px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-support-service .service {
+        padding: 40px 30px;
+        gap: 20px;
+    }
+    #hnz-support-service .service img {
+        height: 58px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-text-image .body {
+        font-size: 16px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 50px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    #hnz-partnership-model .title {
+        font-size: 54px;
+        margin-bottom: 60px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 60px;
+        --bs-gutter-y: 60px;
+    }
+    #hnz-partnership-model .model {
+        padding: 60px 80px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 70px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 22px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 54px;
+        margin-bottom: 60px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 40px;
+        --bs-gutter-y: 40px;
+    }
+    #hnz-support-service .service {
+        padding: 50px 30px;
+        gap: 20px;
+    }
+    #hnz-support-service .service img {
+        height: 62px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 38px;
+        margin-bottom: 30px;
+    }
+    #hnz-text-image .body {
+        font-size: 18px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 54px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    #hnz-partnership-model .title {
+        font-size: 54px;
+        margin-bottom: 60px;
+    }
+    #hnz-partnership-model .models-row {
+        --bs-gutter-x: 60px;
+        --bs-gutter-y: 60px;
+    }
+    #hnz-partnership-model .model {
+        padding: 60px 80px;
+    }
+    #hnz-partnership-model .model-header {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+    #hnz-partnership-model .model-header img {
+        height: 70px;
+    }
+    #hnz-partnership-model .model-header .model-text > :first-child {
+        font-size: 22px;
+    }
+
+    #hnz-support-service .title {
+        font-size: 54px;
+        margin-bottom: 60px;
+    }
+    #hnz-support-service .services-row {
+        --bs-gutter-x: 40px;
+        --bs-gutter-y: 40px;
+    }
+    #hnz-support-service .service {
+        padding: 50px 30px;
+        gap: 20px;
+    }
+    #hnz-support-service .service img {
+        height: 62px;
+    }
+    #hnz-support-service .service-title {
+        font-size: 18px;
+    }
+    #hnz-support-service .service-body {
+        font-size: 16px;
+    }
+
+    #hnz-text-image .title {
+        font-size: 38px;
+        margin-bottom: 30px;
+    }
+    #hnz-text-image .body {
+        font-size: 18px;
+    }
+
+    #hnz-dealer-form .title {
+        font-size: 54px;
+        margin-bottom: 30px;
+    }
+    #hnz-dealer-form .body {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+}

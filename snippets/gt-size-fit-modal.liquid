@@ -1,0 +1,82 @@
+<div class="mdl-container" data-id="size-fit">
+  <div class="mdl">
+    <div class="mdl-header-mobile d-lg-none d-md-flex d-sm-flex">
+      <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Mobile-Logo.png?v=1712901571">
+      <span class="mdl-close close">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
+    </div>
+    <div class="mdl-header d-lg-flex d-md-none d-sm-none">
+      <h6 class="mdl-title">Size & Fit</h6>
+      <span class="mdl-close close">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
+    </div>
+    <div class="mdl-body">
+      <div class="row d-lg-none d-md-flex d-sm-flex">
+        <div class="col-12 text-center mb-4">
+          <h6 class="mdl-title">Size & Fit</h6>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-5 col-md-12 col-sm-12 details">
+          <table>
+            <tbody>
+              {% for desc in product.metafields.custom.size_fit.value.detail_list %}
+                <tr>
+                  <td style="font-weight: 600;color:#000000;">{{ desc.num }}</td>
+                  <td style="font-weight: 600;color:#000000;">{{ desc.name }}</td>
+                  <td style="color:#000000;">{{ desc.value }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-lg-7 col-md-12 col-sm-12 image-wrapper">
+          <div class="size-btn">
+            {{ product.metafields.custom.size_fit.value.title.size_name }}
+            <br>
+            <span>{{ product.metafields.custom.size_fit.value.title.size_des }}</span>
+          </div>
+          <img src="{{product.metafields.custom.size_fit.value.image }}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #hnz-product-1 table td {
+    padding-right: 0;
+  }
+  .mdl-container .size-btn {
+    width: fit-content;
+    margin: auto;
+    background: #f8f8f8;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    padding: 6px 45px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-align: center;
+    line-height: 1.3em;
+  }
+  .mdl-container .size-btn span {
+      font-size: 12px; 
+  }
+  .desc-num, .desc-name {
+    color: #000000;
+    font-weight: 600;
+  }
+  .desc-val {
+    color: #000000;
+  }
+  @media (max-width: 767px) {
+    .mdl-container .details {
+      order: 2;
+    }
+    .mdl-container .image-wrapper {
+      order: 1;
+    }
+  }
+</style>

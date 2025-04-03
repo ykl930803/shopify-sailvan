@@ -1,0 +1,85 @@
+<div class="newsletter-container">
+  <div class="newsletter-title">{{ section.settings.title }}</div>
+  <p class="newsletter-subtitle">{{ section.settings.sub_title }}</p>
+  {% form 'customer', class: 'newsletter-input-container' %}
+    <input type="email" name="contact[email]" class="newsletter-input-field" placeholder="Enter email address" required>
+
+    <button type="submit" class="submit">SUBSCRIBE</button>
+    {%- if form.errors -%}
+      {{- form.errors.translated_fields.email | capitalize }}
+      {{ form.errors.messages.email -}}
+    {%- endif -%}
+    {%- if form.posted_successfully? -%}
+      <h3
+      >
+        Thanks for subscribing
+      </h3>
+    {%- endif -%}
+  {% endform %}
+</div>
+<style>
+  .newsletter-container {
+    width: 100%;
+    min-height: 40em;
+    background: #f3f4f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .newsletter-container .newsletter-title {
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+  }
+  .newsletter-container .newsletter-subtitle {
+    text-align: center;
+    margin-top: .5em;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+  .newsletter-container .newsletter-input-container {
+    margin-top: .75em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+  }
+  .newsletter-container .newsletter-input-field {
+     width: 80%;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #cccccc;
+    padding: .5rem 1rem;
+  }
+  .newsletter-container .submit {
+     margin: 1rem 0;
+    border-radius: 25px;
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 10px 15px;
+  }
+</style>
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [{
+    "type": "text",
+    "id": "title",
+    "label": "Title"
+  },
+  {
+    "type": "text",
+    "id": "sub_title",
+    "label": "Sub Title"
+  }],
+  "presets": [{"name": "Newsletter"}]
+}
+{% endschema %}

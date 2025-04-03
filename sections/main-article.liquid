@@ -1,383 +1,384 @@
-{{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
-
-<article class="article-template">
-  {%- for block in section.blocks -%}
-    {%- case block.type -%}
-      {%- when '@app' -%}
-        <div class="page-width page-width--narrow">
-          {% render block %}
-        </div>
-      {%- when 'featured_image' -%}
-        {%- if article.image -%}
-          <div
-            class="article-template__hero-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
-            {{ block.shopify_attributes }}
-          >
-            <div
-              class="article-template__hero-{{ block.settings.image_height }} media"
-              {% if block.settings.image_height == 'adapt' and article.image %}
-                style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"
-              {% endif %}
-            >
-              <img
-                srcset="
-                  {% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
-                  {% if article.image.width >= 750 %}{{ article.image | image_url: width: 750 }} 750w,{% endif %}
-                  {% if article.image.width >= 1100 %}{{ article.image | image_url: width: 1100 }} 1100w,{% endif %}
-                  {% if article.image.width >= 1500 %}{{ article.image | image_url: width: 1500 }} 1500w,{% endif %}
-                  {% if article.image.width >= 2200 %}{{ article.image | image_url: width: 2200 }} 2200w,{% endif %}
-                  {% if article.image.width >= 3000 %}{{ article.image | image_url: width: 3000 }} 3000w,{% endif %}
-                  {{ article.image | image_url }} {{ article.image.width }}w
-                "
-                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw"
-                src="{{ article.image | image_url: width: 1100 }}"
-                loading="eager"
-                fetchpriority="high"
-                width="{{ article.image.width }}"
-                height="{{ article.image.height }}"
-                alt="{{ article.image.alt | escape }}"
-              >
-            </div>
-          </div>
-        {%- endif -%}
-
-      {%- when 'title' -%}
-        <header
-          class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
-          {{ block.shopify_attributes }}
-        >
-          <h1
-            class="article-template__title"
-          >
-            {{ article.title | escape }}
-          </h1>
-          {%- if block.settings.blog_show_date -%}
-            <span class="circle-divider caption-with-letter-spacing">
-              {{- article.published_at | time_tag: format: 'date' -}}
-            </span>
-          {%- endif -%}
-          {%- if block.settings.blog_show_author -%}
-            <span class="caption-with-letter-spacing">
-              <span>{{ article.author }}</span>
-            </span>
-          {%- endif -%}
-        </header>
-
-      {%- when 'content' -%}
-        <div
-          class="article-template__content page-width page-width--narrow rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {{ block.shopify_attributes }}
-        >
-          {{ article.content }}
-        </div>
-
-      {%- when 'share' -%}
-        <div
-          class="article-template__social-sharing page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {{ block.shopify_attributes }}
-        >
-          {% assign share_url = request.origin | append: article.url %}
-          {% render 'share-button', block: block, share_link: share_url %}
-        </div>
-    {%- endcase -%}
-  {%- endfor -%}
-
-  <div class="article-template__back element-margin-top center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-    <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
-      <span class="icon-wrap">
-        <span class="svg-wrapper">
-          {{- 'icon-arrow.svg' | inline_asset_content -}}
-        </span>
-      </span>
-      {{ 'blogs.article.back_to_blog' | t: title: blog.title | escape }}
-    </a>
-  </div>
-  {%- if blog.comments_enabled? -%}
-    <div class="article-template__comment-wrapper background-secondary">
-      <div
-        id="comments"
-        class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-      >
-        {%- if article.comments_count > 0 -%}
-          {%- assign anchorId = '#Comments-' | append: article.id -%}
-
-          <h2 id="Comments-{{ article.id }}" tabindex="-1">
-            {{ 'blogs.article.comments' | t: count: article.comments_count }}
-          </h2>
-          {% paginate article.comments by 5 %}
-            <div class="article-template__comments">
-              {%- if comment.status == 'pending' and comment.content -%}
-                <article id="{{ comment.id }}" class="article-template__comments-comment">
-                  {{ comment.content }}
-                  <footer class="right">
-                    <span class="circle-divider caption-with-letter-spacing">{{ comment.author }}</span>
-                  </footer>
-                </article>
-              {%- endif -%}
-
-              {%- for comment in article.comments -%}
-                <article id="{{ comment.id }}" class="article-template__comments-comment">
-                  {{ comment.content }}
-                  <footer class="right">
-                    <span class="circle-divider caption-with-letter-spacing">{{ comment.author }}</span
-                    ><span class="caption-with-letter-spacing">
-                      {{- comment.created_at | time_tag: format: 'date' -}}
+<section id="shopify-section--{{ section.id }}" class="main-article">
+    <div class="container container-panel">
+        <div class="row header-article">
+            <div class="col-12">
+                <h1 class="article-title mb-3" itemprop="headline">
+                    {{ article.title | escape }}
+                </h1>
+                <div class="article-publishDate d-table mx-auto">
+                    <span>Vanpowers Official: </span>
+                    <span class="published-data" itemprop="dateCreated pubdate datePublished">
+                        {{- article.published_at | time_tag: format: 'date' -}}
                     </span>
-                  </footer>
-                </article>
-              {%- endfor -%}
-              {% render 'pagination', paginate: paginate, anchor: anchorId %}
-            </div>
-          {% endpaginate %}
-        {%- endif -%}
-        {% form 'new_comment', article %}
-          {%- liquid
-            assign post_message = 'blogs.article.success'
-            if blog.moderated? and comment.status == 'unapproved'
-              assign post_message = 'blogs.article.success_moderated'
-            endif
-          -%}
-          <h2>{{ 'blogs.article.comment_form_title' | t }}</h2>
-          {%- if form.errors -%}
-            <div class="form__message" role="alert">
-              <h3 class="form-status caption-large text-body" tabindex="-1" autofocus>
-                <span class="svg-wrapper">
-                  {{- 'icon-error.svg' | inline_asset_content -}}
-                </span>
-                {{ 'templates.contact.form.error_heading' | t }}
-              </h3>
-            </div>
-            <ul class="form-status-list caption-large">
-              {%- for field in form.errors -%}
-                <li>
-                  <a href="#CommentForm-{{ field }}" class="link">
-                    {%- if form.errors.translated_fields[field] contains 'author' -%}
-                      {{ 'blogs.article.name' | t }}
-                    {%- elsif form.errors.translated_fields[field] contains 'body' -%}
-                      {{ 'blogs.article.message' | t }}
-                    {%- else -%}
-                      {{ form.errors.translated_fields[field] }}
-                    {%- endif -%}
-                    {{ form.errors.messages[field] }}
-                  </a>
-                </li>
-              {%- endfor -%}
-            </ul>
-          {%- elsif form.posted_successfully? -%}
-            <div class="form-status-list form__message" role="status">
-              <h3 class="form-status" tabindex="-1" autofocus>
-                <span class="svg-wrapper">
-                  {{- 'icon-success.svg' | inline_asset_content -}}
-                </span>
-                {{ post_message | t }}
-              </h3>
-            </div>
-          {%- endif -%}
+                </div>
 
-          <div
-            {% if blog.moderated? == false %}
-              class="article-template__comments-fields"
-            {% endif %}
-          >
-            <div class="article-template__comment-fields">
-              <div class="field field--with-error">
-                <input
-                  type="text"
-                  name="comment[author]"
-                  id="CommentForm-author"
-                  class="field__input"
-                  autocomplete="name"
-                  value="{{ form.author }}"
-                  aria-required="true"
-                  required
-                  {% if form.errors contains 'author' %}
-                    aria-invalid="true"
-                    aria-describedby="CommentForm-author-error"
-                  {% endif %}
-                  placeholder="{{ 'blogs.article.name' | t }}"
-                >
-                <label class="field__label" for="CommentForm-author">
-                  {{- 'blogs.article.name' | t }}
-                  <span aria-hidden="true">*</span></label
-                >
-                {%- if form.errors contains 'author' -%}
-                  <small id="CommentForm-author-error">
-                    <span class="form__message">
-                      <span class="svg-wrapper">
-                        {{- 'icon-error.svg' | inline_asset_content -}}
-                      </span>
-                      {{- 'blogs.article.name' | t }}
-                      {{ form.errors.messages.author }}.</span
-                    >
-                  </small>
-                {%- endif -%}
-              </div>
-              <div class="field field--with-error">
-                <input
-                  type="email"
-                  name="comment[email]"
-                  id="CommentForm-email"
-                  autocomplete="email"
-                  class="field__input"
-                  value="{{ form.email }}"
-                  autocorrect="off"
-                  autocapitalize="off"
-                  aria-required="true"
-                  required
-                  {% if form.errors contains 'email' %}
-                    aria-invalid="true"
-                    aria-describedby="CommentForm-email-error"
-                  {% endif %}
-                  placeholder="{{ 'blogs.article.email' | t }}"
-                >
-                <label class="field__label" for="CommentForm-email">
-                  {{- 'blogs.article.email' | t }}
-                  <span aria-hidden="true">*</span></label
-                >
-                {%- if form.errors contains 'email' -%}
-                  <small id="CommentForm-email-error">
-                    <span class="form__message">
-                      <span class="svg-wrapper">
-                        {{- 'icon-error.svg' | inline_asset_content -}}
-                      </span>
-                      {{- 'blogs.article.email' | t }}
-                      {{ form.errors.messages.email }}.</span
-                    >
-                  </small>
-                {%- endif -%}
-              </div>
+                <div class="article-socialIcons d-flex justify-content-center mt-4">
+                    <a href="https://www.facebook.com/Vanpowers.bikes?utm_source=press&utm_medium=link&utm_campaign=Vanpowers+Bike+launch+on+IGG+2" target="_blank">
+                        <img src="{{  'Facebook-icon.svg' | asset_url }}" alt="Facebook" class="article-socialIcon">
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCFUMqJ2espnaFZ-Kn27JWLA?utm_source=press&utm_medium=link&utm_campaign=Vanpowers+Bike+launch+on+IGG+2" target="_blank">
+                        <img src="{{  'Youtube-icon.svg' | asset_url }}" alt="Youtube" class="article-socialIcon">
+                    </a>
+                    <a href="https://www.instagram.com/vanpowers.bikes/?utm_source=press&utm_medium=link&utm_campaign=Vanpowers%20Bike%20launch%20on%20IGG%202" target="_blank">
+                        <img src="{{  'instagram-icon.svg' | asset_url }}" alt="Instagram" class="article-socialIcon">
+                    </a>
+                    <a href="https://www.tiktok.com/@vanpowersbike" target="_blank">
+                        <img src="{{  'tiktok-icon.svg' | asset_url }}" alt="Tiktok" class="article-socialIcon">
+                    </a>
+                    <a href="https://www.pinterest.com/pin/914653005557916280/" target="_blank">
+                        <img src="{{  'pinterest-icon.svg' | asset_url }}" alt="Pinterest" class="article-socialIcon">
+                    </a>
+                    <a href="https://twitter.com/VanpowersBike?utm_source=press&utm_medium=link&utm_campaign=Vanpowers+Bike+launch+on+IGG+2" target="_blank">
+                        <img src="{{  'twitter-icon.svg' | asset_url }}" alt="Twitter" class="article-socialIcon">
+                    </a>
+                </div>
+
             </div>
-            <div class="field field--with-error">
-              <textarea
-                rows="5"
-                name="comment[body]"
-                id="CommentForm-body"
-                class="text-area field__input"
-                aria-required="true"
-                required
-                {% if form.errors contains 'body' %}
-                  aria-invalid="true"
-                  aria-describedby="CommentForm-body-error"
-                {% endif %}
-                placeholder="{{ 'blogs.article.message' | t }}"
-              >{{ form.body }}</textarea>
-              <label class="form__label field__label" for="CommentForm-body">
-                {{- 'blogs.article.message' | t }}
-                <span aria-hidden="true">*</span></label
-              >
+        </div>
+        <div class="row article-content pt-5 mt-3">
+            <div class="col-xl-9 col-lg-8 col-md-7 article-innerContent">
+
+                <div class="article-featuredImage mb-4">
+                    {%- if article.image -%}
+                        <img src="{{ article.image | img_url: 'master' }}" alt="{{ article.image.alt | escape }}">
+                        {% else %}
+                        <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder" class="w-100">
+                    {% endif %}
+                </div>
+
+                <div class="article-templateContent" itemprop="articleBody">
+                    {{ article.content }}
+                </div>
+                
             </div>
-            {%- if form.errors contains 'body' -%}
-              <small id="CommentForm-body-error">
-                <span class="form__message">
-                  <span class="svg-wrapper">
-                    {{- 'icon-error.svg' | inline_asset_content -}}
-                  </span>
-                  {{- 'blogs.article.message' | t }}
-                  {{ form.errors.messages.body }}.</span
-                >
-              </small>
-            {%- endif -%}
-          </div>
-          {%- if blog.moderated? -%}
-            <p class="article-template__comment-warning caption">{{ 'blogs.article.moderated' | t }}</p>
-          {%- endif -%}
-          <input type="submit" class="button" value="{{ 'blogs.article.post' | t }}">
-        {% endform %}
-      </div>
+            <div class="col-xl-3 col-lg-4 col-lg-5 article-sideBar">
+                <div class="articleInner-sideBar">
+                    <h4>Most Popular</h4>
+                    {% assign articles = blogs.news.articles | sort: 'popularity' | reverse %}
+                    <ul>
+                        {% for article in articles limit:6 %}
+                            {% unless article.id == page.id %}
+                                <li>
+                                    <a href="{{ article.url }}">{{ article.title }}</a>
+                                </li>
+                            {% endunless %}
+                        {% endfor %}
+                    </ul>
+                    <div class="sideBar-featureThumbnail position-relative d-lg-block d-md-block d-sm-none">
+                        <a href="{{ section.settings.feature_url }}">
+                            <img src="{{ section.settings.feature_thumbnail | img_url: 'master' }}" alt="{{ article.image.alt | escape }}">
+                            <div class="sideBar-featureText">
+                                {{ section.settings.feature_text }} <img class="forward-icon" src="{{ 'dark-right-arrow.png' | asset_url }}" alt="forward">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  {%- endif -%}
-</article>
+</section>
 
-<script type="application/ld+json">
-  {{ article | structured_data }}
-</script>
+<style>
+    section.main-article {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    }
+    h1.article-title {
+        font-weight: 700;
+        font-size: 34px;
+        text-align: center;
+    }
+    .article-publishDate span {
+        font-weight: 600;
+    }
+    .article-socialIcons {
+        gap: 10px;
+    }
+    .article-socialIcons a {
+        text-decoration: none;
+    }
+    .article-socialIcon {
+        max-width: 30px;
+    }
+    .article-innerContent {
+        padding-right: 40px;
+    }
+    .article-featuredImage img {
+        width: 100%;
+        object-fit: cover;
+        object-position: center center;
+        border-radius: 10px;
+        height: 558px;
+    }
+    .article-socialIcons a img {
+        transition: 0.4s ease;
+    }
+    .article-socialIcons a:hover img {
+        opacity: 0.4;
+    }
+    .article-templateContent p {
+        margin-bottom: 0;
+    }
+    .article-templateContent p strong, .article-templateContent p strong b {
+        font-weight: 800 !important;
+        font-size: 22px;
+    }
+    .article-templateContent img {
+        margin: 10px 0 25px !important;
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+        /*float: left;*/
+    }
+    .article-templateContent table img {
+        width: 100%;
+        border-radius: 10px;
+        height: auto;
+    }
+    .article-templateContent .newssubtext img {
+        width: 100%;
+        height: auto;
+        margin: 25px 0;
+        border-radius: 10px;
+    }
+    .article-templateContent p a, .article-templateContent a, .article-templateContent a span {
+        color: #B7011C;
+        font-weight: 600;
+    }
+    .article-templateContent h1.newssubtext {
+        margin: 20px 0 0;
+        font-size: 22px;
+    }
+    .article-templateContent h2 {
+        font-size: 22px;
+        font-weight: 800;
+        margin: 20px 0;
+    }
+    .article-templateContent .h1, .article-templateContent h1, .article-templateContent h3 {
+        font-size: 22px;
+        font-weight: 800;
+    }
+    .article-templateContent h4 {
+        font-size: 18px;
+        font-weight: 800;
+    }
+    .article-templateContent h5 span, .article-templateContent h6 span {
+        color: #333333 !important;
+    }
+    .article-templateContent a h5 span {
+        color: #B7011C !important;
+        font-weight: 600;
+    }
+    .article-templateContent iframe {
+        width: 100%;
+        height: 500px;
+        margin: 20px 0;
+    }
+    .articleInner-sideBar {
+        background-color: #F5F5F7;
+        border-radius: 10px;
+        padding: 30px;
+        position: sticky;
+        top: 110px;
+    }
+    .article-sideBar ul {
+        padding-left: 17px;
+        margin-bottom: 30px;
+    }
+    .article-sideBar h4 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .article-sideBar ul li {
+        list-style: number;
+        position: relative;
+        padding: 15px 0;
+    }
+    .article-sideBar ul li a {
+        text-decoration: none;
+        color: #333333;
+        font-weight: 500;
+        transition: 0.4s ease;
+        display: table;
+    }
+    .article-sideBar ul li a:hover {
+        color: #B7011C;
+    }
+    .article-sideBar ul li::after {
+        content: "";
+        background-color: #CFCFCF;
+        height: 1px;
+        width: 308px;
+        display: block;
+        position: absolute;
+        left: -17px;
+        bottom: 0;
+    }
+    .sideBar-featureThumbnail::after {
+        content: "";
+        background: linear-gradient( 180deg, rgba(0,0,0,0) 0%, #000000 100%);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: block;
+        z-index: 100;
+        height: 100px;
+        opacity: 0.58;
+        z-index: 1;
+        border-radius: 10px;
+    }
+    .sideBar-featureThumbnail img {
+        width: 100%;
+        object-fit: cover;
+        object-position: center center;
+        height: 290px;
+        border-radius: 10px;
+    }
+    .sideBar-featureText {
+        position: absolute;
+        bottom: 15px;
+        left: 20px;
+        color: #fff;
+        font-weight: 600;
+        z-index: 2;
+        display: flex;
+        gap: 7px;
+        align-items: center;
+    }
+
+    .article-sideBar img.forward-icon {
+        filter: brightness(0) saturate(100%) invert(98%) sepia(2%) saturate(235%) hue-rotate(109deg) brightness(118%) contrast(100%);
+        height: 12px;
+        width: 12px;
+    }
+    .article-templateContent #content, .article-templateContent .post-content {
+        padding: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 1599px) {
+        .article-sideBar ul li::after {
+            width: 246px;
+        }
+    }
+    @media (max-width: 1399px) {
+        .article-innerContent {
+            width: 70%;
+        }
+        .article-sideBar {
+            width: 30%;
+        }
+        .article-sideBar ul li::after {
+            width: 258px;
+        }
+    }
+    @media (max-width: 1199px) {
+        section.main-article {
+            padding-top: 50px;
+        }
+        .article-innerContent {
+            width: 65%;
+        }
+        .article-sideBar {
+            width: 35%;
+        }
+        .sideBar-featureThumbnail img {
+            height: 230px;
+        }
+    }
+    @media (max-width: 991px) {
+        .article-innerContent {
+            width: 60%;
+        }
+        .article-sideBar {
+            width: 40%;
+        }
+        .article-sideBar ul li::after {
+            width: 100% !important;
+            left: 0 !important;
+        }
+        .article-content {
+            margin-top: 0 !important;
+            padding-top: 30px !important;
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .article-featuredImage img {
+            height: auto;
+        }
+        .article-innerContent {
+            padding-right: 20px;
+        }
+        .sideBar-featureThumbnail img {
+            height: 190px;
+        }
+        .articleInner-sideBar {
+            padding: 30px 20px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        section.main-article {
+            padding-top: 40px !important;
+        }
+        h1.article-title {
+            font-size: 26px;
+            line-height: 1.4em;
+        }
+        .article-featuredImage {
+            margin-top: 0 !important;
+        }
+        .article-innerContent {
+            width: 100%;
+            padding-right: 12px;
+        }
+        .article-sideBar {
+            width: 100%;
+            margin-top: 30px;
+        }
+        .sideBar-featureThumbnail img {
+            height: auto;
+        }
+    }
+</style>
 
 {% schema %}
-{
-  "name": "t:sections.main-article.name",
-  "tag": "section",
-  "class": "section",
-  "blocks": [
     {
-      "type": "@app"
-    },
-    {
-      "type": "featured_image",
-      "name": "t:sections.main-article.blocks.featured_image.name",
-      "limit": 1,
+      "name": "Main Article",
       "settings": [
         {
-          "type": "select",
-          "id": "image_height",
-          "options": [
-            {
-              "value": "adapt",
-              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__1.label"
-            },
-            {
-              "value": "small",
-              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__2.label"
-            },
-            {
-              "value": "medium",
-              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__3.label"
-            },
-            {
-              "value": "large",
-              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__4.label"
-            }
-          ],
-          "default": "adapt",
-          "label": "t:sections.main-article.blocks.featured_image.settings.image_height.label",
-          "info": "t:sections.main-article.blocks.featured_image.settings.image_height.info"
+            "type": "number",
+            "id": "section_paddingTop",
+            "label": "Section Padding Top",
+            "default": 100
+        },
+        {
+            "type": "number",
+            "id": "section_paddingBottom",
+            "label": "Section Padding Bottom",
+            "default": 100
+        },
+        {
+            "type": "image_picker",
+            "id": "feature_thumbnail",
+            "label": "Sidebar Feature Thumbnail"
+        },
+        {
+            "type": "text",
+            "id": "feature_text",
+            "label": "Sidebar Feature Text"
+        },
+        {
+            "type": "url",
+            "id": "feature_url",
+            "label": "Sidebar Feature URL"
         }
-      ]
-    },
-    {
-      "type": "title",
-      "name": "t:sections.main-article.blocks.title.name",
-      "limit": 1,
-      "settings": [
+      ],
+      "presets": [
         {
-          "type": "checkbox",
-          "id": "blog_show_date",
-          "default": true,
-          "label": "t:sections.main-article.blocks.title.settings.blog_show_date.label"
-        },
-        {
-          "type": "checkbox",
-          "id": "blog_show_author",
-          "default": false,
-          "label": "t:sections.main-article.blocks.title.settings.blog_show_author.label"
-        }
-      ]
-    },
-    {
-      "type": "content",
-      "name": "t:sections.main-article.blocks.content.name",
-      "limit": 1
-    },
-    {
-      "type": "share",
-      "name": "t:sections.main-article.blocks.share.name",
-      "limit": 2,
-      "settings": [
-        {
-          "type": "text",
-          "id": "share_label",
-          "label": "t:sections.main-article.blocks.share.settings.text.label",
-          "default": "t:sections.main-article.blocks.share.settings.text.default"
-        },
-        {
-          "type": "paragraph",
-          "content": "t:sections.main-article.blocks.share.settings.featured_image_info.content"
-        },
-        {
-          "type": "paragraph",
-          "content": "t:sections.main-article.blocks.share.settings.title_info.content"
+          "name": "Main Article"
         }
       ]
     }
-  ]
-}
 {% endschema %}

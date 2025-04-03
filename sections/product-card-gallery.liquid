@@ -1,0 +1,343 @@
+<div class="{{section.id}} product-gallery  overflow-hidden">
+    <div class="container container-panel position-relative">
+        <div class="section-title {{section.settings.text_align}}">
+          <h1>{{section.settings.title}}</h1>
+        </div>
+    </div>
+    <div class="container container-panel fixed-height position-relative">
+      <div class="gallery-container swiper-container d-flex position-absolute ">
+        <div class="gallery-wrapper swiper-wrapper">
+          {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+            <div class="gallery-item swiper-slide">
+              <div class="card product-item border-0">
+                <!-- {% if product.compare_at_price > product.price %}
+                    <span class="vanpowers-badge-sale badge position-absolute">Sale</span>
+                {% endif %} -->
+                <div class="card-img-wrapper">  
+                    {% if product.variants.size > 1 %}
+                        {% for variant in product.variants limit:1 %}
+                            <div class="card-image variant-img-item text-center">
+                                <a href="{{ product.url }}">
+                                    <img src="{{ variant.image | product_img_url: 'master' }}" 
+                                    width="400" 
+                                    height="auto"
+                                    class="img-fluid" 
+                                    alt="{{ product.title }}" />
+                                </a>
+                            </div>
+                        {% endfor %}
+                    {%else%}
+                        <div class="card-image text-center">
+                          <a href="{{ product.url }}">
+                            <img src="{{ product.featured_image | product_img_url: 'master' }}" 
+                                width="400" 
+                                height="auto"
+                                class="img-fluid" 
+                                alt="{{ product.title }}" />
+                          </a>
+                        </div>
+                    {%endif%}
+                </div>
+                <div class="card-body">
+                    <div class="variant-colors-wrapper">
+                      {% render 'product-variant-colors', product: product %}
+                    </div>
+                    <h5 class="card-title p-name"><a href="{{ product.url }}">{{product.title}} </a></h5>
+                    {% comment %}Start automatically added Judge.me widget{% endcomment %}
+                    {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: true, product: product %}
+                    {% comment %}End automatically added Judge.me widget{% endcomment %}
+                    <p class="card-text">Sleek, versatile, and comfortable urban eBike to</p>
+                    <div class="card-footer">
+                      <div class="price-box">
+                        {% for variant in product.variants limit:1 %}
+                            {% if variant.compare_at_price and  variant.compare_at_price != variant.price %}
+                              <div class="money-wrapper"><span class="discounted-price" id="discounted_price">{{ variant.price | money }}</span> <span class="original-price" id="original_price"><s>{{ variant.compare_at_price | money }}</s></span></div>
+                            {%else%}
+                                <div class="money-wrapper"><span class="price">{{ variant.price | money }}</span></div>
+                            {% endif %}
+                        {% endfor %}
+                      </div>
+                      <a href="{{product.url}}" class="btn vanpowers-btn-dark">Shop Now</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="swiper-pagination container container-panel d-none d-lg-block"></div>
+
+      </div>
+      <div class="van--gallery-nav-buttons swiper-navigations d-none d-lg-block">
+        <div class="swiper-button-prev navigation-button"></div>
+        <div class="swiper-button-next navigation-button"></div>
+      </div>
+    </div>
+</div>
+<style>
+  .product-gallery {
+    margin: 60px auto;
+  }
+  .product-gallery .fixed-height{
+    height: 740px;
+  }
+  .product-gallery .section-title h1 {
+    font-size: 3vw;
+    font-weight: 700;
+    color: #333333;
+    padding-bottom: 17px;
+    text-transform: capitalize;
+  }
+  .product-gallery .variant-colors-wrapper {
+      height: 30px;
+      margin: 17px 0 13px;
+  }
+  .product-gallery .gallery-container {
+    padding-top: 53px;
+    padding-bottom: 35px;
+  }
+  .product-gallery .gallery-container::-webkit-scrollbar {
+    background-color: transparent;
+    height: 2px;
+  }
+  .product-gallery .gallery-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  .product-gallery .gallery-container .gallery-wrapper{
+  }
+  .product-gallery .gallery-container .gallery-item{
+    width: 450px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .shopify-section-product-gallery .product-gallery {
+    margin-top: 50px;
+    margin-bottom: 0;
+  }
+  .product-gallery .jdm-review-wrapper {
+      gap: 7px;
+  }
+  .product-gallery .card-title a {
+    text-transform: capitalize;
+    font-weight: 600 !important;
+    text-decoration: none;
+  }
+  .product-gallery .card-image {
+    height: 290px;
+  }
+  .product-gallery .card-img-wrapper .card-image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      padding: 5px;
+  }
+  .product-gallery .card .vanpowers-badge-sale {
+    background: #DB1629;
+    font-size: 12px;
+    border-radius: 10px;
+    top: 29px;
+    left: 22px;
+    padding: 5px 7px;
+  }
+  .product-gallery .van--gallery-nav-buttons {
+    margin-top: -25px;
+  }
+  .product-gallery .card .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      padding: 6px 0 23px 0;
+  }
+  .product-gallery .card-footer .vanpowers-btn-dark {
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 16px;
+      padding: 12px 22px;
+  }
+  .product-gallery .card-footer .price-box .discounted-price {
+      color: #DB1629;
+      font-size: 20px;
+      font-weight: 600;
+  }
+  .product-gallery .card-footer .price-box .original-price {
+    font-size: 14px;
+  }
+  .gallery-container .swiper-pagination-progressbar {
+    bottom: 0;
+    top: unset;
+    height: 7px;
+    border-radius: 5px;
+    background: none;
+  }
+  .gallery-container .swiper-pagination-progressbar span.swiper-pagination-progressbar-fill {
+    background-color: #1A1A1A;
+    border-radius: 5px;
+  }
+  .product-gallery{
+    .jdgm-prev-badge__text {
+      display: none;
+    }
+    .card-img-wrapper{
+      background: #f8f8f8;
+      padding: 24px 0;
+    }
+    .card-body{
+      padding: 14px 30px;
+    }
+    .discounted-price, .original-price,  .card-title a, .price{
+      font-size: 20px;
+      font-weight: 700;
+      --bs-link-color-rgb: 51,51,51
+    }
+    .card-text{
+      font-size: 13px;
+      color: #666;
+    }
+  }
+  @media (max-width: 991px){
+    .product-gallery {
+      margin-top: 0;
+    }
+    .product-gallery .gallery-container {
+      padding-top: 0;
+    }
+    .product-gallery .fixed-height {
+      height: 570px;
+    }
+    .product-gallery .card-img-wrapper {
+      padding: 28px 30px;
+    }
+    .product-gallery .card-image {
+      height: 190px;
+      width: 100%;
+    }
+    .shopify-section-product-gallery .product-gallery {
+      margin-top: 0;
+    }
+    .product-gallery .card-footer .vanpowers-btn-dark {
+      font-size: 10px;
+      padding: 8px 10px;
+    }
+  }
+  @media (max-width: 768px){
+    .product-gallery .section-title h1{
+      font-size: 30px !important;
+    }
+  }
+  @media (max-width: 767px){
+    .product-gallery .card-img-wrapper {
+      padding: 28px 22px;
+    }
+    .product-gallery .variant-colors-wrapper {
+      margin: 6px 0 13px;
+    }
+    .product-gallery .card-body {
+      padding: 14px 22px;
+    }
+    .product-gallery .card-footer .vanpowers-btn-dark {
+      font-size: 14px;
+      padding: 8px 18px;
+    }
+  }
+</style>
+{% javascript %}
+
+  jQuery(document).ready(function(){
+	   
+    // Swiper initialization script
+    var gallerySwiper = new Swiper('.gallery-container', {
+      direction: 'horizontal',
+      speed: 1000,
+      spaceBetween: 40,
+      autoplay: false,
+      navigation: {
+          nextEl: '.van--gallery-nav-buttons .swiper-button-next',
+          prevEl: '.van--gallery-nav-buttons .swiper-button-prev',
+      },
+      pagination: {
+          el: '.swiper-pagination',
+          type: 'progressbar', // Progress bar type
+      },
+      breakpoints: {
+          200: { width: 330, spaceBetween: 20 },
+          768: { width: 305, spaceBetween: 30 },
+          1024: { width: 325, spaceBetween: 30 },
+          1280: { width: 350, spaceBetween: 30 },
+          1536: { width: 400, spaceBetween: 40 },
+          1600: { width: 450, spaceBetween: 40 },
+          1920: { width: 450, spaceBetween: 40 },
+      },
+    });
+
+  });
+
+{%endjavascript%}
+	
+{% schema %}
+{
+  "name": "Product Gallery",
+  "tag": "div",
+  "class": "shopify-section-product-gallery",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "You may also like"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text Align",
+      "default": "text-start",
+      "options": [
+        {
+          "value": "text-start",
+          "label": "Left"
+        },
+         {
+          "value": "text-center",
+          "label": "Center"
+        },
+        {
+          "value": "text-end",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+     {
+        "type": "range",
+        "id": "products_to_show",
+        "label": "Maximum products to show",
+        "min": 1,
+        "max": 10,
+        "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Gallery",
+      "settings": {
+        "title": "You may also like"
+      }
+    }
+  ],
+  "locales": {
+    "en": {
+      "title": "You may also like"
+    }
+  },
+  "enabled_on": {
+    "templates": ["*"],
+    "groups": ["footer"]
+  }
+}
+{% endschema %}

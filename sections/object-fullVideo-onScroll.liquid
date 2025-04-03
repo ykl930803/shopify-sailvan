@@ -1,0 +1,152 @@
+<section id="shopify-section--{{ section.id }}" class="object-fullVideo">
+    <div class="container-fluid px-0">
+        <div class="row-fluid">
+            <div class="col-xl-12 px-0">
+                <div class="video-outerWrapper">
+                    <div class="video-innerWrapper">
+                        {%- if section.settings.video != blank -%}
+                            {{ section.settings.video | video_tag: id: 'cone-video', muted: true, poster: nil, width: '100%', height: '100%' }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    section.object-fullVideo {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+
+        .video-outerWrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+                height: 1077px;
+
+            .video-innerWrapper {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+
+                video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+</style>
+
+<script>
+$(document).ready(function() {
+    let video = $(".object-fullVideo video")[0];
+
+    function delayVideoPlayback(delay) {
+        setTimeout(function() {
+            video.play();
+
+            console.log('PLAY!');
+        }, delay);
+    }
+
+    function isVideoInView() {
+        let windowTop = $(window).scrollTop();
+        let windowBottom = windowTop + $(window).height();
+        let videoTop = $(video).offset().top;
+        let videoBottom = videoTop + $(video).outerHeight();
+
+        return (videoBottom >= windowTop && videoTop <= windowBottom);
+    }
+
+    function checkVideoVisibility() {
+        if (isVideoInView()) {
+            video.setAttribute("playsinline", "");
+            delayVideoPlayback(1000);
+            $(window).off('scroll', checkVideoVisibility);
+        }
+    }
+
+    checkVideoVisibility();
+
+    $(window).on('scroll', checkVideoVisibility);
+});
+</script>
+
+{%  javascript  %}
+
+    /*function isInView(element) {
+        var rect = element.getBoundingClientRect();
+        var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        return (
+            rect.top <= windowHeight / 2 &&
+            rect.bottom >= windowHeight / 2
+        );
+    }
+
+    
+    var videoWrapper = $(".video-innerWrapper");
+    var video = $("#cone-video")[0]; // Get the native DOM element
+    var isPlaying = false;
+    var scrollCount = 0;
+
+    $(document).on('wheel', function(event) {
+        if (isInView(videoWrapper[0])) {
+            if (event.originalEvent.deltaY > 0) {
+                // Mouse wheel scrolled down
+                if (!isPlaying) {
+                    video.play();
+                    isPlaying = true;
+                }
+
+                // Increment scroll count
+                scrollCount++;
+
+                // Add class based on scroll count
+                if (scrollCount === 1) {
+                    videoWrapper.addClass("resize");
+                } else if (scrollCount >= 3) {
+                    videoWrapper.addClass("full-resize");
+                }
+            }
+        }
+    });*/
+    
+
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Object Full Video",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            },
+            {
+                "type": "video",
+                "id": "video",
+                "label": "Video"
+            }
+        ],
+        "blocks": [],
+        "presets": [
+          {
+            "name": "Object Full Video"
+          }
+        ]
+    }
+{% endschema %}

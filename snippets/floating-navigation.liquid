@@ -1,0 +1,146 @@
+<div id="floatingNavigation" class="floating-navigation">
+</div>
+
+<style>
+    .floating-navigation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 38px;
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        z-index: 3;
+        left: 30px;
+        border-radius: 21px;
+        background-color: #fff;
+        padding: 15px 0;
+        box-shadow: 0px 3px 10px #0000000d;
+        gap: 20px;
+    }
+    .floating-navigation .pagination-bullet {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        height: auto !important;
+        opacity: 1 !important;
+        align-items: center;
+    }
+    .floating-navigation .custom-bullet {
+        background-color: #CBCBCB;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        transition: 0.4s ease;
+    }
+    .floating-navigation .pagination-bullet.active .custom-bullet {
+        background-color: #333333;
+    }
+    .floating-navigation a {
+        text-decoration: none;
+    }
+    .floating-navigation .nav-title {
+        width: auto;
+        height: auto;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        text-wrap: nowrap;
+        margin-top: 8px;
+        margin-bottom: 15px;
+        color: #333;
+        display: none;
+        font-weight: 500;
+    }
+    .floating-navigation .pagination-bullet.active .nav-title {
+        display: block;
+    }
+
+    @media (max-width: 1200px) {
+        .floating-navigation {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    var floatingNavigation = document.getElementById('floatingNavigation');
+    var sections = document.querySelectorAll('section');
+    var links = [];
+
+    sections.forEach(function (section, index) {
+        var sectionId = section.getAttribute('id');
+
+        if (sectionId && sectionId.startsWith('custom-')) {
+            var link = document.createElement('a');
+            link.href = '#' + sectionId;
+            link.className = 'pagination-bullet';
+
+            var customBullet = document.createElement('div');
+            customBullet.className = 'custom-bullet';
+
+            var navTitle = document.createElement('div');
+            navTitle.className = 'nav-title';
+            var h1Tag = section.querySelector('h1');
+            var h2Tag = section.querySelector('h2');
+            navTitle.innerText = h1Tag ? h1Tag.textContent : (h2Tag ? h2Tag.textContent : 'Section ' + (index + 1));
+
+            link.appendChild(customBullet);
+            link.appendChild(navTitle);
+            floatingNavigation.appendChild(link);
+
+            links.push({
+                link: link,
+                section: section
+            });
+        }
+    });
+
+    function setActiveLink(clickedLink) {
+        links.forEach(function (linkItem) {
+            linkItem.link.classList.remove('active');
+        });
+
+        clickedLink.classList.add('active');
+    }
+
+    function scrollToSection(section) {
+        section.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
+    // Add click event listener to each bullet link
+    links.forEach(function (item) {
+        item.link.addEventListener('click', function (event) {
+            event.preventDefault();
+            setActiveLink(item.link);
+            scrollToSection(item.section);
+        });
+    });
+
+    // Add scroll event listener to update active section while scrolling
+    window.addEventListener('scroll', function () {
+        var headerHeight = document.querySelector('.vanpower-header').offsetHeight;
+
+        var fromTop = window.scrollY + headerHeight;
+
+        links.forEach(function (linkItem) {
+            var section = linkItem.section;
+            var offset = section.offsetTop - headerHeight;
+            var height = section.offsetHeight;
+
+            if (fromTop >= offset && fromTop < offset + height) {
+                setActiveLink(linkItem.link);
+            }
+        });
+    });
+
+    // Add 'active' class to the first bullet initially
+    links[0].link.classList.add('active');
+});
+
+
+</script>

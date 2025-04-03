@@ -1,0 +1,52 @@
+<div class="mega-menu">
+    <div class="mega-menu__content bg-white">
+        <div class="container container-panel mega-menu-content-wrapper sub-content-text d-flex default-column-links">
+            {% if link.links != blank %}
+                <div class="sub-content-links">
+
+                    <div class="equipment-navItem">
+                        {% for childlink in link.links %}
+                            <a href="javascript:void(0)">
+                                <h5 class="menu-header-label">{{ childlink.title | escape }}</h5>
+                            </a>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="subContent-wrapper">
+                        {% for childlink in link.links %}
+                            <div class="subContent-item">
+                                {% assign childlink_size = childlink.links | size %}
+                                <div class="nav_list-content pt-4">
+                                    <ul class="">
+                                        {% for grandchildlink in childlink.links %}
+                                            {% assign mod=  forloop.index | modulo: 7 %}
+
+                                            {% if mod==0 and childlink_size > 6 %}
+                                            </ul>
+                                            <ul>
+                                            {%endif%}
+                                            <li>
+                                                <a href="{{ grandchildlink.url }}"
+                                                class="site-nav__link site-nav__child-link"
+                                                {% if grandchildlink.current %} aria-current="page"{% endif %}
+                                                >
+                                                <span class="site-nav_title no-break">{{ grandchildlink.title | escape }}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="featured-image position-relative">
+                <a class="" href="{{block.settings.featured_link}}" target="_blank">
+                    <div class="featured-text text-white p-large position-absolute bottom-0 start-0 fw-bold">{{block.settings.featured_text}}</div>
+                    <img src="{{ block.settings.featured_image | img_url: '2048x2048' }}" class="img-fluid" height="auto" width="236"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+{% comment %}
+	GEMPAGES BUILDER (https://apps.shopify.com/gempages)
+
+	You SHOULD NOT modify source code in this file because
+	It is automatically generated from GEMPAGES BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+{% include 'shogun-content-handler' %}
+<!DOCTYPE html>
+<html>
+    <head>
+ {%- render 'ecom_header' -%}
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MKTB842Z');</script>
+<!-- End Google Tag Manager -->
+      <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5MNCCC57');</script>
+<!-- End Google Tag Manager -->
+      
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11135269055">
+      </script>
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-11135269055');
+      </script>
+      
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>High-Quality E-Bikes for Sale | Vanpowers</title>
+        <link rel="shortcut icon" href="{{ settings.favicon | img_url:'master' }}" type="image/png" />
+
+        <!-- HANZ -->
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+      
+        {{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
+        {{ 'owl.theme.default.min.css' | asset_url | stylesheet_tag }}
+        
+        {{ 'bootstrap-custom.css' | asset_url | stylesheet_tag }}
+		{{ 'hnz-style.css' | asset_url | stylesheet_tag }}
+
+        {{ 'hnz-res-base.css' | asset_url | stylesheet_tag }}
+        {{ 'hnz-res-compare.css' | asset_url | stylesheet_tag }}
+        {{ 'hnz-res-order.css' | asset_url | stylesheet_tag }}
+        {{ 'hnz-res-ug-ultra.css' | asset_url | stylesheet_tag }}
+        {{ 'hnz-res-ug-pro.css' | asset_url | stylesheet_tag }}
+        {{ 'hnz-res-ug-standard.css' | asset_url | stylesheet_tag }}
+
+        <style>
+            #hnz-product-1 {
+                padding: 0 !important;
+            }
+            .vanpower-header {
+                position: fixed !important;
+                z-index: 9999;
+                transition: all .1s ease !important;
+            }
+        </style>
+
+
+        <!-- Bootstrap CSS CDN -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <!-- End Bootstrap CSS CDN -->
+
+        <!-- Swiper CDN Style -->
+            <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper@6.5.8/swiper-bundle.min.css"/>
+        <!-- End CDN Swiper style -->
+
+        <!-- Global theme style -->
+            {{ 'global-style.scss.css' | asset_url | stylesheet_tag }}
+
+            <!--link rel="stylesheet" href="{{ 'theme-style.css' | asset_url }}" type="text/css"-->
+        <!-- End Global theme style -->
+        {{ 'leslie.css' | asset_url | stylesheet_tag }}
+
+        <!-- GSAP -->
+        <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+        <script src="https://unpkg.com/gsap@3.9.0/dist/ScrollTrigger.min.js"></script>
+        <!-- End GSAP -->
+        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+        <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+        {{ content_for_header }}
+
+        {% if      template == 'page.payment-method' 
+                or template == 'page.privacy-policy' 
+                or template == 'page.return-policy' 
+                or template == 'page.shipping-policy' 
+                or template == 'page.terms-conditions'
+                or template == 'page.warranty' 
+                or template == 'blog'
+                or template == 'article'
+                or template == 'page.videos'
+                or template == 'page.contact'
+                or template == 'page.find-store'
+                or template == 'page.reviews'
+                or template == 'page.about_us'
+                or template == 'page.about_us'
+                or template == 'page.become_dealer'
+        %}
+            <style>
+                .pre-footer {
+                    display: none;
+                }
+            </style>
+        {% endif %}
+    
+  {% render 'shogun-head' %}
+</head>
+    <body>
+<div class="gem-container">
+	{{ content_for_layout }}
+</div><!-- end .gem-container --></body>
+</html>

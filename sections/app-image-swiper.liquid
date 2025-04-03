@@ -1,0 +1,166 @@
+<div class="app-image-swiper-wrapper">
+  <div class="app-image-swiper section-content swiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-item swiper-slide">
+          <picture>
+            <source media="(max-width: 769px)" srcset="{{ block.settings.image_m | image_url }}" />
+            <source media="(min-width: 768px)" srcset="{{ block.settings.image | image_url | image_url }}" />
+            <img src="{{ block.settings.image | image_url }}" width="100%" height="" class="swiper-image">
+          </picture>
+          <div class="text-wrapper">
+            <h2 class="feature-title">{{ block.settings.title }}</h2>
+            <div class="feature-intro">{{ block.settings.intro }}</div>
+            <div class="feature-notes">{{ block.settings.notes }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded',function() {
+    let appSwiper;
+    handleResize();
+    function handleResize() {
+      const width = window.innerWidth;
+      if (width < 769 && !appSwiper ) {
+        initSwiper();
+        setPaginationTop()
+      } else if (width >= 769 && appSwiper) {
+        appSwiper.destroy(true, true);
+        appSwiper = null;
+      }
+    }
+    window.addEventListener('resize',function() {
+      handleResize()
+      if (appSwiper) {
+       setPaginationTop() 
+      }
+    })
+    function initSwiper() {
+      appSwiper = new Swiper('.app-image-swiper', {
+        // slidesPerView: 1,
+        pagination: {
+          el: ".app-image-swiper .swiper-pagination"
+        },
+      })
+    }
+    function setPaginationTop() {
+      const width = window.innerWidth;
+      const aspectRatio = 0.98;
+      const imgHeight = parseInt(width / aspectRatio);
+      console.log('imgHeight', imgHeight)
+      const pagination = document.querySelector('.swiper-pagination-bullets')
+      console.log('pagination', pagination)
+      pagination.style.top = imgHeight + 'px';
+    }
+  })
+</script>
+<style>
+  /* @media screen and (min-width:768px) { */
+   .app-image-swiper-wrapper {
+    background: linear-gradient(#151A24, #010101);
+    padding-top: 60px;
+    padding-bottom:60px;
+     overflow:hidden;
+  }
+  .app-image-swiper-wrapper .app-image-swiper {
+     position: relative;
+    margin:0 auto;
+  }
+  .app-image-swiper-wrapper .swiper-wrapper {
+    display:flex;
+    justify-content:space-between;
+    /* gap: 40px; */
+  }
+  .app-image-swiper-wrapper .swiper-item {
+    width: 48%;
+  }
+  .app-image-swiper-wrapper .swiper-image {
+    margin-bottom: 30px;
+  }
+  .app-image-swiper-wrapper .feature-title {
+    font-size: 30px;
+    margin-bottom:15px;
+    color:#ffffff;
+  }
+   .app-image-swiper-wrapper .feature-notes {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+  }
+   .app-image-swiper-wrapper .feature-intro {
+    font-size: 18px;
+    margin-bottom:10px;
+    color: rgba(255, 255, 255, 0.64);
+  } 
+  /* } */
+  @media screen and (max-width:769px) {
+    .app-image-swiper {
+      padding:0 !important;
+    }
+    .app-image-swiper-wrapper .text-wrapper {
+     padding-right: 20px;
+      padding-left: 20px; 
+    }
+    .app-image-swiper-wrapper .feature-title {
+     font-size: 22px; 
+    }
+    .app-image-swiper-wrapper .feature-intro {
+      font-size: 14px;
+    }
+    .app-image-swiper-wrapper .feature-notes {
+      font-size: 10px;
+    }
+    .swiper-container-horizontal>.swiper-pagination-bullets {
+      /* bottom: 170px; */
+      bottom: unset;
+    }
+    .swiper-pagination-bullet {
+      width: 6px;
+      height: 6px;
+      /* background: rgba(255, 255, 255); */
+      background:rgba(255, 255, 255, 0.4);
+      opacity: 1;
+    }
+    .swiper-pagination-bullet-active {
+      width: 27px;
+      border-radius: 4px;
+      background: rgba(217, 217, 217, 1);
+      opacity: 1;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "App Image Swiper",
+  "settings": [],
+  "blocks": [{
+    "type": "swiper-item",
+    "name": "Item",
+    "settings": [{
+    "type": "image_picker",
+    "id": "image",
+    "label": "Image"
+  },{
+    "type": "image_picker",
+    "id": "image_m",
+    "label": "Image M"
+  },{
+    "type": "text",
+    "id": "title",
+    "label": "Title"
+  },{
+    "type": "text",
+    "id": "intro",
+    "label": "Introduction"
+  },{
+    "type": "text",
+    "id": "notes",
+    "label": "Notes"
+  }],
+  }],
+  "presets": [{"name": "App Image Swiper"}]
+}
+{% endschema %}

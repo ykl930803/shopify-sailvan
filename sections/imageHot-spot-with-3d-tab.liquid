@@ -1,0 +1,113 @@
+{% render 'reusable-imageHotspot-with-3d-tab' %}
+
+<style>
+    section.imageHotspot-with-3d-tab {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+        background-color: #F8F8F8;
+    }
+    .imageHotspot-with-3d-tab .nav-tabs {
+        display: flex;
+        justify-content: center;
+        border: 0;
+        position: relative;
+        z-index: 1;
+    }
+    .imageHotspot-with-3d-tab .nav-tabs a {
+        font-size: 28px;
+        text-decoration: none;
+        font-weight: 600;
+        color: #999999;
+        border-bottom: 5px solid #D9D9D9;
+        padding: 15px 25px;
+        transition: 0.4s ease;
+    }
+    .imageHotspot-with-3d-tab .nav-tabs a.active {
+        color: #1D1D1F;
+        border-color: #1D1D1F;
+    }
+    .imageHotspot-with-3d-tab .product-3d-media model-viewer {
+        height: 100%;
+        width: 100%;
+    }
+    .imageHotspot-with-3d-tab .product-3d-media {
+        margin-top: -100px;
+    }
+    .pointBoxClose, .pointBoxArrow {
+        display: none;
+    }
+    .pointBox.fadeInUp {
+        -webkit-animation: none;
+    }
+    #tab1-content {
+        background-image: url('{{ section.settings.tabContent1_background | img_url: "master" }}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center -75px;
+    }
+    #tab2-content {
+        background-image: url('{{ section.settings.tabContent2_background | img_url: "master" }}');
+        background-size: 1200px;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+</style>
+
+{%  javascript  %}  
+{% endjavascript %}
+
+{% schema %}
+{
+    "name": "Image Hotspot + 3D Tab",
+    "settings": [
+        {
+            "type": "number",
+            "id": "section_paddingTop",
+            "label": "Section Padding Top",
+            "default": 100
+        },
+        {
+            "type": "number",
+            "id": "section_paddingBottom",
+            "label": "Section Padding Bottom",
+            "default": 100
+        },
+        {
+            "type": "text",
+            "id": "tab_1",
+            "label": "Tab 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "tabContent1_background",
+            "label": "Tab 1 Content Background"
+        },
+        {
+            "type": "text",
+            "id": "hotspotImage_id",
+            "label": "Image Hotspot ID"
+        },
+        {
+            "type": "text",
+            "id": "tab_2",
+            "label": "Tab 2"
+        },
+        {
+            "type": "image_picker",
+            "id": "tabContent2_background",
+            "label": "Tab 2 Content Background"
+        },
+        {
+            "type": "text",
+            "id": "glbFile_url",
+            "label": "Please input glb file url from content media files."
+        }
+
+    ],
+    "presets": [
+      {
+        "name": "Image Hotspot + 3D Tab"
+      }
+    ]
+}
+{% endschema %}

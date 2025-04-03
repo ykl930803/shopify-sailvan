@@ -1,0 +1,27 @@
+{%- capture collection_breadcrumb -%}
+    <nav class="breadcrumb breadcrumb--floating m-0" aria-label="{{ 'general.breadcrumb.label' | t | escape }}">
+      <ol class="breadcrumb__list unstyled-list d-flex m-0">
+        <li class="breadcrumb__list-item">
+          <a href="{{ routes.root_url }}" class="v-medium">{{ 'general.breadcrumb.home' | t }}</a>
+        </li>
+        <li class="mx-2">></li>
+        <li class="breadcrumb__list-item">
+          <a href="{{ routes.all_products_collection_url }}" class="v-medium">{{ 'general.breadcrumb.shop' | t }}</a>
+        </li>
+        <li class="mx-2">></li>
+        <li class="breadcrumb__list-item">
+          <a href="{{ product.collections[0].url }}" aria-current="page" class="v-medium">{{ product.collections[0].title }}</a>
+        </li>
+        <li class="mx-2">></li>
+        <li class="breadcrumb__list-item">
+          <a href="{{ product.url }}" aria-current="page" class="v-medium current">{{ product.title }}</a>
+        </li>
+      </ol>
+    </nav>
+{%- endcapture -%}
+<div class="container-fluid breadcrumb-container my-4">
+    <div class="d-flex align-items-center">
+      <a class="back-link d-flex align-items-center text-decoration-none" aria-label="back" href="#" onclick="history.back()"> <span class="back-btn"></span><span class="v-large  mx-3">Back</span> </a>
+      {{collection_breadcrumb}}
+    </div>
+</div>

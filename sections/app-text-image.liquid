@@ -1,0 +1,121 @@
+<div class="feature-introduction-wrapper {{ section.id }}">
+  <div class="feature-introduction section-content">
+    <div class="text-wrapper">
+    <h2 class="feature-title">{{ section.settings.title }}</h2>
+    <div class="feature-intro">{{ section.settings.intro }}</div>
+    <div class="feature-notes">{{ section.settings.notes }}</div>
+  </div>
+  <div class="feature-image-wrapper"></div>
+  </div>
+</div>
+<style>
+  .feature-introduction-wrapper {
+    background-color:  #000000;
+  }
+  .feature-introduction {
+    color: #ffffff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap: 50px;
+    padding-top: 7.5vw;
+    padding-bottom: 7.5vw;
+    margin:0 auto;
+  }
+  .{{ section.id }} .text-wrapper {
+    order: {% if section.settings.img_position == 'left' %}2{% else %}1{% endif %};
+    width: 40%;
+  }
+  .{{ section.id }} .feature-image-wrapper {
+    order: {% if section.settings.img_position == 'left' %}1{% else %}2{% endif %};
+    flex:1;
+    background-image:url("{{ section.settings.image | image_url}}");
+    aspect-ratio: {{section.settings.image.aspect_ratio}};
+    background-size:cover;
+    background-repeat:no-repeat;
+    border-radius: 25px;
+  }
+  .feature-introduction .feature-title {
+    font-size: 30px;
+    margin-bottom:15px;
+    color:#ffffff;
+  }
+   .feature-introduction .feature-notes {
+    font-size: 12px;
+     color: rgba(255, 255, 255, 0.3);
+  }
+   .feature-introduction .feature-intro {
+    font-size: 18px;
+    margin-bottom:10px;
+    color: rgba(255, 255, 255, 0.64);
+  }
+  /* .feature-introduction .feature-image {
+    border-radius: 25px;
+  } */
+  @media screen and (max-width:769px) {
+    .feature-introduction {
+      flex-wrap:wrap;
+      padding-top: 10vw;
+      padding-bottom:10vw;
+    }
+     .{{ section.id }} .text-wrapper {
+      order: 2;
+     width: 100%;
+    }
+  .{{ section.id }} .feature-image-wrapper {
+    order: 1;
+     width: 100%;
+    background-image:url("{{ section.settings.image_m | image_url}}");
+    aspect-ratio: {{section.settings.image_m.aspect_ratio}};
+     border-radius: 4px;
+    }
+    .feature-introduction .feature-title {
+     font-size: 22px; 
+    }
+    .feature-introduction .feature-intro {
+      font-size: 14px;
+    }
+    .feature-introduction .feature-notes {
+      font-size: 10px;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "Feature Introduction",
+    "settings": [{
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },{
+      "type": "text",
+      "id": "intro",
+      "label": "Introduction"
+    },{
+      "type": "text",
+      "id": "notes",
+      "label": "Notes"
+    },{
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },{
+      "type": "image_picker",
+      "id": "image_m",
+      "label": "Image M"
+    },{
+      "type": "select",
+      "id": "img_position",
+      "label": "Image Position",
+      "options": [{
+        "label": "Left",
+        "value": "left"
+      },{
+        "label": "Right",
+        "value": "right"
+      }],
+      "default":"left"
+    }],
+    "presets": [{"name": "APP Feature Introduction"}]
+  }
+{% endschema %}

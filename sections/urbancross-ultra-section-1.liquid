@@ -1,0 +1,763 @@
+{% assign product_form_id = 'product-form-' | append: product.id %}
+{%- liquid
+  assign zoom_size = 5000
+%}
+<script>
+    var sizes = [
+        {% for block in section.blocks %}
+            {
+                name: '{{ block.settings.size }}',
+                saddleHeight: '{{ block.settings.saddle_height }}',
+                description: '{{ block.settings.size_description }}',
+                criteria: {
+                    minHeight: {{ block.settings.min_height}},
+                    maxHeight: {{ block.settings.max_height}},
+                    minLegLength: {{ block.settings.min_leg}},
+                    maxLegLength: {{ block.settings.max_leg}},
+                    minWeight: {{ block.settings.min_weight}},
+                    maxWeight: {{ block.settings.max_weight}}
+                }
+            }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ];
+</script>
+
+<section id="hnz-product-1">
+    <div class="container section-content">
+
+        <div class="row">
+            <div class="col-12 top-nav">
+                <a class="back-btn" href="{{ routes.root_url }}">
+                    <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+                <div class="breadcrumbs d-lg-inline d-md-none d-sm-none">
+                    <a href="{{ routes.root_url }}">Home</a>
+                    >
+                    <a href="{{ product.collections[0].url }}">{{ product.collections[0].title }}</a>
+                    >
+                    <a href="javascript:void(0)">Order</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row product-row">
+
+            <div class="col-lg-7 col-md-12 col-sm-12">
+                <div class="sticky">
+                    <div class="product-media">
+
+                        <div class="main-media position-relative">
+                            <div class="owl-carousel" id="main-carousel">
+                                {% for media in product.media %}
+                                    {% case media.media_type %}
+                                        {% when 'image' %}
+                                            <a class="product-image show-gallery" href="{{ media.preview_image | image_url: width: zoom_size }}">
+                                                <img src="{{ media | img_url: 'master'}}" alt="{{ media.alt }}">
+                                            </a>
+                                    {% endcase %}
+                                {% endfor %}
+                                {%- render 'gallery-viewer', product: product, zoom_size: zoom_size -%}
+                            </div>
+                            <div class="float-nav f-media">
+                                <button type="button" role="presentation" class="owl-prev" disabled>
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button type="button" role="presentation" class="owl-next">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        {% if product.metafields.custom.model_viewer != blank %}
+                            <model-viewer class="model-3d" src="{{ product.metafields.custom.model_viewer }}" auto-rotate camera-controls></model-viewer>
+                        {% endif %}
+
+                        <div class="owl-carousel" id="option-carousel">
+                            {% for media in product.media %}
+                                {% case media.media_type %}
+                                    {% when 'image' %}
+                                        <div class="product-image" data-media-id="{{ media.id }}">
+                                            <img src="{{ media | img_url: 'master'}}" alt="{{ media.alt }}">
+                                        </div>
+                                {% endcase %}
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    
+                    {% if product.metafields.custom.model_viewer != blank %}
+                        <div class="media-toggle">
+                            <div class="toggle active">
+                                <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/photos.png?v=1715604268"> Photos
+                            </div>
+                            <div class="toggle">
+                                <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/3d.png?v=1715603832"> 3D
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-md-12 col-sm-12">
+                <div class="product-info">
+
+                    <h1 class="product-title">
+                        {{ product.title }}
+                    </h1>
+
+                    <div class="star-badge">
+                        <!-- Start of Judge.me code --> 
+                        <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+                            {{ product.metafields.judgeme.badge }} 
+                        </div> 
+                        <!-- End of Judge.me code -->
+                    </div>
+
+                    <div class="product-price" style="justify-content:flex-start;">
+                        <div class="price" style="margin-right:20px;">
+                            <span class="price-regular price-item--regular">
+                                {{ product.selected_or_first_available_variant.price | money }}
+                            </span>
+                            <span class="product-compare-price price-item--sale">
+                                {{ product.selected_or_first_available_variant.compare_at_price | money }}
+                            </span>
+                        </div>
+                        {% if product.metafields.custom.promotion != blank %}
+                            <span class="promotion">
+                                {{ product.metafields.custom.promotion }}
+                            </span>
+                        {% endif %}
+                    </div>
+
+                    {% if product.metafields.custom.sales_ends_in != blank %}
+                        {% assign today = 'now' | date: '%s' %}
+                        {% assign end = product.metafields.custom.sales_ends_in | date: '%s' %}
+                        {% if end > today %}
+                            <div class="sale-ends">
+                                <span>Sale Ends In</span>
+                                <span class="countdown" data-end="{{ product.metafields.custom.sales_ends_in }}">
+                                    <div class="day">00</div> DAYS 
+                                    <div class="hour">00</div> : 
+                                    <div class="minute">00</div> :
+                                    <div class="second">00</div>
+                                </span>
+                            </div>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    let targetDateString = document.querySelector(".countdown").getAttribute("data-end");
+                                    let targetDate = new Date(targetDateString).getTime();
+
+                                    let x = setInterval(function() {
+                                        let now = new Date().getTime();
+                                        let distance = targetDate - now;
+
+                                        let day = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                        let hour = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                        let minute = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                        let second = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                        function padValue(value) {
+                                            return value < 10 ? '0' + value : value;
+                                        }
+
+                                        document.querySelector(".day").innerHTML = padValue(day);
+                                        document.querySelector(".hour").innerHTML = padValue(hour);
+                                        document.querySelector(".minute").innerHTML = padValue(minute);
+                                        document.querySelector(".second").innerHTML = padValue(second);
+
+                                        if (distance < 0) {
+                                            clearInterval(x);
+                                            document.querySelector(".sale-ends").style.display = 'none';
+                                        }
+                                    }, 1000);
+                                });
+                            </script>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if product.metafields.custom.shipping_info != blank%}
+                        <div class="shipping-message">
+                            <img src="{{ 'shipping_icon.png' | asset_url }}" width="25" style="margin-right: 10px;">
+                            {% comment %} <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/shipping.png?v=1715777128"> {% endcomment %}
+                            {% comment %} {{ section.settings.shipping_1 }} {% endcomment %}
+                             <!-- {{ product.metafields.custom.shipping_info }} -->
+                          {%- assign title_words = product.metafields.custom.shipping_info | split: '-' -%}
+                              {{ title_words[0] }}
+                              <span class="line"></span>
+                              {{ title_words[1] }}
+                        </div>
+                    {% endif %}
+                    {% comment %} {% assign products_in_collection = section.settings.series_collect.products %} {% endcomment %}
+                    <!-- {% assign products_in_collection = product.collections['grandteton-series'] %} -->
+                    {% assign current_url = request.path %}
+                    {% comment %} {% for collection in product.collections %} {% endcomment %}
+                        {% if product.metafields.custom._series %}
+                            {% assign products_in_collection = product.metafields.custom._series.value.products %}
+                            <div class="product-collections">
+                                {% for product in products_in_collection %}
+                                    {% if product.url == current_url %}
+                                        {% assign product_link = 'javascript: void(0)' %}
+                                      {% else %}
+                                        {% assign product_link = product.url %}
+                                      {% endif %}
+                                    <div class="product-item {% if product.url == current_url %}active{% endif %}">
+                                        <a href="{{ product_link }}">
+                                          <div class="product-thumbnail">
+                                              <img src="{{ product.featured_image.src | img_url }}" width="100%">
+                                            </div>
+                                            {{ product.title }}
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% comment %} {% endfor %} {% endcomment %}
+                    {% comment %} {% if products_in_collection.size > 0%}
+                        <div class="product-collections">
+                            {% for product in product.collections['ug'].products %}
+                                {% if product.url == current_url %}
+                                    {% assign product_link = 'javascript: void(0)' %}
+                                  {% else %}
+                                    {% assign product_link = product.url %}
+                                  {% endif %}
+                                <div class="product-item {% if product.url == current_url %}active{% endif %}">
+                                    <a href="{{ product_link }}">
+                                        <img src="{{ product.featured_image.src | img_url }}" class="product-thumbnail">
+                                        {{ product.title }}
+                                    </a>
+                                </div>
+                                {% endfor %}
+                        </div>
+                    {% endif %} {% endcomment %}
+
+                    {% unless product.has_only_default_variant %}
+
+                        {% liquid
+                            assign variants_available_arr = product.variants | map: 'available'
+                            assign variants_option1_arr = product.variants | map: 'option1'
+                            assign variants_option2_arr = product.variants | map: 'option2'
+                            assign variants_option3_arr = product.variants | map: 'option3'
+                        %}
+
+                        <div class="variants">
+                            <variant-radios class="no-js-hidden variants" data-section="{{ product.id }}" data-url="{{ product.url }}">
+                                {% for option in product.options_with_values %}
+                                    
+                                    {% if option.name != 'Color' %}
+                                        <fieldset class="variant js product-form__input">
+                                            <legend class="variant-name form__label">
+                                                {{ option.name }}
+                                                {% if option.name == 'Size' %}
+                                                    <span class="variant-info variant--size"> - {{ product.selected_or_first_available_variant.metafields.custom.size }}</span>
+                                                {% endif %}
+                                            </legend>
+                                            {% for value in option.values %}
+
+                                                {% liquid
+                                                    assign option_disabled = true
+                                                
+                                                    for option1_name in variants_option1_arr
+                                                        case option.position
+                                                            when 1
+                                                                if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                            when 2
+                                                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                            when 3
+                                                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                        endcase
+                                                    endfor
+                                                %}
+
+                                                <span class="variants-selector {% if option.name == 'Size' and option.name != 'color' %} size {% else %} default {% endif %} {% if option.selected_value == value %}selected{% endif %} {% if option_disabled %}disabled{% endif %}" data-id="{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                                    {{ value }}
+                                                </span>
+                                                <span class="variants-option">
+                                                    <input type="radio" class="variant-radio {% if option_disabled %}disabled{% endif %}"
+                                                        id="{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}" 
+                                                        name="{{ option.name }}" 
+                                                        value="{{ value | escape }}" 
+                                                        form="{{ product_form_id }}" 
+                                                        {% if option.selected_value == value %}checked{% endif %}
+                                                    >
+                                                </span>
+                                            {% endfor %}
+                                        </fieldset>
+
+                                    {% elsif option.name == 'Color' %}
+
+                                        <fieldset class="variant js product-form__input">
+                                            <legend class="variant-name form__label">
+                                                {{ option.name }}
+                                                <span class="variant-info variant--color"> - {{ product.selected_or_first_available_variant.metafields.custom.color }}</span>
+                                            </legend>
+                                            
+                                            {% assign colorIndex = 0 %}
+
+                                            {% for value in option.values %}
+
+                                                {% liquid
+                                                    assign option_disabled = true
+                                                
+                                                    for option1_name in variants_option1_arr
+                                                        case option.position
+                                                            when 1
+                                                                if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                            when 2
+                                                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                            when 3
+                                                                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                    assign option_disabled = false
+                                                                endif
+                                                        endcase
+                                                    endfor
+                                                %}
+
+                                                {% assign swatchIndex = 0 %}
+                                                {% assign colorUrl = '' %}
+                                                
+                                                {% for color_swatch in product.metafields.custom.color_swatches.value %}
+                                                    {% if colorIndex == swatchIndex %}
+                                                        {% assign colorUrl = color_swatch %}
+                                                    {% endif %}
+
+                                                    {% assign swatchIndex = swatchIndex | plus: 1 %}
+                                                {% endfor %}
+
+                                                <span class="variants-selector color {% if option.selected_value == value %}selected{% endif %} {% if option_disabled %}disabled{% endif %}" data-id="{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                                    <div class="color-swatch" style="background: {{ colorUrl }}"></div>
+                                                </span>
+                                                <span class="variants-option">
+                                                    <input type="radio" class="variant-radio {% if option_disabled %}disabled{% endif %}"
+                                                        id="{{ product.id }}-{{ option.position }}-{{ forloop.index0 }}" 
+                                                        name="{{ option.name }}" 
+                                                        value="{{ value | escape }}" 
+                                                        form="{{ product_form_id }}" 
+                                                        {% if option.selected_value == value %}checked{% endif %}
+                                                    >
+                                                </span>
+
+                                                {% assign colorIndex = colorIndex | plus: 1 %}
+
+                                            {% endfor %}
+                                        </fieldset>
+
+                                    {% endif %}
+
+                                {% endfor %}
+                                <script type="application/json">
+                                    {{ product.variants | json }}
+                                </script>
+                            </variant-radios>
+                            
+                        </div>
+                    {% endunless %}
+
+                  {% if section.settings.klana_message != blank %}
+                      {% render 'klana-message', message:section.settings.klana_message%}
+                    {% endif %}
+
+                    {% assign reco = 0 %}
+                    {% for block in section.blocks %}
+                        {% assign reco = reco | plus: 1 %}
+                    {% endfor %}
+
+                    {% if reco > 0 %}
+                        <div class="recommendation">
+                            <div class="bordered">
+                                <h6 class="reco-title">
+                                    Find your recommended size and saddle height
+                                </h6>
+                                <div class="suggested">
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            <div class="recommended">
+                                                <h5 class="rec size">
+                                                    
+                                                </h5>
+                                                <p class="rec-title">
+                                                    Recommended Size
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="recommended">
+                                                <h5 class="rec saddle">
+                                                    
+                                                </h5>
+                                                <p class="rec-title">
+                                                    Recommended Saddle Height
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn hnz-modal" data-modal="measurement">
+                                    <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/measure.png?v=1715841090">
+                                    <span>Body Measurement</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        {% render 'hnz-modal-measurement' %}
+                        {% render 'hnz-modal-recommendation' %}
+                    {% endif %}
+
+                    {% if product.metafields.custom.exclusive_offer != blank %}
+                        <h6 class="info-title">
+                            Exclusive Offer
+                        </h6>
+                        <div class="exclusive-offer">
+                            {% for offer in product.metafields.custom.exclusive_offer.value %}
+                                <a class="offer" data-id="{{ offer.selected_or_first_available_variant.id }}" href="{{ offer.url }}">
+                                    <img src="{{ offer.featured_image | img_url: 'master' }}">
+                                    <div class="details">
+                                        <div class="free">
+                                            <span>FREE</span>
+                                            <span>{{ offer.price | money }}</span>
+                                        </div>
+                                        <h6 class="title">
+                                            {{ offer.title }}
+                                        </h6>
+                                        <!-- <p class="body"> -->
+                                            <!-- Limited Time: Until {{ product.metafields.custom.exclusive_offer_date_end | date: '%m/%d/%y' }}. -->
+                                            <!-- Save Up To {{ offer.price | money }} when you buy this product. -->
+                                        <!-- </p> -->
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                   {% endif %}
+
+                   {% if product.metafields.custom.compatible_accessories != blank %}
+                        <h6 class="info-title">
+                            Pick Your Accessories
+                        </h6>
+                        <div class="accessories">
+                            <div class="owl-carousel">
+                                {% for accessory in product.metafields.custom.compatible_accessories.value %}
+                                    {% if accessory.available %}
+                                        <div class="item">
+                                            <div class="accessory">
+                                                <button class="add" data-id="{{ accessory.selected_or_first_available_variant.id }}">+</button>
+                                                <a class="details" href="{{ accessory.url }}">
+                                                    <img src="{{ accessory.featured_image | img_url: 'master' }}">
+                                                    <div class="d-flex flex-column">
+                                                        <h6 class="product-title">
+                                                            {{ accessory.title }}
+                                                        </h6>
+                                                        <div class="d-flex justify-content-between">
+                                                          <p class="price">
+                                                              {% if accessory.selected_or_first_available_variant.compare_at_price > accessory.selected_or_first_available_variant.price%}
+                                                                <span class="compar-at-price price-line">
+                                                                  {{ accessory.selected_or_first_available_variant.compare_at_price | money }}
+                                                                </span>
+                                                              {% endif %}
+                                                              <span class="discount-price">{{ accessory.selected_or_first_available_variant.price| money }}</span>
+                                                              {% if accessory.metafields.custom.discount_price %}
+                                                                <span class="discount-price">{{ accessory.metafields.custom.discount_price }}</span>
+                                                              {% endif %}
+                                                            </p>
+                                                            <span class="sum">
+                                                                SUM: <span>0</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="float-nav f-accessories">
+                                <button type="button" role="presentation" class="owl-prev" disabled>
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button type="button" role="presentation" class="owl-next">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="product-form">
+                        <product-form>
+                            {% form 'product', product, id: product_form_id, class: 'atc-form form', novalidate: 'novalidate', data-type: 'add-to-cart-form', action: 'javascript:void(0)' %}
+                                <input type="hidden" name="id" id="main-id" value="{{ product.selected_or_first_available_variant.id }}">
+                                <div class="form-btn">
+                                    <button type='submit' name="add" class="btn btn-atc" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+                                        <span>
+                                            {% if product.selected_or_first_available_variant.available %}
+                                                Add to Cart
+                                            {% else %}
+                                                Out Of Stock
+                                            {% endif %}
+                                        </span>
+                                    </button>
+                                    <button type='button' class="btn buy-button" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+                                        <span>
+                                            {% if product.selected_or_first_available_variant.available %}
+                                                Buy Now
+                                            {% else %}
+                                                Out Of Stock
+                                            {% endif %}
+                                        </span>
+                                    </button>
+                                </div>
+                              <!-- {% if settings.enable_dynamic_checkout_button %}
+                              {{ form | payment_button }}
+                              {% endif %} -->
+                            {% endform %}
+                        </product-form>
+                    </div>
+
+                    <!-- <div class="payments">
+                        <div class="payment">
+                            <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/paypal.png?v=1715660364">
+                            <span class="apr">
+                                {{ section.settings.paypal_apr }} APR
+                                </span>
+                            <span class="details">
+                                {{ section.settings.paypal_details }}
+                            </span>
+                        </div>
+                        <div class="payment">
+                            <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/klarna_a1e22cd4-9279-4b15-ab1d-2a9d543ee363.png?v=1715660364">
+                            <span class="apr">
+                                {{ section.settings.klarna_apr }} APR
+                                </span>
+                            <span class="details">
+                                {{ section.settings.klarna_details }}
+                            </span>
+                        </div>
+                    </div> -->
+                    
+                    <!-- {% assign size_fit = 0 %}
+                    {% for geometry in shop.metaobjects.product_geometry.values %}
+                        {% if geometry.product.value.id == product.id %}
+                            {% assign size_fit = 1 %}
+                        {% endif %}
+                    {% endfor %} -->
+
+                    {% comment %} {% assign specs = 0 %}
+                    {% for spec in shop.metaobjects.compare_models_specification.values %}
+                        {% if spec.product.value.id == product.id %}
+                            {% assign specs = 1 %}
+                        {% endif %}
+                    {% endfor %} {% endcomment %}
+
+                    {% if product.metafields.custom.size_fit != nil or product.metafields.custom.performance != nil %}
+
+                        <div class="mdl-toggle">
+                            {% if product.metafields.custom.size_fit != nil %}
+                                <div class="item hnz-modal" data-modal="size-fit">
+                                    Size & Fit <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                            {% endif %}
+                            {% if product.metafields.custom.performance != nil %}
+                                <div class="item hnz-modal" data-modal="specs">
+                                    Specs <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        {% if product.metafields.custom.size_fit != nil %}
+                            {% render 'uc-size-fit-modal' %}
+                        {% endif %}
+
+                        {% if product.metafields.custom.performance != nil %}
+                            {% render 'new-product-specs' %}
+                        {% endif %}
+
+                    {% endif %}
+                    {% comment %} {% if product.metafields.performance %}
+                        <div class="item hnz-modal" data-modal="specs">
+                            Specs <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                    {% endif %} {% endcomment %}
+
+                    <div class="payment-method">
+                        <h5 class="text">
+                            Payment Methods. <a href="{{ section.settings.payment_url }}">Learn More</a>
+                        </h5>
+                        <div class="method">
+                            <img src="{{ section.settings.payment_method | img_url: 'master' }}">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% render 'hnz-modal-email' %}
+
+</section>
+
+<div class="product-nav">
+    <div class="container">
+        <div class="row justify-content-between gy-lg-0 gy-md-3 gy-sm-3">
+            <div class="row align-items-center col-lg-7 col-md-12 col-sm-12 order-lg-1 order-md-2 order-sm-2">
+                <p class="shipping-1" style="margin: 0;">
+                    {% comment %} <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/shipping.png?v=1715777128">
+                    {{ section.settings.shipping_1 }} {% endcomment %}
+                     <!-- <img src="{{ 'shipping_icon.png' | asset_url }}"> -->
+                     {{ product.metafields.custom.shipping_info | replace: '-', ' ' }}
+                </p>
+                <!-- <p class="shipping-2">
+                    {{ section.settings.shipping_2 }}
+                </p> -->
+            </div>
+            <div class="col-lg-5 col-md-12 cols-m-12 order-lg-2 order-md-1 order-sm-1">
+                <div class="price-btn">
+                    <div class="price">
+                            <div class="product-compare-price price-item--sale">
+                                {{ product.selected_or_first_available_variant.compare_at_price | money }}
+                            </div>
+                        <div class="price-regular price-item--regular">
+                            {{ product.selected_or_first_available_variant.price | money }}
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-black btn-atc" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+                            {% if product.selected_or_first_available_variant.available %}
+                                Order Now
+                            {% else %}
+                                Out Of Stock
+                            {% endif %}
+                        </button>
+                        <button class="btn btn-black hnz-modal" data-modal="email" {% if product.selected_or_first_available_variant.available %}style="display: none;"{% endif %}>
+                            Notify Me
+                        </button>
+                          <!-- <a href="#googleMapWrap" class="btn btn-black btn-atc" style="color: #ffffff;border-radius:5px !important;">
+                            Book A Test-Ride
+                          </a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Urbancross Ultra Sec1",
+        "settings": [
+            {
+                "type": "text",
+                "id": "paypal_apr",
+                "label": "Paypal APR Percentage"
+            },
+            {
+                "type": "text",
+                "id": "paypal_details",
+                "label": "Paypal Details"
+            },
+            {
+                "type": "text",
+                "id": "klarna_apr",
+                "label": "Klarna APR Percentage"
+            },
+            {
+                "type": "text",
+                "id": "klarna_details",
+                "label": "Klarna Details"
+            },
+            {
+                "type": "image_picker",
+                "id": "payment_method",
+                "label": "Payment Method"
+            },
+            {
+                "type": "url",
+                "id": "payment_url",
+                "label": "Other Payment Method URL"
+            },
+            {
+                "type": "text",
+                "id": "shipping_1",
+                "label": "Shipping Info 1"
+            },
+            {
+                "type": "text",
+                "id": "shipping_2",
+                "label": "Shipping Info 2"
+            },
+            {
+                "type": "collection",
+                "id": "series_collect",
+                "label": "Series Collection"
+            },
+           {
+              "type": "text",
+              "id": "klana_message",
+              "label": "Klana Message"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "number",
+                "name": "Recommended Size",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "size",
+                        "label": "Recommended Size"
+                    },
+                    {
+                        "type": "text",
+                        "id": "saddle_height",
+                        "label": "Recommended Saddle Height"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "size_description",
+                        "label": "Size Description"
+                    },
+                    {
+                        "type": "number",
+                        "id": "min_height",
+                        "label": "Min. Height (cm)"
+                    },
+                    {
+                        "type": "number",
+                        "id": "max_height",
+                        "label": "Max. Height (cm)"
+                    },
+                    {
+                        "type": "number",
+                        "id": "min_leg",
+                        "label": "Min. Leg Length (cm)"
+                    },
+                    {
+                        "type": "number",
+                        "id": "max_leg",
+                        "label": "Max. Leg Length (cm)"
+                    },
+                    {
+                        "type": "number",
+                        "id": "min_weight",
+                        "label": "Min. Weight (kg)"
+                    },
+                    {
+                        "type": "number",
+                        "id": "max_weight",
+                        "label": "Max. Weight (kg)"
+                    }
+                ]
+            }
+        ],
+      "presets": [{"name": "Urbancross Ultra Sec1"}]
+    }
+{% endschema %}

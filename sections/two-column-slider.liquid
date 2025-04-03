@@ -1,0 +1,273 @@
+{% render 'reusableComponent-twoColumn-slider' %}
+
+<style>
+    section.twoColumn-slider {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+
+        .twoColum-sliderItem {
+            
+            .left-imageWrapper {
+                padding-right: 100px;
+            
+                .image-slider {
+                    height: 460px;
+                }
+                .swiper-slide { 
+                    border-radius: 20px;        
+                }
+            }
+
+            .right-headingTextWrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-left: 12px;
+                
+                .quote-slider {
+                    height: 460px;
+
+                    .right-headingText {
+                        margin-bottom: 35px;
+                    }
+                    .right-paragraph p {
+                        font-size: 18px;
+                    }
+                    .quote-text-wrap {
+                        display: flex;
+                        height: 100%;
+                        
+                        .quote-text {
+                            align-self: center;
+                            transition: all 0.4s;
+                        }
+                    }
+                }
+            }
+
+            .swiper-slide { 
+                position: relative;
+                overflow: hidden;
+                
+                
+                .swiper-slide-inner {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+
+                    .left-image {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: 50% 50%;
+                        min-height: 460px;
+                        border-radius: 20px;
+                    }
+                }
+                
+            }
+
+            .swiper-slide.swiper-slide-next .quote-text,
+            .swiper-slide.swiper-slide-prev .quote-text {
+                opacity: 0;
+            }
+            .swiper-slide.swiper-slide-active .quote-text {
+                opacity: 1;
+            }
+
+        }
+    }
+
+</style>
+
+{% javascript %}
+
+    // Your configuration options
+    var commonSwiperOptions = {
+        direction: "vertical",
+        effect: "slide",
+        loop: false,
+        allowTouchMove: false,
+    };
+
+    // Create a common Swiper instance for all elements with the class '.quote-slider'
+    var quoteSlider = new Swiper('.quote-slider', commonSwiperOptions);
+
+    var $Speed = 1000;
+
+    // Additional configuration options for '.image-slider'
+    var imageSwiperOptions = {
+        direction: "vertical",
+        mousewheel: true,
+        //effect: "fade",
+        speed: $Speed,
+        loop: false,
+        longSwipesRatio: 0.01,
+        followFinger: false,
+        grabCursor: true,
+        watchSlidesProgress: true,
+        parallax: true,
+        lazy: {
+            loadPrevNext: true,
+        },
+    };
+
+    // Select all elements with the class '.image-slider' and create a Swiper instance for each
+    var imageSliders = document.querySelectorAll('.image-slider');
+
+    imageSliders.forEach(function (element) {
+        var imageSwiper = new Swiper(element, imageSwiperOptions);
+
+        // Link the controllers
+        if (quoteSlider) {
+            imageSwiper.controller.control = quoteSlider;
+        }
+    });
+
+
+    /*var imageSwiper = new Swiper('.image-slider', {
+        direction: "vertical",
+        mousewheel: true,
+        effect: "fade",
+        speed: $Speed,
+        loop: false,
+        longSwipesRatio: 0.01,
+        followFinger: false,
+        grabCursor: true, 
+        watchSlidesProgress: true,
+        parallax: true,
+        lazy: {
+            loadPrevNext: true,
+        },
+    });
+
+    imageSwiper.controller.control = quoteSwiper;*/
+
+    /*function initializeSwipers(containerSelector, swiperClass, options) {
+        var containers = document.querySelectorAll(containerSelector);
+        var swiperInstances = [];
+
+        containers.forEach(function (container) {
+            swiperInstances.push(new Swiper(container.querySelector('.' + swiperClass), options));
+        });
+
+        return swiperInstances;
+    }
+
+    var commonOptions = {
+        direction: "vertical",
+        loop: false,
+    };
+
+    // Initialize quoteSwipers
+    var quoteSwipers = initializeSwipers('.quote-slider-container', 'quote-slider', {
+        ...commonOptions,
+        effect: "slide",
+        allowTouchMove: false,
+    });
+
+    // Initialize imageSwipers
+    var $Speed = 1000;
+    var imageSwipers = initializeSwipers('.image-slider-container', 'image-slider', {
+        ...commonOptions,
+        mousewheel: true,
+        effect: "fade",
+        speed: $Speed,
+        longSwipesRatio: 0.01,
+        followFinger: false,
+        grabCursor: true,
+        watchSlidesProgress: true,
+        parallax: true,
+        lazy: {
+            loadPrevNext: true,
+        },
+    });
+
+    // Make imageSwiper control quoteSwiper
+    imageSwipers.forEach(function (imageSwiper) {
+        imageSwiper.controller.control = quoteSwipers;
+    });*/
+    
+
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Two Column Slider",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Slider Item",
+                "limit": 10,
+                "settings": [
+                    {
+                        "type": "select",
+                        "id": "heading_tags",
+                        "label": "Select Heading Tags for Heading Text",
+                        "options": [
+                            {
+                                "value": "<h1/>",
+                                "label": "H1"
+                            },
+                            {
+                                "value": "<h2/>",
+                                "label": "H2"
+                            },
+                            {
+                                "value": "<h3/>",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "<h4/>",
+                                "label": "H4"
+                            },
+                            {
+                                "value": "<h5/>",
+                                "label": "H5"
+                            }
+                        ],
+                        "default": "<h1/>"
+                    },
+                    {
+                        "type": "text",
+                        "id": "right_headingText",
+                        "label": "Right Heading Text",
+                        "default": "Right Heading Text"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "right_paragraph",
+                        "label": "Right Paragraph"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "left_image",
+                        "label": "Left Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Two Column Slider"
+          }
+        ]
+    }
+{% endschema %}

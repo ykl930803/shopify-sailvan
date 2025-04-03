@@ -1,0 +1,107 @@
+<div class="app-download-link">
+  <div class="text-content section-content">
+    <div class="text-wrapper">
+      <div class="title-wrapper">{{ section.settings.logo | image_url: width: 100 | image_tag:class:'app-logo'  }}<h2 class="download-title">{{ section.settings.title }}</h2></div>
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.download_link }}" class="download-link"><img src="{{ block.settings.image | image_url }}" width="100%" height="" class="download-image"></a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<style>
+  .app-download-link {
+    background-image:url("{{ section.settings.image | image_url}}");
+    aspect-ratio: {{section.settings.image.aspect_ratio}};
+    background-size:cover;
+    background-repeat:no-repeat;
+  }
+  .app-download-link .text-content {
+    height:100%;
+    display:flex;
+    align-items:center;
+    margin:0 auto;
+    /* justify-content:center; */
+  }
+  .app-download-link .title-wrapper {
+    display:flex;
+    align-items:center;
+    margin-bottom: 80px;
+  }
+  .app-download-link .download-link {
+    display:block;
+    width: 180px;
+    margin-bottom: 20px;
+  }
+  .app-download-link .app-logo {
+    margin-right:20px;
+  }
+  .app-download-link .download-image {
+    /* width: 180px; */
+  }
+  .app-download-link .download-title {
+    font-size: 30px;
+    color:#ffffff;
+    margin-bottom:0;
+  }
+  @media screen and (max-width:769px) {
+    .app-download-link {
+      background-image:url("{{ section.settings.image_m | image_url}}");
+      aspect-ratio: {{section.settings.image_m.aspect_ratio}};
+    }
+    .app-download-link .text-content {
+      height:50%;
+      justify-content:center;
+    }
+    .app-download-link .title-wrapper {
+      margin-bottom:50px;
+    }
+    .app-download-link .app-logo {
+      width:60px;
+      height:auto;
+    }
+    .app-download-link .download-title {
+      font-size: 22px;
+      text-align:center;
+    }
+    .app-download-link .download-link {
+      display:inline-block;
+      width: 140px;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "App Download Link",
+    "blocks": [{
+      "type": "download",
+      "name": "Download",
+      "settings": [{
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },{
+        "type": "text",
+        "id": "download_link",
+        "label": "Download Link"
+      }]
+    }],
+    "settings": [{
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },{
+      "type": "image_picker",
+      "id": "image_m",
+      "label": "Image M"
+    },{
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },{
+      "type": "textarea",
+      "id": "title",
+      "label": "Title"
+    },  ],
+    "presets": [{"name": "App Download Link"}]
+  }
+{% endschema %}

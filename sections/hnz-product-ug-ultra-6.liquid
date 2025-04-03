@@ -1,0 +1,280 @@
+<section id="hnz-product-6" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                </h2>
+            </div>
+        </div>
+        <div class="hozscroll">
+            <div class="row">
+
+                <div class="compare">
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5 d-flex flex-column justify-content-between">
+                                <div>
+                                    <img src="{{ block.settings.product.featured_image | img_url: 'master' }}">
+                                    <div class="variant-wrapper">
+                                        {% render 'product-variant-colors', product: block.settings.product %}
+                                    </div>
+                                    <h5 class="product-title">
+                                        {{ block.settings.product.title }}
+                                    </h5>
+                                </div>
+                                <div>
+                                    <p class="description">
+                                        {{ block.settings.description }}
+                                    </p>
+                                    <h4 class="price">
+                                        FROM {{ block.settings.product.price_min | money }}
+                                    </h4>
+                                    <a class="btn btn-white-o" href="{{ block.settings.product.url }}">
+                                        Learn More
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row d-lg-flex d-md-none d-sm-none">
+                        <div class="col-12">
+                            <div class="divider"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <p class="sizes">
+                                    {% for option in block.settings.product.options_with_values %}
+                                        {% if option.name == 'Size' %}
+                                            {% for value in option.values %}{{ value }}{% unless forloop.last %}/{% endunless %}{% endfor %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </p>
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.sizes | newline_to_br }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.riding_position_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.riding_position }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.measurement_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.measurement }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.battery_and_mudguards_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.battery_and_mudguards }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.shape_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.shape }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.centimeters_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.centimeters }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.chair_type_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.chair_type }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.gear_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.gear }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.sensor_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.sensor }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.charger_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.charger }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.speed_limit_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.speed_limit }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.rotor_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.rotor }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.degree_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.degree }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.clamp_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.clamp }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                  <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.net_weight_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.net_weight }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                  <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.tires_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.tires }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                  <div class="row">
+                        {% for block in section.blocks %}
+                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                <img class="icon" src="{{ block.settings.product.metafields.custom.urbanglide_series_specs.value.handle_bar_icon | img_url: 'master' }}">
+                                <p class="value">
+                                    {{ block.settings.product.metafields.custom.urbanglide_series_specs.value.handle_bar }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Product Section 6",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "product",
+                "name": "Product",
+                "settings": [
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Product"
+                    },
+                    {
+                        "type": "text",
+                        "id": "description",
+                        "label": "Short Description"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

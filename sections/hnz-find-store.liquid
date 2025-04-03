@@ -1,0 +1,122 @@
+<section id="hnz-find-store">
+    
+    <div class="types-container d-lg-none d-md-block d-sm-block">
+        <div class="types">
+            <button class="type active" data-type="">
+                <i class="fa-solid fa-store"></i> All Stores
+            </button>
+            <button class="type" data-type="Dealer">
+                <i class="fa-solid fa-user"></i> Dealer
+            </button>
+            <button class="type" data-type="Test Ride">
+                <i class="fa-solid fa-person-biking"></i> Test Ride
+            </button>
+            <button class="type" data-type="Repair">
+                <i class="fa-solid fa-screwdriver-wrench"></i> Repair
+            </button>
+            <button class="type" data-type="Maintenance">
+                <i class="fa-solid fa-toolbox"></i> Maintenance
+            </button>
+        </div>
+    </div>
+
+    <div class="locations d-lg-none d-md-block d-sm-block">
+        <div class="location-header">
+            <h6 class="title">
+                Choose Your City
+            </h6>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" class="input-search" placeholder="Search">
+                <i class="fa-solid fa-xmark clear-search"></i>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="locations d-lg-none d-md-flex d-sm-flex">
+        <div class="location-body">
+
+        </div>
+        <div class="location-none">
+            No store found
+        </div>
+    </div>
+
+    <div class="locations d-lg-flex d-md-none d-sm-none">
+        <div class="location-header">
+            <h6 class="title">
+                Choose Your City
+            </h6>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" class="input-search" placeholder="Search">
+                <i class="fa-solid fa-xmark clear-search"></i>
+            </div>
+        </div>
+        <div class="location-body">
+
+        </div>
+        <div class="location-none">
+            No store found
+        </div>
+    </div>
+
+    <div class="types d-lg-block d-md-none d-sm-none">
+        <button class="type active" data-type="">
+            <i class="fa-solid fa-store"></i> All Stores
+        </button>
+        <button class="type" data-type="Dealer">
+            <i class="fa-solid fa-user"></i> Dealer
+        </button>
+        <button class="type" data-type="Test Ride">
+            <i class="fa-solid fa-person-biking"></i> Test Ride
+        </button>
+        <button class="type" data-type="Repair">
+            <i class="fa-solid fa-screwdriver-wrench"></i> Repair
+        </button>
+        <button class="type" data-type="Maintenance">
+            <i class="fa-solid fa-toolbox"></i> Maintenance
+        </button>
+    </div>
+
+    {% render 'hnz-modal-store' %}
+    {% render 'hnz-modal-calendly' %}
+
+</section>
+
+<script>
+
+    const citymap = [
+        {% if shop.metaobjects['store_location'].values_count > 0 %}
+            {% for store in shop.metaobjects['store_location'].values %}
+                {
+                    title: "{{ store.store_name }}",
+                    type: "{% for type in store.store_type.value %}{{ type }}{% unless forloop.last %}, {% endunless %}{% endfor %}",
+                    address: "{{ store.address }}",
+                    phone: "{{ store.phone }}",
+                    service: "{{ store.service_date_time }}",
+                    center: { lat: {{ store.latitude }}, lng: {{ store.longitude }} },
+                    product: [
+                            {% for product in store.product.value %}
+                                { 
+                                    title: "{{ product.title }}",
+                                    image: "{{ product.featured_image | img_url: 'master' }}",
+                                    description: "{{ product.metafields.custom.product_short_description }}",
+                                    calendly: "{{ store.calendly_url.value[forloop.index0] }}"
+                                }{% unless forloop.last %}, {% endunless %}
+                            {% endfor %}
+                        ]
+                }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+        {% endif %}
+    ];
+
+</script>
+
+{% schema %}
+    {
+        "name": "Find Store"
+    }
+{% endschema %}

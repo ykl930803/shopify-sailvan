@@ -1,0 +1,119 @@
+<section id="shopify-section--{{ section.id }}" class="table-specification">
+    <div class="container">
+
+        {%- if section.settings.section_title != blank -%}
+            <div class="row">
+                <div class="section-title text-center">{{ section.settings.section_headingTags }}{{ section.settings.section_title }}</div>
+            </div>
+        {% endif %}
+       
+
+        <div class="spec-row row">
+            {%- for block in section.blocks -%}
+                <div class="spec-item col-xl-4">
+                    {%- if block.settings.spec_type != blank -%}
+                        <h5>{{ block.settings.spec_type }}</h5>
+                    {% endif %}
+                    {%- if block.settings.spec!= blank -%}
+                        <p>{{ block.settings.spec }}</p>
+                    {% endif %}
+                </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</section>
+
+<style>
+    section.table-specification {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    }
+    .table-specification h2 {
+        color: #1D1D1F;
+        font-size: 60px;
+        margin-bottom: 75px;
+    }
+    .spec-row {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+    }
+</style>
+
+{% schema %}
+    {
+        "name": "Specification Table",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            },
+            {
+                "type": "select",
+                "id": "section_headingTags",
+                "label": "Select Heading Tags",
+                    "options": [
+                        {
+                            "value": "<h1/>",
+                            "label": "H1"
+                        },
+                        {
+                            "value": "<h2/>",
+                            "label": "H2"
+                        },
+                        {
+                            "value": "<h3/>",
+                            "label": "H3"
+                        },
+                        {
+                            "value": "<h4/>",
+                            "label": "H4"
+                        },
+                        {
+                            "value": "<h5/>",
+                            "label": "H5"
+                        }
+                    ],
+                    "default": "<h1/>"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Section Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Specification Item",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "spec_type",
+                        "label": "Service Type",
+                        "default": "Service Type"
+                    },
+                    {
+                        "type": "inline_richtext",
+                        "id": "spec",
+                        "default": "Specification texts here.",
+                        "label": "Spec"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Specification Table"
+          }
+        ]
+    }
+{% endschema %}

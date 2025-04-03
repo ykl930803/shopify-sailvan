@@ -1,0 +1,104 @@
+<section id="hnz-ug-ultra-15" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+        <div class="row">
+
+            <div class="col-12">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                </h2>
+            </div>
+            <div class="col-12 mx-auto position-relative">
+                <div class="owl-carousel">
+                    {% for product in section.settings.products %}
+                        <div class="item">
+                            <a class="product-image" href="{{ product.url }}">
+
+                                {% if product.compare_at_price %}
+                                    {% if product.price != product.compare_at_price %}
+                                        <span class="sale">Sale</span>
+                                    {% endif %}
+                                {% endif %}
+                                
+                                {% if product.variants.size > 1 %}
+                                    {% for variant in product.variants %}
+                                        <img class="{% if forloop.first %}active{% endif %}" data-variant="{{ variant.id }}" src="{{ variant.image | product_img_url: 'master' }}">
+                                    {% endfor %}
+                                {% else %}
+                                    <img class="active" src="{{ product.featured_image | img_url: 'master' }}">
+                                {% endif %}
+                            </a>
+                            <div class="product-details">
+                                <div class="variant-wrapper">
+                                    {% render 'product-variant-colors', product: product %}
+                                </div>
+                                <h6 class="product-title">
+                                    {{ product.title }}
+                                </h6>
+                                <div class="star-badge">
+                                    <!-- Start of Judge.me code --> 
+                                    <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+                                        {{ product.metafields.judgeme.badge }} 
+                                    </div> 
+                                    <!-- End of Judge.me code -->
+                                </div>
+                                <p class="description">
+                                    {{ product.metafields.custom.product_short_description | newline_to_br }}
+                                </p>
+                                <div class="price-button">
+                                    <div class="price">
+                                        <span class="price-regular">
+                                            {{ product.selected_or_first_available_variant.price | money }}
+                                        </span>
+                                        {% if product.compare_at_price %}
+                                            {% if product.price != product.compare_at_price %}
+                                                <span class="product-compare-price">
+                                                    {{ product.selected_or_first_available_variant.compare_at_price | money }}
+                                                </span>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                    <a class="btn btn-black" href="{{ product.url }}">
+                                        Shop Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="float-nav d-lg-block d-md-none d-sm-none">
+                    <button type="button" role="presentation" class="owl-prev" disabled>
+                        <i class="fa-solid fa-arrow-left-long"></i>
+                    </button>
+                    <button type="button" role="presentation" class="owl-next">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "UG Ultra Section 15",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "product_list",
+                "id": "products",
+                "label": "Products"
+            }
+        ]
+    }
+{% endschema %}

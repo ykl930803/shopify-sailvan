@@ -1,0 +1,78 @@
+<section id="hnz-product-2" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+        <div class="row d-lg-flex d-md-none d-sm-none">
+            {% for block in section.blocks %}
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="spec">
+                        <img src="{{ block.settings.icon | img_url: 'master' }}">
+                        <div class="d-flex flex-column">
+                            <h5 class="title">
+                                {{ block.settings.title }}
+                            </h5>
+                            <p class="value">
+                                {{ block.settings.value }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="specs d-lg-none d-md-flex d-sm-flex">
+            <div class="row gy-4">
+                {% for block in section.blocks %}
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="spec">
+                            <img src="{{ block.settings.icon | img_url: 'master' }}">
+                            <div class="d-flex flex-column">
+                                <h5 class="title">
+                                    {{ block.settings.title }}
+                                </h5>
+                                <p class="value">
+                                    {{ block.settings.value }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Product Section 2",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            }
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "Additional Specs",
+                "limit": 6,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "icon",
+                        "label": "Icon"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "value",
+                        "label": "Value"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

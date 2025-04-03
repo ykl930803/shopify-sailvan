@@ -1,0 +1,68 @@
+<section id="hnz-ug-pro-16" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+
+        <div class="row justify-content-center d-lg-flex d-md-none d-sm-none">
+            {% for block in section.blocks %}
+                <div class="col-3">
+                    <div class="icon-text">
+                        <img class="icon" src="{{ block.settings.icon | img_url: 'master' }}">
+                        <p class="text">
+                            {{ block.settings.title }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="row d-lg-none d-md-flex d-sm-flex">
+            <div class="col-10 mx-auto">
+                <div class="owl-carousel">
+                    {% for block in section.blocks %}
+                        <div class="item">
+                            <div class="icon-text">
+                                <img class="icon" src="{{ block.settings.icon | img_url: 'master' }}">
+                                <p class="text">
+                                    {{ block.settings.title }}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "UG Pro Section 16",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            }
+        ],
+        "blocks": [
+            {
+                "type": "text",
+                "name": "Service",
+                "limit": 4,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "icon",
+                        "label": "Icon"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,179 @@
+{% render 'reusableComponenet-imageLeft-textRight' %}
+
+<style>
+    section.imageLeft-textRight {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    }
+    .blocksRight-content {
+        padding-left: 75px;
+        padding-top: 60px;
+    }
+    .blocksRight-content table thead tr th {
+        text-align: center;
+        padding-bottom: 30px;
+        font-weight: 600;
+    }
+    .imageLeft-Content img {
+        width: 100%;
+    }
+    .blocksRight-content tbody tr td {
+        text-align: center;
+        color: #666666;
+    }
+    .blocksRight-content tbody tr td:first-child, .blocksRight-content thead tr th:first-child {
+        text-align: left;
+    }
+    .blocksRight-content tbody, .blocksRight-content td, .blocksRight-content tfoot, .blocksRight-content th, 
+    .blocksRight-content thead, .blocksRight-content tr {
+        border: 0;
+    }
+    .blocksRight-content thead tr th:first-child {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    span.alphabetical-name {
+        margin-right: 50px;
+        font-size: 14px;
+    }
+    .blocksRight-content tbody tr td {
+        font-size: 14px;
+    }
+    .blocksRight-content .small {
+        display: table;
+        font-size: 14px;
+        margin: auto;
+    }
+    .blocksRight-content thead tr th:first-child .small {
+        margin: 0;
+        margin-top: 7px;
+    }
+    #toggleBtn {
+        width: auto;
+        display: table;
+        cursor: pointer;
+    }
+    #toggleBtn h5 {
+        font-size: 25px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+    #toggleBtn img.up-arrow {
+        width: 16px;
+        margin-top: -5px;
+    }
+    .arrow-wrapper {
+        border-radius: 50%;
+        background-color: #F8F8F8;
+        padding: 3px 10px;
+    }
+    #toggleBtn .arrow-wrapper img {
+        transform: rotateX(180deg);
+        transition: 0.4s ease;
+    }
+    #toggleBtn.active .arrow-wrapper img {
+        transform: rotateX(360deg);
+    }
+    .geometry {
+        display: flex;
+        align-items: center;
+    }
+
+</style>
+
+{% schema %}
+    {
+        "name": "Image Left Table Right",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            },
+            {
+                "type": "select",
+                "id": "section_headingTags",
+                "label": "Select Heading Tags for Heading Text",
+                    "options": [
+                        {
+                            "value": "<h1/>",
+                            "label": "H1"
+                        },
+                        {
+                            "value": "<h2/>",
+                            "label": "H2"
+                        },
+                        {
+                            "value": "<h3/>",
+                            "label": "H3"
+                        },
+                        {
+                            "value": "<h4/>",
+                            "label": "H4"
+                        },
+                        {
+                            "value": "<h5/>",
+                            "label": "H5"
+                        }
+                    ],
+                    "default": "<h1/>"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Section Title"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_left",
+                "label": "Image Left"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Text Item",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "frame_size",
+                        "label": "Frame Size"
+                    },
+                    {
+                        "type": "text",
+                        "id": "small",
+                        "label": "S"
+                    },
+                    {
+                        "type": "text",
+                        "id": "large",
+                        "label": "L"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Image Left Table Right"
+          }
+        ]
+    }
+{% endschema %}
+
+{%  javascript  %}
+    $(document).ready(function(){
+        $("#toggleBtn").click(function(){
+            $(".specContent").slideToggle();
+            $(this).toggleClass("active");
+        });
+    });
+{% endjavascript %}

@@ -1,0 +1,35 @@
+<div class="city-vanture-video-wrapper">
+  {% assign video_url = section.settings.video_url %}
+  <img src="{{ section.settings.image | image_url}}" width="100%" height="" class="city-vanture-image" data-video-url="{{ video_url }}">
+</div>
+<script>
+  $('.city-vanture-video-wrapper .city-vanture-image').on('click', function() {
+    var videoUrl = $(this).attr('data-video-url')
+    var content = `<video src="${videoUrl}" autoplay controls style="width:100%;"></video>`
+    var modal = MyModal.getInstance()
+    modal.show(content)
+  })
+</script>
+<style>
+  .city-vanture-video-wrapper {
+    cursor: pointer;
+  }
+</style>
+{% schema %}
+  {
+    "name": "City Vanture Video",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "图片"
+      },
+      {
+        "type": "text",
+        "id": "video_url",
+        "label": "视频",
+      }
+    ],
+    "presets": [{"name": "City Vanture Video"}]
+  }
+{% endschema %}

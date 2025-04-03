@@ -1,0 +1,133 @@
+{%- if section.settings.image_url != blank or section.settings.title != blank -%}
+    <div class="small-banner position-relative">
+        {% if section.settings.image_url != nil %}
+            <img src="{{section.settings.image_url | image_url : width: 2048}}" 
+                 alt="{{ section.settings.image_url.alt | escape }}" 
+                 class="img-fluid  {% if section.settings.image_url_mv != nil %} d-none d-lg-block {% endif %}"
+                 width="auto"
+                 height= "270">
+
+                {% if section.settings.image_url_mv != nil%}
+                    <img src="{{ section.settings.image_url_mv | image_url : width: 2048 }}"
+                         alt="{{ section.settings.image_url.alt | escape }}"
+                         class="img-fluid d-block d-lg-none"
+                         width="auto"
+                         height= "auto">
+                {% endif %}
+        {% endif %}
+
+        {%- if section.settings.title != blank -%}
+            <div class="banner-title">
+                {{ section.settings.heading_tags }}{{ section.settings.title }}
+            </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let hHeight = document.querySelector('.vanpower-header').offsetHeight;
+        document.querySelector('.small-banner img').style.marginTop = hHeight + 'px';
+    });
+
+    window.addEventListener('resize', function() {
+        let hHeight = document.querySelector('.vanpower-header').offsetHeight;
+        document.querySelector('.small-banner img').style.marginTop = hHeight + 'px';
+    });
+</script>
+
+<style>
+
+    .small-banner img {
+        object-fit: cover;
+        min-height: 150px;
+        width: 100%;
+    }
+    .small-banner .banner-title {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        left: 50%;
+    }
+    .small-banner .banner-title h1, 
+    .small-banner .banner-title h2, 
+    .small-banner .banner-title h3, 
+    .small-banner .banner-title h4, 
+    .small-banner .banner-title h5, 
+    .small-banner .banner-title h6 {
+        color: {{ section.settings.banner_textColor }};
+        font-weight: 600;
+    }
+
+</style>
+
+{%- schema -%}
+{
+    "name": "Image Banner",
+    "settings": [
+        {
+            "type": "image_picker",
+            "label": "Banner Image URL",
+            "id": "image_url"
+        },
+        {
+            "type": "image_picker",
+            "label": "Upload Banner Image (for Mobile)",
+            "id": "image_url_mv"
+        },
+        {
+            "type": "select",
+            "id": "heading_tags",
+            "label": "Select Heading Tags For Banner",
+            "options": [
+                {
+                    "value": "<h1/>",
+                    "label": "H1"
+                },
+                {
+                    "value": "<h2/>",
+                    "label": "H2"
+                },
+                {
+                    "value": "<h3/>",
+                    "label": "H3"
+                },
+                {
+                    "value": "<h4/>",
+                    "label": "H4"
+                },
+                {
+                    "value": "<h5/>",
+                    "label": "H5"
+                }
+            ],
+            "default": "<h1/>"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Banner Title"
+        },
+        {
+            "type": "color",
+            "id": "banner_textColor",
+            "label": "Banner Text Color",
+            "default": "#000000"
+        }
+
+    ],
+    "presets": [
+        {
+            "name": "Reviews Image"
+        }
+    ],
+    "locales": {
+        "en": {
+            "title": "Image Banner"
+        }
+    },
+    "enabled_on": {
+        "templates": ["*"]
+    }
+}
+{%- endschema -%}

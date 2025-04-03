@@ -1,0 +1,103 @@
+{% assign counter = 0 %}
+{% assign item = 0 %}
+{% for block in section.blocks %}
+    {% assign item = item | plus: 1 %}
+{% endfor %}
+{% assign counter = item | times: 100 %}
+{% if counter > 100 %}
+    {% assign counter = counter | plus: 100 %}
+{% endif %}
+
+
+<section id="hnz-ug-ultra-5" data-toggle="sleek-design" data-name="Sleek Design" {% if section.settings.show == false %} style="display: none;" {% endif %}>
+
+    <div class="go-down d-lg-block d-md-none d-sm-none" style="height: {{ counter }}vh" data-item="{{ item }}">
+        {% for block in section.blocks %}
+            <div class="container section-content" style="background: url('{{ block.settings.background_image | img_url: "master" }}');
+                                                          background-size: cover;
+                                                          background-repeat: no-repeat;
+                                                          background-position: center;">
+                <div class="text">
+                    <div class="row">
+                        <div class="col-8 mx-auto text-center">
+                            <h4 class="text-title">
+                                {{ block.settings.title }}
+                            </h4>
+                        </div>
+                        <div class="col-6 mx-auto text-center">
+                            <p class="text-body">
+                                {{ block.settings.body | newline_to_br }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="d-lg-none d-md-block d-sm-block">
+        <div class="section-content">
+            <div class="row gy-4">
+                {% for block in section.blocks %}
+                    <div class="col-12">
+                        <div class="image-container">
+                            <img src="{{ block.settings.background_image_mobile | img_url: 'master' }}">
+                            <div class="texts">
+                                <h3 class="text-title">
+                                    {{ block.settings.title }}
+                                </h3>
+                                <p class="text-body">
+                                    {{ block.settings.body | newline_to_br }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% schema %}
+    {
+        "name": "UG Ultra Section 5",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            }
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "Image & Text",
+                "limit": 5,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "background_image",
+                        "label": "Background Image Desktop"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "background_image_mobile",
+                        "label": "Background Image Mobile"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "body",
+                        "label": "Body"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

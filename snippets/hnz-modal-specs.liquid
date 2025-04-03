@@ -1,0 +1,234 @@
+{% for spec in shop.metaobjects.compare_models_specification.values %}
+    {% if spec.product.value.id == product.id %}
+        <div class="mdl-container" data-id="specs">
+            <div class="mdl">
+                <div class="mdl-header-mobile d-lg-none d-md-flex d-sm-flex">
+                    <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Mobile-Logo.png?v=1712901571">
+                    <span class="mdl-close close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
+                </div>
+                <div class="mdl-header d-lg-flex d-md-none d-sm-none">
+                    <h6 class="mdl-title">
+                        Specification
+                    </h6>
+                    <span class="mdl-close close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
+                </div>
+                <div class="mdl-body">
+                    <div class="row d-lg-none d-md-flex d-sm-flex">
+                        <div class="col-12 text-center mb-4">
+                            <h6 class="mdl-title">
+                                Specifications
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mx-auto d-lg-block d-md-none d-sm-none">
+                            <div class="row">
+
+                                <div class="col-4">
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            COLOR
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.color }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            FRAME SIZE
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.frame_size }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            POWER
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.power }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            STEM
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.stem }}
+                                        </h5>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            MOTOR
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.motor }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            ASSIST SPEED
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.assist_speed }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            RANGE
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.range }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            SEAT POST
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.seat_post }}
+                                        </h5>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            MODE
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.mode }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            REAR DERAILLEUR
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.rear_derailleur }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            BRAKES
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.brakes }}
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mx-auto d-lg-none d-md-block d-sm-block">
+                            <div class="row">
+
+                                <div class="col-6">
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            COLOR
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.color }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            FRAME SIZE
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.frame_size }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            POWER
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.power }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            STEM
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.stem }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            MOTOR
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.motor }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            ASSIST SPEED
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.assist_speed }}
+                                        </h5>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-6">
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            RANGE
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.range }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            SEAT POST
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.seat_post }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            MODE
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.mode }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            REAR DERAILLEUR
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.rear_derailleur }}
+                                        </h5>
+                                    </div>
+                                    <div class="spec">
+                                        <h5 class="spec-title">
+                                            BRAKES
+                                        </h5>
+                                        <h5 class="spec-body">
+                                            {{ spec.brakes }}
+                                        </h5>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

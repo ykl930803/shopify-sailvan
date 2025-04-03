@@ -1,31 +1,117 @@
-<div class="{% if section.settings.include_margins %}page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-  {%- for block in section.blocks -%}
-    {% render block %}
-  {%- endfor -%}
-</div>
+{% render 'reusableComponent-vanpowerApps' %}
 
+<style>
+    .vanpower-apps {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    }
+    .app-title h2 {
+        font-size: 60px;
+        margin-bottom: 60px;
+    }
+
+    @media (max-width: 991px) {
+        .vanpower-apps {
+            padding: 60px 12px 0 12px;
+        }
+        .vanpower-apps .app-title {
+            text-align: left !important;
+        }
+        .vanpower-apps .app-title h2 {
+            margin-bottom: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        section#shopify-section-{{section.id}} {
+            padding: 0 !important;
+        }
+        .vanpower-apps {
+            padding: 50px 12px 0 !important;
+            max-width: 700px;
+            margin: auto;
+        }
+        .vanpower-apps .app-title h2 {
+            font-size: 33px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .vanpower-apps .app-title h2 {
+            font-size: 30px;
+        }
+    }
+    
+</style>
+  
 {% schema %}
-{
-  "name": "t:sections.apps.name",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "include_margins",
-      "default": true,
-      "label": "t:sections.apps.settings.include_margins.label"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "@app"
-    }
-  ],
-  "presets": [
-    {
-      "name": "t:sections.apps.presets.name"
-    }
-  ]
-}
-{% endschema %}
+  {
+    "name": "Vanpower Apps",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "section_id",
+            "label": "Section id",
+            "info": "Add custom section id without #. Ex: section-id"
+        },
+        {
+            "type": "number",
+            "id": "section_paddingTop",
+            "label": "Section Padding Top",
+            "default": 100
+        },
+        {
+            "type": "number",
+            "id": "section_paddingBottom",
+            "label": "Section Padding Bottom",
+            "default": 100
+        },
+        {
+            "type": "select",
+            "id": "section_headingTags",
+            "label": "Select Heading Tags for Heading Text",
+            "options": [
+                {
+                    "value": "<h1/>",
+                    "label": "H1"
+                },
+                {
+                    "value": "<h2/>",
+                    "label": "H2"
+                },
+                {
+                    "value": "<h3/>",
+                    "label": "H3"
+                },
+                {
+                    "value": "<h4/>",
+                    "label": "H4"
+                },
+                {
+                    "value": "<h5/>",
+                    "label": "H5"
+                }
+            ],
+            "default": "<h1/>"
+        },
+        {
+            "type": "text",
+            "id": "section_title",
+            "label": "Section Title"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "@app"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vanpower Apps"
+      }
+    ]
+  }
+  {% endschema %}
+  

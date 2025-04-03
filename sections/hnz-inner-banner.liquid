@@ -1,0 +1,143 @@
+<style>
+    #hnz-compare-1 {
+        background: url('{{ section.settings.background_image | img_url: "master" }}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+
+<section id="hnz-compare-1" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content h-100">
+        <div class="row align-content-center h-100">
+            <div class="col-lg-10 col-md-12 col-sm-12 mx-auto text-center">
+                {% if section.settings.pretitle != blank %}
+                    <p class="pretitle mb-lg-4 mb-ld-3 mb-sm-3">
+                        {{ section.settings.pretitle }}
+                    </p>
+                {% endif %}
+                <h1 class="title mb-4">
+                    {{ section.settings.title }}
+                </h1>
+                {% if section.settings.body != blank %}
+                    <p class="body">
+                        {{ section.settings.body }}
+                    </p>
+                {% endif %}
+                {% if section.settings.btn_text != blank %}
+                    <a class="btn btn-white mt-3" href="{{ section.settings.btn_url }}">
+                        {{ section.settings.btn_text }}
+                    </a>
+                {% endif %}
+            </div>
+
+            {% if template == 'page.support' %}
+                <div class="col-lg-5 col-md-8 col-sm-12 mx-auto mt-lg-4 mt-md-3 mt-sm-3">
+                    <div class="search-container">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" class="search-input" placeholder="Support Center">
+                        <button class="search-btn">Search</button>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const searchBtn = document.querySelector('.search-btn');
+                        const searchInput = document.querySelector('.search-input');
+                        const noCategoryFound = document.querySelector('.no-category');
+                        
+                        searchBtn.addEventListener('click', function() {
+                            const searchValue = searchInput.value.trim().toLowerCase();
+
+                            if (searchValue) {
+                                const navCategories = document.querySelectorAll('.nav-category');
+                                navCategories.forEach(function(category) {
+                                    category.classList.remove('active');
+                                });
+
+                                document.querySelector('.categories').style.display = 'none';
+                                const searchCategories = document.querySelector('.search-categories');
+                                searchCategories.style.display = 'block';
+
+                                const cols = searchCategories.querySelectorAll('.col-lg-4, .col-md-6, .col-sm-6');
+                                cols.forEach(function(col) {
+                                    col.style.display = 'none';
+                                });
+
+                                let foundItems = false;
+                                cols.forEach(function(col) {
+                                    const title = col.querySelector('.category-title').textContent.trim().toLowerCase();
+                                    if (title.includes(searchValue)) {
+                                        col.style.display = 'block';
+                                        foundItems = true;
+                                    }
+                                });
+
+                                if (foundItems) {
+                                    noCategoryFound.style.display = 'none';
+                                } else {
+                                    noCategoryFound.style.display = 'block';
+                                }
+                            }
+                            else {
+                                const navCategory = document.querySelectorAll('.nav-category')[0];
+                                const clickEvent = new MouseEvent('click', {
+                                    bubbles: true,
+                                    cancelable: true,
+                                    view: window
+                                });
+
+                                navCategory.dispatchEvent(clickEvent);
+                            }
+                        });
+                    });
+                </script>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Inner Banner",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "pretitle",
+                "label": "Pretitle"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body",
+                "label": "Body"
+            },
+            {
+                "type": "text",
+                "id": "btn_text",
+                "label": "Button Text"
+            },
+            {
+                "type": "url",
+                "id": "btn_url",
+                "label": "Button URL"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_image",
+                "label": "Background Image"
+            }
+        ]
+    }
+{% endschema %}

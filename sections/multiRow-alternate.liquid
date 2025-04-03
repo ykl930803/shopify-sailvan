@@ -1,0 +1,170 @@
+{% render 'reusableComponent-multiRow-alternate' %}
+
+<style>
+    section.multiRow-alternative {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    }
+    .multiRow-alternative h3.titlet {
+        font-weight: 700;
+        font-size: 40px;
+        color: #333;
+    }
+    .item-details {
+        background-color: #F8F8F8;
+        padding: 0 100px;
+    }
+    .alternateItem-wrapper .alternate-item:nth-child(even) {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .alternate-item .item-image {
+        padding: 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1199px) {
+        .multiRow-alternative .item-details {
+            padding: 100px;
+        }
+    }
+    @media (max-width: 991px) {
+        section.multiRow-alternative {
+            padding-top: 50px;
+        }
+        section.multiRow-alternative .app-title {
+            text-align: left !important;
+        }
+        .app-title h2 {
+            margin-bottom: 55px;
+        }
+        .multiRow-alternative .item-details {
+            padding: 50px 12px 34px;
+        }
+        .multiRow-alternative h3.titlet {
+            margin-bottom: 18px !important;
+        }
+    }
+
+    @media (max-width: 767px) {
+        section#shopify-section-{{section.id}} {
+            padding: 0 !important;
+        }
+        section.multiRow-alternative {
+            padding-bottom: 0 !important;
+        }
+        section.multiRow-alternative .app-title h2 {
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+        .multiRow-alternative h3.titlet {
+            font-size: 30px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        section.multiRow-alternative .app-title h2 {
+            font-size: 30px;
+        }
+        .multiRow-alternative h3.titlet {
+            font-size: 27px;
+        }
+    }
+</style>
+
+{% schema %}
+    {
+      "name": "Multi Row Alternative",
+      "tag": "section",
+      "class": "section",
+      "settings": [
+          {
+            "type": "checkbox",
+            "id": "show_section",
+            "label": "Show this section?",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "section_id",
+            "label": "Section id",
+            "info": "Add custom section id without #. Ex: section-id"
+          },
+          {
+              "type": "number",
+              "id": "section_paddingTop",
+              "label": "Section Padding Top",
+              "default": 100
+          },
+          {
+              "type": "number",
+              "id": "section_paddingBottom",
+              "label": "Section Padding Bottom",
+              "default": 100
+          },
+          {
+              "type": "select",
+              "id": "section_headingTags",
+              "label": "Select Heading Tags for Heading Text",
+              "options": [
+                  {
+                      "value": "<h1/>",
+                      "label": "H1"
+                  },
+                  {
+                      "value": "<h2/>",
+                      "label": "H2"
+                  },
+                  {
+                      "value": "<h3/>",
+                      "label": "H3"
+                  },
+                  {
+                      "value": "<h4/>",
+                      "label": "H4"
+                  },
+                  {
+                      "value": "<h5/>",
+                      "label": "H5"
+                  }
+              ],
+              "default": "<h1/>"
+          },
+          {
+              "type": "text",
+              "id": "section_title",
+              "label": "Section Title"
+          }
+      ],
+      "blocks": [
+          {
+            "type": "column",
+            "name": "Row Item",
+            "limit": 2,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "short_description",
+                    "label": "Short Description"
+                }
+            ]
+          }
+      ],
+      "presets": [
+        {
+          "name": "Multi Row Alternative"
+        }
+      ]
+    }
+{% endschema %}

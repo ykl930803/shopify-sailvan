@@ -1,0 +1,156 @@
+{% render 'reusableComponent-services' %}
+
+<style>
+    section.services {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+
+        .section-title {
+            margin-bottom: 35px;
+            h2 {
+                font-size: 50px;
+            }
+        }
+        
+        .services-outerWrapper {
+            padding: 0 12px 0 12px;
+
+            .services-wrapper {
+                padding-top: {{ section.settings.container_paddingTop }}px;
+                padding-bottom: {{ section.settings.container_paddingBottom }}px;
+                background-color: {{ section.settings.bg_color }};
+                border-radius: 42px 42px 0px 0px;
+
+                .service-paragraph p {
+                    font-size: 18px;
+                }
+                .services-items {
+                    padding: 0 60px;
+
+                    .service-item {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .service-icon img {
+                            transition: 0.4s ease;
+                        }
+
+                        .service_text {
+                            color: #333333;
+                            transition: 0.4s ease;
+                        }
+
+                        &:hover .service_text {
+                            color: #d30909;
+                        }
+                        &:hover .service-icon img {
+                            filter: brightness(0) saturate(100%) invert(8%) sepia(98%) saturate(6484%) hue-rotate(7deg) brightness(106%) contrast(93%);
+                        }
+                    }
+                }
+            }
+        }
+    }    
+</style>
+
+{% schema %}
+    {
+        "name": "Services",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "container_paddingTop",
+                "label": "Container Padding Top",
+                "default": 110
+            },
+            {
+                "type": "number",
+                "id": "container_paddingBottom",
+                "label": "Container Padding Bottom",
+                "default": 110
+            },
+            {
+                "type": "color",
+                "id": "bg_color",
+                "label": "Background Color",
+                "default": "#F8F8F8"
+            },
+            {
+                "type": "select",
+                "id": "section_headingTags",
+                "label": "Select Heading Tags for Heading Text",
+                    "options": [
+                        {
+                            "value": "<h1/>",
+                            "label": "H1"
+                        },
+                        {
+                            "value": "<h2/>",
+                            "label": "H2"
+                        },
+                        {
+                            "value": "<h3/>",
+                            "label": "H3"
+                        },
+                        {
+                            "value": "<h4/>",
+                            "label": "H4"
+                        },
+                        {
+                            "value": "<h5/>",
+                            "label": "H5"
+                        }
+                    ],
+                    "default": "<h1/>"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "Section Title"
+            },
+            {
+                "type": "richtext",
+                "id": "service_paragraph",
+                "label": "Service Paragraph"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Services Item",
+                "limit": 5,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "service_icon",
+                        "label": "Service Icon"
+                    },
+                    {
+                        "type": "text",
+                        "id": "service_text",
+                        "label": "Service Text",
+                        "default": "Service Text"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Services"
+          }
+        ]
+    }
+{% endschema %}

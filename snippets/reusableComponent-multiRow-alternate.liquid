@@ -1,0 +1,51 @@
+{%- if section.settings.show_section != blank -%}    
+    <section id="{%- if section.settings.section_id != blank -%}custom-{{ section.settings.section_id }}{% else %}shopify-section--{{ section.id }}{% endif %}" class="multiRow-alternative"
+    >
+        <div class="container container-panel">
+                
+            {%- if section.settings.section_title != blank -%}
+                <div class="app-title text-center">{{ section.settings.section_headingTags }}{{ section.settings.section_title }}</div>
+            {% endif %}
+
+            <div class="alternateItem-wrapper">
+                {%- for block in section.blocks -%}
+                    <div class="alternate-item row">
+                        <div class="item-image col-xl-6">
+                            {%- if block.settings.image != blank -%}
+                                <div class="image">
+                                    <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.banner_title }}" class="w-100">
+                                </div>
+                                {% else %}
+                                    <div class="image">
+                                        <img src="{{ 'placeholder.jpg' | asset_url }}" alt="placholder" class="w-100">
+                                    </div>
+                            {% endif %}
+                        </div>    
+                        
+                        <div class="item-details col-xl-6 d-flex flex-column justify-content-center">
+                            {%- if block.settings.title != blank -%}
+                                <h3 class="titlet mb-5">
+                                    {{ block.settings.title }}
+                                </h3>
+                                {% else %}
+                                <h3 class="titlet mb-5">
+                                    Lorem Ipsum Dollor
+                                </h3>
+                            {% endif %}
+
+                            {%- if block.settings.title != blank -%}
+                                <div class="short-description">
+                                    {{ block.settings.short_description }}
+                                </div>
+                                {% else %}
+                                    <div class="short-description">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                    </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {%- endfor -%}
+            </div>
+        </div>
+    </section>
+{% endif %}

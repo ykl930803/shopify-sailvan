@@ -1,0 +1,139 @@
+{% assign counter = 0 %}
+{% assign item = 0 %}
+{% for block in section.blocks %}
+    {% assign item = item | plus: 1 %}
+{% endfor %}
+{% assign counter = item | times: 100 %}
+{% if counter > 100 %}
+    {% assign counter = counter | plus: 100 %}
+{% endif %}
+
+
+<section id="hnz-ug-pro-7" data-toggle="riding-experience" data-name="Riding Experience" {% if section.settings.show == false %} style="display: none;" {% endif %} >
+    
+    <div class="go-down d-lg-block d-md-none d-sm-none" style="height: {{ counter }}vh" data-item="{{ item }}">
+        <div class="background">
+            {% for block in section.blocks %}
+                <div class="background-image" style="background: url('{{ block.settings.background_image | img_url: "master" }}');
+                                                background-size: cover;
+                                                background-repeat: no-repeat;
+                                                background-position: center;">
+                    <div class="container section-content h-100">
+                        <div class="text h-100">
+                            <div class="row align-content-center h-100">
+                                <div class="col-8 mx-auto text-center">
+                                    <h4 class="text-title">
+                                        {{ block.settings.title }}
+                                    </h4>
+                                </div>
+                                <div class="col-6 mx-auto text-center">
+                                    <p class="text-body">
+                                        {{ block.settings.body | newline_to_br }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="d-lg-none d-md-block d-sm-block">
+        <div class="section-content">
+            <div class="row">
+
+                <div class="col-12 text-center">
+                    <h2 class="text-title mb-4">
+                        {{ section.settings.title }}
+                    </h2>
+                </div>
+
+                <div class="col-12">
+                    
+                    <div class="owl-carousel owl-imgtext">
+                        {% for block in section.blocks %}
+                            <div class="item">
+                                <img src="{{ block.settings.background_image_mobile | img_url: 'master' }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="owl-carousel owl-title">
+                        {% for block in section.blocks %}
+                            <div class="item">
+                            <h4 class="toggle-title {% if forloop.first %}active{% endif %}">
+                                    {{ block.settings.title }}
+                                </h4>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="owl-progress">
+                        <div class="progress" style="width: 00%;"></div>
+                    </div>
+
+                    <div class="owl-carousel owl-imgtext">
+                        {% for block in section.blocks %}
+                            <div class="item">
+                                <p class="text-body text-center">
+                                    {{ block.settings.body | newline_to_br }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% schema %}
+    {
+        "name": "UG Pro Section 7",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "Image & Text",
+                "limit": 5,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "background_image",
+                        "label": "Background Image Desktop"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "background_image_mobile",
+                        "label": "Background Image Mobile"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "body",
+                        "label": "Body"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

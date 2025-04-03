@@ -1,0 +1,165 @@
+{{ 'drawer.css' | asset_url | stylesheet_tag }}
+{{ 'drawer.js' | asset_url | script_tag }}
+
+<!-- Open This drawer is for Sale or Offer -->
+    
+<section d="{{ object.name }}" class="drawer" id="drawer__sale__offer" data-drawer-target>
+  <div class="drawer__overlay" data-drawer-close tabindex="-1"></div>
+  <div class="drawer__wrapper">
+    <div class="drawer__header">
+      <div class="drawer__title">
+        Sale / Offer
+      </div>
+      <button class="drawer__close" data-drawer-close aria-label="Close Drawer"></button>
+    </div>
+    <div class="drawer__content" id="cart__drawer">
+         <div id="cart__drawer_items" class="cart__drawer_items sale-padding">
+              
+
+              {% comment %} Desktop View {% endcomment %}
+            {%- for block in section.blocks -%}
+             {%if block.settings.set_bike_banner == true%}
+              <div class="sale-card desktop-view">
+                  <div class="row">
+                      <div class="col-lg-6">
+                        <h3>{{ block.settings.title_heading}}</h3>
+                        <h4 style="color:{{ block.settings.color}} !important;">${{ block.settings.sale_price}} <span>${{ block.settings.original_price}}</span></h4>
+                        <a class="text-noline" href="{{ block.settings.button_link}}" style="background-color:{{ block.settings.color}} !important;">{{ block.settings.button_text}}</a>
+                      </div>
+                      <div class="col-lg-6">
+                      <img src="{{ block.settings.right_image | img_url: 'master'}}" style="z-index:-1;">
+                      </div>
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+
+
+            {% comment %} Mobile View {% endcomment %}
+           
+            {%- for block in section.blocks -%}
+             {%if block.settings.set_bike_banner == true%}
+              <div class="sale-card mobile-view">
+                  <div class="row">
+                  
+                      <div class="col-lg-6">
+                        <img src="{{ block.settings.right_image | img_url: 'master'}}" style="z-index:-1;">
+                      </div>
+                      <div class="col-lg-6">
+                        <h3>{{ block.settings.title_heading}}</h3>
+                        <h4 style="color:{{ block.settings.color}} !important;">${{ block.settings.sale_price}} <span>${{ block.settings.original_price}}</span></h4>
+                        <a class="text-noline" href="{{ block.settings.button_link}}" style="background-color:{{ block.settings.color}} !important;">{{ block.settings.button_text}}</a>
+                      </div>
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+ 
+
+ 
+           {%- for block in section.blocks -%}
+             {%if block.settings.set_bike_banner == false%}
+             <a class = "text-noline" href="{{ block.settings.button_link}}">
+                <div class="sale-card-image" style="background-image: url('{{ block.settings.right_image | img_url: 'master'}}'); object-fit:cover; background-position: center center; background-size: cover;">
+                  <div class="row">
+                      <div class="col-lg-6 header">
+                        <h3 style="color:{{ block.settings.color}};">{{ block.settings.title_heading}}</h3>
+                        <p>{{ block.settings.sub_title}}</p>
+                      </div>
+                  </div>
+                </div>
+                </a>
+            {%- endif -%}
+          {%- endfor -%}
+
+        </div>
+      
+    </div>
+</div>
+    
+</section>
+
+<!-- End This drawer is for Sale or Offer -->
+    
+{% schema %}
+{
+  "name": "Sale / Offer Drawer",
+  "settings": [
+    {
+      "type": "url",
+      "id": "continue_shopping",
+      "label": "Continue Shopping Link"
+    },
+    {
+      "type": "collection",
+      "id": "cross_sells",
+      "label": "You may also like Collection"
+    }
+  ],
+  "blocks": [
+        {
+            "type": "column",
+            "name": "Item",
+            "settings": [
+                {
+                    "type": "checkbox",
+                    "id": "set_bike_banner",
+                    "label": "Set a Bike Banner?",
+                    "default": true
+                },
+                {
+                    "type": "text",
+                    "id": "title_heading",
+                    "label": "Title Header",
+                    "default": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "sub_title",
+                    "label": "Sub Title",
+                    "default": "Sub Title"
+                },
+                
+                {
+                    "type": "text",
+                    "id": "sale_price",
+                    "label": "Sale Price",
+                    "default": "0"
+                },
+                {
+                    "type": "text",
+                    "id": "original_price",
+                    "label": "Original Price",
+                    "default": "0"
+                },
+                {
+                    "type": "color",
+                    "id": "color",
+                    "label": "Color",
+                    "default": "#000"
+                },
+                {
+                    "type": "text",
+                    "id": "button_text",
+                    "label": "Button Text"
+                },
+                {
+                    "type": "url",
+                    "id": "button_link",
+                    "label": "Button link"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "right_image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+      "presets": [
+      {
+        "name": "Two Column Animation"
+      }
+    ]
+}
+{% endschema %}

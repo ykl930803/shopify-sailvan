@@ -1,0 +1,137 @@
+<section id="shopify-section--{{ section.id }}" class="fullWidth-sliderFade desktop-data">
+    <div class="fullBanner">
+        <div class="fullBanner-slider">
+            {%- for block in section.blocks -%}
+                <div class="fullBanner-sliderItem" style="background-image: url('{{ block.settings.slider_image | img_url: 'master' }}');">
+                    <div class="banner-content {{ section.settings.sliderContent_alignment }}">
+                        <div class="bannerContent-inner">
+                            {%- if block.settings.banner_title != blank -%}
+                                <div class="banner-headingText">
+                                    {{ block.settings.banner_headingTags }}{{ block.settings.banner_title }}
+                                </div>
+                            {% endif %} 
+
+                            {%- if block.settings.banner_text != blank -%}
+                                <div class="banner-texts">
+                                    {{ block.settings.banner_text }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {%- endfor -%}
+        </div>
+        
+        {%- if section.settings.showSlider_pagination != blank -%}
+            <div class="swiperPagination-container">
+                <div class="swiper-pagination"></div>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<section id="shopify-section--{{ section.id }}" class="mobile-data">
+    {%- for block in section.blocks -%}
+        <div class="data-item">
+            <div class="data-content {{ section.settings.sliderContent_alignment }}">
+
+                <img class="data-imageBanner" src="{{ block.settings.slider_image | img_url: 'master' }}" alt="{{ section.settings.banner_title }}">
+
+                <div class="dataContent-inner">
+                    {%- if block.settings.banner_title != blank -%}
+                        <div class="data-headingText">
+                            {{ block.settings.banner_headingTags }}{{ block.settings.banner_title }}
+                        </div>
+                    {% endif %} 
+
+                    {%- if block.settings.banner_text != blank -%}
+                        <div class="data-texts">
+                            {{ block.settings.banner_text }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {%- endfor -%}
+</section>
+
+<script>
+
+const section = document.querySelector('.fullWidth-sliderFade');
+const items = document.querySelectorAll('.fullWidth-sliderFade .fullBanner-sliderItem');
+let currentIndex = 0;
+let isAnimating = false;
+let isAtLastItem = false;
+
+// Function to switch to the next slide
+function switchToNextSlide() {
+    if (!isAnimating && !isAtLastItem) {
+        const nextIndex = (currentIndex + 1) % items.length;
+        if (nextIndex !== currentIndex) {
+            isAnimating = true;
+            currentIndex = nextIndex;
+            animateSlider();
+        } else {
+            isAtLastItem = true;
+        }
+    }
+}
+
+// Function to animate the slider
+function animateSlider() {
+    items.forEach((item, index) => {
+        if (index === currentIndex) {
+            item.style.display = 'block';
+            fadeIn(item);
+        } else {
+            fadeOut(item);
+        }
+    });
+}
+
+// Function to fade in an item
+function fadeIn(item) {
+    let opacity = 0;
+    const intervalId = setInterval(() => {
+        opacity += 0.1;
+        item.style.opacity = opacity;
+        if (opacity >= 1) {
+            clearInterval(intervalId);
+            isAnimating = false;
+        }
+    }, 30); // Faster fade-in speed
+}
+
+// Function to fade out an item
+function fadeOut(item) {
+    let opacity = 1;
+    const intervalId = setInterval(() => {
+        opacity -= 0.1;
+        item.style.opacity = opacity;
+        if (opacity <= 0) {
+            item.style.display = 'none';
+            clearInterval(intervalId);
+        }
+    }, 30); // Faster fade-out speed
+}
+
+// Event listener for mouse wheel scroll
+function handleScroll(event) {
+    const delta = Math.sign(event.deltaY);
+    if (delta > 0) {
+        switchToNextSlide();
+        event.preventDefault(); // Prevent default scrolling behavior
+    } else if (delta < 0 && isAtLastItem) {
+        isAtLastItem = false;
+        event.preventDefault(); // Prevent default scrolling behavior
+    }
+}
+
+// Event listener for mouse wheel scroll inside the section
+section.addEventListener('wheel', handleScroll);
+
+
+
+</script>
+    

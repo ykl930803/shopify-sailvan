@@ -1,0 +1,220 @@
+<section id="{%- if section.settings.section_id != blank -%}custom-{{ section.settings.section_id }}{% else %}shopify-section--{{ section.id }}{% endif %}" class="textLeft-rightAccordion">
+    <div class="container container-panel">
+        <div class="row">
+            <div class="col-xl-6 leftAccordion-content">
+                {%- if section.settings.section_title != blank -%}
+                    <div class="accordionSection-title">{{ section.settings.section_headingTags }}{{ section.settings.section_title }}</div>
+                {% endif %}
+
+                {%- if section.settings.short_description != blank -%}
+                    <div class="short-description">
+                        {{ section.settings.short_description }}
+                    </div>
+                {% endif %}
+
+            </div>
+            <div class="col-xl-6">
+                <div id="accordion-tab-{{ section.id }}">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        {% for tab in section.blocks %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading{{ forloop.index0 }}">
+                                    <span class="accordion-button" role="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ forloop.index0 }}" aria-expanded="true" aria-controls="flush-collapse{{ forloop.index0 }}" onclick="toggleActiveClass(this)">
+                                        {{ tab.settings.accordion_title }}
+                                    </span>
+                                </h2>
+                                {%- if tab.settings.accordion_description != blank -%}
+                                    <div id="flush-collapse{{ forloop.index0 }}" class="accordion-collapse collapse show" aria-labelledby="flush-heading{{ forloop.index0 }}">
+                                        <div class="accordion-body v-extra-large">{{ tab.settings.accordion_description }}</div>
+                                    </div>
+                                {%- else -%}
+                                    <div id="flush-collapse{{ forloop.index0 }}" class="accordion-collapse collapse show" aria-labelledby="flush-heading{{ forloop.index0 }}">
+                                        <div class="accordion-body v-extra-large"><p>N/A</p></div>
+                                    </div>
+                                {%- endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    section.textLeft-rightAccordion {
+        background-color: #F8F8F8;
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    }
+    .textLeft-rightAccordion .accordion-flush .accordion-item:first-child {
+        border-top: 1px solid #dadada;
+    }
+    .textLeft-rightAccordion .accordion {
+        --bs-accordion-bg: transparent;
+        --bs-accordion-border-color: transparenet;
+    }
+    .accordionSection-title {
+        margin-bottom: 37px;
+    }
+    .textLeft-rightAccordion .accordion-button{
+        --bs-accordion-btn-color: #666;
+        padding: 22px 0;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    .textLeft-rightAccordion .accordion-body {
+        padding: 0;
+    }
+    .textLeft-rightAccordion .accordion-button:not(.collapsed) {
+        background: none;
+    }
+    .textLeft-rightAccordion .accordion-item {
+        border-top: 1px solid #dadada;
+    }
+    .textLeft-rightAccordion .accordion-item:last-child {
+        border-bottom: 1px solid #dadada;
+    }
+    .textLeft-rightAccordion .accordion-header span {
+        color: #333;
+        font-weight: 700;
+    }
+    .textLeft-rightAccordion .short-description {
+        max-width: 600px;
+    }
+    .textLeft-rightAccordion .accordion-body ul {
+        padding-left: 20px;
+    }
+    .textLeft-rightAccordion .accordion-body ul li {
+        font-size: 16px;
+        color: #333;
+    }
+    .leftAccordion-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .accordionSection-title h2 {
+        color: #1a1a1a;
+    }
+
+    @media (max-width: 991px) {
+        section.textLeft-rightAccordion {
+            padding: 50px 0 20px !important;
+        }
+    }
+
+    @media (max-width: 767px) {
+        section#shopify-section-{{section.id}} {
+            padding: 0 !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .accordionSection-title {
+            margin-bottom: 15px;
+        }
+        .leftAccordion-content {
+            display: flex;
+            align-items: flex-start;
+        }
+        section.textLeft-rightAccordion {
+            padding: 50px 0 60px !important;
+        }
+        .textLeft-rightAccordion .accordion-body ul li {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+    }
+</style>
+
+{% schema %}
+    {
+      "name": "TextLeft - RightAccordion",
+      "tag": "section",
+      "class": "section",
+      "settings": [
+          {
+            "type": "text",
+            "id": "section_id",
+            "label": "Section id",
+            "info": "Add custom section id without #. Ex: section-id"
+          },
+          {
+              "type": "number",
+              "id": "section_paddingTop",
+              "label": "Section Padding Top",
+              "default": 100
+          },
+          {
+              "type": "number",
+              "id": "section_paddingBottom",
+              "label": "Section Padding Bottom",
+              "default": 100
+          },
+          {
+              "type": "select",
+              "id": "section_headingTags",
+              "label": "Select Heading Tags for Heading Text",
+              "options": [
+                  {
+                      "value": "<h1/>",
+                      "label": "H1"
+                  },
+                  {
+                      "value": "<h2/>",
+                      "label": "H2"
+                  },
+                  {
+                      "value": "<h3/>",
+                      "label": "H3"
+                  },
+                  {
+                      "value": "<h4/>",
+                      "label": "H4"
+                  },
+                  {
+                      "value": "<h5/>",
+                      "label": "H5"
+                  }
+              ],
+              "default": "<h1/>"
+          },
+          {
+            "type": "text",
+            "id": "section_title",
+            "label": "Section Title"
+          },
+          {
+            "type": "richtext",
+            "id": "short_description",
+            "label": "Short Description"
+          }
+      ],
+      "blocks": [
+          {
+            "type": "column",
+            "name": "Row Item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "accordion_title",
+                    "label": "Title",
+                    "default": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "accordion_description",
+                    "label": "Description"
+                }
+            ]
+          }
+      ],
+      "presets": [
+        {
+          "name": "TextLeft - RightAccordion"
+        }
+      ]
+    }
+{% endschema %}

@@ -1,0 +1,847 @@
+<h1 class="product-title">{{ product.title }}</h1>
+
+<!-- Reviews -->
+<div class="star-reviews mt-3 mb-2">
+    <div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'
+    data-template='{% if concierge_install == true or concierge_install == nil %}{{ template }}{% else %}manual-installation{% endif %}'
+    data-auto-install='{% if auto_install != nil %}{{ auto_install }}{% else %}false{% endif %}'>
+    <div class="d-flex jdm-review-wrapper">
+        {{ product.metafields.judgeme.badge }} <span class="review-count">Review {{ product.metafields.reviews.rating_count }}</span>
+    </div>
+    </div>
+</div>
+
+<!-- Product Price-->
+<div class="item-price">
+    
+    <div class="money-wrapper">
+        {% if product.compare_at_price and product.compare_at_price != product.price %}
+            <span class="discounted-price" id="discounted_price">{{ product.price | money }}</span>
+            <span class="original-price" id="original_price">
+                <s>{{ product.compare_at_price | money }}</s>
+            </span>
+            {% assign savings = product.compare_at_price | minus: product.price %}
+            {% if savings > 0 %}
+                <span class="savings">-{{ savings | money }}</span>
+            {% endif %}
+        {% else %}
+            <span class="price">{{ product.price | money }}</span>
+        {% endif %}
+
+        {% assign promo = product.metafields.custom.product_promo %}
+        {% if promo %}
+            <span class="promo">{{ promo }}</span>
+        {% endif %}
+
+    </div>
+
+</div>
+
+<!-- Sales Ends In -->
+{% assign target_date = product.metafields.custom.sales_ends_in %}
+{% if target_date %}
+    <div class="salesEnd-wrapper">
+        <span class="label">Sale Ends in</span>
+        <div id="countdown" class="sale-ends-in">
+            <span id="days" class="value"></span> DAYS
+            <span id="hours" class="value"></span> :
+            <span id="minutes" class="value"></span> :
+            <span id="seconds" class="value"></span>
+        </div>
+    </div>
+{% endif %}
+
+<!-- Display this element only when product is using customized.product template -->    
+{% if template == 'product.customized' %}
+    <div class="customSize-wrapper">
+        <!-- get the metafield size for each variant -->
+        {% assign first_custom_size_rendered = false %}
+        {% assign current_size_group = '' %}
+        {% for variant in product.variants %}
+            {% assign size_metafield = variant.metafields.custom.size %}
+            {% assign size_option = variant.option2 %}
+            {% if size_option %}
+                {% if size_metafield != blank %}
+                    {% if current_size_group != size_metafield %}
+                        {% if first_custom_size_rendered %}
+                            </div><!-- Close previous group -->
+                        {% endif %}
+                        <div class="custom-size-group" data-metafield="{{ size_metafield }}">
+                    {% endif %}
+                    <p class="custom-size"><span>Size</span> {{ size_metafield }}</p>
+                    {% assign first_custom_size_rendered = true %}
+                {% endif %}
+                <button class="size-button" data-metafield="{{ size_metafield }}">{{ size_option }}</button>
+                {% assign current_size_group = size_metafield %}
+            {% endif %}
+        {% endfor %}
+        {% if first_custom_size_rendered %}
+            </div><!-- Close last group -->
+        {% endif %}
+    </div>
+
+    <script>
+        // Hide buttons starting from the third element if more than two
+        var sizeButtons = document.querySelectorAll('.size-button');
+        if (sizeButtons.length > 2) {
+            for (var i = 2; i < sizeButtons.length; i++) {
+                sizeButtons[i].style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- get the product variant color name and metafield color -->
+    {% assign color_options = product.variants | map: 'option1' | uniq %}
+    <div class="customVariantColor-wrapper">
+        {% for color_option in color_options %}
+            {% if color_option %}
+                <div class="customVariantColor-item {% if forloop.first %}active{% endif %}">
+                    <div class="customVariant-colorLabel"><span>Colors</span> - {{ color_option }}</div>
+                    {% assign displayed_variant_colors = "" %}
+                    {% for variant in product.variants %}
+                        {% if variant.option1 == color_option %}
+                            {% assign meta_color = variant.metafields.variant.color %}
+                            {% unless displayed_variant_colors contains meta_color %}
+                            {% if meta_color %}
+                                <div class="customVariant-colorWrapper" data-color="{{ color_option }}">
+                                    <span class="customVariant-color" style="background-color: {{ meta_color }}; cursor: pointer;"></span>
+                                </div>
+                            {% endif %}
+                            {% assign displayed_variant_colors = displayed_variant_colors | append: meta_color | append: ";" %}
+                            {% endunless %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+  
+<!-- Product Metas -->
+<div class="product__metas">
+    {%if product.metafields.product_meta.compatible_with != blank %}
+        <div class="product__metas-item">
+            <!--<span><img src="{{ 'bike.png' | asset_url }}" width="18" /></span>-->
+            <div class="compatible-with">
+                <span class="label">Compatible with:</span>
+                <span class="value">{{ product.metafields.product_meta.compatible_with }}</span>
+            </div>
+        </div>
+    {%- endif -%}
+
+    {% if template == 'product' %}
+        {% assign color_options = product.variants | map: 'option1' | uniq %}
+        {% if color_options.size > 1 %}
+            <div class="customVariantColor-wrapper">
+                {% for color_option in color_options %}
+                    {% if color_option %}
+                        <div class="customVariantColor-item {% if forloop.first %}active{% endif %}">
+                            <div class="customVariant-colorLabel"><span>Colors</span> - {{ color_option }}</div>
+                            {% assign displayed_variant_colors = "" %}
+                            {% for variant in product.variants %}
+                                {% if variant.option1 == color_option %}
+                                    {% assign meta_color = variant.metafields.variant.color %}
+                                    {% unless displayed_variant_colors contains meta_color %}
+                                    {% if meta_color %}
+                                        <div class="customVariant-colorWrapper" data-color="{{ color_option }}">
+                                            <span class="customVariant-color" style="background-color: {{ meta_color }}; cursor: pointer;"></span>
+                                        </div>
+                                    {% endif %}
+                                    {% assign displayed_variant_colors = displayed_variant_colors | append: meta_color | append: ";" %}
+                                    {% endunless %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    
+        {% if product.metafields.custom.exclusive_offer.value %}
+            <div class="product__metas-item">
+                <legend><strong>Exclusive Offer</strong></legend>
+                <div class="free-exclusiveOffer mt-3">
+                    {% for exclusive_product in product.metafields.custom.exclusive_offer.value %}
+                        <div class="exclusive-item">
+                            <img src="{{ exclusive_product.featured_image | img_url: 'full' }}" alt="{{ exclusive_product.title }}">
+                            <div class="exclusive-productDetail">
+                                <div class="badge-and-price">
+                                    <div class="free-badge">Free</div>
+                                    <div class="product-price"><s>{{ exclusive_product.price | money }}</s></div>
+                                </div>
+                                <div class="product-title">{{ exclusive_product.title }}</div>
+                                {% assign exclusive_timeDescription = exclusive_product.metafields.custom.exclusive_limited_time_description %}
+                                {% if exclusive_timeDescription != blank %}
+                                    <div class="exclusive-timeDescription">
+                                        {{ exclusive_timeDescription | metafield_tag }} <a class="product-detail" href="{{ exclusive_product.url }}">See Detail</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    
+        <div class="product__metas-item">
+            {% if product.metafields.custom.shipping_time_description_1 != blank or product.metafields.custom.shipping_time_description_2 != blank %}
+                {% assign shipping_time_1 = product.metafields.custom.shipping_time_description_1 %}
+                {% if shipping_time_1 != blank %}
+                    <div class="product-metaField-deliveryItem">
+                        <span><img class="me-1" src="{{ 'delivery-car.png' | asset_url }}" width="17" /></span>
+                        {{ shipping_time_1 | metafield_tag }}
+                    </div>
+                {% endif %}
+                {% assign shipping_time_2 = product.metafields.custom.shipping_time_description_2 %}
+                {% if shipping_time_2 != blank %}
+                    <div class="product-metaField-deliveryItem">
+                        <span><img class="me-1" src="{{ 'Delivery-box.png' | asset_url }}" width="20" /></span>
+                        {{ shipping_time_2 | metafield_tag }}
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="product-deliveryItem">
+                    <span><img class="me-1" src="{{ 'delivery-car.png' | asset_url }}" width="17" alt="{{ section.settings.delivery_1 }}" /></span>
+                    {{ section.settings.delivery_1 }}
+                </div>
+                <div class="product-deliveryItem">
+                    <span><img class="me-1" src="{{ 'Delivery-box.png' | asset_url }}" width="20" alt="{{ section.settings.delivery_2 }}" /></span>
+                    {{ section.settings.delivery_2 }}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+</div>
+
+<!-- Policy -->
+<div class="product__policies rte" data-product-policies>
+    <a href="/pages/shipping-policy">Shipping</a> calculated at checkout.
+</div>
+
+{% if product.available %}
+    <div class="productForm-wrapper">
+        <form action="/cart/add" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="items[0][id]" value="{{ product.variants.first.id }}" />
+            <input type="hidden" id="selected_color" name="selected_color" value="" />
+
+           <!-- Include exclusive product as hidden fields -->
+            {% if product.metafields.custom.exclusive_offer.value %}
+                {% for exclusive_product in product.metafields.custom.exclusive_offer.value %}
+                    {% if exclusive_product and exclusive_product.variants.first %}
+                        <input type="hidden" name="items[{{ forloop.index }}][id]" value="{{ exclusive_product.variants.first.id }}" />
+                        <input type="hidden" name="items[{{ forloop.index }}][quantity]" value="1" />
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <!-- Quantity field -->
+            {% if section.settings.show_quantity_selector %}
+                <div class="productQuantity-field">
+                    <label for="items[0][quantity]">Quantity:</label>
+                    <div class="quantity-wrapper">
+                        <button type="button" class="decrease">-</button>
+                        <input type="number" id="quantity" name="items[0][quantity]" value="1" min="1" class="quantity-input" />
+                        <button type="button" class="increase">+</button>
+                    </div>
+                </div>
+            {% endif %}
+
+            <button type="submit" class="product-addToCart btn">Add To Cart</button>
+
+            <div class="static-buttons">
+                <span class="static-button paypal-icon visible">
+                    <img src="{{ 'paypal-button-icon.png' | asset_url }}" alt="Paypal">
+                    <strong>0% APR</strong> 24 months, $104.12/month
+                </span>
+                <span class="static-button klarna-icon hidden">
+                    <img src="{{ 'klarna-button.png' | asset_url }}" alt="Klarna">
+                    <strong>0% APR</strong> 24 months, $104.12/month
+                </span>
+            </div>
+
+            <div class="payment-iconAction d-table mx-auto mt-3 position-relative">
+                <img src="{{ 'klarna-button.png' | asset_url }}" alt="Klarna" class="klarna-paymentIcon visible" style="cursor: pointer;">
+                <img src="{{ 'paypal-button-icon.png' | asset_url }}" alt="Paypal" class="paypal-paymentIcon hidden" style="cursor: pointer;">
+            </div>
+        </form>
+
+    
+        <!-- "Buy now with ShopPay" button -->
+        {% if section.settings.enable_payment_button %}
+            <form action="/checkout" method="post">
+                <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                <input type="hidden" name="quantity" value="1" /> <!-- Quantity for ShopPay, adjust as needed -->
+            
+                <button type="submit" class="buyWith-shopPay btn">
+                    <span>Buy with</span>
+                    <img src="{{  'ShopPay.webp' | asset_url }}" alt="Shop Pay" class="shopPay-icon">
+                </button>
+            </form>
+        {% endif %}
+    
+        <!-- Other Payment Method -->
+        <div class="other-paymentMethod">
+            Other Payment Method. <a href="/checkout">Learn More</a>
+            <ul class="payment-cards">
+                <li class="payment-icon">
+                    <img class="img-fluid" src="{{ 'visa-violet.svg' | asset_url }}" alt="Visa">
+                </li>
+                <li class="payment-icon">
+                    <img class="img-fluid" src="{{ 'mastercard-color_large.svg' | asset_url }}" alt="Master Card">
+                </li>
+                <li class="payment-icon">
+                    <img class="img-fluid" src="{{ 'americanexpress-color-large.svg' | asset_url }}" alt="Amex">
+                </li>
+                <li class="payment-icon">
+                    <img class="img-fluid" src="{{ 'discover-color-large.svg' | asset_url }}" alt="Discover">
+                </li>
+                <li class="payment-icon">
+                    <img class="img-fluid" src="{{ 'cirrus-color-large.svg' | asset_url }}" alt="Cirrus">
+                </li>
+                <li class="payment-icon">
+                    <img class="img-fluid" src="{{ 'paypal-color-large.svg' | asset_url }}" alt="PayPal">
+                </li>
+                <li class="payment-icon">
+                    <img class="img-fluid" src="{{ 'jcb-color-large.svg' | asset_url }}" alt="JCB">
+                </li>
+            </ul>
+        </div>
+        
+        {% else %}
+            <p>Sold Out</p>
+    </div>
+{% endif %}
+
+<style>
+    .fullProduct-detail h1.product-title {
+        font-size: 44px;
+        font-weight: 700;
+    }
+    .fullProduct-detail .jdgm-prev-badge__text {
+        display: none;
+    }
+    .fullProduct-detail .jdm-review-wrapper {
+        align-items: center;
+        gap: 12px;
+    }
+    .fullProduct-detail .review-count {
+        color: #999999;
+        font-weight: 500;
+    }
+    .fullProduct-detail .money-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .fullProduct-detail #original_price {
+        color: #999999;
+        font-weight: 600;
+    }
+    .fullProduct-detail .price, .fullProduct-detail .discounted-price {
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .fullProduct-detail span.savings, span.promo {
+        background-color: #FFF4F0;
+        color: #FA5313;
+        font-weight: 600;
+        border-radius: 19px;
+        padding: 6px 10px;
+    }
+    .fullProduct-detail .product__metas-item {
+        border-top: 1px solid #DADADA;
+        padding: 15px 0;
+    }
+    .compatible-with span.label {
+        font-weight: 600;
+    }
+    .compatible-with span.value {
+        font-weight: 800;
+    }
+    .product__policies.rte {
+        color: #666666;
+        font-weight: 500;
+    }
+    .product__policies.rte a {
+        color: #DB1629;
+        font-weight: 700;
+    }
+    .productForm-wrapper {
+        margin-top: 20px;
+        border-top: 1px solid #DADADA;
+        padding-top: 20px;
+    }
+    .productQuantity-field {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 25px;
+    }
+    .productQuantity-field label {
+        font-size: 20px;
+        font-weight: 600;
+        color: #333333;
+    }
+    .productQuantity-field input[type="number"] {
+        height: 37px;
+        text-align: center;
+        font-weight: 600;
+    }
+    .productQuantity-field input[type="number"]:focus-visible {
+        outline: none;
+    }
+    .productForm-wrapper .product-addToCart {
+        background-color: #1a1a1a;
+        border-color: #1a1a1a;
+        width: 100%;
+        padding: 15px 45px;
+        color: #fff;
+        border-radius: 5px;
+    }
+    .productForm-wrapper .buyWith-shopPay {
+        border: 1px solid #333333;
+        width: 100%;
+        padding: 15px 29px;
+        margin: 20px 0;
+        border-radius: 50px;
+    }
+    img.shopPay-icon {
+        max-width: 78px;
+    }
+    .productForm-wrapper .buyWith-shopPay span {
+        font-weight: 700;
+    }
+    .other-paymentMethod {
+        margin-top: 20px;
+        border-top: 1px solid #DADADA;
+        padding-top: 20px;
+        font-weight: 600;
+    }
+    .other-paymentMethod a {
+        color: #DB1629;
+        font-weight: 700;
+    }
+    .fullProduct-detail .product__metas {
+        margin-top: 10px;
+    }
+    .salesEnd-wrapper {
+        display: flex;
+        margin: 20px 0;
+    }
+    .salesEnd-wrapper span.label {
+        background-color: #F75B46;
+        padding: 10px 20px;
+        color: #fff;
+        font-weight: 600;
+        border-radius: 7px 0px 7px 7px;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+    }
+    .salesEnd-wrapper .sale-ends-in {
+        padding: 10px 40px;
+        background-color: #FFF4F0;
+        border-radius: 5px 5px 5px 0;
+        margin-left: -5px;
+        z-index: 1;
+        position: relative;
+        font-weight: 700;
+        color: #FC4935;
+    }
+    .sale-ends-in span.value {
+        font-weight: 700;
+        color: #FC4935;
+        background-color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        width: 35px;
+        height: 34px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 10px;
+    }
+    span.customVariant-color {
+        display: flex;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+    .customVariantColor-item.active .customVariant-color {
+        border: 2px solid #fff;
+    }
+    .customVariantColor-item .customVariant-colorWrapper {
+        margin-top: 35px;
+        border: 1px solid #D1D1D1;
+         width: 44px;
+        height: 44px;
+        border-radius: 50%;
+    }
+    .customVariant-colorLabel {
+        display: none;
+    }
+    .customVariantColor-item.active .customVariant-colorLabel {
+        display: block;
+        position: absolute;
+        left: 0;
+    }
+    .customVariantColor-wrapper {
+        display: flex;
+        gap: 13px;
+        align-items: flex-end;
+        position: relative;
+        margin: 15px 0;
+    }
+    .customVariantColor-item {
+        display: flex;
+        flex-direction: column;
+    }
+    .customVariant-colorLabel span, #custom-size span {
+        font-weight: 700;
+    }
+    .customVariantColor-item.active .customVariant-colorWrapper {
+        border: 1px solid #000;
+    }
+    .customVariantColor-item.active .customVariant-color {
+        border: 2px solid #fff;
+    }
+    .customSize-wrapper {
+        position: relative;
+        display: flex;
+        gap: 5px;
+        margin-right: 10px;
+    }
+    .custom-size-group {
+        display: inline;
+    }
+    .custom-size-group .custom-size {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        display: none;
+    }
+    .custom-size-group .custom-size.active {
+        display: block;
+    }
+    .custom-size-group .size-button {
+        margin-top: 40px;
+        border: 1px solid #202020;
+        font-weight: 600;
+        padding: 7px 40px;
+        border-radius: 26px;
+        background-color: #202020;
+        color: #fff;
+        margin-right: 10px;
+    }
+    .custom-size-group .size-button.active {
+        background-color: transparent;
+        color: #202020;
+    }
+    .customSize-groupWrapper:nth-child(n+2) {
+        display: none;
+    }
+    .product-metaField-deliveryItem {
+        display: flex;
+    }
+    .other-paymentMethod ul.payment-cards {
+        list-style: none;
+        display: inline-flex;
+        gap: 10px;
+        margin-top: 15px;
+        background-color: #F8F8F8;
+        border-radius: 10px;
+        padding: 10px 13px;
+    }
+    .product__metas-item legend {
+        font-size: 20px;
+    }
+    .exclusive-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border: 1px solid #2F80ED;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: #F4F8FC;
+    }
+    .exclusive-item img {
+        border-radius: 5px;
+    }
+    .exclusive-item .badge-and-price {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    .exclusive-item .free-badge {
+        color: #fff;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 5px 7px;
+        background: #DB1629;
+        font-size: 12px;
+        border-radius: 5px;
+        display: table;
+    }
+    .exclusive-item .product-price {
+        color: #1a1a1a;
+        font-weight: 600;
+    }
+    .exclusive-item .product-title {
+        color: #1a1a1a;
+        font-weight: 700;
+    }
+    .exclusive-timeDescription span {
+        font-size: 14px;
+        color: #666666;
+    }
+    .exclusive-item a.product-detail {
+        color: #1a1a1a;
+        font-weight: 600;
+        font-size: 14px;
+    }
+    .static-buttons {
+        position: relative;
+        height: 70px;
+    }
+    span.static-button {
+        display: flex;
+        border-radius: 5px;
+        border: 1px solid #1a1a1a;
+        width: 100%;
+        padding: 12px 45px;
+        margin-top: 15px;
+        text-align: center;
+        font-weight: 500;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+    }
+    span.static-button.klarna-icon {
+        padding: 15px 45px;
+    }
+    .static-button img {
+        margin-right: 13px;
+    }
+    .static-button strong {
+        margin-right: 20px;
+    }
+    .payment-iconAction img {
+        height: 22px;
+    }
+    .static-button, .payment-iconAction img {
+        transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    }
+    .payment-iconAction img {
+        position: absolute;
+    }
+    .payment-iconAction img {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    .payment-iconAction {
+        padding-bottom: 20px;
+    }
+    .hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    .productQuantity-field {
+        display: flex;
+        align-items: center;
+    }
+
+    .quantity-wrapper {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ECECEC;
+        border-radius: 5px;
+        overflow: hidden;
+        width: 154px;
+        justify-content: space-between;
+    }
+
+    .quantity-wrapper button {
+        background-color: transparent;
+        border: none;
+        padding: 0 10px;
+        cursor: pointer;
+        font-size: 20px;
+        color: #272636;
+        font-weight: 600;
+    }
+
+    .quantity-wrapper input {
+        width: 50px;
+        text-align: center;
+        border: none;
+        font-size: 16px;
+        -moz-appearance: textfield;
+    }
+
+    .quantity-wrapper input::-webkit-outer-spin-button,
+    .quantity-wrapper input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    @media (max-width: 767px) {
+        .fullProduct-detail h1.product-title {
+            font-size: 35px;
+        }
+        .productData .jdgm-star.jdgm-star {
+            font-size: 25px;
+        }
+        .fullProduct-detail .price, .fullProduct-detail .discounted-price {
+            font-size: 17px;
+        }
+        .fullProduct-detail .productData {
+            padding-top: 30px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .fullProduct-detail h1.product-title {
+            font-size: 24px;
+        }
+        .productData .jdgm-star.jdgm-star {
+            font-size: 21px;
+        }
+        .productQuantity-field label {
+            font-size: 16px;
+        }
+        .exclusive-timeDescription span {
+            font-size: 12px;
+        }
+        span.static-button {
+            padding: 12px 15px;
+            font-size: 15px;
+        }
+        span.static-button.klarna-icon {
+            padding: 15.5px 15px;
+        }
+        .product-deliveryItem, .business-days span {
+            font-size: 14px;
+        }
+        .exclusive-item .product-title, .exclusive-item a.product-detail {
+            font-size: 13px;
+        }
+        .exclusive-item .free-badge {
+            font-size: 11px;
+        }
+    }
+</style>
+
+<script>
+
+   // Sale Ends In
+  // Get the target date from Liquid and convert it to a JavaScript Date object
+  var targetDate = new Date("{{ target_date }}");
+  
+  // Update the countdown every second
+  var x = setInterval(function() {
+      // Get the current date and time
+      var now = new Date().getTime();
+      
+      // Calculate the remaining time
+      var distance = targetDate - now;
+      
+      // Calculate days, hours, minutes, and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      // Display the countdown in the specified format
+      //document.getElementById("countdown").innerHTML = days + " DAYS " + hours + " : " + minutes + " : " + seconds + "";
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+      
+      // If the countdown is over, display a message
+      if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "EXPIRED";
+      }
+  }, 1000);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var klarnaPaymentIcon = document.querySelector('.klarna-paymentIcon');
+        var paypalPaymentIcon = document.querySelector('.paypal-paymentIcon');
+        var klarnaIcon = document.querySelector('.klarna-icon');
+        var paypalIcon = document.querySelector('.paypal-icon');
+
+        klarnaPaymentIcon.addEventListener('click', function() {
+            klarnaIcon.classList.remove('hidden');
+            klarnaIcon.classList.add('visible');
+            paypalIcon.classList.remove('visible');
+            paypalIcon.classList.add('hidden');
+            klarnaPaymentIcon.classList.remove('visible');
+            klarnaPaymentIcon.classList.add('hidden');
+            paypalPaymentIcon.classList.remove('hidden');
+            paypalPaymentIcon.classList.add('visible');
+        });
+
+        paypalPaymentIcon.addEventListener('click', function() {
+            klarnaIcon.classList.remove('visible');
+            klarnaIcon.classList.add('hidden');
+            paypalIcon.classList.remove('hidden');
+            paypalIcon.classList.add('visible');
+            klarnaPaymentIcon.classList.remove('hidden');
+            klarnaPaymentIcon.classList.add('visible');
+            paypalPaymentIcon.classList.remove('visible');
+            paypalPaymentIcon.classList.add('hidden');
+        });
+    });
+
+    //for selected variant colors
+    document.addEventListener('DOMContentLoaded', function() {
+        const colorItems = document.querySelectorAll('.customVariantColor-item');
+        const selectedColorInput = document.getElementById('selected_color');
+
+        colorItems.forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelector('.customVariantColor-item.active').classList.remove('active');
+                item.classList.add('active');
+                const colorLabel = item.querySelector('.customVariant-colorLabel').innerText.split(' - ')[1];
+                selectedColorInput.value = colorLabel;
+            });
+        });
+
+        // Set initial value
+        const initialActiveItem = document.querySelector('.customVariantColor-item.active');
+        if (initialActiveItem) {
+            const initialColorLabel = initialActiveItem.querySelector('.customVariant-colorLabel').innerText.split(' - ')[1];
+            selectedColorInput.value = initialColorLabel;
+        }
+    });
+
+    //for input quantity field
+    document.querySelectorAll('.decrease').forEach(button => {
+        button.addEventListener('click', function() {
+            var quantityInput = this.nextElementSibling;
+            var currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+    });
+
+    document.querySelectorAll('.increase').forEach(button => {
+        button.addEventListener('click', function() {
+            var quantityInput = this.previousElementSibling;
+            var currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+    });
+
+</script>

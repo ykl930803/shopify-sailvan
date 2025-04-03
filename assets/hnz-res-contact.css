@@ -1,0 +1,458 @@
+/* MOBILES ----------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 0px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 30px 20px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 14px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 30px 20px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 14px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 390px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 30px 20px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 14px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 40px 20px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 14px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 428px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 40px 20px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 14px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 40px 20px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 14px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: relative;
+    }
+}
+
+/* COMPUTERS --------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 1280px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 40px;
+        --bs-gutter-y: 0;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 50px 30px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 14px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: absolute;
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 40px;
+        --bs-gutter-y: 0;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 50px 30px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 14px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: absolute;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 50px;
+        --bs-gutter-y: 0;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 60px 40px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 14px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: absolute;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 50px;
+        --bs-gutter-y: 0;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 60px 40px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 14px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: absolute;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 50px;
+        --bs-gutter-y: 0;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 60px 40px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 16px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: absolute;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 50px;
+        --bs-gutter-y: 0;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 60px 40px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 16px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: absolute;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    #hnz-contact-details .contacts-row {
+        --bs-gutter-x: 50px;
+        --bs-gutter-y: 0;
+    }
+    #hnz-contact-details .contacts {
+        height: 100%;
+        border-radius: 15px;
+        padding: 60px 40px;
+    }
+    #hnz-contact-details .contacts .contact-title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item {
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-contact-details .contacts .contact-item p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-contact-details .contacts .contact-item span {
+        font-size: 16px;
+    }
+    #hnz-contact-details .contacts .contact-image {
+        flex: 1;
+        border-radius: 15px;
+        position: relative;
+    }
+    #hnz-contact-details .contacts .contact-image img {
+        position: absolute;
+    }
+}

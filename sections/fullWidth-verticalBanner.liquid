@@ -1,0 +1,327 @@
+{% render 'reusableComponent-fullVertical-slider' %}
+
+<style>
+    section.fullWidth-verticalBanner {
+
+        {%- for block in section.blocks -%}
+            .fullBanner-item {
+                background-color: {{ block.settings.bg_color }};
+    
+                .banner-content {
+                    padding-bottom: 90px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    position: relative;
+                    width: 100%;
+                    max-width: 1570px;
+                    height: 100%;
+                    margin: auto;
+
+                    .bannerContent-inner {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        align-items: center;
+
+                        .banner-headingText {
+                            
+                            h1, h2, h3, h4, h5 {
+                                color: {{ block.settings.banner_textColor }};
+                            }
+                            h2 {
+                                font-size: 60px;
+                            }
+                        }
+                        .banner-texts {
+                            max-width: 456px;
+                        
+                            p {
+                                color: {{ block.settings.banner_textColor }};
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+        {%- endfor -%}
+
+        .fullVertical-banner.swiper-container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+
+            .slider {
+                min-height: 100%;
+
+                .swiper-slide {
+                    background: #ccc;
+                    overflow: hidden;
+                    position: relative;
+                    /*height: 100%;*/
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                
+                    .slide-inner {
+                        position: absolute;
+                        width: 100%;
+                        height: 100vh;
+                        left: 0;
+                        top: 0;
+
+                        img {
+                            position: absolute;
+                            width: 100%;
+                            left: 0;
+                            top: 0;
+                            bottom: 0;
+                            margin: auto;
+                            object-fit: cover;
+                            object-position: center center;
+                            height: 100%;
+                            min-height: 100%;
+                        }
+                    }
+                }
+            }
+        
+            .swiper-pagination {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                width: 38px;
+                position: absolute;
+                z-index: 3;
+                left: 30px;
+                border-radius: 21px;
+                background-color: #fff;
+                padding: 15px 0;
+            }
+            .swiper-pagination-bullet {
+                background-color: transparent;
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                opacity: 1 !important;
+                align-items: center;
+
+                .custom-bullet {
+                    background-color: #CBCBCB;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                }
+                .nav-title {
+                    width: auto;
+                    height: auto;
+                    writing-mode: vertical-rl;
+                    text-orientation: mixed;
+                    text-wrap: nowrap;
+                    margin-top: 8px;
+                    margin-bottom: 15px;
+                    color: #333;
+                }
+                .custom-bullet {
+                    transition: 0.4s ease;
+                }
+            }
+            .swiper-pagination-bullet-active .custom-bullet {
+                background-color: #333333 !important;
+            }
+            .swiper-pagination-bullet .nav-title {
+                display: none;
+            }
+            .swiper-pagination-bullet-active .nav-title  {
+                display: block;
+            }
+        }
+        
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+        section.fullWidth-verticalBanner .fullBanner-item .banner-content {
+            max-width: 1140px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        section.fullWidth-verticalBanner .fullBanner-item .banner-content {
+            max-width: 960px;
+        }
+    }
+
+    @media (max-width: 991px) {
+        section.fullWidth-verticalBanner .fullBanner-item .banner-content .bannerContent-inner {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0 12px;
+        }
+        section.fullWidth-verticalBanner .fullBanner-item .banner-content .bannerContent-inner .banner-texts {
+            max-width: 575px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        section.fullWidth-verticalBanner {
+            padding-bottom: 0 !important;
+            padding-top: 25px !important;
+        }
+        section.fullWidth-verticalBanner .fullBanner-item .banner-content .bannerContent-inner .banner-headingText h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        section.fullWidth-verticalBanner .fullBanner-item .banner-content {
+            padding-bottom: 20px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        section.fullWidth-verticalBanner .fullBanner-item .banner-content .bannerContent-inner .banner-headingText h2 {
+            font-size: 42px;
+        }
+        section.fullWidth-verticalBanner .fullVertical-banner.swiper-container {
+            height: 466px !important;
+        }
+        section.fullWidth-verticalBanner .fullVertical-banner.swiper-container .slider .swiper-slide,
+        section.fullWidth-verticalBanner .fullVertical-banner.swiper-container .slider .swiper-slide .slide-inner  {
+            height: 100% !important;
+        }
+    }
+</style>
+
+{%  javascript  %} 
+
+    const interleaveOffset = 0.75;
+
+    var swiper = new Swiper('.fullVertical-banner', {
+        direction: 'vertical',
+        speed: 800,
+        mousewheelControl: true,
+        watchSlidesProgress: true,
+        mousewheel: {
+            releaseOnEdges: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            type: 'bullets',
+
+            renderBullet: function (index, className) {
+                var headingText = document.querySelectorAll('.fullBanner-item .banner-headingText');
+                var text = headingText[index].textContent || headingText[index].innerText;
+                return '<span class="' + className + '"><div class="custom-bullet"></div><div class="nav-title">' + text + '</div></span>';
+            }
+        },
+        on: {
+            init: function () {
+                // Check if there is only one slide and hide pagination if true
+                if (this.slides.length <= 1) {
+                    this.pagination.el.style.display = 'none';
+                }
+            },
+
+            progress: function() {
+            let swiper = this;
+
+            for (let i = 0; i < swiper.slides.length; i++) {
+                let slideProgress = swiper.slides[i].progress;
+                let innerOffset = swiper.height * interleaveOffset;
+                let innerTranslate = slideProgress * innerOffset;
+
+                TweenMax.set(swiper.slides[i].querySelector(".fullBanner-item .slide-inner"), {
+                y: innerTranslate,
+                });
+            }
+            },
+            setTransition: function(slider, speed) {
+                let swiper = this;
+                for (let i = 0; i < swiper.slides.length; i++) {
+                    swiper.slides[i].style.transition = speed + "ms";
+                    swiper.slides[i].querySelector(".fullBanner-item .slide-inner").style.transition =
+                    speed + "ms";
+                }
+            }
+        }
+    });
+
+{% endjavascript %}
+
+
+{% schema %}
+    {
+        "name": "Full Vertical Slider",
+        "settings": [],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Slider Item",
+                "settings": [
+                    {
+                        "type": "color",
+                        "id": "bg_color",
+                        "label": "Background Color",
+                        "default": "#0A0A0A"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "slider_image",
+                        "label": "Slider Image"
+                    },
+                    {
+                        "type": "select",
+                        "id": "banner_headingTags",
+                        "label": "Banner Heading Tags",
+                        "options": [
+                            {
+                                "value": "<h1/>",
+                                "label": "H1"
+                            },
+                            {
+                                "value": "<h2/>",
+                                "label": "H2"
+                            },
+                            {
+                                "value": "<h3/>",
+                                "label": "H3"
+                            },
+                            {
+                                "value": "<h4/>",
+                                "label": "H4"
+                            },
+                            {
+                                "value": "<h5/>",
+                                "label": "H5"
+                            }
+                        ],
+                        "default": "<h1/>"
+                    },
+                    {
+                        "type": "text",
+                        "id": "banner_title",
+                        "label": "Banner Title",
+                        "default": "Lorem Ipsum Dollor."
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "banner_text",
+                        "label": "Banner"
+                    },
+                    {
+                        "type": "color",
+                        "id": "banner_textColor",
+                        "label": "Banner Text Color",
+                        "default": "#ffffff"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Full Vertical Slider"
+          }
+        ]
+    }
+{% endschema %}

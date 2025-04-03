@@ -1,0 +1,107 @@
+<div class="app-background-text {{ section.id }}">
+  <div class="text-content section-content">
+    <div class="text-wrapper">
+      <h2 class="feature-title">{{ section.settings.title }}</h2>
+      <div class="feature-intro">{{ section.settings.intro }}</div>
+      <div class="feature-notes">{{ section.settings.notes }}</div>
+    </div>
+  </div>
+</div>
+<style>
+  .{{ section.id }} {
+    background-image:url("{{ section.settings.image | image_url}}");
+    aspect-ratio: {{section.settings.image.aspect_ratio}};
+    background-size:cover;
+    background-repeat:no-repeat;
+  }
+  .{{ section.id }} .text-content {
+    position:relative;
+    height: 100%;
+    margin:0 auto;
+  }
+  .{{ section.id }} .text-wrapper {
+    position:absolute;
+    top: {{section.settings.text_position_top}}%;
+    /* bottom: 50px; */
+  }
+  .app-background-text .feature-title {
+    font-size: 30px;
+    margin-bottom:15px;
+    color:#ffffff;
+  }
+   .app-background-text .feature-notes {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+  }
+   .app-background-text .feature-intro {
+    font-size: 18px;
+    margin-bottom:10px;
+    color: rgba(255, 255, 255, 0.64);
+  }
+  @media screen and (max-width:769px) {
+    .{{ section.id }} {
+      background-image:url("{{ section.settings.image_m | image_url}}");
+      aspect-ratio: {{section.settings.image_m.aspect_ratio}};
+    }
+    .{{ section.id }} .text-wrapper {
+      top: {{section.settings.text_position_top_m}}%;
+      {% if section.settings.text_center %}
+        left:0;
+        right:0;
+        text-align:center;
+      {% endif %}
+    }
+    .app-background-text .feature-title {
+     font-size: 22px; 
+    }
+    .app-background-text .feature-intro {
+      font-size: 14px;
+    }
+    .app-background-text .feature-notes {
+      font-size: 10px;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "App Background Text",
+    "settings": [{
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },{
+      "type": "image_picker",
+      "id": "image_m",
+      "label": "Image M"
+    },{
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },{
+      "type": "text",
+      "id": "intro",
+      "label": "Introduction"
+    },{
+      "type": "text",
+      "id": "notes",
+      "label": "Notes"
+    },{
+      "type": "number",
+      "id": "text_position_top",
+      "label": "Text Positon Top",
+      "info": "percent",
+      "default": 10
+    },{
+      "type": "number",
+      "id": "text_position_top_m",
+      "label": "Text Positon Top M",
+      "default": 60
+    },{
+      "type": "checkbox",
+      "id": "text_center",
+      "label": "Mobile Text Center",
+      "default": false
+    }],
+    "presets": [{"name": "App Background Text"}]
+  }
+{% endschema %}

@@ -1,0 +1,713 @@
+<div class="custom-mobileMenu">
+    <div class="offcanvas-header">
+        {% if section.settings.logo %}
+            <a  id="offcanvas_mobile_menuLabel"class="nav-logo" href="https://{{ shop.permanent_domain }}">
+                <img src="{{ section.settings.logo | img_url: '2048x2048' }}"  class="logo"  width="{{section.settings.logo_width}}" height="auto" title="{{shop.name}}" alt="{{ shop.name }}">
+            </a>
+        {% else %}
+            <a id="offcanvas_mobile_menuLabel" class="nav-logo" href="https://{{ shop.permanent_domain }}"><h1>{{ shop.name }}</h1></a>
+        {% endif %}
+        <button type="button" class="btn-close btn-close-mobile-menu text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="z-index: 101"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="mobile-menu-wrapper">
+        {% assign menu_list_mv= menu_list.links%}
+
+            <ul class="mobile-nav-items">
+                {% for link in menu_list_mv -%}
+                    <li  class="van-mm-item {{ link.title | downcase | replace: ' ', '-' }}" >
+                        {% assign links_size = link.links | size %}
+                        {% if links_size > 0 %}
+                            {%if link.title=="PARTNER & SUPPORT" %}
+                                <input type="checkbox" id="toggle_main_{{forloop.index}}" class="toggle-checkbox d-none">
+                                <label for="toggle_main_{{forloop.index}}" class="main-link fw-600" role="button">{{ link.title | escape }} <i class="arrow"></i> </label>
+                            {%elsif link.title=="PARTS & ACCESSORIES" %}
+                                <input type="checkbox" id="toggle_main_{{forloop.index}}" class="toggle-checkbox d-none">
+                                <label for="toggle_main_{{forloop.index}}" class="main-link fw-600" role="button">{{ link.title | escape }} <i class="arrow"></i> </label>
+                            {%else%}
+                                <a class="main-link {%if forloop.index0>0%}collapsed{%endif%}"  type="button"  data-menu-id="{{link.object.id}}" data-bs-toggle="collapse" data-bs-target="#sub_menu_{{forloop.index}}" role="button" aria-expanded="{%if forloop.index0==0 %}true{%else%}false{%endif%}" aria-controls="sub_menu_{{forloop.index}}">{{ link.title | escape }} </a>
+                            {%endif%}
+                        {%else%}
+                            <input type="checkbox" id="toggle_main_{{forloop.index}}" class="toggle-checkbox d-none">
+                            <label for="toggle_main_{{forloop.index}}" class="main-link fw-600" role="button">{{ link.title | escape }} <i class="arrow"></i> </label> 
+                        {%endif %}
+                        
+                        {% if link.title == "EBIKES" %}
+                            <div class="mobile-submenu">
+                                <div class="submenu-header">
+                                    <a href="javascript:void(0)" data-toggle-id="toggle_main_{{ forloop.index }}" class="btn-back text-reset" aria-label="Back"></a>
+                                    <h5 class="submenu-title" id="offcanvasLabel_main_{{ forloop.index }}">{{ link.title | escape }}</h5>
+                                    <button type="button" class="btn-close btn-close-mobile-menu text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="z-index: 101"></button>
+                                </div>
+                                <div class="submenu-body">
+                                    {%- for block in section.blocks -%}
+                                        {% assign parent_menu = block.settings.parent_menu | escape %} 
+                                        {% assign link_title = link.title | escape %}
+                                        {% if parent_menu == link_title %}
+                                            {% render 'mega-menu-1', block: block, link: link %}
+                                        {%endif%}
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if link.title == "PARTS & ACCESSORIES" %}
+                            {% if link.links != blank %}
+                                <div class="mobile-submenu equipmentMobile">
+                                    <div class="submenu-header">
+                                        <a href="javascript:void(0)" data-toggle-id="toggle_main_{{forloop.index}}" class="btn-back text-reset" aria-label="Back"></a>
+                                        <h5 class="submenu-title" id="offcanvasLabel_main_{{forloop.index}}">{{ link.title | escape }}</h5>
+                                        <button type="button" class="btn-close btn-close-mobile-menu text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="z-index: 101"></button>
+                                    </div>
+                                    <div class="submenu-body">
+                                        {%- for block in section.blocks -%}
+                                            {% assign parent_menu = block.settings.parent_menu | escape %} 
+                                            {% assign link_title = link.title | escape %}
+                                            {% if parent_menu == link_title %}
+                                                {% render 'mega-menu-2-mobile', block: block, link: link %}
+                                            {%endif%}
+                                        {%endfor%}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if link.title == "RESOURCE & COMMUNITY" %}
+                            <div class="mobile-submenu communityMobile">
+                                <div class="submenu-header">
+                                    <a href="javascript:void(0)" data-toggle-id="toggle_main_{{forloop.index}}" class="btn-back text-reset" aria-label="Back"></a>
+                                    <h5 class="submenu-title" id="offcanvasLabel_main_{{forloop.index}}">{{ link.title | escape }}</h5>
+                                    <button type="button" class="btn-close btn-close-mobile-menu text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="z-index: 101"></button>
+                                </div>
+                                <ul class="submenu-body">
+                                    {%- for block in section.blocks -%}
+                                        {% assign parent_menu = block.settings.parent_menu | escape %} 
+                                        {% assign link_title = link.title | escape %}
+                                        {% if parent_menu == link_title %}
+                                            {% render 'mega-menu-3', block: block, link: link %}
+                                        {%endif%}
+                                    {%endfor%}
+                                </ul>
+                            </div>
+                        {% endif %}
+                        
+                        {% if link.title=="PARTNER & SUPPORT"%}
+                            {% if link.links != blank %}
+                                <div class="mobile-submenu vanService">
+                                    <div class="submenu-header">
+                                        <a href="javascript:void(0)" data-toggle-id="toggle_main_{{forloop.index}}" class="btn-back text-reset" aria-label="Back"></a>
+                                        <h5 class="submenu-title" id="offcanvasLabel_main_{{forloop.index}}">{{ link.title | escape }}</h5>
+                                        <button type="button" class="btn-close btn-close-mobile-menu text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="z-index: 101"></button>
+                                    </div>
+                                    <div class="submenu-body">
+                                        <div class="nav-custom-text"><h3 style="font-weight: 600">Our always-on service is here to support you.</h3></div>
+                                        <ul class="px-0">
+                                        {% for childlink in link.links %}
+                                            <li><a href="{{ childlink.url }}"
+                                                {% if childlink.current %} aria-current="page"{% endif %}
+                                            >
+                                                <span class="site-nav_title fw-600 p-large">{{ childlink.title | escape }}</span>
+                                            </a></li>
+                                        {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            
+
+                            {%else%}
+                            <!-- {% if link.links != blank %}
+                                <div id="sub_menu_{{forloop.index}}">
+                                    <ul class="sub-links">
+                                    {% for childlink in link.links %}
+                                            <li>
+                                                <input type="checkbox" id="toggle_sub_{{forloop.index}}" class="toggle-checkbox d-none">
+                                                <label for="toggle_sub_{{forloop.index}}" class="txt-light v-large" role="button"  {% if childlink.current %} aria-current="page"{% endif %}>{{ childlink.title | escape }}</label> 
+                                                {% assign childlink_size = childlink.links | size %}
+
+                                                <div class="mobile-submenu">
+                                                    <div class="submenu-header">
+                                                        <button type="button" data-toggle-id="toggle_sub_{{forloop.index}}" class="btn-back text-reset" aria-label="Back"></button>
+                                                        <h5 class="submenu-title" id="offcanvasLabel_{{forloop.index}}">{{ childlink.title | escape }}</h5>
+                                                        <button type="button" class="btn-close btn-close-mobile-menu text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="z-index: 101"></button>
+                                                    </div>
+                                                    <ul class="submenu-body">
+                                                        {% for grandchildlink in childlink.links %}
+                                                            <li>
+                                                                <a href="{{ grandchildlink.url }}"
+                                                                class="site-nav__link site-nav__child-link"
+                                                                {% if grandchildlink.current %} aria-current="page"{% endif %}
+                                                                >
+                                                                <span class="site-nav_title p-large fw-600">{{ grandchildlink.title | escape }}</span>
+                                                                </a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %} -->
+                        {%endif %}
+
+                        {% if link.title == "COMPARE MODELS" %}
+                           <a href="{{ link.url }}" class="main-link">{{ link.title | escape }}</a>
+                        {% endif %}
+
+                    </li>
+                {%endfor%}
+                <li class="van-mm-item mobile-account">
+                    <a href="/account">
+                        <img src="{{'person.svg' | asset_url}}" width="24" height="24" class="icon-header__account" alt="icon account">
+                        <label>My account</label>
+                    </a>
+                </li>
+            </ul>
+        </div>  
+    </div>
+</div>
+<style>
+    .custom-mobileMenu .submenu-body .mega-menu {
+        display: table;
+        position: relative;
+        top: unset;
+        left: unset;
+    }
+    .custom-mobileMenu .menuProduct-support {
+        grid-template-columns: repeat(2,minmax(200px,1fr));
+    }
+    .custom-mobileMenu .mega-menu .mega-menu-content-wrapper.mega-menu-1 .mega-tab-content .mega-menu__list .featured-image {
+        display: none;
+    }
+    .custom-mobileMenu .mega-menu .mega-menu-content-wrapper.mega-menu-1 .mega-tab-content {
+        padding: 0;
+    }
+    .custom-mobileMenu .menuProduct-support {
+        grid-template-columns: repeat(2,minmax(200px,1fr));
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
+    .custom-mobileMenu .mega-menu .vanpower-nav-tabs {
+        display: grid;
+        gap: 0;
+        grid-template-columns: repeat(2,minmax(200px,1fr));
+    }
+    .custom-mobileMenu .mega-menu .vanpower-nav-tabs button {
+        padding: 14px 30px;
+    }
+    .custom-mobileMenu .container.container-panel.mega-menu-content-wrapper {
+        padding: 0;
+    }
+    .custom-mobileMenu li.van-mm-item.compare-models {
+        display: block;
+    }
+    .custom-mobileMenu li.van-mm-item.compare-models label {
+        display: none;
+    }
+
+    @media (max-width: 767px){
+        .custom-mobileMenu .mega-menu__list_items .menu_product a {
+            width: 100%;
+        }
+        .custom-mobileMenu .submenu-body h3 {
+            font-size: 26px;
+        }
+    }
+    
+    @media (max-width: 553px){
+        .custom-mobileMenu .mega-menu .vanpower-nav-tabs button span {
+            font-size: 16px;
+        }
+        .custom-mobileMenu .mega-menu .vanpower-nav-tabs, .custom-mobileMenu .menuProduct-support {
+            grid-template-columns: repeat(2,minmax(100px,1fr));
+        }
+        .custom-mobileMenu .mega-menu .vanpower-nav-tabs button {
+            padding: 14px 0;
+        }
+        .custom-mobileMenu .menuProduct-support {
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            margin-bottom: 10px;
+        }
+        .custom-mobileMenu .mega-menu .tab-content .menu_product .product-title {
+            font-size: 15px !important;
+        }
+        .custom-mobileMenu .mega-menu .mega-menu__content .mega-menu__list .mega-menu__list_items {
+            row-gap: 10px;
+        }
+        .custom-mobileMenu .menuProduct-supportItem img {
+            max-width: 23px;
+        }
+        .custom-mobileMenu  .menuProduct-supportTitle {
+            font-size: 11px;
+        }
+        .mega-menu .mega-menu__content .mega-menu__list .img-wrapper img {
+            height: 165px;
+        }
+    }
+
+    @media (max-width: 465px){
+        .custom-mobileMenu .mega-menu .mega-menu-content-wrapper.mega-menu-1 .mega-tab-content .mega-menu__list .mega-menu__list_items.tab-2 .style-product-wrapper {
+            height: 310px;
+            padding: 20px 10px !important;
+        }
+    }
+
+    @media (max-width: 350px){
+        .mega-menu .mega-menu__content .mega-menu__list .img-wrapper img {
+            height: 140px;
+        }    
+    }
+
+    .mobile-submenu{
+        position: fixed;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        right: 0;
+        background: white;
+        z-index: 200;
+        padding-top: 25px;
+        transition: 0.3s ease;
+        transform: translateX(-100%);
+        overflow-y: auto;
+    }
+    body.custom-mobileMenu-open .toggle-checkbox:checked + label + .mobile-submenu {
+         transform: translateX(0);
+    }
+
+    .navbar-icon{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 23px;
+    
+    /* FOR DISPLAYING EVERY ELEMENT IN THE CENTER : */
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100
+    }
+
+    /* CREATING THE MIDDLE LINE OF THE navbar-icon : */
+
+    .navbar-icon > div{
+        position: relative;
+        top: 0;
+        left: 0;
+        background: #333;
+        height: 2px;
+        width: 75%;
+        transition: all  0.4s ease;
+    }
+
+    /* CREATING THE TOP AND BOTTOM LINES : 
+    TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
+
+    .navbar-icon > div::before,
+    .navbar-icon > div::after{
+        content: '';
+        position: absolute;
+        top: -8px;
+        background: #333;
+        width: 100%;
+        height: 2px;
+        transition: all  0.4s ease;
+    }
+
+    .navbar-icon > div::after{
+        top: 8px;
+    }
+   
+
+    .mobile-menu-wrapper{
+        transition: all 0.4s ease;
+    }
+
+    .mobile-menu-wrapper.expanded{
+     
+    }
+    @media (min-width: 768px){
+        .mobile-menu-wrapper.expanded{
+            max-width: 434px;
+        }
+    }
+    .mobile-menu-wrapper .arrow{
+        display: inline-block;
+        color: #333;
+        border-top: 1.5px solid #333;
+        border-left: 1.5px solid #333;
+        transform: rotate(135deg);
+        height: 7px;
+        width: 7px;    
+    }
+    .mobile-menu-wrapper .hr-title{
+        width: 76px;
+        border: 2px solid #333333;
+        opacity: 1;
+    }
+
+    .mobile-menu-wrapper ul{
+        list-style: none;
+    }
+   
+    .mobile-menu-wrapper ul.mobile-nav-items{
+        transition: visibility 0.4s ease;
+        transition-delay: 0.1s;
+        visibility: visible;
+        padding: 0 0 16px;
+    }
+    .mobile-menu-wrapper ul.mobile-nav-items li a{
+        color: #333;
+        text-decoration: none;
+        font-size:18px;
+        font-weight: 600;
+        display: table;
+    }
+    .mobile-menu-wrapper ul.mobile-nav-items .main-link:hover, .mobile-menu-wrapper .site-read_link:hover{
+        color: #B7011C ;
+     }
+    .mobile-menu-wrapper .site-read_link:hover .arrow,  .mobile-nav-items .btn-back:hover{
+        border-color: #B7011C
+    }
+    .mobile-menu-wrapper ul.mobile-nav-items li a.txt-light,.mobile-menu-wrapper .txt-light{
+        color: #999;
+        font-weight: 600;
+    }
+    .mobile-menu-wrapper ul.mobile-nav-items .main-link{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;    
+        padding: 10px 0;
+        font-size: 18px;
+    }
+    
+    .mobile-menu-wrapper .sub-links{
+        padding-top: 20px;
+        display: grid;
+        row-gap: 10px;
+    }
+    .mobile-menu-wrapper .sub-links .txt-light{
+       transition: all 0.4s ease;
+    }
+    .mobile-menu-wrapper .sub-links .txt-light:hover{
+        color: #333;
+    }
+    .mobile-menu-wrapper .sub-links .sub-sub-links{
+        background: white;
+        z-index: 4;
+        top: 74px;
+        height: 70vh;
+        right: 0;
+        position:absolute;
+        width: 0;
+        overflow: hidden;    
+        transition: all 0.4s ease;
+        position: fixed;
+    }
+
+    .mobile-menu-wrapper .sub-links .sub-sub-links.expanded{
+        width: var(--bs-offcanvas-width);
+        z-index: 2;
+    
+    }
+
+    .main-link::after {
+        transform: rotate(90deg);
+    }
+
+    .main-link.active::after {
+        transform: rotate(0deg);
+    }
+    .offcanvas-header {
+        z-index: 2;
+        padding: 30px 16px !important;
+        background-color: #fff;
+    }
+    .mobile-nav-items .offcanvas-header, .mobile-nav-items .submenu-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 160px;
+        --bs-offcanvas-padding-x: 18px;
+        padding: 0 18px 0;
+        gap: 10px;
+    }
+    .mobile-nav-items .submenu-body{
+        padding: 0 20px;
+    }
+    .mobile-nav-items .offcanvas-body{
+        --bs-offcanvas-padding-x : 43px
+    }
+    .mobile-nav-items .offcanvas-body .site-nav_title:hover, .mobile-nav-items .submenu-body .site-nav_title:hover{
+        color: #B7011C;
+    }
+    .mobile-nav-items .offcanvas ul li, .mobile-nav-items .mobile-submenu ul li{
+        margin-bottom: 20px;
+    }
+    .mobile-nav-items .mobile-submenu .submenu-title{
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .mobile-nav-items .btn-back{
+        display: inline-block;
+        color: #333;
+        border: 0;
+        border-top: 2px solid #333;
+        border-left: 2px solid #333;
+        transform: rotate(313deg);
+        height: 14px;
+        width: 14px;
+        background: none;
+    }
+
+    .custom-mobileMenu, .mobile-submenu {
+        display: none;
+    }
+
+    .custom-mobileMenu {
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        height: 100%;
+        bottom: 0;
+        top: 0;
+        background-color: #fff;
+        transition: 0.2s ease;
+        left: -2000px;
+    }
+    body.custom-mobileMenu-open .custom-mobileMenu {
+        left: 0;
+    }
+    .mobile-menu-wrapper {
+        padding: 0 43px;
+    }
+    .custom-mobileMenu .offcanvas-header {
+        position: relative;
+        z-index: 100;
+    }
+    .custom-mobileMenu .mega-menu .mega-menu-content-wrapper.mega-menu-1 .mega-tab-content .mega-menu__list .mega-menu__list_items.tab-2 {
+        column-gap: 0;
+        row-gap: 0;
+    }
+    .custom-mobileMenu .mega-menu .mega-menu-content-wrapper.mega-menu-1 .mega-tab-content .mega-menu__list .mega-menu__list_items.tab-2 .menu_product.col-lg-4 {
+        width: 33.33% !important;
+    }
+    .custom-mobileMenu .mega-menu .mega-menu-content-wrapper.mega-menu-1 .mega-tab-content .mega-menu__list .mega-menu__list_items.tab-2 .style-product-wrapper {
+        padding: 20px 15px;
+    }
+    .custom-mobileMenu .mega-menu .mega-menu-content-wrapper.mega-menu-1 .mega-tab-content .mega-menu__list .mega-menu__list_items.tab-2 .style-product-wrapper .product-desc {
+        width: 100%;
+    }
+    .custom-mobileMenu #mm-nav-content-tab2 .menuProduct-support {
+        margin-bottom: 25px !important;
+    }
+    .custom-mobileMenu .mobile-nav-items .mobile-submenu ul li a span {
+        font-size: 16px !important;
+    }
+    @media (max-width: 657px){
+        .custom-mobileMenu .mega-menu .mega-menu-content-wrapper.mega-menu-1 .mega-tab-content .mega-menu__list .mega-menu__list_items.tab-2 .menu_product.col-lg-4 {
+            width: 50% !important;
+        }
+    }
+    .communityMobile .mega-menu-content-wrapper .col-3 {
+        width: 100%;
+    }
+    .communityMobile .featured-image {
+        display: none;
+    }
+    .communityMobile .nav_list-content .card-body img {
+        display: none;
+    }
+    .mega-menu .sub-content-text .nav_list-content {
+        row-gap: 0;
+    }
+    .communityMobile .nav_list-content .card-body {
+        padding: 0 16px;
+    }
+    .communityMobile .mega-menu .sub-content-text .nav_list-content .card .link {
+        display: none;
+    }
+    .cardTitle-mobile {
+        display: none;
+    }
+    .communityMobile .mega-menu .sub-content-text .nav_list-content .card .card-text {
+        margin-bottom: 5px;
+    }
+    .communityMobile ul.submenu-body {
+        margin-top: 15px;
+    }
+    .communityMobile .mega-menu .sub-content-text .nav_list-content .card .card-title {
+        padding-bottom: 0;
+        padding-top: 0;
+        margin: 0;
+        font-size: 18px;
+    }
+    .communityMobile .nav_list-content .card-body {
+        margin-bottom: 25px;
+    }
+    a.cardTitle-mobile.link {
+        margin-bottom: 5px;
+    }
+    .equipmentMobile .featured-image {
+        display: none;
+    }
+    .equipmentMobile .mega-menu .mega-menu-content-wrapper.sub-content-text.default-column-links .sub-content-links {
+        width: 100%;
+        gap: 0;
+    }
+    .equipmentMobile .mega-menu {
+        margin-top: 30px;
+    }
+    .equipmentMobile a h5 {
+        text-transform: uppercase;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .equipmentMobile .sub-content-links {
+        display: flex;
+        flex-direction: column;
+    }
+    .equipmentMobile .subContent-wrapper, .equipmentMobile .equipment-navItem {
+        display: flex;
+        justify-content: space-between;
+    }
+    .equipmentMobile .subContent-item, .equipment-navItem a {
+        width: 50%;
+    }
+    .equipmentMobile .equipment-navItem a {
+        border-bottom: 1px solid #dfdfdf;
+        text-align: center;
+    }
+    .equipmentMobile .sub-content-links {
+        padding-left: 0 !important;
+    }
+    .equipmentMobile .equipment-navItem a.active h5 {
+        color: #333;
+    }
+    .equipmentMobile .equipment-navItem a.active {
+        border-bottom: 3px solid #333;
+    }
+    .equipmentMobile .equipment-navItem a h5 {
+        color: #999999;
+    }
+    .equipmentMobile ul li {
+        padding-right: 0 !important;
+    }
+    .equipmentMobile .subContent-item {
+        display: flex;
+        justify-content: center;
+    }
+    li.van-mm-item.mobile-account {
+        margin-top: 25px;
+    }
+    li.van-mm-item.mobile-account a {
+        display: flex !important;
+        gap: 10px;
+    }
+    li.van-mm-item.mobile-account a label {
+        color: #666666;
+    }
+    .custom-mobileMenu .btn-close-mobile-menu {
+        opacity: 1;
+        font-size: 29px;
+        padding: 0 10px;
+    }
+    .custom-mobileMenu .mobile-menu-wrapper {
+        margin-top: 30px;
+    }
+    .custom-mobileMenu .submenu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+    }
+    .mobile-submenu .submenu-body {
+        margin-top: 20px;
+    }
+    .equipmentMobile .submenu-body, .communityMobile .submenu-body {
+        margin-top: 40px !important;
+    }
+
+    @media (max-width: 1200px){
+        .custom-mobileMenu, .mobile-submenu {
+            display: block;
+        }
+        .custom-mobileMenu .mobile-submenu.vanService .nav-custom-text {
+            margin: 40px 0;
+        }
+        .custom-mobileMenu .mobile-nav-items .mobile-submenu ul li {
+            margin-bottom: 10px;
+        }
+        .cardTitle-desktop {
+            display: none;
+        }
+        .communityMobile .mega-menu .sub-content-text .nav_list-content .card .cardTitle-mobile.link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+        }
+    }
+</style>
+<script>
+    
+    //open mobile menu
+    document.addEventListener('DOMContentLoaded', function() {
+        var button = document.querySelector('.navbar-toggler');
+
+        button.addEventListener('click', function() {
+            var body = document.body;
+            if (body.classList.contains('custom-mobileMenu-open')) {
+                body.classList.remove('custom-mobileMenu-open');
+            } else {
+                body.classList.add('custom-mobileMenu-open');
+            }
+        });
+
+        //close mobile menu
+        var closeButton = document.querySelector('.btn-close-mobile-menu');
+
+        closeButton.addEventListener('click', function() {
+            var body = document.body;
+            body.classList.remove('custom-mobileMenu-open');
+        });
+
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var backButtons = document.querySelectorAll('.btn-back');
+        backButtons.forEach(function(backButton) {
+            backButton.addEventListener('click', function () {
+                var toggleId = backButton.getAttribute('data-toggle-id'); // Get the value of data-toggle-id attribute
+                var checkbox = document.getElementById(toggleId); // Find the checkbox by its ID
+                checkbox.checked=false;
+            });
+        })
+    });
+
+    // to work the tab e-bike mobile menu on window starts from 1200 below
+    function isMobileDevice() {
+        return window.innerWidth < 1200;
+    }
+
+    function removeElementInMobile() {
+        if (isMobileDevice()) {
+            var element = document.querySelector('.mega-menu-1-desktop .mega-tab-content');
+            if (element) {
+                element.remove();
+            }
+        }
+    }
+
+    // Call the function when the page loads and when the window is resized
+    window.onload = removeElementInMobile;
+    window.onresize = removeElementInMobile;
+    
+</script>

@@ -1,0 +1,245 @@
+<div class="urbanGlideSeries-mobile">
+    <div class="collection-series container">
+        <div class="collectionSeries-wrapper">
+            {%- if section.settings.collection.products != blank -%}
+                <h2 class="text-center">Which bike is right for you?</h2>
+            {% endif %}
+            <div class="prods">
+                <div class="swiper-wrapper">
+                    {% for product in section.settings.collection.products  %}
+                        <div class="item product-item product-item-{{ forloop.index }} swiper-slide">
+                            <div class="product-headerWrapper d-flex flex-column align-items-center">
+                                {% for variant in product.variants limit:1 %}
+                                    <div class="variant-img-item">
+                                        <a href="{{ product.url }}">
+                                            <img src="{{ variant.image | product_img_url: 'master' }}" alt="{{ product.title }}" />
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            
+                                {% render 'product-variant-colors', product: product %}
+                            
+                                <a class="title" href="{{ product.url }}">{{ product.title }}</a>
+
+                                <span class="active-ride">Active Ride.</span>
+                                
+                                <div class="price-container">
+                                    {% for variant in product.variants limit:1 %}
+                                        <!--div class="price">{{ variant.price | money }}</div-->
+                                        {% if variant.compare_at_price and variant.compare_at_price > variant.price %}
+                                            <div class="price-old">From {{ variant.compare_at_price | money }}</div>
+                                            {% else %}
+                                            <div class="original-price">{{ variant.price | money }}</div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            
+                                <div class="buyNow btn btn-dark" data-model="{{ product.title }}">Buy</div>
+
+                                <a class="learnMore" href="{{ product.url }}">
+                                    <div class="button" data-model="UrbanGlide-Ultra">
+                                        Learn more
+                                        <img class="learnMore-arrow" src="{{'LearnMore-arrow.png' | asset_url}}">
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="urbanGlide-series-specs">
+                                {% assign productSpecs = shop.metaobjects.urban_glide_series_specs.values %}
+                                {% for productSpec in productSpecs %}
+                                    {% assign productSpec = productSpec.metafields.custom.urbanglide_series_specs.value %}
+                                    <div class="urbanGlide-item {{ productSpec.urban_glide_series_name }}">
+                                        {% if productSpec %}
+                                            {%- if productSpec.sizes != blank -%}
+                                                <div class="spec-data">
+                                                    <div class="label d-table mx-auto">S/L</div>
+                                                    <div class="spec-value">{{ productSpec.sizes }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.riding_position != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.riding_position_icon != blank -%}
+                                                        <img src="{{ productSpec.riding_position_icon | img_url: 'master' }}" alt="Riding Position">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.riding_position }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.measurement != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.riding_position_icon != blank -%}
+                                                        <img src="{{ productSpec.measurement_icon | img_url: 'master' }}" alt="Measurement">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.measurement }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.battery_and_mudguards != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.battery_and_mudguards_icon != blank -%}
+                                                        <img src="{{ productSpec.battery_and_mudguards_icon | img_url: 'master' }}" alt="Battery and Mudguards">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.battery_and_mudguards }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.shape != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.shape_icon != blank -%}
+                                                        <img src="{{ productSpec.shape_icon | img_url: 'master' }}" alt="Shape">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.shape }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.centimeters != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.centimeters_icon != blank -%}
+                                                        <img src="{{ productSpec.centimeters_icon | img_url: 'master' }}" alt="Centimeters">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.centimeters }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.chair_type != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.chair_type_icon != blank -%}
+                                                        <img src="{{ productSpec.chair_type_icon | img_url: 'master' }}" alt="Chair">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.chair_type }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.gear != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.gear_icon != blank -%}
+                                                        <img src="{{ productSpec.gear_icon | img_url: 'master' }}" alt="Gear">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.gear }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.sensor != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.sensor_icon != blank -%}
+                                                        <img src="{{ productSpec.sensor_icon | img_url: 'master' }}" alt="Sensor">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.sensor }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.charger != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.charger_icon != blank -%}
+                                                        <img src="{{ productSpec.charger_icon | img_url: 'master' }}" alt="Charger">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.charger }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.throttle != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.throttle_icon != blank -%}
+                                                        <img src="{{ productSpec.throttle_icon | img_url: 'master' }}" alt="Throttle">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.throttle }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.speed_limit != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.speed_limit_icon != blank -%}
+                                                        <img src="{{ productSpec.speed_limit_icon | img_url: 'master' }}" alt="Speed Limit">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.speed_limit }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.rotor != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.rotor_icon != blank -%}
+                                                        <img src="{{ productSpec.rotor_icon | img_url: 'master' }}" alt="Rotor">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.rotor }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.degree != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.degree_icon != blank -%}
+                                                        <img src="{{ productSpec.degree_icon | img_url: 'master' }}" alt="Degree">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.degree }}</div>
+                                                </div>
+                                            {% endif %}
+                                            {%- if productSpec.clamp != blank -%}
+                                                <div class="spec-data">
+                                                    {%- if productSpec.clamp_icon != blank -%}
+                                                        <img src="{{ productSpec.clamp_icon | img_url: 'master' }}" alt="Clamp">
+                                                        {% else %}
+                                                            <img class="placeholder" src="{{  'placeholder.jpg' | asset_url }}" alt="placeholder">
+                                                    {% endif %}
+                                                    <div class="spec-value">{{ productSpec.clamp }}</div>
+                                                </div>
+                                            {% endif %}
+                                                {% else %}
+                                                <p>No urbanglide series specs, Please go to the product and assign.</p>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!--div class="swiper-navigations">
+                    <div class="swiper-button-next navigation-button"><img src="{{ 'right-arrow.png' | asset_url }}" alt="Next"></div>
+                    <div class="swiper-button-prev navigation-button"><img src="{{ 'left-arrow.png' | asset_url }}" alt="Previous"></div>
+                </div-->        
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const items = document.querySelectorAll('.urbanGlideSeries-mobile .product-item-1 .urbanGlide-item');
+
+    items.forEach(item => {
+        if (!item.classList.contains('Urbanglide-Ultra')) {
+            item.remove();
+        }
+    });
+
+    const items2 = document.querySelectorAll('.urbanGlideSeries-mobile .product-item-2 .urbanGlide-item');
+
+    items2.forEach(item => {
+        if (!item.classList.contains('Urbanglide-Pro')) {
+            item.remove();
+        }
+    });
+
+    const items3 = document.querySelectorAll('.urbanGlideSeries-mobile .product-item-3 .urbanGlide-item');
+
+    items3.forEach(item => {
+        if (!item.classList.contains('Urbanglide-Standard')) {
+            item.remove();
+        }
+    });
+
+</script>

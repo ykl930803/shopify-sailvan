@@ -1,0 +1,342 @@
+<div class="grandteton-comparison section-content container" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+  <div class="title">Comparison</div>
+  <table class="comparison-table d-lg-block d-md-block d-sm-none">
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        {% if product.metafields.custom._series %}
+          {% assign products_in_collection = product.metafields.custom._series.value.products %}
+          {% for product in products_in_collection %}
+            <td class="center-item">
+              <div class="product-image-wrapper">
+                <img src="{{ product.featured_image.src | image_url }}" width="250">
+              </div>
+              <div class="product-title">{{ product.title }}</div>
+              <a class="learn-btn" href="{{ product.url }}">Learn More</a>
+            </td>
+          {% endfor %}
+        {% endif %}
+        {% comment %} {% for collection in product.collections %}
+          {% if collection.handle == 'grandteton-series' %}
+            {% assign products_in_collection = collection.products %}
+            {% for product in products_in_collection %}
+              <td class="center-item">
+                <div class="product-image-wrapper">
+                  <img src="{{ product.featured_image.src | image_url }}" width="250">
+                </div>
+                <div class="product-title">{{ product.title }}</div>
+                <a class="learn-btn" href="{{ product.url }}">Learn More</a>
+              </td>
+            {% endfor %}
+          {% endif -%}
+        {% endfor %} {% endcomment %}
+      </tr>
+      {% comment %} <tr>
+        <th scope="row">Color</th>
+        <td class="center-item">
+          <div class="color-wrapper">
+            <span class="silver color-item"></span>
+            <span class="red color-item"></span>
+          </div>
+          Galaxy Silver/ Lava Red And Coke Black</td>
+        <td class="center-item">
+          <div class="color-wrapper">
+            <span class="silver color-item"></span>
+            <span class="red color-item"></span>
+          </div>
+          Galaxy Silver/ Lava Red And Coke Black</td>
+      </tr> {% endcomment %}
+      {% for item in product.metafields.custom.comparison.value.list %}
+        {% if item.title == 'Color' %}
+          <tr>
+            <th>{{ item.title }}</th>
+            <td class="center-item">
+              <div class="color-wrapper">
+                {% for color in item.gtu.colors %}
+                  <span class="color-item" style="background: {{ color }}"></span>
+                {% endfor %}
+              </div>
+              {{ item.gtu.value}}
+            </td>
+            <td class="center-item">
+              <div class="color-wrapper">
+                {% for color in item.gtp.colors %}
+                  <span class="color-item" style="background: {{ color }}"></span>
+                {% endfor %}
+              </div>
+              {{ item.gtp.value}}
+            </td>
+            {% comment %} <td class="center-item">{{ item.gtp}}</td> {% endcomment %}
+          </tr>
+          {% else %}
+          <tr>
+            <th>{{ item.title }}</th>
+            <td class="center-item">{{ item.gtu | newline_to_br}}</td>
+            <td class="center-item">{{ item.gtp | newline_to_br}}</td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="d-lg-none d-md-none d-sm-block d-sm-look">
+    <div class="com-item row">
+      {% if product.metafields.custom._series %}
+        {% assign products_in_collection = product.metafields.custom._series.value.products %}
+        {% for product in products_in_collection %}
+          <div class="text-center col-6 details">
+            <div class="product-image-wrapper">
+              <img src="{{ product.featured_image.src | image_url}}" width="150">
+            </div>
+            <div class="item-title-top">{{ product.title }}</div>
+            <a class="learn-btn" href="{{ product.url }}">Learn More</a>
+          </div>
+        {% endfor %}
+      {% endif %}
+      {% comment %} {% for collection in product.collections %}
+        {% if collection.handle == 'grandteton-series' %}
+          {% assign products_in_collection = collection.products %}
+          {% for product in products_in_collection %}
+            <div class="text-center col-6 details">
+              <div class="product-image-wrapper">
+                <img src="{{ product.featured_image.src | image_url}}" width="150">
+              </div>
+              <div class="item-title-top">{{ product.title }}</div>
+              <a class="learn-btn" href="{{ product.url }}">Learn More</a>
+            </div>
+          {% endfor %}
+        {% endif -%}
+      {% endfor %} {% endcomment %}
+    </div>
+    {% comment %} <div class="com-item">
+      <div class="item-title">Color</div>
+      <div class="row item-content">
+        <div class="col-6 details">
+          <span class="silver color-item"></span>
+          <span class="red color-item"></span>
+          <div>Calaxy Silver/ Lava Red And Coke Black</div>
+        </div>
+        <div class="col-6 details">
+          <span class="silver color-item"></span>
+          <span class="red color-item"></span>
+          <div>Calaxy Silver/ Lava Red And Coke Black</div>
+        </div>
+      </div>
+    </div> {% endcomment %}
+    {% for item in product.metafields.custom.comparison.value.list %}
+      {% if item.title == 'Color' %}
+        <div class="com-item">
+          <div class="item-title">{{item.title}}</div>
+          <div class="row item-content">
+            <div class="col-6 details">
+              {% for color in item.gtu.colors %}
+                <span class="color-item" style="background: {{ color }}"></span>
+              {% endfor %}
+              <div>{{item.gtu.value}}</div>
+              {% comment %} <span class="silver color-item"></span>
+              <span class="red color-item"></span>
+              <div>Calaxy Silver/ Lava Red And Coke Black</div> {% endcomment %}
+            </div>
+            <div class="col-6 details">
+              {% for color in item.gtp.colors %}
+                <span class="color-item" style="background: {{ color }}"></span>
+              {% endfor %}
+              <div>{{item.gtp.value}}</div>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div class="com-item">
+          <div class="item-title">{{ item.title }}</div>
+          <div class="row item-content">
+            <div class="col-6 details">{{ item.gtu | newline_to_br}}</div>
+            <div class="col-6 details">{{ item.gtp | newline_to_br}}</div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<style>
+  .grandteton-comparison {
+    max-width: 1570px !important;
+    padding: 80px 50px;
+  }
+  .grandteton-comparison .title {
+    /* font-size: 40px;
+    font-weight: 600; */
+  }
+  .grandteton-comparison table tr:nth-child(even) {
+    background-color: rgb(250, 250, 250);
+  }
+  .grandteton-comparison .comparison-table {
+    width: 100%;
+    font-weight: 500;
+  }
+  .comparison-table .product-title {
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .comparison-table .learn-btn {
+    padding: 10px 24px 10px 24px;
+    border-radius: 35px;
+    border: 1px solid #333333;
+    color: #333333;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .comparison-table th {
+    width: 30%;
+  }
+  .comparison-table td,th {
+    padding: 20px;
+  }
+  .comparison-table .center-item {
+    text-align: center;
+  }
+  .comparison-table .color-wrapper .color-item {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #919191;
+  }
+  .comparison-table .color-wrapper .silver {
+    background-color:  #DFDFDF;
+  }
+  .comparison-table .color-wrapper .red {
+    background: linear-gradient(180deg, #FD2822 12.5%, #060606 97.06%);
+  }
+  .d-sm-look .com-item:nth-child(even) {
+    background-color: rgb(250, 250, 250);
+  }
+  .d-sm-look .com-item {
+    padding: 20px 0;
+  }
+  .d-sm-look .com-item:first-child {
+    padding-top: 0;
+  }
+  .d-sm-look .item-title-top {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .d-sm-look .item-title{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-left: 20px;
+  }
+  .d-sm-look .item-content {
+    font-weight:500;
+    font-size:14px;
+  }
+  .d-sm-look .details {
+    padding: 10px 20px;
+  }
+  .d-sm-look .color-item {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #919191;
+  }
+  .d-sm-look .silver {
+    background-color:  #DFDFDF;
+  }
+  .d-sm-look .red {
+    background: linear-gradient(180deg, #FD2822 12.5%, #060606 97.06%);
+  }
+  .d-sm-look .learn-btn {
+    padding: 5px 15px;
+    font-weight: 500;
+    border-radius: 35px;
+    border: 1px solid #333333;
+    color: #333333;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 768px) {
+    .grandteton-comparison .title {
+      /* font-size: 30px; */
+    }
+    .comparison-table td,th {
+      padding: 10px;
+    }
+     .comparison-table .learn-btn {
+       padding: 10px 4px;
+     }
+  }
+  @media screen and (max-width: 480px) {
+    .grandteton-comparison {
+      padding: 40px 0 !important;
+    }
+  }
+  .grandteton-comparison .title {
+    font-size: 54px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 80px;
+}
+  @media only screen and (min-width: 1280px) {
+    .grandteton-comparison .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 480px) {
+    {% comment %} .grandteton-comparison {
+      padding: 40px 20px;
+    } {% endcomment %}
+    .grandteton-comparison .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 428px) {
+    .grandteton-comparison .title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 414px) {
+    .grandteton-comparison .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 390px) {
+    .grandteton-comparison .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 375px) {
+    #hnz-product-3 .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 0px) {
+    .grandteton-comparison .row {
+      --bs-gutter-x: 0;
+    }
+    .grandteton-comparison .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+        padding-left: 20px;
+    }
+}
+</style>
+{% schema %}
+{
+  "name": "Section name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show",
+      "label": "是否显示",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

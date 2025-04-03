@@ -1,0 +1,206 @@
+<div class="mega-menu">
+    <div class="mega-menu__content bg-white">
+        <div class="container container-panel mega-menu-content-wrapper mega-menu-1">
+            <div class="mega-tab-content">
+                <nav class="mx-auto">
+                    <div class="nav vanpower-nav-tabs nav-tabs" id="mm-nav-tab" role="tablist">
+                        {%if block.settings.tab_1 %}
+                            <button class="active" id="mm-nav-type-tab1" 
+                            data-bs-toggle="tab" 
+                            data-bs-target="#mm-nav-content-tab1" 
+                            type="button" 
+                            role="tab" 
+                            aria-controls="mm-nav-content-tab1" 
+                            aria-selected="true">
+                                <span>{{ block.settings.tab_1}}</span>
+                            </button>
+                        {% endif %}
+                        {%if block.settings.tab_2 %}
+                            <button class="" id="mm-nav-type-tab2" 
+                            data-bs-toggle="tab" 
+                            data-bs-target="#mm-nav-content-tab2" 
+                            type="button" 
+                            role="tab" 
+                            aria-controls="mm-nav-content-tab2" 
+                            aria-selected="false">
+                                <span>{{ block.settings.tab_2}}</span>
+                            </button>
+                        {% endif %}
+                    </div>
+                </nav>
+                <div class="tab-content" id="mm-nav-tabContent"  tabindex="0">
+                    {%comment%} tab 1 {%endcomment%}
+                    <div class="tab-pane fade show active" 
+                        id="mm-nav-content-tab1" 
+                        role="tabpanel" 
+                        aria-labelledby="mm-nav-type-tab1">
+
+                        <div class="mega-menu__list">
+                            <div class="nav_list-content d-flex two-columns" role="list">
+                                <div class="row mega-menu__list_items">
+
+                                    <div class="menuProduct-support">
+                                        {% assign supportShopSeriesItems = shop.metaobjects.menu_product_support.values %}
+                                        {% for supportShopSeriesItem in supportShopSeriesItems %}
+                                            <div class="menuProduct-supportItem">
+                                                <img src="{{ supportShopSeriesItem.support_icon | img_url: 'master' }}" alt="{{ supportShopSeriesItem.support_title }}">
+                                                <div class="menuProduct-supportTitle">
+                                                    {{ supportShopSeriesItem.support_title }}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                {%comment %} shows products set in mega menu 1{%endcomment%}
+                                {%if block.settings.show_these_products==true%}
+                                    {% for i in (1..8) %}
+                                            {% assign product_ = 'product_' | append: i %}
+                                            {% assign p=block.settings[product_] %}
+                                            {% assign product = all_products[p] %}
+                                            {% assign url_= 'url_' | append: i%}
+                                            {% assign url=block.settings[url_] %}
+                                            {% if url ==blank%}
+                                                {% assign url=product.url%}
+                                            {%endif%}
+                                            {% assign title_= 'product_title_' | append: i%}
+                                            {% assign title=block.settings[title_] %}
+                                            {% if title ==blank%}
+                                                {% assign title=product.title%}
+                                            {%endif%}
+                                            {% assign image_= 'product_image_' | append: i%}
+                                            {% assign image=block.settings[image_] %}
+                                            {% if image ==blank%}
+                                                {% assign image=product.media%}
+                                            {%endif%}
+                                        
+                                            
+                                            
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 menu_product">
+                                                <a href="{{ url }}" style="" alt="{{ title}}">
+                                                    
+                                                    {%- if p != empty -%}
+                                                        <div class="img-wrapper">
+                                                            <img 
+                                                                src="{{ product.featured_media | img_url: 'medium' }}" 
+                                                                alt="{{ title}}"
+                                                                class="img-fluid"
+                                                                width="236"
+                                                                height="auto"
+                                                            >
+                                                        </div>
+                                                        {% else %}
+                                                            {% if title != empty %}
+                                                                <div class="img-wrapper productImage-manualUpload">
+                                                                    <img 
+                                                                        src="{{ image | img_url: 'medium' }}" 
+                                                                        alt="{{ title}}"
+                                                                        class="img-fluid"
+                                                                        width="236"
+                                                                        height="auto"
+                                                                    >
+                                                                </div>
+                                                            {% endif %}
+                                                    {% endif %}
+                                                    
+                                                    <p class="product-title p-small">{{title}}</p>
+                                                </a>
+                                            </div>
+
+                                    {%- endfor -%}
+
+                                    {% else %}
+                                        {%- for card_product in link.object.products limit: 8 offset: 0   -%}
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 menu_product">
+                                                <a href="{{ card_product.url }}" style="" alt="{{ card_product.title}}">
+                                                    <div class="img-wrapper">
+                                                        <img 
+                                                            src="{{ card_product.featured_media | img_url: 'medium' }}" 
+                                                            alt="{{ card_product.title}}"
+                                                            class="img-fluid"
+                                                            width="auto"
+                                                            height="auto"
+                                                        >
+                                                    </div>
+                                                    <p class="product-title p-small">{{card_product.title}}</p>
+                                                </a>
+                                            </div>
+                                        {%- endfor -%}
+
+                                {%endif%}
+                                </div>
+                            </div>
+                            <div class="featured-image position-relative" >
+                                <a class="" href="{{block.settings.featured1_link}}" target="_blank">
+                                    <div class="featured-text text-white p-large position-absolute bottom-0 start-0">{{block.settings.featured1_text}}</div>
+                                    <img src="{{ block.settings.featured1_image | img_url: '2048x2048' }}" class="img-fluid" height="auto" width="236"/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {%comment%} end tab 1 {%endcomment%}
+                {%comment%} tab 2 {%endcomment%}
+                    <div class="tab-pane fade" 
+                        id="mm-nav-content-tab2" 
+                        role="tabpanel" 
+                        aria-labelledby="mm-nav-type-tab2">
+                        <div class="mega-menu__list">
+                            <div class="nav_list-content d-flex two-columns" role="list">
+                                <div class="row mega-menu__list_items tab-2">
+
+                                    <div class="menuProduct-support mb-2">
+                                        {% assign supportShopSeriesItems = shop.metaobjects.menu_product_support.values %}
+                                        {% for supportShopSeriesItem in supportShopSeriesItems %}
+                                            <div class="menuProduct-supportItem">
+                                                <img src="{{ supportShopSeriesItem.support_icon | img_url: 'master' }}" alt="{{ supportShopSeriesItem.support_title }}">
+                                                <div class="menuProduct-supportTitle">
+                                                    {{ supportShopSeriesItem.support_title }}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+    
+
+                                    {% for i in (1..3) %}
+                                        {% assign col = 'collection_' | append: i %}
+                                        {% assign collection_= block.settings[col]%}
+                                        {% assign title_ = 'collection_title_' | append: i %}
+                                        {% assign col_title= block.settings[title_]%}
+                                        {% assign image_ = 'collection_image_' | append: i %}
+                                        {% assign col_image= block.settings[image_]%}
+                                        {% assign desc_ = 'collection_desc_' | append: i %}
+                                        {% assign col_desc= block.settings[desc_]%}
+                                    <div
+                                     class="col-lg-4 menu_product">
+                                        <a href="{{collection_.url}}" style="" alt="{{col_title}}">
+                                            <div class="style-product-wrapper  text-center">
+                                                <div class="img-wrapper"><img 
+                                                        src="{{col_image | img_url: 'medium' }}" 
+                                                        alt="{{col_title}}"
+                                                        class="img-fluid"
+                                                        width="auto"
+                                                        height="auto"
+                                                    >
+                                                </div>
+                                                <p class="product-title p-small text-uppercase fw-bold">{{col_title}}</p>
+                                                <hr class="hr-title">
+                                                <p class="product-desc p-extra-small">{{col_desc}}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                            <div class="featured-image position-relative">
+                                <a class="" href="{{block.settings.featured2_link}}" target="_blank">
+                                    <div class="featured-text text-white p-large position-absolute  bottom-0 start-0">{{block.settings.featured2_text}}</div>
+                                    <img src="{{ block.settings.featured2_image | img_url: '2048x2048' }}" class="img-fluid" height="auto" width="236"/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {%comment%} end tab 2 {%endcomment%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

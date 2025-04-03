@@ -1,0 +1,105 @@
+<section id="hnz-ug-ultra-1" data-toggle="overview" data-name="Overview" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+        <div class="row position-relative">
+
+            <div class="col-12 text-center mb-lg-0 mb-md-4 mb-sm-4">
+                <h1 class="title">
+                    {{ section.settings.title }}
+                </h1>
+            </div>
+
+            <div class="col-lg-8 col-md-12 col-ms-12 text-center mx-auto">
+                <div class="slide">
+
+                    <div class="slide-data">
+                        {% for block in section.blocks %}
+                            <span class="data {% if forloop.first %}active{% endif %}" data-img="{{ block.settings.product_img | img_url: 'master' }}"></span>
+                        {% endfor %}
+                    </div>    
+
+                    {% for block in section.blocks %}
+                        <img class="background-img {% if forloop.first %}active{% endif %}" src="{{ block.settings.background_img | img_url: 'master'  }}">
+                        {% if forloop.first %}
+                            <img class="product-img" src="{{ block.settings.product_img | img_url: 'master'  }}">
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+                <div class="color-toggle mt-lg-0 mt-md-4 mt-sm-4">
+                    {% for block in section.blocks %}
+                        <span class="color {% if forloop.first %}active{% endif %}" style="background: {{ block.settings.product_color }}"></span>
+                    {% endfor %}
+                </div>
+                <div class="buttons">
+                    <a class="btn btn-black" href="{{ section.settings.buynow_url }}">
+                        Buy Now
+                    </a>
+                    <a class="btn btn-white-o btn-video" data-video="{{ section.settings.video.sources[1].url }}">
+                        <i class="fa-solid fa-caret-right"></i> Watch Video
+                    </a>
+                </div>
+                <p class="pricing">
+                    {{ section.settings.pricing }}
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "UG Ultra Section 1",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "url",
+                "id": "buynow_url",
+                "label": "Buy Now URL"
+            },
+            {
+                "type": "video",
+                "id": "video",
+                "label": "Video"
+            },
+            {
+                "type": "text",
+                "id": "pricing",
+                "label": "Pricing"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "Image & Color",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "background_img",
+                        "label": "Background Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "product_img",
+                        "label": "Product Image"
+                    },
+                    {
+                        "type": "color",
+                        "id": "product_color",
+                        "label": "Product Color"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

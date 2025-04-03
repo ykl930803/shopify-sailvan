@@ -1,0 +1,86 @@
+<section id="hnz-video-highlights">
+    <div class="container section-content">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                </h2>
+                <p class="body">
+                    {{ section.settings.subtitle | newline_to_br }}
+                </p>
+            </div>
+            <div class="col-lg-9 col-md-12 col-sm-12 position-relative mx-auto">
+                <div class="owl-carousel">
+                    {% for block in section.blocks %}
+                        <div class="item">
+                            <div class="video-container">
+                                <video>
+                                    <source src="{{ block.settings.video.sources[1].url }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <img class="video-play" src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/play_8c900119-f3b0-456e-b39e-b7984384954a.png?v=1718005919">
+                                <div class="video-details">
+                                    <h5 class="video-title">
+                                        {{ block.settings.title }}
+                                    </h5>
+                                    <a class="video-link" href="{{ block.settings.learn_more }}">
+                                        Learn More <i class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="float-nav">
+                    <button type="button" role="presentation" class="owl-prev" disabled>
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button type="button" role="presentation" class="owl-next">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Video Highlights",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "subtitle",
+                "label": "Subtitle"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "video",
+                "name": "Video",
+                "settings": [
+                    {
+                        "type": "video",
+                        "id": "video",
+                        "label": "Video"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "url",
+                        "id": "learn_more",
+                        "label": "Learn More URL"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

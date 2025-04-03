@@ -1,0 +1,1783 @@
+<div class="collection-page">
+<div class="hero-banner position-relative">
+
+  {% if collection.metafields.custom.featured_banner_image %}
+    <img src="{{ collection.metafields.custom.featured_banner_image | img_url: 'master' }}" alt="{{ collection.metafields.custom.featured_banner_image.alt }}" class="img-fluid w-100">
+    <div class="hero-text text-center text-white">
+      <h1>{{collection.metafields.custom.title}}</h1>
+      <h2>{{collection.metafields.custom.sub_title}}</h2>
+    </div>
+  {% endif %}
+  
+     <div class = "breadcrums">
+      <div class="container">
+        <span class="text"><a href="/">Home</a> > {{ collection.metafields.custom.title }}</span>
+      </div>
+     </div>
+
+</div>
+
+<div class="container">
+  <div class="row header-collection"> 
+   <div class ="col-md-6 p-left list-align">
+        <div class="border-btn" id="btn-hide1"> <button class="border-btn-no-border " onclick="toggleFilterVisibility()"><span class="showbtn" id="mybutton1" >Hide Filter</span></button><img src="{{'filter@2x.png' | asset_url}}" width="20" height="20" class="icon-header__search " alt="icon search"></div>
+        {% comment %} <span class="border-btn hidebtn" id="btn-hide2">  <button id="mybutton2" class="border-btn-no-border " onclick="toggleFilterVisibilitymobile()">Filter and Sort</button><img src="{{'filter@2x.png' | asset_url}}" width="20" height="20" class="icon-header__search " alt="icon search"></span> {% endcomment %}
+        <p class="results--count">{{ collection.products_count }} results</p>
+      </div>
+      <div class ="col-md-6">
+        <div class="sort-by p-right">
+        <span>Sort by </span>
+          <select id="sort-by">
+          {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+
+          {% for option in collection.sort_options %}
+            <option value="{{ option.value }}" {% if option.value == sort_by %}selected="selected"{% endif %}>
+              {{ option.name }}
+            </option>
+          {% endfor %}
+        </select>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-3 filter-to-hide">
+      <form id="filterForm" action="{{ collection.url }}" method="get">
+  {%- for filter in collection.filters -%}
+    <details open>
+      <summary>
+        <div>
+          <span>{{ filter.label }}</span>
+
+          {%- if filter.active_values.size > 0 -%}
+            <span>({{ filter.active_values.size }})</span>
+          {%- endif -%}
+        </div>
+      </summary>
+
+      <div>
+        <div>
+          {% comment %} <p>{{ filter.active_values.size }} selected</p> {% endcomment %}
+          {%- if filter.active_values.size > 0 -%}
+            {% comment %} <p><a href="{{ filter.url_to_remove }}">Reset</a></p> {% endcomment %}
+          {%- endif -%}
+        </div>
+        {%- case filter.type -%}
+          {%- when 'boolean' -%}
+            <ul class="check-collection">
+                <li>
+                  <label for="Filter-{{ filter.param_name }}-{{ filter.true_value.value }}">
+                  <input type="checkbox"
+                    name="{{ filter.param_name }}"
+                    value="{{ filter.true_value.value }}"
+                    id="Filter-{{ filter.param_name }}"
+                    {% if filter.true_value.active -%}checked{%- endif %}
+                    {% if filter.true_value.count == 0 and filter.true_value.active == false -%}disabled{%- endif -%}
+                  >{{ filter.true_value.label }}</label>
+                </li>
+                <li>
+                  <label for="Filter-{{ filter.param_name }}-{{ filter.false_value.value }}">
+                  <input type="checkbox"
+                    name="{{ filter.param_name }}"
+                    value="{{ filter.false_value.value }}"
+                    id="Filter-{{ filter.param_name }}"
+                    {% if filter.false_value.active -%}checked{%- endif %}
+                    {% if filter.false_value.count == 0 and filter.false_value.active == false -%}disabled{%- endif %}
+                  >{{ filter.false_value.label }}</label>
+                </li>
+            </ul>
+
+            <div>
+            </div>
+          {%- when 'list' -%}
+            <ul class="check-collection">
+              {%- for filter_value in filter.values -%}
+                <li>
+                  <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
+                  <input type="checkbox"
+                    name="{{ filter_value.param_name }}"
+                    value="{{ filter_value.value }}"
+                    id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                    {% if filter_value.active -%}checked{%- endif %}
+                    {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                  >
+                    <span>
+                      {%- case filter_value.display.type -%}
+                        {%- when 'colors' -%}
+                          {% liquid
+                            assign size_limit = filter_value.display.value.size | at_most: 4
+                            assign rotation = '0deg'
+                            if size_limit == 2
+                              assign rotation = '45deg'
+                            endif
+
+                            assign angle_increment = 360 | divided_by: size_limit
+                            assign angle = 0
+                          %}
+                          {%- capture conic_gradient -%}
+                            {%- for color in filter_value.display.value limit: size_limit -%}
+                              {{ color }} {{ angle }}deg{%- assign angle = angle | plus: angle_increment %} {{ angle }}deg{%- unless forloop.last %}, {%- endunless -%}
+                            {%- endfor -%}
+                          {%- endcapture -%}
+                          <span style="
+                            width: 25px;
+                            height: 25px;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background: conic-gradient({{ conic_gradient }}); transform: rotateZ({{ rotation }});
+                          "></span>
+                        {%- when 'image' -%}
+                          {{
+                            filter_value.display.value
+                            | image_url: width: 25
+                            | image_tag: alt: filter_value.display.value.alt
+                          }}
+                        {%- else -%}
+                          <span class="visual-display__child"></span>
+                      {%- endcase -%}
+                    </span>
+                    {{ filter_value.label }}
+                  </label>
+                </li>
+              {%- endfor -%}
+            </ul>
+
+            <div>
+            </div>
+          {%- when 'price_range' -%}
+       
+
+            <div class="filter-group-display__submit">
+            </div>
+                <div class="slider-container"> 
+                    <div class="price-slider"> 
+                    </div> 
+                </div> 
+            <!-- Slider -->
+                 <div class="range-input"> 
+                <input type="range" 
+                       class="min-range" 
+                       min="0" 
+                       max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" 
+                       value="0" 
+                       step="1"> 
+                <input type="range" 
+                       class="max-range" 
+                       min="0" 
+                       max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" 
+                       value="{{ filter.range_max | money_without_currency | replace: ',', '' }}" 
+                       step="1"> 
+            </div> 
+
+
+            <div class="price-input-container"> 
+                <div class="price-input row"> 
+                    <div class="price-field col-md-5 mb-4"> 
+                        <input type="number" 
+                            name="{{ filter.min_value.param_name }}"
+                            id="Filter-{{ filter.min_value.param_name }}"
+                            value="0"
+                            type="number"
+                            placeholder="0"
+                            min="0"
+                            max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                            class="min-input"
+                            readonly
+                        > 
+                    </div> 
+                    <p class="col-md-2 text-center" >to</p>
+                    <div class="price-field col-md-5 mb-4"> 
+                        <input type="number" 
+                            name="{{ filter.max_value.param_name }}"
+                            id="Filter-{{ filter.max_value.param_name }}"
+                            min="0"
+                            placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                            max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                            class="max-input" 
+                            value="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                            readonly
+                        > 
+                    </div> 
+                </div> 
+                
+            </div> 
+  
+           
+        {%- endcase -%}
+      </div>
+    </details>
+  {%- endfor -%}
+
+  <div>
+  {% comment %} <div class="flex">
+    <input type="submit" class="btn" value="Apply">
+    <input type="button" class = "btn" onclick="navigateToPage('{{ collection.url }}?sort_by={{ collection.sort_by }}')" class="btn" value="Clear all">
+  </div> {% endcomment %}
+
+    {%- for filter in collection.filters -%}
+      {%- if filter.type == "price_range" -%}
+        {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+          <p class = "tags">
+            <a href="{{ filter.url_to_1remove }}">
+              {%- assign min_value = filter.min_value.value | default: 0 -%}
+              {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
+              {{ min_value | money }} - {{ max_value | money }} <span>X</span>
+            </a>
+          </p>
+        {%- endif -%}
+      {%- else -%}
+        {%- for filter_value in filter.active_values -%}
+          <p class = "tags">
+            <a href="{{ filter_value.url_to_remove }}">
+              {{ filter.label }}: {{ filter_value.label }} <span>X</span>
+            </a>
+          </p>
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</form>
+
+
+  
+            
+        
+
+
+
+    </div>
+
+<div id="myDiv" class="col-md-9">
+        {% comment %} <h3>{{ collection.title }}</h3> {% endcomment %}
+      
+     <div class="{{section.id}}">
+        <div class="row tab-content" id="content-container">
+        
+        {% paginate collection.products by 6 -%}
+        
+          {% for product in collection.products %}
+            <div id="list-collection" class="col-lg-6 col-md-6 mb-4">
+                  {%render 'product-card-grid', product: product%} 
+ 
+            </div>
+          {% endfor %}
+
+          {% comment %} <div class="pagination">
+            {% for part in paginate.parts -%}
+              {% if part.is_link -%}
+                {{ part.title | link_to: part.url}}
+              {%- else -%}
+                <span>{{ part.title }}</span>
+              {% endif %}
+            {% endfor %}
+          </div> {% endcomment %}
+
+            {%- if paginate.pages > 1 -%}
+            {%- render 'pagination', paginate: paginate -%}
+            {%- endif -%}
+
+          {%- endpaginate %}
+        </div>
+      </div>
+    </div>
+
+{% if request.xhr %}
+
+    <div id="myDiv" class="col-md-9">
+        {% comment %} <h3>{{ collection.title }}</h3> {% endcomment %}
+      
+     <div class="{{section.id}}">
+        <div class="row tab-content" id="content-container">
+        
+        {% paginate collection.products by 6 -%}
+        
+          {% for product in collection.products %}
+            <div id="list-collection" class="col-lg-6 col-md-6 mb-4">
+                  {%render 'product-card-grid', product: product%} 
+ 
+            </div>
+          {% endfor %}
+
+          {% comment %} <div class="pagination">
+            {% for part in paginate.parts -%}
+              {% if part.is_link -%}
+                {{ part.title | link_to: part.url}}
+              {%- else -%}
+                <span>{{ part.title }}</span>
+              {% endif %}
+            {% endfor %}
+          </div> {% endcomment %}
+
+            {%- if paginate.pages > 1 -%}
+            {%- render 'pagination', paginate: paginate -%}
+            {%- endif -%}
+
+          {%- endpaginate %}
+        </div>
+      </div>
+    </div>
+{% endif %}
+
+
+  </div>
+</div>
+</div>
+
+
+
+
+<style>
+.btn-s{
+   border-radius: 24px;
+    padding: 7px 17px !important;
+    text-decoration:none;
+    font-size:12px !important;
+}
+.img-fluid-collection{
+ width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  padding: 0px !important;
+  mix-blend-mode:multiply;
+}
+.flex{
+  margin-bottom:20px;
+}
+
+.tags{
+display:flex;
+mar
+}
+
+.tags a span{
+  background-color:#555555;
+  padding:2px 5px;
+  border-radius:50px;
+  font-size:10px;
+  color:white;
+}
+.tags a{
+  color:white !important;
+  background-color:gray;
+  font-size:12px;
+  padding: 4px 7px;
+  border-radius:50px;
+}
+ .price-input-container{
+  margin-top:20px;
+ }
+.main { 
+    background-color: #fff; 
+    border-radius: 15px; 
+    box-shadow: 0 0 20px
+        rgba(0, 0, 0, 0.2); 
+    padding: 20px; 
+    transition: transform 0.2s; 
+    width: 600px; 
+} 
+  
+.main:hover { 
+    transform: scale(1.05); 
+} 
+  
+.gfg { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 24px; 
+    font-weight: 600; 
+    color: #01940b; 
+} 
+  
+.custom-wrapper { 
+    margin: 0; 
+    width: 70%; 
+    padding: 0px 25px 40px; 
+    position: relative; 
+    left: 63px; 
+} 
+  
+.header h2 { 
+    font-size: 30px; 
+    color: #01940b; 
+    display: flex; 
+    justify-content: center; 
+    padding: 20px; 
+} 
+  
+/* Styles for the price input container */
+.price-input-container { 
+    width: 100%; 
+} 
+  
+.price-input .price-field { 
+    display: flex; 
+    margin-bottom: 22px; 
+} 
+  
+.price-field span { 
+    margin-right: 10px; 
+    margin-top: 6px; 
+    font-size: 17px; 
+} 
+  
+.price-field input { 
+    flex: 1; 
+    height: 35px; 
+    font-size: 16px; 
+    border-radius: 3px; 
+    border:1px solid black;
+    text-align: center; 
+    background: #fff; 
+} 
+  
+.price-input { 
+    width: 100%; 
+    font-size: 19px; 
+    color: #555; 
+} 
+  
+/* Remove Arrows/Spinners */
+input::-webkit-outer-spin-button, 
+input::-webkit-inner-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+} 
+  
+.slider-container { 
+    width: 100%; 
+} 
+  
+.slider-container { 
+    height: 6px; 
+    position: relative; 
+    background: #e4e4e4; 
+    border-radius: 5px; 
+} 
+  
+.slider-container .price-slider { 
+    height: 100%; 
+    left: 0%; 
+    right: 0%; 
+    position: absolute; 
+    border-radius: 5px; 
+    background: black; 
+} 
+  
+.range-input { 
+    position: relative; 
+} 
+  
+.range-input input { 
+    position: absolute; 
+    width: 100%; 
+    height: 5px; 
+    background: none; 
+    top: -5px; 
+    pointer-events: none; 
+    cursor: pointer; 
+    -webkit-appearance: none; 
+} 
+  
+/* Styles for the range thumb in WebKit browsers */
+input[type="range"]::-webkit-slider-thumb { 
+    height: 18px; 
+    width: 18px; 
+    border-radius: 70%; 
+    background: #555; 
+    pointer-events: auto; 
+    -webkit-appearance: none; 
+} 
+  
+@media screen and (max-width: 768px) { 
+    .main { 
+        width: 80%; 
+        margin-right: 5px; 
+    } 
+  
+    .custom-wrapper { 
+        width: 100%; 
+        left: 0; 
+        padding: 0 10px; 
+    } 
+  
+    .projtitle { 
+        width: 100%; 
+        position: relative; 
+        right: 26px; 
+    } 
+  
+    .price-input { 
+        flex-direction: column; 
+        align-items: center; 
+    } 
+  
+    .price-field { 
+        margin-bottom: 10px; 
+    } 
+}
+/* Optional CSS to hide the filter by default */
+.filter-to-hide {
+  display: block;
+}
+
+.showbtn {
+  display: block;
+}
+
+.hidebtn{
+  display: none;
+}
+
+@media screen and (max-width: 768px) { 
+.filter-to-hide {
+  display: none;
+}
+.showbtn {
+  display: block;
+}
+
+.hidebtn{
+  display: block;
+}
+}
+
+/* Style for the filter form */
+form {
+  margin-bottom: 20px; /* Add spacing below the form */
+}
+
+/* Style for the filter details */
+details {
+  margin-bottom: 10px; /* Add spacing between filter sections */
+}
+
+/* Style for the filter summary */
+summary {
+  cursor: pointer; /* Show pointer cursor on hover */
+  padding: 5px;
+  background-color: #fff; /* Background color for summary */
+  list-style-type: none; /* Remove the arrow icon */
+}
+
+summary span {
+  font-weight:700;
+  font-size:14px;  
+  text-transform:uppercase;
+}
+
+/* Style for the filter label */
+label {
+  display: inline-block;
+  margin-right: 10px; /* Add spacing between checkboxes and labels */
+}
+
+/* Style for the filter checkboxes */
+input[type="checkbox"] {
+  margin-right: 5px; /* Add spacing between checkboxes */
+}
+
+input[type="button"]{
+  background-color: #DB1629; /* Blue color for button background */
+  color: #fff; 
+   border: none;
+  cursor: pointer;
+}
+input[type="button"]:hover{
+  background-color: #DB1629; /* Blue color for button background */
+  color: #fff; 
+}
+
+/* Style for the "Apply" button */
+input[type="submit"], .clear-btn{
+  background-color: black; /* Blue color for button background */
+  color: #fff; /* White color for button text */
+  border: none;
+  cursor: pointer;
+}
+input[type="submit"]:hover, .clear-btn{
+  background-color: black; /* Blue color for button background */
+  color: #fff; /* White; /* Blue color for button background */
+  color: #fff; /* White color for button text */
+}
+/* Style for the "Clear all" link */
+p a {
+  text-decoration: none;
+}
+
+/* Style for the active filters section */
+div.active-filters {
+  margin-top: 20px; /* Add spacing above the active filters section */
+}
+
+/* Style for each active filter link */
+div.active-filters a {
+  display: inline-block;
+  margin-right: 10px; /* Add spacing between active filters */
+  color: #007bff; /* Blue color for active filter link text */
+  text-decoration: none;
+}
+
+/* Style for the 'X' icon after each active filter */
+div.active-filters a::after {
+  content: ' X'; /* Add ' X' after each active filter link */
+}
+/* Style for the filter list */
+.check-collection {
+  list-style-type: none; /* Remove the dot (bullet point) from the list */
+  margin-left:-23px;
+}
+
+/* Style for each filter item */
+.check-collection li {
+  margin-bottom: 5px; /* Add spacing between filter items */
+}
+
+
+.recent-header{
+  font-size:35px;
+}
+.breadcrums{
+ background-color:#F8F8F8;
+ padding-top:15px;
+ padding-bottom:15px;
+ text-transform:capitalize;
+}
+
+.breadcrums .text{
+  font-size:13px;
+  font-weight:600;
+}
+
+.breadcrums .text a{
+  text-decoration:none;
+  color:gray;
+}
+
+.header-collection{
+  border-bottom: 1px solid #e4e4e473;
+  margin-bottom:20px;
+  padding-bottom:10px;
+  margin-top:-70px;
+}
+
+.border-btn-no-border{
+  background-color:transparent;
+  border:none;
+  padding:0; 
+}
+
+.border-btn-no-border span{ 
+  font-weight:600;
+  font-size:14px;
+}
+
+.border-btn{
+  border:1px solid #dadada;
+  padding: 5px 10px;
+  background-color:white;
+  display:flex;
+  align-items: center;
+}
+
+ .p-right{
+  float:right;
+ }
+
+ .p-left{
+  float:left;
+ }
+
+.list-align{
+  display:flex; 
+  align-items: center;
+}
+ .list-align button, .list-align p{
+  margin-right: 6px;
+ }
+
+ .list-align p{
+  position:relative;
+  top:9px;
+  left:10px;
+  font-size:20px;
+  font-weight:700;
+ }
+
+
+.sort-by{
+  border: 1px solid #dadada;
+  font-weight:600;
+  padding:5px 10px;
+}
+.sort-by span{
+  margin-right:6px;
+}
+.sort-by span, select{
+  font-size:15px;
+  font-weight:600;
+}
+
+#sort-by{
+  border: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin:30px;
+}
+
+.pagination a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #F0F0F0;
+  color: #000;
+  text-decoration: none;
+  font-weight:bold;
+  transition: background-color 0.3s ease;
+}
+
+.pagination span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  font-weight:bold;
+  transition: background-color 0.3s ease;
+}
+
+.pagination a:hover{
+   background-color: #000;
+   color: #fff;
+}
+
+
+.collection-page{
+  position:relative;
+}
+.{{section.id}} {
+  margin: 0px auto;
+  overflow: hidden;
+}
+.{{section.id}} .section-title h1 {
+  font-size: 60px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 80px;
+  padding-bottom: 30px;
+}
+.{{section.id}} .best-sale-nav-tabs {
+  gap: 75px;
+  display: flex;
+  justify-content: space-between;
+}
+.{{section.id}} .best-sale-nav-tabs button {
+  background: none;
+  border: 0;
+  padding: 0;
+  display: flex;
+  padding-top: 15px;
+  height: 90px;
+}
+.{{section.id}} .best-sale-nav-tabs button span {
+  font-size: 22px;
+  line-height: 39px;
+  color: #999;
+}
+.{{section.id}} .best-sale-nav-tabs button.nav-link.active {
+  border-bottom: 3px solid #1a1a1a;
+}
+.{{section.id}} .best-sale-nav-tabs button.nav-link.active span {
+  font-weight: bold;
+  color: #333333;
+}
+.{{section.id}} .explore-link {
+  margin-left: auto;
+  text-decoration: none;
+  color: #666;
+  margin-top: 20px;
+  font-size: 20px;
+  display: flex;
+  gap: 11px;
+  align-items: start;
+}
+.{{section.id}} .explore-link img {
+  margin-top: 3px;
+}
+.{{section.id}} .tab-content {
+  padding-top: px;
+  position: relative;
+}
+
+
+.{{section.id}} .tab-content .card {
+  border: 1px solid #eee;
+  border-radius: 10px; 
+  padding:0;
+  overflow: hidden;
+  height: 100%;
+}
+.{{section.id}} .tab-content .card .vanpowers-badge-sale {
+  background: #DB1629;
+  font-size: 12px;
+  border-radius: 10px;
+  top: 29px;
+  left: 22px;
+  padding: 5px 7px;
+}
+.{{section.id}} .tab-content .card .card-img-wrapper {
+  background: #f8f8f8;
+  padding: 28px 50px;
+  width: 100%;
+  text-align: center;
+}
+.{{section.id}} .tab-content .card .card-img-wrapper .card-image {
+  height: 290px;
+  width: 100%;
+}
+.{{section.id}} .tab-content .card .card-img-wrapper .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 5px;
+}
+.{{section.id}} .tab-content .card .card-body {
+  padding: 14px 30px;
+}
+.{{section.id}} .tab-content .card .card-body .card-title {
+  --bs-card-title-spacer-y: 4px;
+}
+.{{section.id}} .tab-content .card .card-body .card-title a {
+  text-decoration: none;
+  color: #333333;
+  font-size: 20px;
+}
+.{{section.id}} .tab-content .card .card-body .variant-colors-wrapper {
+  height: 30px;
+  margin: 17px 0 13px;
+}
+.{{section.id}} .tab-content .card .card-body .card-text {
+  font-size: 12px;
+}
+.{{section.id}} .tab-content .card .jdm-review-wrapper {
+  gap: 7px;
+  align-items: center;
+}
+.{{section.id}} .tab-content .card .jdm-review-wrapper .review-count {
+  font-size: 14px;
+}
+.{{section.id}} .tab-content .card .jdgm-prev-badge {
+  display: block !important;
+}
+.{{section.id}} .tab-content .card .jdgm-prev-badge .jdgm-prev-badge__text {
+  display: none;
+}
+.{{section.id}} .tab-content .card .jdgm-preview-badge[data-template=index] {
+  display: block !important;
+  margin-bottom: 4px;
+}
+.{{section.id}} .tab-content .card .jdgm-prev-badge__text {
+  font-size: max(calc(12 / 1280 * 100vw), 12px);
+  color: #333;
+  margin-left: 4px;
+  text-decoration: underline;
+}
+.{{section.id}} .tab-content .card .jdgm-preview-badge .jdgm-star.jdgm-star {
+  font-size: max(17px, calc(12 / 1280 * 100vw));
+  color: #F0C417;
+}
+.{{section.id}} .tab-content .card .jdgm-preview-badge .jdgm-star.jdgm--off {
+  color: #333;
+}
+.{{section.id}} .tab-content .card .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 6px 20px 23px 32px;
+}
+.{{section.id}} .tab-content .card .card-footer .price-box .price {
+  font-size: 20px;
+  font-weight: 700;
+}
+.{{section.id}} .tab-content .card .card-footer .price-box .discounted-price {
+  color: #DB1629;
+  font-size: 20px;
+  font-weight: 600;
+}
+.{{section.id}} .tab-content .card .card-footer .price-box .original-price {
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
+}
+.{{section.id}} .tab-content .card .card-footer .vanpowers-btn-dark {
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 12px;
+  padding: 12px 22px;
+}
+	
+.swiper-best-sale {
+  padding-bottom: 35px;
+}
+.swiper-best-sale .swiper-slide {
+  width: 500px;
+}
+.swiper-best-sale .swiper-pagination {
+  bottom: 0px;
+  top: unset;
+  height: 7px;
+  border-radius: 5px;
+  background: none;
+}
+.swiper-best-sale .swiper-pagination .swiper-pagination-progressbar-fill {
+  --swiper-theme-color: #333;
+  border-radius: 5px;
+}
+
+.best-sale-content .swiper-navigations .navigation-button {
+  color: #000;
+  border: 1px solid #dadada;
+  border-radius: 50px;
+  width: 44px;
+  height: 44px;
+  transition: 0.4s ease;
+  background-color: #fff;
+  opacity: 1;
+}
+.best-sale-content .swiper-navigations .navigation-button::after {
+  font-size: 13px;
+  transition: 0.4s ease;
+  -webkit-text-stroke-width: 1px;
+}
+.best-sale-content .swiper-navigations .navigation-button:hover {
+  background: #DB1629;
+}
+/*.best-sale-content .swiper-navigations .navigation-button:hover::after {
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}*/
+.best-sale-content .swiper-navigations .swiper-button-next {
+  right: 70px;
+}
+.best-sale-content .swiper-navigations .swiper-button-next::after {
+  margin-left: 3px;
+  background-image: url('{{'navigation-arrow.png' | asset_url}}');
+  font-size: 0;
+  width: 21px;
+  height: 21px;
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  filter: brightness(100);
+}
+.best-sale-content .swiper-navigations .swiper-button-prev {
+  left: -40px;
+}
+.best-sale-content .swiper-navigations .swiper-button-prev::after {
+  margin-right: 3px;
+  background-image: url('{{'navigation-arrow.png' | asset_url}}');
+  font-size: 0;
+  width: 18px;
+  height: 18px;
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  transform: rotate(180deg);
+  filter: brightness(100);
+}
+	
+	/* FOR MOBILE PHONE */
+    @media only screen and (min-width: 0px) {
+      
+    }
+    @media only screen and (min-width: 375px) {
+    }
+    @media only screen and (min-width: 390px) {
+    }
+    @media only screen and (max-width: 414px) {
+        .best-sale-nav-tabs {
+            gap: 20px !important;
+        }
+        .best-sale-nav-tabs .nav-link .h5 {
+            font-size: 13px !important;
+            margin-bottom: 10px !important;
+        }
+        .best-sale-nav-tabs .nav-link span {
+        line-height: 1;
+        }
+        .best-sale-nav-tabs .explore-link {
+            font-size: 13px !important;
+            margin-top: 3px !important;
+            align-items: center !important;
+            gap: 5px;
+        }
+        .best-sale-nav-tabs .explore-link img {
+            margin-top: 0px;
+            width: 20px;
+            height: auto;
+        }
+        .hero-text h1{
+          font-size:30px !important;
+      }
+      .hero-text h2{
+        padding-left:20px;
+        padding-right:20px;
+          font-size:14px !important;
+      }
+    }
+    @media only screen and (min-width: 428px) {
+    }
+    @media only screen and (min-width: 480px) {
+      
+    }
+    
+	@media only screen and (max-width: 767px) {
+	    .{{section.id}} {
+            {% comment %} margin: 30px auto; {% endcomment %}
+        }
+        .{{section.id}} .section-title h1 {
+            font-size: 30px;
+            line-height: 1;
+        }
+        .{{section.id}} .tab-content {
+            {% comment %} height: 580px; {% endcomment %}
+        }
+        .{{section.id}} .tab-content .card .vanpowers-badge-sale {
+            font-size: 16px;
+            border-radius: 15px;
+            padding: 7px 16px;
+            font-weight: 600;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper {
+            padding: 28px 22px;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper .card-image {
+            height: 190px;
+            width: 100%;
+        }
+        .{{section.id}} .tab-content .card .card-body {
+            padding: 14px 22px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title {
+            --bs-card-title-spacer-y: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title a {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-body .variant-colors-wrapper {
+            height: 30px;
+            margin: 6px 0 13px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper {
+            gap: 7px;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper .review-count {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .{{section.id}} .tab-content .card .jdgm-preview-badge[data-template=index] {
+            margin-bottom: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-footer {
+            padding: 6px 20px 23px 22px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .discounted-price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .original-price {
+            font-size: 14px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .vanpowers-btn-dark {
+            font-size: 16px;
+            padding: 8px 18px;
+        }
+        .{{section.id}} .swiper-best-sale .swiper-navigations {
+            display: none;
+        }
+        .{{section.id}} .swiper-best-sale .vanpowers-btn-dark {
+            padding: 10px 20px;
+        }
+        .{{section.id}} .best-sale-nav-tabs {
+            gap: 26px;
+            justify-content: flex-start;
+        }
+        .{{section.id}} .best-sale-nav-tabs .nav-link {
+            height: auto;
+        }
+        .{{section.id}} .best-sale-nav-tabs .nav-link.active {
+            border-bottom: 3px solid #DB1629 !important;
+        }
+        .{{section.id}} .best-sale-nav-tabs .nav-link .h5 {
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        .{{section.id}} .best-sale-nav-tabs .nav-link span {
+            line-height: 1;
+        }
+        .{{section.id}} .best-sale-nav-tabs .explore-link {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 0px;
+            align-items: center;
+        }
+	}
+	 /* TABLETS  */ 
+	@media only screen and (min-width: 768px) {
+        .{{section.id}} {
+            {% comment %} margin: 30px auto; {% endcomment %}
+            padding-left: 20px;
+        }
+        .{{section.id}} .tab-content {
+            {% comment %} height: 600px; {% endcomment %}
+        }
+        .{{section.id}} .tab-content .card .vanpowers-badge-sale {
+            font-size: 10px;
+            font-weight: 600;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper {
+            padding: 28px 30px;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper .card-image {
+            height: 190px;
+            width: 100%;
+        }
+        .{{section.id}} .tab-content .card .card-body {
+            padding: 14px 30px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title {
+            --bs-card-title-spacer-y: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title a {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-body .variant-colors-wrapper {
+            height: 30px;
+            margin: 17px 0 13px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-text {
+            font-size: 12px;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper {
+            gap: 7px;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper .review-count {
+            font-size: 14px;
+        }
+        .{{section.id}} .tab-content .card .jdgm-preview-badge[data-template=index] {
+            margin-bottom: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-footer {
+            padding: 6px 20px 23px 32px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .discounted-price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .original-price {
+            font-size: 14px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .vanpowers-btn-dark {
+            font-size: 10px;
+            padding: 8px 18px;
+        }
+	}
+	
+	@media (min-width: 1024px) and (orientation: portrait) {
+        .{{section.id}} .swiper-best-sale .flex-item {
+            width: 300px;
+        }
+	}
+	 /* COMPUTERS */
+	@media (min-width: 1024px) and (orientation: landscape) {
+        .{{section.id}} {
+            {% comment %} margin: 50px auto; {% endcomment %}
+        }
+        .{{section.id}} .best-sale-content .swiper-navigations .navigation-button {
+            height: 35px;
+            width: 35px;
+        }
+	}
+	@media (min-width: 1280px) {
+	    .{{section.id}} {
+            {% comment %} margin: 50px auto; {% endcomment %}
+        }
+	}
+	@media only screen and (min-width: 1536px) {
+	    .{{section.id}} {
+            {% comment %} margin: 60px auto 110px auto; {% endcomment %}
+        }
+        .{{section.id}} .tab-content {
+            {% comment %} height: 708px; {% endcomment %}
+        }
+        .{{section.id}} .tab-content .card .vanpowers-badge-sale {
+            font-size: 12px;
+            padding: 5px 7px;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper {
+            padding: 28px 50px;
+        }
+        .{{section.id}} .tab-content .card .card-img-wrapper .card-image {
+            height: 290px;
+            width: 100%;
+        }
+        .{{section.id}} .tab-content .card .card-body {
+            padding: 14px 30px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title {
+            --bs-card-title-spacer-y: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-title a {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-body .variant-colors-wrapper {
+            height: 30px;
+            margin: 17px 0 13px;
+        }
+        .{{section.id}} .tab-content .card .card-body .card-text {
+            font-size: 12px;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper {
+            gap: 7px;
+        }
+        .{{section.id}} .tab-content .card .jdm-review-wrapper .review-count {
+            font-size: 14px;
+        }
+        .{{section.id}} .tab-content .card .jdgm-preview-badge[data-template=index] {
+            margin-bottom: 4px;
+        }
+        .{{section.id}} .tab-content .card .card-footer {
+            padding: 6px 20px 23px 32px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .discounted-price {
+            font-size: 20px;
+        }
+        .{{section.id}} .tab-content .card .card-footer .price-box .original-price {
+            font-size: 14px;
+        }
+          .{{section.id}} .tab-content .card .card-footer .vanpowers-btn-dark {
+            font-size: 11px;
+            padding: 10px 18px;
+        }
+        .{{section.id}} .best-sale-content .swiper-navigations .navigation-button {
+            height: 44px;
+            width: 44px;
+        }
+	}
+	@media only screen and (min-width: 1600) {
+        .{{section.id}} {
+            margin: 60px auto;
+        }
+	}
+	@media only screen and (min-width: 1920px) {
+	    .{{section.id}} .best-sale-content .swiper-navigations .swiper-button-next {
+            right: -20px !important;
+        }
+	}
+</style>
+
+<style>
+  .hero-banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 100px;
+  }
+
+  .hero-banner img {
+    width: 100%;
+    object-fit: cover;
+    /* height: 700px; /* Adjust the height as needed */ */
+  }
+
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 55px; /* Adjust the font size as needed */
+    margin-bottom: 10px; /* Add margin between title and subtitle */
+    font-weight: bold;
+    color: white;
+    text-transform: capitalize;
+  }
+
+  .hero-text h2 {
+    font-size: 15px; /* Adjust the font size as needed */
+    margin-bottom: 20px; /* Add margin below subtitle */
+    font-weight: 400;
+    color: white;
+  }
+
+  .hero-text h1, .hero-text h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Shadow effect */
+  }
+
+  .filter-column {
+    padding: 20px;
+    border-right: 1px solid #ddd;
+  }
+
+  .product-collection h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+ 
+
+ 
+
+  /* Responsive Styles */
+  @media (max-width: 767px) {
+    .hero-text h1 {
+      font-size: 35px;
+    }
+
+    .hero-text h2 {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .hero-banner img {
+      /* height: 250px; */
+    }
+
+    .filter-column {
+      padding: 10px;
+    }
+
+    .sort-by{
+      display:none;
+    }
+    .header-collection{
+      border-bottom: none;
+      padding:0px;
+    }
+  }
+</style>
+{% javascript %}
+	   
+    // swiper js
+    document.addEventListener('DOMContentLoaded', function() {  
+        function initializeSwiper(selector) {
+        return new Swiper(selector, {
+            direction: 'horizontal',
+            speed: 1000,
+            width: 500,
+            spaceBetween: 30,
+            autoplay: false,
+            navigation: {
+                nextEl: '.best-sale-content .swiper-button-next',
+                prevEl: '.best-sale-content .swiper-button-prev',
+            },
+            pagination: {
+                el: selector +' .swiper-pagination',
+                type: 'progressbar',
+            },
+            breakpoints: {
+                200: { width: 330, spaceBetween: 15 },
+                430: { width: 330, spaceBetween: 15 },
+                768: { width: 305 },
+                1024: { width: 330 },
+                1280: { width: 350 },
+                1536: { width: 400 },
+                1600: { width: 475 },
+                1920: { width: 500 },
+            },
+        });
+        }
+
+        function initializeSwiperForTab(tab) {
+        const carousel = tab.querySelector('.swiper-best-sale');
+        const carouselId = carousel.dataset.carouselId;
+        initializeSwiper(`[data-carousel-id="${carouselId}"]`);
+        }
+
+        function initializeSwipersForActiveTab() {
+        const activeTab = document.querySelector('.best-sale-content .tab-pane.active');
+        if (activeTab) {
+            initializeSwiperForTab(activeTab);
+        }
+        }
+
+        document.querySelectorAll('.best-sale-nav-tabs .nav-link').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.best-sale-nav-tabs .nav-link').forEach(tab => {
+            tab.classList.remove('active');
+            });
+            tab.classList.add('active');
+            initializeSwipersForActiveTab();
+        });
+        });
+
+        initializeSwipersForActiveTab();
+    
+        //toggle variant colors
+        var colorItems = document.querySelectorAll('.variant-option-block .variant-colors .variant-color-item');
+
+        colorItems.forEach(function(colorItem) {
+            colorItem.addEventListener('click', function() {
+
+            var siblings = this.parentElement.querySelectorAll('.variant-color-item');
+            siblings.forEach(function(sibling) {
+                sibling.classList.remove('on');
+            });
+
+            this.classList.add('on');
+
+            var productItem = this.closest('.product-item');
+            var imgItem = productItem.querySelector('.variant-img-item img');
+            imgItem.src = this.getAttribute('data-product-img');
+            });
+        });
+    });
+
+{%endjavascript%}
+<script>
+ function handleDetails() {
+    const allDetails = document.querySelectorAll('details'); // Get all <details> elements
+
+    allDetails.forEach(detailsElement => {
+      if (window.innerWidth <= 768) { // Adjust this threshold as needed for mobile view
+        detailsElement.removeAttribute('open');
+      } else {
+        detailsElement.setAttribute('open', '');
+      }
+    });
+  }
+
+  // Initial check on page load
+  handleDetails();
+
+  // Listen for window resize events
+  window.addEventListener('resize', handleDetails);
+</script>
+<script>
+function navigateToPage(url) {
+  window.location.href = url;
+}
+
+  Shopify.queryParams = {};
+
+  // Preserve existing query parameters
+  if (location.search.length) {
+    var params = location.search.substr(1).split('&');
+
+    for (var i = 0; i < params.length; i++) {
+      var keyValue = params[i].split('=');
+
+      if (keyValue.length) {
+        Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+      }
+    }
+  }
+
+  // Update sort_by query parameter on select change
+  {% comment %} document.querySelector('#sort-by').addEventListener('change', function(e) {
+    var value = e.target.value;
+
+    Shopify.queryParams.sort_by = value;
+    location.search = new URLSearchParams(Shopify.queryParams).toString();
+  }); {% endcomment %}
+
+  function toggleFilterVisibilitymobile() {
+  var filter = document.querySelector('.filter-to-hide'); // Change the selector if needed
+  if (filter.style.display === 'block') {
+    filter.style.display = 'none';
+  } else {
+    filter.style.display = 'block';
+  }
+  
+  var divElement = document.getElementById("myDiv");
+  if (divElement.classList.contains("col-md-9")) {
+    divElement.classList.remove("col-md-9");
+    divElement.classList.add("col-md-12");
+  } else {
+    divElement.classList.remove("col-md-12");
+    divElement.classList.add("col-md-9");
+  }
+
+
+
+   var button = document.getElementById("mybutton2");
+  if (button.innerHTML === "Hide Filter") {
+    button.innerHTML = "Filter and Sort";
+  } else {
+    button.innerHTML = "Hide Filter";
+  }
+ 
+}
+
+  function toggleFilterVisibility() {
+  var filter = document.querySelector('.filter-to-hide'); // Change the selector if needed
+  if (filter.style.display === 'none') {
+    filter.style.display = 'block';
+  } else {
+    filter.style.display = 'none';
+  }
+
+  var divElement = document.getElementById("myDiv");
+  if (divElement.classList.contains("col-md-9")) {
+    divElement.classList.remove("col-md-9");
+    divElement.classList.add("col-md-12");
+  } else {
+    divElement.classList.remove("col-md-12");
+    divElement.classList.add("col-md-9");
+  }
+
+
+
+   var button = document.getElementById("mybutton1");
+  if (button.innerHTML === "Hide Filter") {
+    button.innerHTML = "Filter and Sort";
+  } else {
+    button.innerHTML = "Hide Filter";
+  }
+ 
+}
+
+const mediaQuery = window.matchMedia('(max-width: 390px)');
+
+function handleScreenChange(e) {
+   var button = document.getElementById("mybutton1");
+  var filter = document.querySelector('.filter-to-hide'); 
+  if (e.matches) {
+    // Screen size is smaller than 768px
+    button.innerHTML = "Filter and Sort";
+    filter.style.display = 'none';
+  } else {
+    // Screen size is larger than 768px
+    button.innerHTML = "Hide Filter";
+    filter.style.display = 'block';
+  }
+}
+
+// Add event listener for screen changes
+mediaQuery.addListener(handleScreenChange);
+
+// Initial check
+handleScreenChange(mediaQuery);
+
+
+
+
+
+// Script.js 
+const rangevalue = document.querySelector(".slider-container .price-slider"); 
+const rangeInputvalue = document.querySelectorAll(".range-input input"); 
+
+let priceGap = 10; 
+let rangeTimer;
+
+const priceInputvalue = document.querySelectorAll(".price-input input"); 
+for (let i = 0; i < priceInputvalue.length; i++) { 
+	priceInputvalue[i].addEventListener("input", e => { 
+
+		// Parse min and max values of the range input 
+		let minp = parseInt(priceInputvalue[0].value); 
+		let maxp = parseInt(priceInputvalue[1].value); 
+		let diff = maxp - minp 
+
+		if (minp < 0) { 
+			console.log("minimum price cannot be less than 0"); 
+			priceInputvalue[0].value = 0; 
+			minp = 0; 
+		} 
+
+		// Validate the input values 
+		{% comment %} {% comment %} if (maxp > 10000) { 
+			console.log("maximum price cannot be greater than 10000"); 
+			priceInputvalue[1].value = 10000; 
+			maxp = 10000; 
+		}  {% endcomment %}
+
+		if (minp > maxp - priceGap) { 
+			priceInputvalue[0].value = maxp - priceGap; 
+			minp = maxp - priceGap; 
+
+			if (minp < 0) { 
+				priceInputvalue[0].value = 0; 
+				minp = 0; 
+			} 
+		}  {% endcomment %}
+
+		// Check if the price gap is met 
+		// and max price is within the range 
+		if (diff >= priceGap && maxp <= rangeInputvalue[1].max) { 
+			if (e.target.className === "min-input") { 
+				rangeInputvalue[0].value = minp; 
+				let value1 = rangeInputvalue[0].max; 
+				rangevalue.style.left = `${(minp / value1) * 100}%`; 
+			} 
+			else { 
+				rangeInputvalue[1].value = maxp; 
+				let value2 = rangeInputvalue[1].max; 
+				rangevalue.style.right = 
+					`${100 - (maxp / value2) * 100}%`; 
+			} 
+		} 
+	}); 
+
+	// Add event listeners to range input elements 
+	for (let i = 0; i < rangeInputvalue.length; i++) { 
+		rangeInputvalue[i].addEventListener("input", e => { 
+			let minVal = 
+				parseInt(rangeInputvalue[0].value); 
+			let maxVal = 
+				parseInt(rangeInputvalue[1].value); 
+
+			let diff = maxVal - minVal 
+			
+			// Check if the price gap is exceeded 
+			if (diff < priceGap) { 
+			
+				// Check if the input is the min range input 
+				if (e.target.className === "min-range") { 
+					rangeInputvalue[0].value = maxVal - priceGap; 
+				} 
+				else { 
+					rangeInputvalue[1].value = minVal + priceGap; 
+				} 
+			} 
+			else { 
+			
+				// Update price inputs and range progress 
+				priceInputvalue[0].value = minVal; 
+				priceInputvalue[1].value = maxVal; 
+				rangevalue.style.left = 
+					`${(minVal / rangeInputvalue[0].max) * 100}%`; 
+				rangevalue.style.right = 
+					`${100 - (maxVal / rangeInputvalue[1].max) * 100}%`; 
+
+
+          clearTimeout(rangeTimer);
+          rangeTimer = setTimeout(() => {
+            $('#filterForm').submit();
+          }, 10);
+			}
+		}); 
+	} 
+}
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#sort-by').on('change', function() {
+      var value = $(this).val();
+      Shopify.queryParams.sort_by = value;
+
+      $.ajax({
+        type: 'GET',
+        url: window.location.href,
+        data: Shopify.queryParams,
+        success: function(data) {
+          $('#content-container').html($(data).find('#content-container').html());
+        },
+        error: function(xhr, status, error) {
+          console.error('Error fetching content:', error);
+        }
+      });
+    });
+  });
+
+
+  $(document).ready(function() {
+    $('#filterForm input[type="checkbox"]').on('change', function() {
+      $('#filterForm').submit();
+    });
+
+    $('#filterForm').on('submit', function(e) {
+      e.preventDefault();
+      let formData = $(this).serialize();
+
+      console.log(formData);
+
+      $.ajax({
+        url: $(this).attr('action'),
+        method: 'GET',
+        data: formData,
+        success: function(response) {
+          let html = $(response).find('#content-container').html();
+          $('#content-container').html(html);
+
+          let rCount = $(response).find('.results--count').html();
+          $('.results--count').html(rCount);
+        },
+        error: function(xhr, status, error) {
+          console.error(error);
+        }
+      });
+  });
+
+});
+
+
+
+</script>
+
+
+{%- schema -%}
+	{
+	  "name": "Collection",
+	  "tag": "div",
+	  "class": "shopify--colletion-section",
+	  "settings": [
+		{
+			"type": "text",
+			"label": "title",
+			"id": "title"
+		},
+        {
+            "type": "number",
+            "id": "section_paddingTop",
+            "label": "Section Padding Top",
+            "default": 100
+        },
+        {
+            "type": "number",
+            "id": "section_paddingBottom",
+            "label": "Section Padding Bottom",
+            "default": 100
+        }
+	  ],
+
+	  "presets": [
+		{
+		  "name": "Collection"
+		}
+	  ]
+	}
+{%- endschema -%}
+	

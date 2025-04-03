@@ -1,0 +1,242 @@
+{% render 'reusableComponent-blogList-carousel' %}
+
+<style>
+    
+    section.blogLists-carousel {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    }
+    section.blogLists-carousel .section-title h2 {
+        font-size: 50px;
+    }
+    section.blogLists-carousel .blog-listing {
+        width: 100%;
+        overflow: hidden;
+    }
+    section.blogLists-carousel .blog-listing .article-featImage {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        min-height: 290px;
+        border-radius: 15px;
+        border: 1px solid #dfe3e8;
+    }
+    section.blogLists-carousel .blog-listing .published-date {
+        margin: 23px 0 14px;
+        font-size: 15px;
+    }
+    section.blogLists-carousel .blog-listing .article-title a {
+        color: #333;
+        text-decoration: none;
+    }
+    section.blogLists-carousel .swiper-navigations {
+        margin-top: -72px;
+    }
+    section.blogLists-carousel .swiper-navigations .navigation-button {
+        color: #333;
+        border: 1px solid #DADADA;
+        border-radius: 50px;
+        width: 44px;
+        height: 44px;
+        transition: 0.4s ease;
+        background-color: #fff;
+    }
+    section.blogLists-carousel .swiper-navigations .navigation-button:hover {
+        background-color: #DB1629;
+        border-color: #DB1629;
+    }
+    section.blogLists-carousel .swiper-navigations .navigation-button::after {
+        font-size: 13px;
+        transition: 0.4s ease;
+        -webkit-text-stroke-width: 1px;
+    }
+    section.blogLists-carousel .swiper-navigations .navigation-button:hover::after {
+        filter: brightness(100);
+    }
+    section.blogLists-carousel .swiper-navigations .swiper-button-next {
+        right: -10px;
+    }
+    section.blogLists-carousel .swiper-navigations .swiper-button-next::after {
+        margin-left: 3px;
+        background-image: url('{{'navigation-arrow.png' | asset_url}}');
+        font-size: 0;
+        width: 18px;
+        height: 18px;
+        display: block;
+        background-size: cover;
+        background-position: center center;
+    }
+    section.blogLists-carousel .swiper-navigations .swiper-button-prev {
+        left: -10px;
+    }
+    section.blogLists-carousel .swiper-navigations .swiper-button-prev::after {
+        margin-right: 3px;
+        background-image: url('{{'navigation-arrow.png' | asset_url}}');
+        font-size: 0;
+        width: 18px;
+        height: 18px;
+        display: block;
+        background-size: cover;
+        background-position: center center;
+        transform: rotate(180deg);
+    }
+
+    /* Responsive */
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        section.blogLists-carousel {
+            padding-top: 75px;
+            padding-bottom: 150px;
+        }
+    }
+    
+    @media (max-width: 991px) {
+        section.blogLists-carousel {
+            padding-top: 50px;
+            padding-bottom: 150px;
+        }
+        section.blogLists-carousel .section-title h2 {
+            font-size: 40px;
+        }
+        section.blogLists-carousel .blog-listing {
+            margin-top: 10px !important;
+        }
+        section.blogLists-carousel .swiper-navigations .swiper-button-next {
+            right: 24px;
+        }
+        section.blogLists-carousel .swiper-navigations .swiper-button-prev {
+            left: 24px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        section.blogLists-carousel {
+            padding-top: 50px !important;
+            padding-bottom: 115px !important;
+        }
+        section.blogLists-carousel .section-title h2 {
+            text-align: center;
+            font-size: 30px;
+        }
+        section.blogLists-carousel .blog-listing .published-date {
+            font-weight: 600;
+        }
+        section.blogLists-carousel h5.article-title {
+            font-weight: 700;
+        }
+        section.blogLists-carousel .blog-listing .article-featImage {
+            min-height: 300px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        section.blogLists-carousel {
+            padding-bottom: 100px !important;
+        }
+        section.blogLists-carousel .blog-listing .article-featImage {
+            min-height: 300px;
+        }
+    }
+
+</style>
+
+{% javascript %}
+
+    // swiper js
+    const swiper = new Swiper('.blog-listing', {
+        direction: 'horizontal',
+        loop: true,
+        speed: 1000,
+        spaceBetween: 25,
+        slidesPerView: 3,
+        autoplay: true,
+        observer: true,
+        observeParents: true,
+        
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+            },
+            480: {
+                slidesPerView: 1,
+            },
+            640: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Blog lists Carousel",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            },
+            {
+                "type": "select",
+                "id": "section_headingTag",
+                "label": "Section Heading Tags",
+                "options": [
+                    {
+                        "value": "<h1/>",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "<h2/>",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "<h3/>",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "<h4/>",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "<h5/>",
+                        "label": "H5"
+                    }
+                ],
+                "default": "<h1/>"
+            },
+            {
+                "type": "text",
+                "id": "section_heading",
+                "label": "Section Heading",
+                "default": "Section Heading"
+            },
+            {
+                "type": "blog",
+                "id": "blog",
+                "label": "Blog"
+            }
+
+        ],
+        "blocks": [],
+        "presets": [
+          {
+            "name": "Blog lists Carousel"
+          }
+        ]
+    }
+{% endschema %}

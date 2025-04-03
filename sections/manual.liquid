@@ -1,0 +1,287 @@
+{% render 'reusableComponent-manual' %}
+
+<style>
+  section.manualGuides-downloads {
+    padding-top: {{ section.settings.section_paddingTop }}px;
+    padding-bottom: {{ section.settings.section_paddingBottom }}px;
+  }
+  section.manualGuides-downloads .testimonial-heading h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #333;
+  }
+  section.manualGuides-downloads .manual-attributes {
+    margin-top: 75px;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row {
+    background-color: #F5F5F7;
+    margin-bottom: 35px;
+    border-radius: 11px;
+    padding: 40px 35px;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-name {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 38px;
+    font-size: 22px;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf {
+    display: table;
+    width: 450px;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf label {
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf ul {
+    padding: 0;
+    margin: 0;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf ul li {
+    list-style: none;
+    position: relative;
+    display: flex;
+    margin-bottom: 17px;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf ul li a {
+    color: #333;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf ul li::before {
+    content: "";
+    display: block;
+    background-image: url('{{'file-icon.png' | asset_url}}');
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf .coming-soon {
+    text-align: center;
+    margin-right: 50px;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf.multiple-child .pdf-data {
+    float: left;
+    width: 50%;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf.multiple-child .pdf-data:nth-child(n+3) {
+    margin-top: 40px;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 432px;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-video .iframe-video {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-video .iframe-video iframe {
+    border-radius: 20px;
+    width: 100%;
+    height: 281px;
+  }
+  
+  /* Responsive */
+  @media (min-width: 1200px) and (max-width: 1399px) {
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-video .iframe-video iframe {
+      height: 185px;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    section.manualGuides-downloads .manual-attributes .manualItem-row {
+      flex-direction: column;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-info {
+      display: table;
+      margin: 0 auto 30px;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper {
+      margin-left: 0;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .coming-soon {
+      text-align: center;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf .pdf-data:nth-child(even) {
+      padding-left: 63px;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf .coming-soon {
+      margin-right: 0;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf.multiple-child .pdf-data {
+      display: table;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .pdf-data {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-video {
+      display: table;
+      margin: auto;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    section.manualGuides-downloads .testimonial-heading h1 {
+      font-size: 37px;
+    }
+    section.manualGuides-downloads .manual-attributes {
+      margin-top: 40px;
+    }
+  }
+
+  @media (min-width: 497px) and (max-width: 767px) {
+    section.manualGuides-downloads .manual-attributes .manualItem-row {
+      margin-bottom: 20px;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf .pdf-data:nth-child(even) {
+      padding-left: 40px;
+    }
+  }
+
+  @media (min-width: 437px) and (max-width: 496px) {
+  
+    section.manualGuides-downloads .manual-attributes .manualItem-row {
+      margin-bottom: 20px;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf .pdf-data:nth-child(even) {
+      padding-left: 10px;
+    }
+
+  }
+
+  @media (max-width: 480px) {
+    section.manualGuides-downloads .testimonial-heading h1 {
+      font-size: 27px;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row {
+      margin-bottom: 20px;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-video .iframe-video iframe {
+      border-radius: 20px;
+      width: 100%;
+      height: 230px;
+    }
+  }
+
+  @media (max-width: 436px) {
+
+    section.manualGuides-downloads .manual-attributes .manualItem-row {
+      padding: 40px 20px;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-info {
+      margin: 0 auto 20px;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf.multiple-child .pdf-data:nth-child(even) {
+      padding-left: 0;
+    }
+    section.manualGuides-downloads .manual-attributes .manualItem-row .productManual-pdfWrapper .productManual-pdf .pdf-data {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px !important;
+    }
+
+  }
+
+  @media (max-width: 400px) {
+    section.manualGuides-downloads  .productManual-pdf ul li a {
+      font-size: 14px;
+      text-align: left;
+    }
+    section.manualGuides-downloads .productManual-pdf ul li::before {
+      margin-right: 3px !important;
+    }
+    section.manualGuides-downloads .manualItem-row {
+      padding: 40px 10px !important;
+    }
+  }
+  
+
+</style>
+
+{%  javascript  %} 
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "Manual Download",
+    "settings": [
+      {
+        "type": "number",
+        "id": "section_paddingTop",
+        "label": "Section Padding Top",
+        "default": 100
+      },
+      {
+        "type": "number",
+        "id": "section_paddingBottom",
+        "label": "Section Padding Bottom",
+        "default": 100
+      },
+      {
+        "type": "select",
+        "id": "section_headingTag",
+        "label": "Section Heading Tag",
+        "options": [
+          {
+              "value": "<h1/>",
+              "label": "H1"
+          },
+          {
+              "value": "<h2/>",
+              "label": "H2"
+          },
+          {
+              "value": "<h3/>",
+              "label": "H3"
+          },
+          {
+              "value": "<h4/>",
+              "label": "H4"
+          },
+          {
+              "value": "<h5/>",
+              "label": "H5"
+          }
+        ],
+        "default": "<h1/>"
+      },
+      {
+        "type": "text",
+        "id": "section_headingText",
+        "label": "Section Heading Text",
+        "default": "Section Heading Text"
+      },
+      {
+        "type": "product_list",
+        "id": "product_lists",
+        "label": "Products",
+        "limit": 10
+      }
+
+
+
+    ],
+    "presets": [
+      {
+        "name": "Manual Download"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,26 @@
+<div class="mega-menu">
+    <div class="mega-menu__content bg-white">
+        <div class="container container-panel mega-menu-content-wrapper sub-content-text d-flex three-columns">
+            <div class="nav-custom-text"><h3 style="font-weight: 600">{{block.settings.heading}}</h3></div>
+            {% if link.links != blank %}
+            <div class="nav_list-content">
+                <ul>
+                    {% for childlink in link.links %}
+                        <li><a href="{{ childlink.url }}"
+                            {% if childlink.current %} aria-current="page"{% endif %}
+                        >
+                            <span class="site-nav_title ">{{ childlink.title | escape }}</span>
+                        </a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <div class="featured-image position-relative">  
+                <a class="" href="{{block.settings.featured_link}}" target="_blank">
+                    <div class="featured-text text-white p-small position-absolute bottom-0 start-0">{{block.settings.featured_text}}</div>
+                    <img src="{{ block.settings.featured_image | img_url: '2048x2048' }}" class="img-fluid" height="auto" width="332"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

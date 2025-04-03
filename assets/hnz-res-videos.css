@@ -1,0 +1,635 @@
+/* MOBILES ----------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 0px) {
+    #hnz-videos .title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 40px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 50vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 28px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 24px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    #hnz-videos .title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 40px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 50vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 28px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 24px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 390px) {
+    #hnz-videos .title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 40px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 50vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 28px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 24px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    #hnz-videos .title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 40px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 55vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 30px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 26px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 428px) {
+    #hnz-videos .title {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 40px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 60vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 32px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 28px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    #hnz-videos .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 40px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 60vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 34px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 28px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+/* TABLETS ----------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 768px) {
+    #hnz-videos .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 40px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 60vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 34px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 28px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+/* COMPUTERS --------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 1280px) {
+    #hnz-videos .title {
+        font-size: 42px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 60px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 60px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 55vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 42px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 30px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    #hnz-videos .title {
+        font-size: 42px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 60px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 60px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 55vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 42px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 30px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    #hnz-videos .title {
+        font-size: 44px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 60px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 60px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 55vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 44px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 34px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    #hnz-videos .title {
+        font-size: 46px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 60px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 60px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 55vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 46px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 36px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    #hnz-videos .title {
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 16px;
+        margin-bottom: 60px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 60px;
+    }
+    #hnz-videos .video-details {
+        gap: 5px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 34px;
+        height: 34px;
+    }
+    #hnz-videos .author-name {
+        font-size: 14px;
+    }
+    #hnz-videos .video-title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 55vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 50px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 40px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 16px;
+        margin-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    #hnz-videos .title {
+        font-size: 54px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 18px;
+        margin-bottom: 80px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 80px;
+    }
+    #hnz-videos .video-details {
+        gap: 10px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 40px;
+        height: 40px;
+    }
+    #hnz-videos .author-name {
+        font-size: 16px;
+    }
+    #hnz-videos .video-title {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 55vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 54px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 44px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 18px;
+        margin-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    #hnz-videos .title {
+        font-size: 54px;
+        margin-bottom: 20px;
+    }
+    #hnz-videos .subtitle {
+        font-size: 18px;
+        margin-bottom: 80px;
+    }
+    #hnz-videos .videos-row {
+        --bs-gutter-x: 30px;
+        --bs-gutter-y: 80px;
+    }
+    #hnz-videos .video-details {
+        gap: 10px;
+        margin-top: 10px;
+    }
+    #hnz-videos .author-photo {
+        width: 40px;
+        height: 40px;
+    }
+    #hnz-videos .author-name {
+        font-size: 16px;
+    }
+    #hnz-videos .video-title {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    #hnz-bottom-banner {
+        height: 55vh;
+    }
+    #hnz-bottom-banner .title {
+        font-size: 54px;
+        margin-bottom: 30px !important;
+    }
+    #hnz-bottom-banner .title.sm {
+        font-size: 44px;
+    }
+    #hnz-bottom-banner .body {
+        font-size: 18px;
+        margin-bottom: 30px !important;
+    }
+}

@@ -1,0 +1,1997 @@
+/* MOBILES ----------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 0px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 40vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 28px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #f5f5f5;
+    }
+    #hnz-mvv .row {
+        padding: 10px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 20px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: none;
+    }
+    #hnz-mvv .icon {
+        height: 58px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 28px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 0;
+    }
+    #hnz-service-network img {
+        margin-top: 30px;
+    }
+    #hnz-service-network .title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 20px;
+    }
+    #hnz-service-network .btn {
+        width: 100%;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 40vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 28px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #f5f5f5;
+    }
+    #hnz-mvv .row {
+        padding: 10px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 20px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: none;
+    }
+    #hnz-mvv .icon {
+        height: 58px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 28px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 0;
+    }
+    #hnz-service-network img {
+        margin-top: 30px;
+    }
+    #hnz-service-network .title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 20px;
+    }
+    #hnz-service-network .btn {
+        width: 100%;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 390px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 40vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 28px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #f5f5f5;
+    }
+    #hnz-mvv .row {
+        padding: 10px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 20px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: none;
+    }
+    #hnz-mvv .icon {
+        height: 58px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 28px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 0;
+    }
+    #hnz-service-network img {
+        margin-top: 30px;
+    }
+    #hnz-service-network .title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 20px;
+    }
+    #hnz-service-network .btn {
+        width: 100%;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 40vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 30px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #f5f5f5;
+    }
+    #hnz-mvv .row {
+        padding: 10px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 20px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: none;
+    }
+    #hnz-mvv .icon {
+        height: 58px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 30px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 0;
+    }
+    #hnz-service-network img {
+        margin-top: 30px;
+    }
+    #hnz-service-network .title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 20px;
+    }
+    #hnz-service-network .btn {
+        width: 100%;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 428px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 38px;
+        margin-bottom: 30px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 45vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 32px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #f5f5f5;
+    }
+    #hnz-mvv .row {
+        padding: 10px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 20px 30px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: none;
+    }
+    #hnz-mvv .icon {
+        height: 60px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 32px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 0;
+    }
+    #hnz-service-network img {
+        margin-top: 30px;
+    }
+    #hnz-service-network .title {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 20px;
+    }
+    #hnz-service-network .btn {
+        width: 100%;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 40px;
+        margin-bottom: 30px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 45vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 34px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #f5f5f5;
+    }
+    #hnz-mvv .row {
+        padding: 10px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 20px 30px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: none;
+    }
+    #hnz-mvv .icon {
+        height: 60px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 34px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 0;
+    }
+    #hnz-service-network img {
+        margin-top: 30px;
+    }
+    #hnz-service-network .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 20px;
+    }
+    #hnz-service-network .btn {
+        width: 100%;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* TABLETS ----------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 768px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 46px;
+        margin-bottom: 30px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 45vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 34px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #f5f5f5;
+    }
+    #hnz-mvv .row {
+        padding: 10px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 20px 30px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: none;
+    }
+    #hnz-mvv .icon {
+        height: 60px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 34px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 0;
+    }
+    #hnz-service-network img {
+        margin-top: 30px;
+    }
+    #hnz-service-network .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 20px;
+    }
+    #hnz-service-network .btn {
+        width: 100%;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 48px;
+        margin-bottom: 30px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 45vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 34px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #f5f5f5;
+    }
+    #hnz-mvv .row {
+        padding: 10px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 20px 30px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: none;
+    }
+    #hnz-mvv .icon {
+        height: 60px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 34px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 0;
+    }
+    #hnz-service-network img {
+        margin-top: 30px;
+    }
+    #hnz-service-network .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 20px;
+    }
+    #hnz-service-network .btn {
+        width: 100%;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 50px;
+        margin-bottom: 30px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 45vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 34px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #f5f5f5;
+    }
+    #hnz-mvv .row {
+        padding: 10px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 20px 30px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: none;
+    }
+    #hnz-mvv .icon {
+        height: 60px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 30px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 34px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 0;
+    }
+    #hnz-service-network img {
+        margin-top: 30px;
+    }
+    #hnz-service-network .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 20px;
+    }
+    #hnz-service-network .btn {
+        width: 100%;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* COMPUTERS --------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 1280px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 52px;
+        margin-bottom: 30px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 65vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 42px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #fff;
+    }
+    #hnz-mvv .row {
+        padding: 35px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 0 55px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: block;
+    }
+    #hnz-mvv .icon {
+        height: 56px;
+    }
+    #hnz-mvv .title {
+        font-size: 18px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 60px;
+        --bs-gutter-y: 60px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 42px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 80px;
+    }
+    #hnz-service-network img {
+        margin-top: 50px;
+    }
+    #hnz-service-network .title {
+        font-size: 42px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 30px;
+    }
+    #hnz-service-network .btn {
+        width: auto;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 42px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: 100%;
+    }
+    #hnz-community-gallery .grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+    #hnz-community-gallery .image-1 { 
+        grid-area: 1 / 1 / 2 / 2; 
+    }
+    #hnz-community-gallery .image-2 { 
+        grid-area: 1 / 2 / 2 / 3;
+    }
+    #hnz-community-gallery .image-3 { 
+        grid-area: 2 / 1 / 3 / 3;
+    }
+    #hnz-community-gallery .image-4 { 
+        grid-area: 1 / 3 / 3 / 5;
+    }
+    #hnz-community-gallery .image-5 { 
+        grid-area: 1 / 5 / 2 / 7;
+    }
+    #hnz-community-gallery .image-6 { 
+        grid-area: 2 / 5 / 3 / 7;
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 52px;
+        margin-bottom: 30px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 65vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 42px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #fff;
+    }
+    #hnz-mvv .row {
+        padding: 35px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 0 55px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: block;
+    }
+    #hnz-mvv .icon {
+        height: 56px;
+    }
+    #hnz-mvv .title {
+        font-size: 18px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 60px;
+        --bs-gutter-y: 60px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 42px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 80px;
+    }
+    #hnz-service-network img {
+        margin-top: 50px;
+    }
+    #hnz-service-network .title {
+        font-size: 42px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 30px;
+    }
+    #hnz-service-network .btn {
+        width: auto;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 42px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: 100%;
+    }
+    #hnz-community-gallery .grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+    #hnz-community-gallery .image-1 { 
+        grid-area: 1 / 1 / 2 / 2; 
+    }
+    #hnz-community-gallery .image-2 { 
+        grid-area: 1 / 2 / 2 / 3;
+    }
+    #hnz-community-gallery .image-3 { 
+        grid-area: 2 / 1 / 3 / 3;
+    }
+    #hnz-community-gallery .image-4 { 
+        grid-area: 1 / 3 / 3 / 5;
+    }
+    #hnz-community-gallery .image-5 { 
+        grid-area: 1 / 5 / 2 / 7;
+    }
+    #hnz-community-gallery .image-6 { 
+        grid-area: 2 / 5 / 3 / 7;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 56px;
+        margin-bottom: 40px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 44px;
+        margin-bottom: 40px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 65vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 44px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #fff;
+    }
+    #hnz-mvv .row {
+        padding: 35px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 0 55px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: block;
+    }
+    #hnz-mvv .icon {
+        height: 58px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 80px;
+        --bs-gutter-y: 80px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 44px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 80px;
+    }
+    #hnz-service-network img {
+        margin-top: 50px;
+    }
+    #hnz-service-network .title {
+        font-size: 44px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 30px;
+    }
+    #hnz-service-network .btn {
+        width: auto;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 44px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: 100%;
+    }
+    #hnz-community-gallery .grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+    #hnz-community-gallery .image-1 { 
+        grid-area: 1 / 1 / 2 / 2; 
+    }
+    #hnz-community-gallery .image-2 { 
+        grid-area: 1 / 2 / 2 / 3;
+    }
+    #hnz-community-gallery .image-3 { 
+        grid-area: 2 / 1 / 3 / 3;
+    }
+    #hnz-community-gallery .image-4 { 
+        grid-area: 1 / 3 / 3 / 5;
+    }
+    #hnz-community-gallery .image-5 { 
+        grid-area: 1 / 5 / 2 / 7;
+    }
+    #hnz-community-gallery .image-6 { 
+        grid-area: 2 / 5 / 3 / 7;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 60px;
+        margin-bottom: 40px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 46px;
+        margin-bottom: 50px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 65vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 46px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #fff;
+    }
+    #hnz-mvv .row {
+        padding: 35px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 0 55px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: block;
+    }
+    #hnz-mvv .icon {
+        height: 60px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 80px;
+        --bs-gutter-y: 80px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 46px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 80px;
+    }
+    #hnz-service-network img {
+        margin-top: 50px;
+    }
+    #hnz-service-network .title {
+        font-size: 46px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 30px;
+    }
+    #hnz-service-network .btn {
+        width: auto;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 46px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: 100%;
+    }
+    #hnz-community-gallery .grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+    #hnz-community-gallery .image-1 { 
+        grid-area: 1 / 1 / 2 / 2; 
+    }
+    #hnz-community-gallery .image-2 { 
+        grid-area: 1 / 2 / 2 / 3;
+    }
+    #hnz-community-gallery .image-3 { 
+        grid-area: 2 / 1 / 3 / 3;
+    }
+    #hnz-community-gallery .image-4 { 
+        grid-area: 1 / 3 / 3 / 5;
+    }
+    #hnz-community-gallery .image-5 { 
+        grid-area: 1 / 5 / 2 / 7;
+    }
+    #hnz-community-gallery .image-6 { 
+        grid-area: 2 / 5 / 3 / 7;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 62px;
+        margin-bottom: 50px;
+    }
+    #hnz-full-banner .body {
+        font-size: 16px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 50px;
+        margin-bottom: 50px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 65vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 50px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #fff;
+    }
+    #hnz-mvv .row {
+        padding: 35px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 0 55px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: block;
+    }
+    #hnz-mvv .icon {
+        height: 62px;
+    }
+    #hnz-mvv .title {
+        font-size: 20px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 80px;
+        --bs-gutter-y: 80px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 50px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 80px;
+    }
+    #hnz-service-network img {
+        margin-top: 50px;
+    }
+    #hnz-service-network .title {
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 30px;
+    }
+    #hnz-service-network .btn {
+        width: auto;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: 100%;
+    }
+    #hnz-community-gallery .grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+    #hnz-community-gallery .image-1 { 
+        grid-area: 1 / 1 / 2 / 2; 
+    }
+    #hnz-community-gallery .image-2 { 
+        grid-area: 1 / 2 / 2 / 3;
+    }
+    #hnz-community-gallery .image-3 { 
+        grid-area: 2 / 1 / 3 / 3;
+    }
+    #hnz-community-gallery .image-4 { 
+        grid-area: 1 / 3 / 3 / 5;
+    }
+    #hnz-community-gallery .image-5 { 
+        grid-area: 1 / 5 / 2 / 7;
+    }
+    #hnz-community-gallery .image-6 { 
+        grid-area: 2 / 5 / 3 / 7;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 66px;
+        margin-bottom: 50px;
+    }
+    #hnz-full-banner .body {
+        font-size: 18px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 54px;
+        margin-bottom: 50px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 70vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 54px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #fff;
+    }
+    #hnz-mvv .row {
+        padding: 40px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 0 60px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: block;
+    }
+    #hnz-mvv .icon {
+        height: 66px;
+    }
+    #hnz-mvv .title {
+        font-size: 22px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 100px;
+        --bs-gutter-y: 100px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 54px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 80px;
+    }
+    #hnz-service-network img {
+        margin-top: 50px;
+    }
+    #hnz-service-network .title {
+        font-size: 54px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 30px;
+    }
+    #hnz-service-network .btn {
+        width: auto;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 54px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: 100%;
+    }
+    #hnz-community-gallery .grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+    #hnz-community-gallery .image-1 { 
+        grid-area: 1 / 1 / 2 / 2; 
+    }
+    #hnz-community-gallery .image-2 { 
+        grid-area: 1 / 2 / 2 / 3;
+    }
+    #hnz-community-gallery .image-3 { 
+        grid-area: 2 / 1 / 3 / 3;
+    }
+    #hnz-community-gallery .image-4 { 
+        grid-area: 1 / 3 / 3 / 5;
+    }
+    #hnz-community-gallery .image-5 { 
+        grid-area: 1 / 5 / 2 / 7;
+    }
+    #hnz-community-gallery .image-6 { 
+        grid-area: 2 / 5 / 3 / 7;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    #hnz-full-banner {
+        height: 100vh;
+    }
+    #hnz-full-banner .title {
+        font-size: 66px;
+        margin-bottom: 50px;
+    }
+    #hnz-full-banner .body {
+        font-size: 18px;
+    }
+
+    /* Two Image ------------------------------------------------------------------ */
+
+    #hnz-two-image .title {
+        font-size: 54px;
+        margin-bottom: 50px;
+    }
+    #hnz-two-image .body {
+        font-size: 16px;
+    }
+
+    /* Mid Banner ------------------------------------------------------------------------ */
+
+    #hnz-mid-banner {
+        height: 70vh;
+    }
+    #hnz-mid-banner .title {
+        font-size: 54px;
+    }
+
+    /* Mission Vision Values ------------------------------------------------------------- */
+
+    #hnz-mvv {
+        background: #fff;
+    }
+    #hnz-mvv .row {
+        padding: 40px;
+    }
+    #hnz-mvv .row > div {
+        gap: 15px;
+        padding: 0 60px;
+    }
+    #hnz-mvv .row > div:not(:last-child):after {
+        display: block;
+    }
+    #hnz-mvv .icon {
+        height: 66px;
+    }
+    #hnz-mvv .title {
+        font-size: 22px;
+    }
+
+    /* Why Vanpowers ------------------------------------------------------------- */
+
+    #hnz-why-vanpowers .row {
+        --bs-gutter-x: 100px;
+        --bs-gutter-y: 100px;
+    }
+    #hnz-why-vanpowers .title {
+        font-size: 54px;
+    }
+    #hnz-why-vanpowers .texts:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    #hnz-why-vanpowers .text-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    #hnz-why-vanpowers .text-body {
+        font-size: 16px;
+    }
+
+    /* Service Network ------------------------------------------------------------- */
+
+    #hnz-service-network {
+        background: #f8f8f8;
+    }
+    #hnz-service-network .container {
+        padding-bottom: 80px;
+    }
+    #hnz-service-network img {
+        margin-top: 50px;
+    }
+    #hnz-service-network .title {
+        font-size: 54px;
+        margin-bottom: 20px;
+    }
+    #hnz-service-network .body {
+        font-size: 16px;
+    }
+    #hnz-service-network .btns {
+        margin-top: 30px;
+    }
+    #hnz-service-network .btn {
+        width: auto;
+    }
+
+    /* Community Gallery ------------------------------------------------------------- */
+
+    #hnz-community-gallery .title {
+        font-size: 54px;
+        margin-bottom: 20px;
+    }
+    #hnz-community-gallery .body {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+    #hnz-community-gallery img {
+        width: 100%;
+        height: 100%;
+    }
+    #hnz-community-gallery .grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+    #hnz-community-gallery .image-1 { 
+        grid-area: 1 / 1 / 2 / 2; 
+    }
+    #hnz-community-gallery .image-2 { 
+        grid-area: 1 / 2 / 2 / 3;
+    }
+    #hnz-community-gallery .image-3 { 
+        grid-area: 2 / 1 / 3 / 3;
+    }
+    #hnz-community-gallery .image-4 { 
+        grid-area: 1 / 3 / 3 / 5;
+    }
+    #hnz-community-gallery .image-5 { 
+        grid-area: 1 / 5 / 2 / 7;
+    }
+    #hnz-community-gallery .image-6 { 
+        grid-area: 2 / 5 / 3 / 7;
+    }
+}

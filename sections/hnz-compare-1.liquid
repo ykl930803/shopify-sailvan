@@ -1,0 +1,52 @@
+<style>
+    #hnz-compare-1 {
+        background: url('{{ section.settings.background_image | img_url: "master" }}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+
+<section id="hnz-compare-1" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content h-100">
+        <div class="row align-items-center h-100">
+            <div class="col-12 text-center">
+                <h1 class="title mb-4">
+                    {{ section.settings.title }}
+                </h1>
+                <p class="body">
+                    {{ section.settings.body }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Compare Models Section 1",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body",
+                "label": "Body"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_image",
+                "label": "Background Image"
+            }
+        ]
+    }
+{% endschema %}

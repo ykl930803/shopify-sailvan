@@ -1,0 +1,67 @@
+<div class="mdl-container" data-id="measurement">
+    <div class="mdl">
+        <div class="mdl-header-mobile d-lg-none d-md-flex d-sm-flex">
+            <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Mobile-Logo.png?v=1712901571">
+            <span class="mdl-close close">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
+        </div>
+        <div class="mdl-header d-lg-flex d-md-none d-sm-none">
+            <h6 class="mdl-title">
+                Add Your Details
+            </h6>
+            <span class="mdl-close close">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
+        </div>
+        <div class="mdl-body">
+            <div class="row d-lg-none d-md-flex d-sm-flex">
+                <div class="col-12 text-center mb-4">
+                    <h6 class="mdl-title">
+                        Add Your Details
+                    </h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="measurement-toggle">
+                        <div class="toggle active">
+                            CM
+                        </div>
+                        <div class="toggle">
+                            INCH
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form action="javascript:void(0)" class="measurement">
+                <input type="hidden" name="measurement-type" value="cm">
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Height <span>*</span></label>
+                            <input type="number" name="height" min="1" step="0.1" required>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Length From The Sole Of The Foot To The Hip <span>*</span></label>
+                            <input type="number" name="leg" min="1" step="0.1" required>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Weight (kg) <span>*</span></label>
+                            <input type="number" name="weight" min="1" step="0.1" required>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-modal">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

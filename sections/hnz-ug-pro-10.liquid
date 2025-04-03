@@ -1,0 +1,77 @@
+<section id="hnz-ug-pro-10" data-toggle="rider-moment" data-name="Rider Moment" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="title text-lg-start text-md-center text-sm-center">
+                    {{ section.settings.title }}
+                </h2>
+            </div>
+            <div class="col-12 position-relative">
+                <div class="owl-carousel">
+                    {% for block in section.blocks %}
+                        <div class="item">
+                            <img src="{{ block.settings.image | img_url: 'master' }}">
+                            <h6 class="slide-title">
+                                {{ block.settings.title }}
+                            </h6>
+                            <p class="slide-body">
+                                {{ block.settings.body }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="float-nav d-lg-block d-md-none d-sm-none">
+                    <button type="button" role="presentation" class="owl-prev" disabled>
+                        <i class="fa-solid fa-arrow-left-long"></i>
+                    </button>
+                    <button type="button" role="presentation" class="owl-next">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "UG Pro Section 10",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "Image & Text",
+                "limit": 5,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "body",
+                        "label": "Body"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

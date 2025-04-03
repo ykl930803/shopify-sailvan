@@ -1,0 +1,137 @@
+{%- assign custom_css = section.settings.custom_css -%}
+{%- assign css_class = section.settings.css_class -%}
+
+{% comment %} Section specific CSS {% endcomment %}
+{% style %}
+    .section-{{section.id}}-margin{
+        margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+        margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+    }
+    .section-{{section.id}}-margin .section-title{
+        padding-bottom: 50px;
+    }
+   
+    @media screen and (max-width: 749px) {
+    
+    }
+    @media screen and (min-width: 750px) {
+        .section-{{section.id}}-margin{
+            margin-top: {{ section.settings.margin_top}}px;
+            margin-bottom: {{ section.settings.margin_bottom}}px;
+        }
+    }
+    .van-accordion-tab .accordion-button{
+        --bs-accordion-btn-color: #666;
+        --bs-accordion-btn-padding-y: 30px;
+        font-weight: 500
+    }
+    .van-accordion-tab .accordion-body{
+        --bs-accordion-body-padding-y: 43px;
+    }
+    .van-accordion-tab .accordion-button:not(.collapsed){
+        background: none;
+    }
+    .van-accordion-tab .accordion-item{
+        --bs-accordion-color: #666;
+        --bs-accordion-border-width: 2px;
+        --bs-accordion-border-color: #dadada
+    }
+    {{custom_css}}
+{% endstyle %}
+
+
+<div class="faq-container {{css_class}} {{section.id}} section-{{section.id}}-margin ">
+  <div class="container container-panel">
+      <div class="section-title text-start">
+          <h2 class="van-large-title fw-bold">{{section.settings.title}}</h2>
+      </div>
+      <div class="van-accordion-tab" id="accordion-tab-{{section.id}}">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            {% for tab in section.blocks %}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading{{forloop.index0}}">
+                  <span class="accordion-button collapsed v-extra-large px-0" role="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.index0}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.index0}}">
+                    {{tab.settings.title}}
+                  </span>
+                </h2>
+                <div id="flush-collapse{{forloop.index0}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.index0}}e" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body v-extra-large">{{tab.settings.content}}</div>
+                </div>
+              </div>
+            {%endfor%}
+          </div>
+      </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQs",
+  "class": "shopify-section--faqs-tab",
+  "settings": [
+    
+    {
+        "type": "text",
+        "id"   : "title",
+        "label": "Heading",
+        "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "header",
+      "content": "Margin Section"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Faq",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "liquid",
+          "id": "content",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "FAQs"
+  }]
+}
+
+{% endschema %}

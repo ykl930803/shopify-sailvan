@@ -1,0 +1,115 @@
+{% render 'reusableComponent-3ColumnsIcon-withText' %}
+
+<style>
+    section.threeColumnsIcon-withText {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+        background-color: {{ section.settings.background_color }};
+        background-image: url('{{ section.settings.background_image | img_url: "master" }}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 100vh;
+        min-height: 1200px;
+    }
+    .threeColumn-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3,minmax(200px,1fr));
+        grid-row-gap: 30px;
+    }
+    .threeColumn-wrapper .threeColumnIcon-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .threeColumn-text {
+        color: {{ section.settings.text_color }}
+    }
+    
+    @media (max-width: 767px) {
+        .threeColumn-wrapper {
+            grid-template-columns: repeat(3,minmax(100px,1fr));
+        }
+        .threeColumn-wrapper .threeColumnIcon-item .threeColumn-text {
+            text-align: center;
+            font-size: 12px;
+        }
+        .threeColumn-icon img {
+            max-width: 50px;
+        }
+    }
+    @media (max-width: 480px) {
+        section.threeColumnsIcon-withText {
+            background-image: url('{{ section.settings.mobileBackground_image | img_url: "master" }}');
+            min-height: 685px;
+            background-position: 100% 60px;
+        }
+    }
+</style>
+
+{% schema %}
+{
+    "name": "3 Columns Icon With Texts",
+    "settings": [
+        {
+            "type": "number",
+            "id": "section_paddingTop",
+            "label": "Section Padding Top",
+            "default": 100
+        },
+        {
+            "type": "number",
+            "id": "section_paddingBottom",
+            "label": "Section Padding Bottom",
+            "default": 100
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Section Background Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Desktop Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "mobileBackground_image",
+            "label": "Mobile Background Image"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#000000"
+        }
+
+    ],
+    "blocks": [
+        {
+            "type": "column",
+            "name": "Column Item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "threeColumn_icon",
+                    "label": "Icon"
+                },
+                {
+                    "type": "text",
+                    "id": "threeColumn_text",
+                    "label": "Three Column Text",
+                    "default": "Three Column Text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "3 Columns Icon With Texts"
+      }
+    ]
+}
+{% endschema %}

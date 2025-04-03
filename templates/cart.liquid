@@ -1,0 +1,31 @@
+{% layout 'hnz-theme' %}
+
+<section id="hnz-404">
+    <div class="container section-content h-100">
+        <div class="row align-items-lg-center h-100 gy-lg-0 gy-md-4 gy-sm-4">
+            <div class="col-lg-5 col-md-12 text-lg-start text-md-center text-sm-center">
+                <h2 class="title">
+                    Oops! <br> Page Not Found
+                </h2>
+                <a class="btn btn-red" href="{{ routes.root_url }}">
+                    Back to home
+                </a>
+            </div>
+            <div class="col-lg-7 col-md-12 col-sm-12 text-center">
+                <img src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/EJYTMhjn9N-_1.gif?v=1717402836">
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .pre-footer {
+        display: none;
+    }
+    #hnz-404 {
+        background-image: url('{{"404_bg.png" | asset_url}}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>

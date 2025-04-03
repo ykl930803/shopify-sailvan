@@ -1,0 +1,37 @@
+<section id="shopify-section--{{ section.id }}" class="services">
+    <div class="container">
+        <div class="row">
+            <div id="services-holder" class="services-outerWrapper">
+                <div class="services-wrapper">
+                    <div class="col-12">
+                        {%- if section.settings.section_title != blank -%}
+                            <div class="section-title text-center">{{ section.settings.section_headingTags }}{{ section.settings.section_title }}</div>
+                        {% endif %}
+
+                        {%- if section.settings.service_paragraph != blank -%}
+                            <div class="service-paragraph text-center w-50 d-table mx-auto">{{ section.settings.service_paragraph }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="services-items d-flex flex-direction-row mt-5">
+                        {%- for block in section.blocks -%}
+                            <div class="service-item col">
+                                {%- if block.settings.service_icon != blank -%}
+                                    <div class="service-icon mb-3">
+                                        {{ block.settings.service_icon | image_url: width: 68 | image_tag: srcset: nil }}
+                                    </div>
+                                {% endif %}
+
+                                {%- if block.settings.service_text != blank -%}
+                                    <div class="service_text">
+                                        {{ block.settings.service_text }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {%- endfor -%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

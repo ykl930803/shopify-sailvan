@@ -1,0 +1,104 @@
+<section id="hnz-service-network">
+    <div class="container section-content">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12 mx-auto text-center">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                </h2>
+
+                <p class="body">
+                    {{ section.settings.body }}
+                </p>
+
+                {% if section.settings.btn_text_1 != blank or section.settings.btn_text_2 != blank %}
+                    <div class="btns row gx-lg-5 gx-md-4 gx-sm-2">
+
+                        {% if section.settings.btn_text_1 != blank and section.settings.btn_text_2 != blank %}
+                            <div class="col-6 text-end">
+                                <a href="{{ section.settings.btn_url_1 }}" class="btn btn-white-o">
+                                    {{ section.settings.btn_text_1 }}
+                                </a>
+                            </div>
+                            <div class="col-6 text-start">
+                                <a href="{{ section.settings.btn_url_1 }}" class="btn btn-black">
+                                    {{ section.settings.btn_text_2 }}
+                                </a>
+                            </div>
+                        {% else %}
+                            {% if section.settings.btn_text_1 != blank %}
+                                <div class="col-12 text-center">
+                                    <a href="{{ section.settings.btn_url_1 }}" class="btn btn-white-o">
+                                        {{ section.settings.btn_text_1 }}
+                                    </a>
+                                </div>
+                            {% endif %}
+                            {% if section.settings.btn_text_2 != blank %}
+                                <div class="col-12 text-center">
+                                    <a href="{{ section.settings.btn_url_1 }}" class="btn btn-black">
+                                        {{ section.settings.btn_text_2 }}
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                    </div>
+                {% endif %}
+
+            </div>
+            <div class="col-10 mx-auto d-lg-block d-md-none d-sm-none">
+                <img src="{{ section.settings.image | img_url: 'master' }}">
+            </div>
+        </div>
+    </div>
+    <div class="col-12 d-lg-none d-md-block d-sm-block">
+        <img src="{{ section.settings.image_mobile | img_url: 'master' }}">
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Global Service Network",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body",
+                "label": "Body"
+            },
+            {
+                "type": "text",
+                "id": "btn_text_1",
+                "label": "1. Button Text"
+            },
+            {
+                "type": "url",
+                "id": "btn_url_1",
+                "label": "1. Button URL"
+            },
+            {
+                "type": "text",
+                "id": "btn_text_2",
+                "label": "2. Button Text"
+            },
+            {
+                "type": "url",
+                "id": "btn_url_2",
+                "label": "2. Button URL"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image Desktop"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_mobile",
+                "label": "Image Mobile"
+            }
+        ]
+    }
+{% endschema %}

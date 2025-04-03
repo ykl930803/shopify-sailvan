@@ -1,0 +1,283 @@
+<script>
+    let frame_4 = [];
+    {% for frames in page.metafields.custom.images_frame_animation.value %}
+        {% for frame in frames.images.value %}
+            frame_4.push('{{ frame | img_url: 'master' }}');
+        {% endfor %}
+    {% endfor %}
+
+    frame_4.sort(function(a, b) {
+        return a.localeCompare(b);
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        frame_4.forEach(arrLoop)
+
+        function arrLoop(item, index, arr) {
+            let imgElement = document.createElement('img');
+            imgElement.src = item;
+            document.querySelector('#hnz-ug-ultra-4 .animation_4 .imgsSection').appendChild(imgElement);
+        }
+    });
+</script>
+
+<section id="hnz-ug-ultra-4" data-toggle="product-highlights" data-name="Product Highlights" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    
+    <div class="animation_4 imagesScroll d-lg-block d-md-none d-sm-none">
+        <div class="rq">
+            <div class="imgsSection">
+
+            </div>
+            <div class="text-container">
+                <div class="container section-content h-100">
+                    <div class="row align-items-center h-100">
+                        <div class="col-4 position-relative">
+
+                            <div class="text">
+                                <h4 class="text-title">
+                                    {{ section.settings.title_1 }}
+                                </h4>
+                                <p class="text-body">
+                                    {{ section.settings.body_1  | newline_to_br}}
+                                </p>
+                            </div>
+
+                            <div class="text">
+                                <h4 class="text-title">
+                                    {{ section.settings.title_2 }}
+                                </h4>
+                                <p class="text-body">
+                                    {{ section.settings.body_2  | newline_to_br}}
+                                </p>
+                            </div>
+
+                            <div class="text">
+                                <h4 class="text-title">
+                                    {{ section.settings.title_3 }}
+                                </h4>
+                                <p class="text-body">
+                                    {{ section.settings.body_3  | newline_to_br}}
+                                </p>
+                            </div>
+
+                            <div class="text">
+                                <h4 class="text-title">
+                                    {{ section.settings.title_4 }}
+                                </h4>
+                                <p class="text-body">
+                                    {{ section.settings.body_4  | newline_to_br}}
+                                </p>
+                            </div>
+
+                            <div class="text">
+                                <h4 class="text-title">
+                                    {{ section.settings.title_5 }}
+                                </h4>
+                                <p class="text-body">
+                                    {{ section.settings.body_5  | newline_to_br}}
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-lg-none d-md-block d-sm-block">
+        <div class="owl-carousel">
+            <div class="item">
+                <div class="video-container">
+                    <video autoplay playsinline muted loop>
+                        <source src="{{ section.settings.video_1.sources[1].url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="container section-content">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="text-title">
+                                {{ section.settings.title_1 }}
+                            </h4>
+                            <p class="text-body">
+                                {{ section.settings.body_1 | newline_to_br}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="video-container">
+                    <video autoplay playsinline muted loop>
+                        <source src="{{ section.settings.video_2.sources[1].url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="container section-content">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="text-title">
+                                {{ section.settings.title_2 }}
+                            </h4>
+                            <p class="text-body">
+                                {{ section.settings.body_2 | newline_to_br}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="video-container">
+                    <video autoplay playsinline muted loop>
+                        <source src="{{ section.settings.video_3.sources[1].url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="container section-content">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="text-title">
+                                {{ section.settings.title_3 }}
+                            </h4>
+                            <p class="text-body">
+                                {{ section.settings.body_3 | newline_to_br}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="video-container">
+                    <video autoplay playsinline muted loop>
+                        <source src="{{ section.settings.video_4.sources[1].url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="container section-content">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="text-title">
+                                {{ section.settings.title_4 }}
+                            </h4>
+                            <p class="text-body">
+                                {{ section.settings.body_4 | newline_to_br}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="video-container">
+                    <video autoplay playsinline muted loop>
+                        <source src="{{ section.settings.video_5.sources[1].url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="container section-content">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="text-title">
+                                {{ section.settings.title_5 }}
+                            </h4>
+                            <p class="text-body">
+                                {{ section.settings.body_5 | newline_to_br}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% schema %}
+    {
+        "name": "UG Ultra Section 4",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title_1",
+                "label": "1. Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body_1",
+                "label": "1. Body"
+            },
+            {
+                "type": "video",
+                "id": "video_1",
+                "label": "1. Video (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "title_2",
+                "label": "2. Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body_2",
+                "label": "2. Body"
+            },
+            {
+                "type": "video",
+                "id": "video_2",
+                "label": "2. Video (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "title_3",
+                "label": "3. Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body_3",
+                "label": "3. Body"
+            },
+            {
+                "type": "video",
+                "id": "video_3",
+                "label": "3. Video (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "title_4",
+                "label": "4. Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body_4",
+                "label": "4. Body"
+            },
+            {
+                "type": "video",
+                "id": "video_4",
+                "label": "4. Video (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "title_5",
+                "label": "5. Title"
+            },
+            {
+                "type": "textarea",
+                "id": "body_5",
+                "label": "5. Body"
+            },
+            {
+                "type": "video",
+                "id": "video_5",
+                "label": "5. Video (Mobile)"
+            }
+        ]
+    }
+{% endschema %}

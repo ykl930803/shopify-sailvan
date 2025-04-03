@@ -1,0 +1,89 @@
+<section class="businessDays-addToCart">
+  <div class="container container-panel">
+    <div class="row">
+      <div class="holder col-xl-12">
+        
+        <div class="business-days">
+          <img class="me-1" src="{{ 'delivery-car.png' | asset_url }}" width="17" />
+          <span>Ships in 2 business days from the United States</span>
+          <div><small>Free shipping & 14-day trial & 2-year warranty</small></div>
+        </div>
+
+        <div class="price-addToCart">
+          {% if product.compare_at_price and  product.compare_at_price != product.price %}
+            <div class="money-wrapper">
+              <span class="original-price" id="original_price"><s>{{ product.compare_at_price | money }}</s></span>
+              <span class="discounted-price" id="discounted_price">{{ product.price | money }}</span>
+            </div>
+            {%else%}
+              <div class="money-wrapper"><span class="price">{{ product.price | money }}</span></div>
+          {% endif %}
+
+          {% if product.available %}
+            <div class="productForm-wrapper">
+              <form action="/cart/add" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                <button type="submit" class="product-addToCart btn">Add to cart</button>
+              </form>          
+              {% else %}
+                <p>Sold Out</p>
+            </div>
+        {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+    section.businessDays-addToCart {
+        border-top: 1px solid #DADADA;
+        padding: 20px 0;
+    }
+    .price-addToCart .productForm-wrapper {
+        border-top: 0;
+        margin: 0;
+        padding: 0;
+    }
+    .businessDays-addToCart .holder {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .price-addToCart {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+    }
+    .business-days span {
+        font-weight: 700;
+    }
+    .price-addToCart .money-wrapper {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .price-addToCart span.price, .price-addToCart span.discounted-price {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      section.businessDays-addToCart {
+        padding-top: 20px !important;
+        padding-bottom: 0 !important;
+      }
+      .businessDays-addToCart .holder {
+        flex-direction: column-reverse;
+      }
+      .price-addToCart {
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+      .business-days {
+        width: 100%;
+      }
+    }
+</style>

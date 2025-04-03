@@ -1,0 +1,97 @@
+<div class="app-banner">
+  <div class="features-list-wrapper">
+    <div class="features-list section-content">
+      {% for block in section.blocks %}
+      <div class="feature-item">
+        {{ block.settings.icon | image_url: height: '40'| image_tag:class:'feature-icon'  }}
+        <div>{{ block.settings.text }}</div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+<style>
+  .app-banner {
+    background-image:url('{{ section.settings.image_pc | image_url }}');
+    aspect-ratio: {{section.settings.image_pc.aspect_ratio}};
+    background-size:cover;
+    background-repeat:no-repeat;
+    position:relative;
+  }
+  .app-banner .features-list-wrapper {
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color:rgba(3, 3, 3, 0.69);
+    backdrop-filter: blur(6px);
+    border-top-left-radius: 15px;
+     border-top-right-radius: 15px;
+  }
+  .app-banner .features-list {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding-top:40px;
+    padding-bottom:40px;
+    margin:0 auto;
+  }
+  .app-banner .feature-item {
+    color: #ffffff;
+    text-align:center;
+  }
+  .app-banner .feature-icon {
+    margin-bottom: 10px;
+  }
+  @media screen and (max-width:769px) {
+    .app-banner {
+      background-image:url('{{ section.settings.image_m | image_url }}');
+      aspect-ratio: {{section.settings.image_m.aspect_ratio}};             
+    }
+     .app-banner .features-list-wrapper {
+       background-color:transparent;
+       top: 52%;
+       display: flex;
+     }
+    .app-banner .features-list {
+      flex-wrap:wrap;
+      padding: 0;
+    }
+    .app-banner .feature-item {
+      width: 50%;
+      padding: 20px;
+    }
+    .app-banner .feature-icon {
+      height: 30px;
+      width:auto;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "APP Banner",
+    "settings": [{
+      "type": "image_picker",
+      "id": "image_pc",
+      "label": "Banner PC"
+    },{
+      "type": "image_picker",
+      "id": "image_m",
+      "label": "Banner M "
+    }],
+    "blocks": [{
+      "type": "icon",
+      "name": "Feature",
+      "settings": [{
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Icon"
+      },{
+        "type": "text",
+        "id": "text",
+        "label": "Text"
+      }]
+    }],
+    "presets": [{"name": "App Bannner"}]
+  }
+{% endschema %}

@@ -1,0 +1,37 @@
+<section id="shopify-section--{{ section.id }}" class="blogLists-carousel">
+    <div class="container">
+        <div class="row">
+            {%- if section.settings.section_heading != blank -%}
+                <div class="section-title mb-2">
+                    {{ section.settings.section_headingTag }}{{ section.settings.section_heading }}
+                </div>
+
+                <div class="blogListing-holder position-relative">
+                    <div class="blog-listing d-flex mt-5">
+                        <div class="swiper-wrapper">
+                            {% for article in blogs.news.articles %}
+                                <div class="col-4 blog-item swiper-slide">
+                                    {%- if article.image -%}
+                                        <a href="{{ article.url }}">
+                                            <div class="article-featImage" style="background-image: url('{{ article.image | img_url: 'master'}}');"></div>
+                                        </a>
+                                    {% else %}
+                                        <p>No featured image available</p>
+                                    {% endif %}
+                                    <div class="published-date">{{ article.published_at | date: "%B %d, %Y" }}</div>
+                                    <h5 class="article-title">{{ article.title | truncate: 50 | link_to: article.url }}</h5>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="swiper-navigations">
+                        <div class="swiper-button-next navigation-button"></div>
+                        <div class="swiper-button-prev navigation-button"></div>
+                    </div>
+                </div>
+
+            {% endif %}
+        </div>
+    </div>
+</section>

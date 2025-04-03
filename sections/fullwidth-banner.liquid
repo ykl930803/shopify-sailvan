@@ -1,0 +1,211 @@
+{% render 'reusableComponent-fullWidth-banner' %}
+
+<style>
+    section.fullWidth-banner {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+
+        {%- if section.settings.banner_background != blank -%}
+            background-image: url('{{ section.settings.banner_background | img_url: "master" }}');
+            min-height: {{ section.settings.banner_height }}px;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        {% endif %}
+    }
+
+    {%- if section.settings.headingText_upperCase != blank -%}
+        section.fullWidth-banner .banner-headingText h2 {
+            text-transform: uppercase;
+        }
+    {% endif %}
+
+    section.fullWidth-banner .banner-headingText h2 {
+        color: {{ section.settings.bannerText_color }};
+        font-size: 40px;
+        margin-bottom: 35px;
+    }
+    section.fullWidth-banner .banner-paragraph {
+        max-width: 873px;
+    }
+    section.fullWidth-banner .banner-paragraph p {
+        color: {{ section.settings.bannerText_color }};
+    }
+    
+    .fullWidth-banner.middle {
+        align-items: center;
+        text-align: center;
+    }
+    .fullWidth-banner.middle .banner-paragraph {
+        display: table;
+        margin: auto;
+    }
+
+    .fullWidth-banner.top {
+        align-items: start;
+        text-align: center;
+    }
+    .fullWidth-banner.top .banner-paragraph {
+        display: table;
+        margin: auto;
+    }
+
+    .fullWidth-banner.bottom {
+        align-items: flex-end;
+        text-align: center;
+    }
+    .fullWidth-banner.bottom .banner-paragraph {
+        display: table;
+        margin: auto;
+    }
+    .fullWidth-banner.left {
+        align-items: center;
+        text-align: left;
+    }
+    .fullWidth-banner.left .banner-paragraph {
+        display: block;
+    }
+
+    @media (max-width: 767px) {
+
+        section.fullWidth-banner {
+            background-image: url('{{ section.settings.banner_backgroundMobile | img_url: "master" }}');
+            min-height: 507px;
+        }
+        section.fullWidth-banner .banner-headingText {
+            max-width: 350px;
+            display: table;
+            margin: auto;
+        }
+        section.fullWidth-banner .banner-headingText h2 {
+            font-size: 30px;
+        }
+    }
+</style>
+
+{% schema %}
+{
+    "name": "Full width baner",
+    "settings": [
+        {
+            "type": "number",
+            "id": "section_paddingTop",
+            "label": "Section Padding Top",
+            "default": 100
+        },
+        {
+            "type": "number",
+            "id": "section_paddingBottom",
+            "label": "Section Padding Bottom",
+            "default": 100
+        },
+        {
+            "type": "number",
+            "id": "banner_height",
+            "label": "Banner Height",
+            "default": 0
+        },
+        {
+            "type": "image_picker",
+            "id": "banner_background",
+            "label": "Banner Background"
+        },
+        {
+            "type": "image_picker",
+            "id": "banner_backgroundMobile",
+            "label": "Banner Background Mobile"
+        },
+        {
+            "type": "select",
+            "id": "banner_headingTag",
+            "label": "Banner Heading Tags",
+            "options": [
+                {
+                    "value": "<h1/>",
+                    "label": "H1"
+                },
+                {
+                    "value": "<h2/>",
+                    "label": "H2"
+                },
+                {
+                    "value": "<h3/>",
+                    "label": "H3"
+                },
+                {
+                    "value": "<h4/>",
+                    "label": "H4"
+                },
+                {
+                    "value": "<h5/>",
+                    "label": "H5"
+                }
+            ],
+            "default": "<h1/>"
+        },
+        {
+            "type": "text",
+            "id": "banner_headingText",
+            "label": "Banner Heading Text",
+            "default": "Banner Heading Text"
+        },
+        {
+            "type": "checkbox",
+            "id": "headingText_upperCase",
+            "label": "Set Heading Text to Uppercase?",
+            "default": false
+        },
+        {
+            "type": "richtext",
+            "id": "banner_paragraph",
+            "label": "Banner Paragraph"
+        },
+        {
+            "type": "color",
+            "id": "bannerText_color",
+            "label": "Banner Text Color",
+            "default": "#333333"
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+        },
+        {
+            "type": "select",
+            "id": "content_alignment",
+            "label": "Content alignment",
+            "options": [
+                {
+                "value": "top",
+                "label": "Top"
+                },
+                {
+                "value": "middle",
+                "label": "Middle"
+                },
+                {
+                "value": "bottom",
+                "label": "Bottom"
+                },
+                {
+                    "value": "left",
+                    "label": "Left"
+                }
+            ],
+            "default": "middle"
+        }
+
+    ],
+    "presets": [
+      {
+        "name": "Full width baner"
+      }
+    ]
+}
+{% endschema %}

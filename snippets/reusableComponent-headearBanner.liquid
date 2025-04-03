@@ -1,0 +1,33 @@
+<section id="shopify-section--{{ section.id }}" class="header-banner d-flex d-flex {{ section.settings.content_alignment }} mobile-{{ section.settings.content_alignment_mobile }} position-relative">
+    {%- if section.settings.show_bannerContent != blank -%}
+        <div class="container container-panel">
+            <div class="row">
+                <div class="col-12 banner-content">
+
+                    {%- if section.settings.banner_smallText != blank -%}
+                        <span class="text-white small-headText">{{ section.settings.banner_smallText }}</span>
+                    {% endif %}
+
+                    {%- if section.settings.banner_headingText != blank -%}
+                        <h1 class="text-white my-3">{{ section.settings.banner_headingText }}</h1>
+                    {% endif %}
+                    
+                    {%- if section.settings.banner_subtext != blank -%}
+                        <span class="text-white small-bottomText">{{ section.settings.banner_subtext }}</span>
+                    {% endif %}
+
+                    {%- if section.settings.button_link != blank -%}
+                        <a href="{{ section.settings.button_link }}" class="btn btn-light d-table mt-4 text-uppercase">{{ section.settings.button_text }}</a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {%- if section.settings.arrow_hasLink != blank -%}
+        <a href="{{ section.settings.arrow_hasLink }}" class="arrow-down d-flex align-items-center justify-content-center">
+            <img src="{{ 'arrow_down.svg' | asset_url }}" alt="Arrow Down" />
+        </a>
+    {% endif %}
+</section>

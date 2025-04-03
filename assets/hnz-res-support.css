@@ -1,0 +1,702 @@
+/* MOBILES ----------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 0px) {
+    #hnz-support-items {
+        min-height: auto;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: space-between;
+        gap: 5px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 14px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 30px 20px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 38px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 20px;
+    }
+    #hnz-support-items .category-icon {
+        width: 32px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 14px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    #hnz-support-items {
+        min-height: auto;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: space-between;
+        gap: 5px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 14px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 30px 20px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 38px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 20px;
+    }
+    #hnz-support-items .category-icon {
+        width: 32px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 14px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 390px) {
+    #hnz-support-items {
+        min-height: auto;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: space-between;
+        gap: 5px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 14px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 30px 20px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 40px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 20px;
+    }
+    #hnz-support-items .category-icon {
+        width: 34px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    #hnz-support-items {
+        min-height: auto;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: space-between;
+        gap: 5px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 14px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 30px 20px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 42px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 20px;
+    }
+    #hnz-support-items .category-icon {
+        width: 36px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 428px) {
+    #hnz-support-items {
+        min-height: auto;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: space-between;
+        gap: 5px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 30px 20px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 44px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 20px;
+    }
+    #hnz-support-items .category-icon {
+        width: 38px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    #hnz-support-items {
+        min-height: auto;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: space-between;
+        gap: 5px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 30px 20px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 46px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 20px;
+    }
+    #hnz-support-items .category-icon {
+        width: 40px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 100%;
+    }
+}
+
+/* TABLETS ----------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 768px) {
+    #hnz-support-items {
+        min-height: auto;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: center;
+        gap: 40px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 30px 20px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 46px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 20px;
+    }
+    #hnz-support-items .category-icon {
+        width: 40px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    #hnz-support-items {
+        min-height: auto;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: center;
+        gap: 40px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 30px 20px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 46px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 20px;
+    }
+    #hnz-support-items .category-icon {
+        width: 40px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #hnz-support-items {
+        min-height: auto;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: center;
+        gap: 40px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 30px 20px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 46px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 20px;
+    }
+    #hnz-support-items .category-icon {
+        width: 40px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 100%;
+    }
+}
+
+/* COMPUTERS --------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 1280px) {
+    #hnz-support-items {
+        min-height: 65vh;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: center;
+        gap: 60px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 35px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 48px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 25px;
+    }
+    #hnz-support-items .category-icon {
+        width: 40px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    #hnz-support-items {
+        min-height: 65vh;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: center;
+        gap: 60px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 35px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 48px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 25px;
+    }
+    #hnz-support-items .category-icon {
+        width: 40px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    #hnz-support-items {
+        min-height: 65vh;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: center;
+        gap: 60px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 40px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 50px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 30px;
+    }
+    #hnz-support-items .category-icon {
+        width: 42px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    #hnz-support-items {
+        min-height: 65vh;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: center;
+        gap: 70px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 40px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 52px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 30px;
+    }
+    #hnz-support-items .category-icon {
+        width: 44px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    #hnz-support-items {
+        min-height: 65vh;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: center;
+        gap: 70px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 40px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 52px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 30px;
+    }
+    #hnz-support-items .category-icon {
+        width: 44px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    #hnz-support-items {
+        min-height: 65vh;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: center;
+        gap: 80px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 40px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 54px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 30px;
+    }
+    #hnz-support-items .category-icon {
+        width: 46px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 16px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    #hnz-support-items {
+        min-height: 65vh;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: center;
+        gap: 80px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 40px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 60px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 20px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 30px;
+    }
+    #hnz-support-items .category-icon {
+        width: 50px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 35%;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    #hnz-support-items {
+        min-height: 40vh;
+    }
+    #hnz-support-items .nav-categories {
+        justify-content: center;
+        gap: 80px;
+        padding: 0 20px;
+    }
+    #hnz-support-items .nav-category {
+        font-size: 16px;
+        padding: 20px 0;
+    }
+    #hnz-support-items .app {
+        padding: 40px;
+    }
+    #hnz-support-items .app .app-logo {
+        width: 60px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .app .app-title {
+        font-size: 20px;
+    }
+    #hnz-support-items .app .app-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-support-items .category a {
+        padding: 30px;
+    }
+    #hnz-support-items .category-icon {
+        width: 50px;
+    }
+    #hnz-support-items .category-title {
+        font-size: 18px;
+    }
+    #hnz-support-items .mdl-container[data-id="support"] .mdl {
+        width: 35%;
+    }
+}

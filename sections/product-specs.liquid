@@ -1,0 +1,98 @@
+<section id="shopify-section--{{ section.id }}" class="customizedProduct-specs">
+    <div class="container">
+        <div class="row">
+            <div id="services-holder" class="services-outerWrapper">
+                <div class="services-wrapper">
+                    <div class="col-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    section.customizedProduct-specs {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    }
+</style>
+
+{% schema %}
+
+{
+        "name": "Specifications",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            },
+            {
+                "type": "select",
+                "id": "section_headingTag",
+                "label": "Section Heading Tags",
+                "options": [
+                    {
+                        "value": "<h1/>",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "<h2/>",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "<h3/>",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "<h4/>",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "<h5/>",
+                        "label": "H5"
+                    }
+                ],
+                "default": "<h1/>"
+            },
+            {
+                "type": "text",
+                "id": "section_heading",
+                "label": "Section Heading",
+                "default": "Section Heading"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Specificiation Item",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "spec_title",
+                        "label": "Spec Title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "spec_value",
+                        "label": "Spec value"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Specifications"
+          }
+        ]
+    }
+
+{% endschema %}

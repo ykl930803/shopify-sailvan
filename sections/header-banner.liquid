@@ -1,0 +1,251 @@
+{% render 'reusableComponent-headearBanner' %}
+{% if section.settings.banner_link != blank %}
+<script>
+  document.getElementById('shopify-section--{{ section.id }}').addEventListener('click', function() {
+    window.location.href = '{{section.settings.banner_link}}';
+  });
+</script>
+{% endif %}
+<style>
+  section.header-banner {
+    background-color: {{ section.settings.bg_color }};
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url('{{ section.settings.header_banner | img_url: "master"}}');
+    {% if section.settings.image_layout == 'zoom_in' %}
+      min-height: 958px;
+      {% else %}
+      aspect-ratio: {{section.settings.header_banner.aspect_ratio}};
+    {% endif %}
+    padding-top: {{ section.settings.section_paddingTop }}px;
+    padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    cursor: {% if section.settings.banner_link != blank %}pointer{% else %}unset{% endif %};
+    {% if section.settings.section_marginTop %}
+      margin-top: {{section.settings.section_marginTop}}px;
+    {% endif %}
+  }
+  section.header-banner .arrow-down {
+    width: 51px;
+    height: 51px;
+    background: #1D1D1D;
+    opacity: 1;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .header-banner.middle {
+    text-align: center;
+  }
+  .header-banner.middle .banner-content a.btn {
+    margin: auto;
+  }
+  section.header-banner.left {
+    align-items: center;
+  }
+  section.header-banner .arrow-down img {
+    z-index: 1;
+    animation: iconAnimate 1s ease-in-out infinite;
+  }
+  @keyframes iconAnimate {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
+
+  /* Responsive */
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    /*section.header-banner {
+      min-height: 655px;
+    }*/
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    /*section.header-banner {
+      min-height: 550px;
+    }*/
+  }
+
+  @media (max-width: 767px) {
+    section.header-banner {
+      min-height: 600px;
+      align-items: flex-end !important;
+      padding-bottom: 60px !important;
+    }
+
+    section.header-banner.mobile-top {
+      align-items: flex-start !important;
+    }
+
+    section.header-banner.mobile-vertically_center {
+      align-items: center !important;
+    }
+
+    section.header-banner .banner-content h1 {
+      font-weight: 600;
+      font-size: 31px;
+      margin: 10px 0 !important;
+    }
+
+    section.header-banner .arrow-down {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    section.header-banner {
+      background-image: url('{{ section.settings.headerBanner_mobile | img_url: "master"}}');
+      /* min-height: 775px; */
+      aspect-ratio: {{ section.settings.headerBanner_mobile.aspect_ratio}};
+      background-size: 100%;
+      width: 100%;
+    }
+  }
+</style>
+
+
+{% schema %}
+{
+    "name": "Header Banner",
+    "settings": [
+        {
+            "type": "number",
+            "id": "section_paddingTop",
+            "label": "Section Padding Top",
+            "default": 100
+        },
+        {
+            "type": "number",
+            "id": "section_paddingBottom",
+            "label": "Section Padding Bottom",
+            "default": 100
+        },
+        {
+            "type": "number",
+            "id": "section_marginTop",
+            "label": "Section Margin Top",
+            "default": 0
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "image_picker",
+            "id": "header_banner",
+            "label": "Header Banner"
+        },
+        {
+            "type": "image_picker",
+            "id": "headerBanner_mobile",
+            "label": "Header Banner Mobile"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_bannerContent",
+          "label": "Show Banner Content and Button?",
+          "default": true
+        },
+        {
+            "type": "select",
+            "id": "content_alignment",
+            "label": "Banner Content Alignment - Desktop",
+            "options": [
+                {
+                "value": "middle",
+                "label": "Middle"
+                },
+                {
+                    "value": "left",
+                    "label": "Left"
+                }
+            ],
+            "default": "middle"
+        },
+        {
+            "type": "select",
+            "id": "content_alignment_mobile",
+            "label": "Banner Content Alignment - Mobile",
+            "options": [
+                {
+                "value": "top",
+                "label": "Top"
+                },
+                {
+                    "value": "vertically_center",
+                    "label": "Vertically Center"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "text",
+            "id": "banner_smallText",
+            "label": "Banner Small Text",
+            "default": "Banner Small Text Paragraph Here."
+        },
+        {
+            "type": "text",
+            "id": "banner_headingText",
+            "label": "Banner Heading Text",
+            "default": "Banner Heading Text Here."
+        },
+        {
+            "type": "text",
+            "id": "banner_subtext",
+            "label": "Banner Subtext",
+            "default": "Banner Sub Text"
+        },
+        {
+            "type": "color",
+            "id": "BannerHeading_color",
+            "label": "Banner Heading Color",
+            "default": "#000000"
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+        },
+        {
+            "type": "url",
+            "id": "arrow_hasLink",
+            "label": "Arrow Hash Link"
+        },
+        {
+            "type": "url",
+            "id": "banner_link",
+            "label": "Banner Link"
+        },
+        {
+          "type": "select",
+          "id": "image_layout",
+          "label": "Image Layout",
+          "options": [
+            {
+              "label": "Zoom in",
+              "value": "zoom_in"
+            },
+            {
+              "label": "cover",
+              "value": "cover"
+            }
+          ],
+          "default": "zoom_in"
+        }
+    ],
+    "presets": [
+      {
+        "name": "Header Banner"
+      }
+    ]
+}
+{% endschema %}

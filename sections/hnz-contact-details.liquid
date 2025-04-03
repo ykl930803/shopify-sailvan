@@ -1,0 +1,93 @@
+<section id="hnz-contact-details">
+    <div class="container section-content">
+        <div class="row contacts-row">
+
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="contacts">
+                    <h4 class="contact-title">
+                        Customer Service Contact
+                    </h4>
+                    <div class="contact-item">
+                        <p>Mobile</p>
+                        <span>
+                            {{ section.settings.mobile_no }}
+                        </span>
+                    </div>
+                    <div class="contact-item">
+                        <p>Email</p>
+                        <span>
+                            {{ section.settings.email }}
+                        </span>
+                    </div>
+                    <div class="contact-item">
+                        <p>Business Inquiries Email</p>
+                        <span>
+                            {{ section.settings.business_email }}
+                        </span>
+                    </div>
+                    <div class="contact-item">
+                        <p>Online Service Hours</p>
+                        <span>
+                            {{ section.settings.service_hours }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="contacts">
+                    <h4 class="contact-title">
+                        Business Contact
+                    </h4>
+                    <div class="contact-item">
+                        <p>Mobile</p>
+                        <span>
+                            {{ section.settings.business_mobile }}
+                        </span>
+                    </div>
+                    <div class="contact-image">
+                        <img src="{{ section.settings.image | img_url: 'master' }}">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Contact Details",
+        "settings": [
+            {
+                "type": "text",
+                "id": "mobile_no",
+                "label": "Mobile No."
+            },
+            {
+                "type": "text",
+                "id": "email",
+                "label": "Email"
+            },
+            {
+                "type": "text",
+                "id": "business_email",
+                "label": "Business Email"
+            },
+            {
+                "type": "text",
+                "id": "service_hours",
+                "label": "Service Hours"
+            },
+            {
+                "type": "text",
+                "id": "business_mobile",
+                "label": "Business Mobile No."
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ]
+    }
+{% endschema %}

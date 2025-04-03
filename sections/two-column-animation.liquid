@@ -1,0 +1,342 @@
+{% render 'reusableComponent-twoColumnAnimation' %}
+
+<style>
+    section.twoColumn-animation {
+        padding-top: {{ section.settings.section_paddingTop }}px;
+        padding-bottom: {{ section.settings.section_paddingBottom }}px;
+    }
+    section.twoColumn-animation .container {
+        margin-top: 130px;
+    }
+    section.twoColumn-animation .container .title {
+        position: relative;
+        z-index: 2;
+    }
+    section.twoColumn-animation .container .title span {
+        font-size: 48px;
+        font-weight: 700;
+        color: #333;
+        line-height: 1.2em;
+    }
+    section.twoColumn-animation .container .title span p {
+        line-height: 28px;
+        font-size: 18px;
+        margin-top: 35px;
+        margin-bottom: 0;
+    }
+    section.twoColumn-animation .container .title span:not(:first-child) {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    section.twoColumn-animation .container .twoColumn-desktopAnimation {
+        display: flex;
+        flex-direction: row;
+    }
+    section.twoColumn-animation .container .images-wrapper {
+        padding-right: 100px;
+    }
+    section.twoColumn-animation .container .images-wrapper .images {
+        position: relative;
+    }
+    section.twoColumn-animation .container .images-wrapper .images div:not(:first-child) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+    section.twoColumn-animation .container .images-wrapper .images div img {
+        width: 100%;
+        border-radius: 20px;
+        object-fit: cover;
+        min-height: 570px;
+        height: 1px;
+    }
+    section.twoColumn-animation .container .twoColumn-mobileAnimation {
+        display: none;
+    }
+    
+
+    /* Responsive */
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        section.twoColumn-animation .container {
+            margin-top: 40px;
+        }
+        section.twoColumn-animation .container .right-headingText .title span {
+            font-size: 40px;
+        }
+        section.twoColumn-animation .container .images-wrapper {
+            padding-right: 50px;
+        }
+    }
+    
+    @media (max-width: 991px) {
+        
+        #shopify-section-{{ section.id }} .pin-spacer {
+            padding: unset !important;
+            height: unset !important;
+        }
+
+        section.twoColumn-animation {
+            padding: 35px 0px 0px;
+            position: relative !important;
+            top: unset !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            max-height: unset !important;
+            height: unset !important;
+            left: unset !important;
+            margin: unset !important;
+            transform: none !important;
+        }
+        section.twoColumn-animation .twoColumn-desktopAnimation {
+            flex-direction: column !important;
+            display: none !important;
+        }
+        section.twoColumn-animation .container {
+            margin-top: 0;
+        }
+        section.twoColumn-animation .container .images-wrapper {
+            padding-right: 0;
+        }
+        section.twoColumn-animation .container .title span {
+            font-size: 40px;
+        }
+        section.twoColumn-animation .container .title span p {
+            margin-top: 10px;
+        }
+        section.twoColumn-animation .container .right-headingText {
+            margin-top: 10px;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation {
+            display: block !important;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            padding: 0 12px;
+            height: auto;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .twColumn-item {
+            padding-bottom: 110px;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .twColumn-item .twoColumn-image img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            object-position: center center;
+            border-radius: 20px;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .twColumn-item .right-headingText {
+            margin-top: 30px !important;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .swiper-navigations {
+            position: relative;
+            display: flex;
+            max-width: 135px;
+            margin: -35px auto 0;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .swiper-navigations .swiper-button-next:after,
+        section.twoColumn-animation .twoColumn-mobileAnimation .swiper-navigations .swiper-button-prev:after {
+            content: none;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .navigation-button {
+            padding: 20px;
+            color: #fff;
+            background-color: #1a1a1a;
+            font-size: 16px;
+            border-radius: 27px;
+            cursor: pointer;
+            border: 1px solid #1a1a1a;
+            width: 45px;
+            height: 45px;
+            align-items: center;
+            justify-content: center;
+            transition: 0.4s ease;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .navigation-button:focus {
+            outline: none;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .navigation-button img {
+            filter: invert(1);
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .navigation-button.swiper-button-disabled {
+            border: 1px solid #DADADA;
+            background-color: transparent;
+            opacity: 1 !important;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .navigation-button.swiper-button-disabled img {
+            filter: brightness(1);
+        }
+    }
+
+    @media (max-width: 767px) {
+        section.twoColumn-animation {
+            padding-top: 30px !important;
+            padding-bottom: 30px !important;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .twColumn-item .twoColumn-image img {
+            border-radius: 7px;
+            height: 310px;
+        }
+        section.twoColumn-animation .container .title span {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+        section.twoColumn-animation .container .images-wrapper .images div img {
+            min-height: 400px;
+        }
+        section.twoColumn-animation .container .right-headingText {
+            margin-top: 30px;
+        }
+        section.twoColumn-animation .swiper-navigations .navigation-button {
+            opacity: 1 !important;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .right-headingText h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        section.twoColumn-animation .container .images-wrapper .images div img {
+            min-height: 310px;
+        }
+        section.twoColumn-animation .container .title span p {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 420px) {
+        section.twoColumn-animation .twoColumn-mobileAnimation .twColumn-item {
+            padding-bottom: 100px;
+        }
+        section.twoColumn-animation .twoColumn-mobileAnimation .twColumn-item .twoColumn-image img {
+            height: 253px;
+        }
+    }
+</style>
+
+{% javascript %}
+
+    const sections = [
+        { txt: ".wrap span.one", img: ".wrap div.one" },
+        { txt: ".wrap span.two", img: ".wrap div.two" },
+        { txt: ".wrap span.three", img: ".wrap div.three" },
+    ];
+
+    var scrollProgress = 0;
+
+    gsap.timeline({
+        defaults: {
+            duration: 1,
+            ease: "power2.inOut",
+        },
+        scrollTrigger: {
+            trigger: ".wrap",
+            scrub: 0.5,
+            onUpdate: (self) => {
+                scrollProgress = self.progress;
+            },
+            start: "top top+=1",
+            end: "+=1800",
+            pin: ".wrap",
+            snap: false,
+            // Add a condition to check if .vanpower-header has class 'sticky'
+            //markers: true,
+            onEnter: () => {
+                if (document.querySelector('.vanpower-header').classList.contains('sticky')) {
+                    // Continue with the animation only if .vanpower-header has class 'sticky'
+                    gsap.timeline().progress(scrollProgress);
+                }
+            },
+        },
+    })
+        .to(sections[0].txt, { autoAlpha: 0, delay: 0.2 }, ">")
+        .to(sections[0].img, { autoAlpha: 0, y: -20 }, "<")
+        .from(sections[1].txt, { autoAlpha: 0 })
+        .from(sections[1].img, { autoAlpha: 0, y: 20 }, "<")
+        .to(sections[1].txt, { autoAlpha: 0, delay: 0.2 }, ">")
+        .to(sections[1].img, { autoAlpha: 0, y: -20 }, "<")
+        .from(sections[2].txt, { autoAlpha: 0 })
+        .from(sections[2].img, { autoAlpha: 0, y: 20 }, "<")
+        .to(sections[2].txt, { autoAlpha: 1, delay: 0.2 }, ">")
+        .to(sections[2].img, { autoAlpha: 1, y: -20 }, "<");
+
+    // Set up a scroll listener for manual control
+    document.addEventListener("wheel", (event) => {
+        // Check if the user is scrolling down and if scrollProgress is less than 1
+        if (event.deltaY > 0 && scrollProgress < 1) {
+            // Increment the scrollProgress to simulate 1x scroll
+            scrollProgress += 1; // You can adjust the increment value
+            gsap.timeline().progress(scrollProgress);
+        }
+    });
+
+
+    //the mobile version
+    // swiper js
+    const swiper = new Swiper('.twoColumn-mobileAnimation', {
+        direction: 'horizontal',
+        loop: false,
+        speed: 1000,
+        spaceBetween: 20,
+        autoplay: false,
+        observer: true,
+        observeParents: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }
+    });
+
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Two Column Animation",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Item",
+                "limit": 3,
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "right_headingText",
+                        "label": "Right Heading Text",
+                        "default": "Right Heading Text"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "right_paragraph",
+                        "label": "Right Paragraph"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "left_image",
+                        "label": "Left Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Two Column Animation"
+          }
+        ]
+    }
+{% endschema %}

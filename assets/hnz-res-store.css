@@ -1,0 +1,1953 @@
+/* MOBILES ----------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 0px) {
+    #hnz-find-store {
+        --topBottom-padding: 0;
+        --loc-width: 100%;
+    
+        height: auto;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 45vh;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 360px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 12px !important;
+    }
+    #hnz-find-store .locations {
+        position: unset;
+        transform: unset;
+        border-radius: 0;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 0;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 20px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 14px!important;
+        min-width: 110px!important;
+        padding: 10px!important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: unset;
+    }
+    #hnz-find-store .types .type {
+        padding: 12px 26px;
+        min-width: auto;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 900px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 15px;
+        --bs-gutter-y: 15px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 130px;
+        padding: 5px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 14px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 10px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 30px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 20px;
+        justify-content: space-between;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 18px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 14px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 48px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 12px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    #hnz-find-store {
+        --topBottom-padding: 0;
+        --loc-width: 100%;
+    
+        height: auto;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 45vh;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 360px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 12px !important;
+    }
+    #hnz-find-store .locations {
+        position: unset;
+        transform: unset;
+        border-radius: 0;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 0;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 20px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 14px!important;
+        min-width: 110px!important;
+        padding: 10px!important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: unset;
+    }
+    #hnz-find-store .types .type {
+        padding: 12px 26px;
+        min-width: auto;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 900px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 15px;
+        --bs-gutter-y: 15px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 130px;
+        padding: 5px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 14px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 10px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 30px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 20px;
+        justify-content: space-between;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 18px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 14px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 48px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 12px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 390px) {
+    #hnz-find-store {
+        --topBottom-padding: 0;
+        --loc-width: 100%;
+    
+        height: auto;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 45vh;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 360px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 12px !important;
+    }
+    #hnz-find-store .locations {
+        position: unset;
+        transform: unset;
+        border-radius: 0;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 0;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 20px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 14px!important;
+        min-width: 110px!important;
+        padding: 10px!important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: unset;
+    }
+    #hnz-find-store .types .type {
+        padding: 12px 26px;
+        min-width: auto;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 900px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 15px;
+        --bs-gutter-y: 15px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 130px;
+        padding: 5px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 14px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 10px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 30px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 20px;
+        justify-content: space-between;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 18px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 14px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 48px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 12px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    #hnz-find-store {
+        --topBottom-padding: 0;
+        --loc-width: 100%;
+    
+        height: auto;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 45vh;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 360px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 12px !important;
+    }
+    #hnz-find-store .locations {
+        position: unset;
+        transform: unset;
+        border-radius: 0;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 0;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 20px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 14px!important;
+        min-width: 110px!important;
+        padding: 10px!important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: unset;
+    }
+    #hnz-find-store .types .type {
+        padding: 12px 26px;
+        min-width: auto;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 900px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 15px;
+        --bs-gutter-y: 15px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 130px;
+        padding: 5px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 14px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 10px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 30px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 20px;
+        justify-content: space-between;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 20px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 14px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 48px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 12px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 428px) {
+    #hnz-find-store {
+        --topBottom-padding: 0;
+        --loc-width: 100%;
+    
+        height: auto;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 45vh;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 360px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 12px !important;
+    }
+    #hnz-find-store .locations {
+        position: unset;
+        transform: unset;
+        border-radius: 0;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 0;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 20px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 14px!important;
+        min-width: 110px!important;
+        padding: 10px!important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: unset;
+    }
+    #hnz-find-store .types .type {
+        padding: 12px 30px;
+        min-width: auto;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 900px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 20px;
+        --bs-gutter-y: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 130px;
+        padding: 5px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 14px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 10px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 30px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 20px;
+        justify-content: space-between;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 20px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 14px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 48px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 12px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    #hnz-find-store {
+        --topBottom-padding: 0;
+        --loc-width: 100%;
+    
+        height: auto;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 45vh;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 360px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 12px !important;
+    }
+    #hnz-find-store .locations {
+        position: unset;
+        transform: unset;
+        border-radius: 0;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 0;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 20px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 14px!important;
+        min-width: 110px!important;
+        padding: 10px!important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: unset;
+    }
+    #hnz-find-store .types .type {
+        padding: 12px 20px;
+        min-width: auto;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 900px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 20px;
+        --bs-gutter-y: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 130px;
+        padding: 5px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 14px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 10px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 34px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 30px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 20px;
+        justify-content: space-between;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 24px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 14px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 52px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 12px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 18px;
+    }
+}
+
+/* TABLETS ----------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 768px) {
+    #hnz-find-store {
+        --topBottom-padding: 0;
+        --loc-width: 100%;
+    
+        height: auto;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 45vh;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 360px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 12px !important;
+    }
+    #hnz-find-store .locations {
+        position: unset;
+        transform: unset;
+        border-radius: 0;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 0;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 20px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 14px!important;
+        min-width: 110px!important;
+        padding: 10px!important;
+    }
+    #hnz-find-store .types {
+        text-align: center;
+        position: unset;
+    }
+    #hnz-find-store .types .type {
+        padding: 12px 20px;
+        min-width: auto;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 100%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 900px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 20px;
+        --bs-gutter-y: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 130px;
+        padding: 5px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 14px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 10px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 34px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 30px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 20px;
+        justify-content: space-between;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 24px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 14px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 52px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 12px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 18px;
+    }
+}
+
+/* COMPUTERS --------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 1280px) {
+    #hnz-find-store {
+        --topBottom-padding: 60px;
+        --loc-width: 350px;
+        --loc-posX: 60px;
+        --add-padding: 30px;
+    
+        height: 100vh;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 100%;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 360px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 12px !important;
+    }
+    #hnz-find-store .locations {
+        position: absolute;
+        transform: translateY(-50%);
+        border-radius: 5px;
+        z-index: 500;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 20px;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 15px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 12px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 12px!important;
+        min-width: 90px!important;
+        padding: 8px!important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: absolute;
+        z-index: 500;
+    }
+    #hnz-find-store .types .type {
+        padding: 16px;
+        min-width: 150px;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 75%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 80%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 690px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 20px;
+        --bs-gutter-y: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 190px;
+        padding: 10px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 16px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 12px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 50px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 30px;
+        justify-content: flex-start;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 26px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 56px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 30px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    #hnz-find-store {
+        --topBottom-padding: 60px;
+        --loc-width: 350px;
+        --loc-posX: 60px;
+        --add-padding: 30px;
+    
+        height: 100vh;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 100%;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 360px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 12px !important;
+    }
+    #hnz-find-store .locations {
+        position: absolute;
+        transform: translateY(-50%);
+        border-radius: 5px;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 20px;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 15px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 12px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 12px!important;
+        min-width: 90px!important;
+        padding: 8px!important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: absolute;
+    }
+    #hnz-find-store .types .type {
+        padding: 16px;
+        min-width: 150px;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 75%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 80%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 690px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 20px;
+        --bs-gutter-y: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 190px;
+        padding: 10px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 16px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 12px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 50px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 30px;
+        justify-content: flex-start;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 26px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 56px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 30px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    #hnz-find-store {
+        --topBottom-padding: 80px;
+        --loc-width: 360px;
+        --loc-posX: 60px;
+        --add-padding: 30px;
+    
+        height: 100vh;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 100%;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 400px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 14px !important;
+    }
+    #hnz-find-store .locations {
+        position: absolute;
+        transform: translateY(-50%);
+        border-radius: 5px;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 20px;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 15px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 12px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 12px!important;
+        min-width: 90px!important;
+        padding: 8px!important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: absolute;
+    }
+    #hnz-find-store .types .type {
+        padding: 16px;
+        min-width: 150px;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 75%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 75%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 690px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 20px;
+        --bs-gutter-y: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 190px;
+        padding: 10px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 16px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 12px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 44px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 50px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 30px;
+        justify-content: flex-start;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 28px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 60px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 30px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 22px;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    #hnz-find-store {
+        --topBottom-padding: 80px;
+        --loc-width: 380px;
+        --loc-posX: 60px;
+        --add-padding: 30px;
+    
+        height: 100vh;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 100%;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 400px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 14px !important;
+    }
+    #hnz-find-store .locations {
+        position: absolute;
+        transform: translateY(-50%);
+        border-radius: 5px;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 20px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 14px !important;
+        min-width: 110px !important;
+        padding: 10px !important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: absolute;
+    }
+    #hnz-find-store .types .type {
+        padding: 16px;
+        min-width: 150px;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 75%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 70%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 690px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 20px;
+        --bs-gutter-y: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 190px;
+        padding: 10px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 16px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 12px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 46px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 50px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 30px;
+        justify-content: flex-start;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 28px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 60px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 30px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 22px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    #hnz-find-store {
+        --topBottom-padding: 80px;
+        --loc-width: 380px;
+        --loc-posX: 80px;
+        --add-padding: 30px;
+    
+        height: 100vh;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 100%;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 15px 15px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 400px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 14px !important;
+    }
+    #hnz-find-store .locations {
+        position: absolute;
+        transform: translateY(-50%);
+        border-radius: 5px;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px 10px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 16px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 20px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 14px !important;
+        min-width: 110px !important;
+        padding: 10px !important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: absolute;
+    }
+    #hnz-find-store .types .type {
+        padding: 16px;
+        min-width: 150px;
+        font-size: 14px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 75%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 70%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 690px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 20px;
+        --bs-gutter-y: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 190px;
+        padding: 10px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 18px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 14px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 50px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 30px;
+        justify-content: flex-start;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 30px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 60px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 30px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 22px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    #hnz-find-store {
+        --topBottom-padding: 80px;
+        --loc-width: 380px;
+        --loc-posX: 180px;
+        --add-padding: 50px;
+    
+        height: 100vh;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 100%;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 20px 20px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 400px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 14px !important;
+    }
+    #hnz-find-store .locations {
+        position: absolute;
+        transform: translateY(-50%);
+        border-radius: 5px;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 18px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 20px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 14px !important;
+        min-width: 110px !important;
+        padding: 10px !important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: absolute;
+    }
+    #hnz-find-store .types .type {
+        padding: 16px;
+        min-width: 160px;
+        font-size: 16px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 60%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 60%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 690px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 20px;
+        --bs-gutter-y: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 190px;
+        padding: 10px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 18px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 14px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 54px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 18px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 50px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 30px;
+        justify-content: flex-start;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 32px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 70px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 30px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    #hnz-find-store {
+        --topBottom-padding: 80px;
+        --loc-width: 380px;
+        --loc-posX: 180px;
+        --add-padding: 50px;
+    
+        height: 80vh;
+        padding: var(--topBottom-padding) 0 !important;
+    }
+    #hnz-find-store #map {
+        height: 100%;
+    }
+    #hnz-find-store #map .gm-style-iw-d {
+        padding: 0 20px 20px;
+    }
+    #hnz-find-store #map .gm-style-iw.gm-style-iw-c {
+        max-width: 400px !important;
+    }
+    #hnz-find-store #map .store-name {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store #map .store-address {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #hnz-find-store #map .btn {
+        font-size: 14px !important;
+    }
+    #hnz-find-store .locations {
+        position: absolute;
+        transform: translateY(-50%);
+        border-radius: 5px;
+    }
+    #hnz-find-store .location-header {
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .location-header .title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    #hnz-find-store .location-header .search-box {
+        padding: 15px;
+        gap: 10px;
+    }
+    #hnz-find-store .location-header .search-box i {
+        width: 30px;
+        font-size: 18px;
+    }
+    #hnz-find-store .location-header .search-box input {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location {
+        padding: 20px 0;
+    }
+    #hnz-find-store .location-body .location-name {
+        font-size: 16px;
+    }
+    #hnz-find-store .location-body .location-details {
+        font-size: 14px;
+    }
+    #hnz-find-store .location-body .location-btn {
+        font-size: 14px !important;
+        min-width: 110px !important;
+        padding: 10px !important;
+    }
+    #hnz-find-store .types {
+        text-align: start;
+        position: absolute;
+    }
+    #hnz-find-store .types .type {
+        padding: 16px;
+        min-width: 160px;
+        font-size: 16px;
+    }
+    #hnz-find-store .mdl-container[data-id="store"] .mdl {
+        width: 60%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl {
+        width: 45%;
+    }
+    #hnz-find-store .mdl-container[data-id="calendly"] .mdl .calendly-inline-widget {
+        height: 690px;
+    }
+    #hnz-find-store .row-models {
+        --bs-gutter-x: 20px;
+        --bs-gutter-y: 20px;
+        margin-bottom: 30px;
+    }
+    #hnz-find-store .model i {
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+    }
+    #hnz-find-store .model .model-image {
+        height: 190px;
+        padding: 10px;
+    }
+    #hnz-find-store .model .model-details {
+        padding: 15px 10px;
+    }
+    #hnz-find-store .model .model-title {
+        font-size: 18px;
+    }
+    #hnz-find-store .model .model-description {
+        font-size: 14px;
+    }
+
+    #hnz-video-highlights .title {
+        font-size: 54px;
+        margin-bottom: 15px;
+    }
+    #hnz-video-highlights .body {
+        font-size: 18px;
+    }
+    #hnz-video-highlights .owl-carousel {
+        margin-top: 50px;
+    }
+    #hnz-video-highlights .video-container .video-details {
+        padding: 30px;
+        justify-content: flex-start;
+    }
+    #hnz-video-highlights .video-container .video-title {
+        font-size: 32px;
+    }
+    #hnz-video-highlights .video-container .video-link {
+        font-size: 16px;
+    }
+    #hnz-video-highlights .video-container .video-play {
+        width: 70px !important;
+    }
+    #hnz-video-highlights .float-nav button {
+        --btn-pos: 30px;
+    }
+    #hnz-video-highlights .float-nav button {
+        font-size: 24px;
+    }
+}

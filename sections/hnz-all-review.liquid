@@ -1,0 +1,51 @@
+<section id="hnz-ug-ultra-14">
+    <div class="container section-content">
+        <div class="row">
+
+            <div class="col-12 text-center">
+                <h2 class="title" style="font-weight: 700;">
+                    {{ section.settings.title }}
+                </h2>
+            </div>
+
+            <div class="col-12">
+                <!-- Start of Judge.me code -->
+                <div id='judgeme_all_reviews_page' class='page clearfix jdgm-reviews-page'>
+                    <div class='jdgm-all-reviews-page__wrapper'>
+                        <h1 class='jdgm-all-reviews-page__title'>
+                            What Our Clients Say
+                        </h1>
+                        <article class='jdgm-widget jdgm-all-reviews-widget'>
+                            <style class='jdgm-temp-hiding-style'>.jdgm-all-reviews-widget{ display: none }</style>
+                                {{ shop.metafields.judgeme.all_reviews_header }}
+                            <div class='jdgm-all-reviews__body'>
+                                {% assign prefix = 'all_reviews_' %}
+                                {% for count in (0..65535) %}
+                                    {% assign metafield_key = prefix | append: count %}
+                                    {% assign current_metafield = shop.metafields.judgeme[metafield_key] %}
+                                    {% unless current_metafield %} {% break %} {% endunless %}
+                                    {{ current_metafield }}
+                                {% endfor %}
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <!-- End of Judge.me code -->
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "All Review",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            }
+        ]
+    }
+{% endschema %}

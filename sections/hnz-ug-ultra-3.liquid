@@ -1,0 +1,32 @@
+<section id="hnz-ug-ultra-3" data-toggle="product-highlights" data-name="Product Highlights" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content h-100">
+        <div class="row align-items-center h-100">
+
+            <div class="col-12 text-center">
+                <h2 class="title">
+                    {{ section.settings.title }}
+                </h2>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "UG Ultra Section 3",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,39 @@
+<section id="shopify-section--{{ section.id }}" class="fullWidth-verticalBanner">
+    <div class="fullVertical-banner swiper-container">
+        <div class="slider swiper-wrapper">
+            {%- for block in section.blocks -%}
+                <div class="fullBanner-item swiper-slide">
+                    <div class="slide-inner">
+                        <img src="{{ block.settings.slider_image | img_url: 'master' }}" alt="{{ block.settings.banner_title }}">
+                        <div class="banner-content">
+                            <div class="bannerContent-inner">
+                                {%- if block.settings.banner_title != blank -%}
+                                    <div class="banner-headingText">
+                                        {{ block.settings.banner_headingTags }}{{ block.settings.banner_title }}
+                                    </div>
+                                    {% else %}
+                                    <div class="banner-headingText">
+                                        {{ block.settings.banner_headingTags }}Lorem Ipsum Dollor.
+                                    </div>
+                                {% endif %} 
+
+                                {%- if block.settings.banner_text != blank -%}
+                                    <div class="banner-texts">
+                                        {{ block.settings.banner_text }}
+                                    </div>
+                                    {% else %}
+                                    <div class="banner-texts">
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {%- endfor -%}
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+    </div>
+</section>

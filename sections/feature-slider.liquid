@@ -1,0 +1,571 @@
+{% render 'reusableComponent-feture-slider' %}
+
+<style>
+  
+section.feature-slider {
+  background-color: {{ section.settings.bg_color }};
+  padding-top: {{ section.settings.section_paddingTop }}px;
+  padding-bottom: {{ section.settings.section_paddingBottom }}px;
+  height: 100vh;
+  min-height: 1050px;
+}
+section.feature-slider::after {
+  content: "";
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 812px;
+  height: 770px;
+  position: absolute;
+  z-index: 0;
+  bottom: 55px;
+  transform: translate(-50%, 0);
+  left: 50%;
+  {% if section.settings.show_background_image %} background-image: url('{{ section.settings.background_image | img_url: "master"}}');{% endif %}
+}
+section.feature-slider .container {
+  height: 100%;
+  box-sizing: border-box;
+}
+section.feature-slider .container-data {
+  position: relative;
+  height: 100%;
+  z-index: 1;
+}
+section.feature-slider .container-data .data {
+  display: none;
+}
+section.feature-slider .container-data .slide-wrapper-inner {
+  position: absolute;
+  top: 0;
+  display: inline-block;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+section.feature-slider .container-data .slide-wrapper-inner.slide-animation {
+  opacity: 1;
+  transform: translateX(0);
+}
+section.feature-slider .container-data .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: all 0.5s ease;
+}
+section.feature-slider .container-data .slide .description {
+  font-size: 18px;
+  margin: 15px 0 25px;
+  max-width: 500px;
+}
+section.feature-slider .container-data .slide img {
+  position: relative;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1024px;
+  height: auto;
+  margin-top: 40px;
+}
+section.feature-slider .container-data .text-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 70px;
+  transition: opacity 0.4s ease;
+}
+section.feature-slider .container-data .text-data .text span {
+  display: block;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid black;
+  text-transform: capitalize;
+}
+section.feature-slider .container-data .text-data .textData-label {
+  text-transform: uppercase;
+  color: #999999;
+  font-size: 15px;
+}
+section.feature-slider .container-data .text-data .data-value, section.feature-slider .container-data .text-data .data-value p {
+  font-weight: 500;
+  font-size: 18px;
+}
+section.feature-slider .container-data .text-data.mobile {
+  display: none;
+}
+section.feature-slider .container-data .floating-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  gap: 25px;
+}
+section.feature-slider .container-data .floating-btn button {
+  padding: 20px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 27px;
+  cursor: pointer;
+  border: 1px solid #DADADA;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s ease;
+}
+section.feature-slider .container-data .floating-btn button.next {
+  background-color: #1A1A1A !important;
+}
+section.feature-slider .container-data .floating-btn button.next img {
+  filter: invert(1);
+}
+section.feature-slider .container-data div.floating-btn button.next:hover, section.feature-slider .container-data div.floating-btn button.prev:hover {
+  background-color: #DB1629 !important;
+}
+section.feature-slider .container-data div.floating-btn button.next:hover img, section.feature-slider .container-data div.floating-btn button.prev:hover img {
+  filter: invert(1);
+}
+section.feature-slider .container-data button.prev.active, section.feature-slider .container-data button.next.active {
+  background-color: #1a1a1a !important;
+}
+section.feature-slider .container-data button.prev.active img, section.feature-slider .container-data button.next.active img {
+  filter: invert(1);
+}
+.featProduct-content .mobile-button {
+  display: none !important;
+}
+
+/* Responsive */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  section.feature-slider {
+    padding-top: 75px;
+    padding-bottom: 75px;
+    min-height: 940px;
+  }
+  section.feature-slider .feat-info {
+    max-width: 400px;
+  }
+}
+@media (max-width: 991px) {
+  section.feature-slider {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+  section.feature-slider .container-data .slide-wrapper-inner {
+    position: relative;
+    display: table;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  section.feature-slider .container-data .text-data {
+    display: none;
+  }
+  section.feature-slider .container-data .text-data .textData-label {
+    font-size: 19px;
+    font-weight: 500;
+  }
+  section.feature-slider .container-data .text-data.mobile {
+    display: flex;
+    justify-content: flex-start;
+    margin: 25px 0;
+  }
+  section.feature-slider .container-data .text-data.mobile .text span {
+    border-top: 2px solid #545452;
+  }
+  section.feature-slider .feat-info {
+    max-width: 400px;
+  }
+  section.feature-slider .container-data .floating-btn {
+    right: unset;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  section.feature-slider .container-data .floating-btn button {
+    width: 45px;
+    height: 45px;
+  }
+  section.feature-slider::after {
+    max-width: 500px;
+    height: 475px;
+    bottom: 130px;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(1%) saturate(2556%) hue-rotate(214deg) brightness(113%) contrast(75%);
+  }
+  section.feature-slider .container-data .text-data.mobile {
+    gap: 135px;
+  }
+}
+@media (max-width: 767px) {
+  section.feature-slider {
+    height: 100vh;
+    min-height: 840px;
+    padding-bottom: 60px !important;
+  }
+  section.feature-slider .container-data .text-data.mobile {
+    gap: 50px;
+  }
+  section.feature-slider::after {
+    max-width: 452px;
+    height: 415px;
+    bottom: 107px;
+  }
+  section.feature-slider .feat-info h2 {
+    font-weight: 800;
+  }
+  section.feature-slider .container-data .slide .description {
+    display: none;
+  }
+  .featProduct-content .feat-info a.btn {
+    display: none !important;
+  }
+  .featProduct-content .mobile-button {
+    display: inline !important;
+  }
+  section.feature-slider .product-image {
+    margin-top: 60px;
+  }
+}
+@media (max-width: 580px) {
+  section.feature-slider {
+    min-height: auto;
+    height: 825px;
+  }
+}
+@media (max-width: 520px) {
+  section.feature-slider {
+    height: 775px;
+  }
+  section.feature-slider::after {
+    max-width: 409px;
+    height: 387px;
+    bottom: 60px;
+  }
+  section.feature-slider .container-data .slide img {
+    margin-top: 75px;
+  }
+}
+
+@media (max-width: 497px) {
+  section.feature-slider .container-data .slide img {
+      margin-top: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  section.feature-slider {
+    min-height: auto;
+    padding-bottom: 40px !important;
+    height: 670px;
+  }
+  section.feature-slider::after {
+    max-width: 372px;
+    height: 345px;
+    bottom: 28px;
+  }
+  section.feature-slider .container-data .text-data .textData-label {
+    font-size: 16px;
+  }
+  section.feature-slider .container-data .text-data .data-value,
+section.feature-slider .container-data .text-data .data-value p {
+    font-size: 15px;
+  }
+  section.feature-slider .container-data .slide .description {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+@media (max-width: 450px) {
+  section.feature-slider::after {
+    max-width: 315px;
+    height: 299px;
+    bottom: 69px;
+  }
+}
+@media (max-width: 444px) {
+  section.feature-slider {
+    height: 688px;
+  }
+}
+@media (max-width: 420px) {
+  section.feature-slider {
+    min-height: auto;
+    height: 652px;
+  }
+  section.feature-slider .container-data .text-data.mobile {
+    gap: 25px;
+  }
+  section.feature-slider::after {
+    max-width: 303px;
+    height: 285px;
+    bottom: 68px;
+  }
+}
+@media (max-width: 370px) {
+  section.feature-slider {
+    height: 650px;
+  }
+  section.feature-slider .container-data .text-data.mobile {
+    gap: 30px;
+  }
+  section.feature-slider .container-data .text-data.mobile .textData-label {
+    font-size: 14px;
+  }
+  section.feature-slider .container-data .text-data.mobile .data-value,
+section.feature-slider .container-data .text-data.mobile .data-value p {
+    font-size: 15px;
+  }
+  section.feature-slider::after {
+    max-width: 265px;
+    height: 245px;
+    bottom: 83px;
+  }
+}
+@media (max-width: 350px) {
+  section.feature-slider {
+    height: 645px;
+  }
+  section.feature-slider .container-data .text-data.mobile {
+    gap: 17px;
+  }
+  section.feature-slider .container-data .slide img {
+    margin-top: 68px;
+  }
+}
+@media (max-width: 346px) {
+  section.feature-slider {
+    height: 647px;
+  }
+}
+@media (max-width: 341px) {
+  section.feature-slider {
+    height: 669px;
+  }
+}
+</style>
+
+{% javascript %}
+
+    var slide = 1;
+    var totalSlide = $('.data p').length;
+
+    $('button.prev').on('click', function () {
+        if (slide > 1) {
+            slide--;
+            triggerSlide(slide);
+        }
+        updateButtonState();
+    });
+
+    $('button.next').on('click', function () {
+        if (slide < totalSlide) {
+            slide++;
+            triggerSlide(slide);
+        }
+        updateButtonState();
+    });
+
+    function triggerSlide(slide) {
+        $(`.data p:eq(${slide - 1})`).addClass('active').siblings().removeClass('active');
+
+        let title = $('.data p.active').data('title');
+        let description = $('.data p.active').data('description');
+        let image = $('.data p.active').data('image');
+
+        let price = $('.data p.active').data('price');
+        let body = $('.data p.active').data('body');
+        let motor = $('.data p.active').data('motor');
+        let battery = $('.data p.active').data('battery');
+
+        // Add transition effect for opacity
+        $('.text-data').css('opacity', 0);
+
+        // Update content after a short delay
+        setTimeout(() => {
+            $('.text-data .price span').html(price);
+            $('.text-data .body span').html(body);
+            $('.text-data .motor span').html(motor);
+            $('.text-data .battery span').html(battery);
+
+            // Remove transition effect
+            $('.text-data').css('opacity', 1);
+
+            $('.slide').css('left', '-100%');
+
+            setTimeout(() => {
+                $('.slide .title').html(title);
+                $('.slide .description').html(description);
+                $('.slide img').attr('src', image);
+
+                $('.slide').css('left', '0');
+            }, 500);
+        }, 300); // Adjust the delay according to your preference
+    }
+
+    function updateButtonState() {
+        $('button.prev').toggleClass('active', slide > 1);
+        $('button.next').toggleClass('active', slide < totalSlide);
+    }
+
+    
+    //when scroll slide the object on the left side of this section slider
+    function isInViewport(element) {
+        var elementTop = $(element).offset().top;
+        var elementHeight = $(element).outerHeight();
+        var viewportTop = $(window).scrollTop();
+        var viewportBottom = viewportTop + $(window).height();
+        return elementTop + elementHeight / 2 < viewportBottom;
+    }
+
+    $(window).scroll(function() {
+    // Check if section2 is in the viewport
+    if (isInViewport('.feature-slider')) {
+        // Add a class to trigger the slide animation
+        $('.slide-wrapper-inner').addClass('slide-animation');
+    }
+    });
+    
+    
+    
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Feature Slider",
+        "settings": [
+            {
+                "type": "number",
+                "id": "section_paddingTop",
+                "label": "Section Padding Top",
+                "default": 100
+            },
+            {
+                "type": "number",
+                "id": "section_paddingBottom",
+                "label": "Section Padding Bottom",
+                "default": 100
+            },
+            {
+                "type": "checkbox",
+                "id": "show_background_image",
+                "label": "Show Backgrund Image?"
+            },
+            {
+                "type": "image_picker",
+                "id": "background_image",
+                "label": "Section Background Image"
+            },
+            {
+                "type": "color",
+                "id": "bg_color",
+                "label": "Background Color"
+            },
+            {
+                "type": "text",
+                "id": "section_id",
+                "label": "Enter section id here"
+            },
+            {
+                "type": "text",
+                "id": "productTitle",
+                "label": "Product Title"
+            },
+            {
+                "type": "textarea",
+                "id": "productDescription",
+                "label": "Product Description",
+                "default": "Product Description"
+            },
+            {
+                "type": "text",
+                "id": "product_price",
+                "label": "Product Price",
+                "default": "Product Price"
+            },
+            {
+                "type": "richtext",
+                "id": "product_body",
+                "label": "Product Body"
+            },
+            {
+                "type": "richtext",
+                "id": "product_motor",
+                "label": "Product Motor"
+            },
+            {
+                "type": "richtext",
+                "id": "product_battery",
+                "label": "Product Battery"
+            },
+            {
+                "type": "image_picker",
+                "id": "product_image",
+                "label": "Product Image"
+            },
+            {
+                "type": "url",
+                "id": "product_url",
+                "label": "Product URL"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "column",
+                "name": "Feature Item",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "productTitle",
+                        "label": "Product Title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "product_description",
+                        "label": "Product Description"
+                    },
+                    {
+                        "type": "text",
+                        "id": "product_price",
+                        "label": "Product Price",
+                        "default": "Product Price"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "product_body",
+                        "label": "Product Body"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "product_motor",
+                        "label": "Product Motor"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "product_battery",
+                        "label": "Product Battery"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "product_image",
+                        "label": "Product Image"
+                    },
+                    {
+                        "type": "url",
+                        "id": "product_url",
+                        "label": "Product URL"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+          {
+            "name": "Feature Slider"
+          }
+        ]
+    }
+{% endschema %}

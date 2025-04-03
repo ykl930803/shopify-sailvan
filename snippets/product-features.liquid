@@ -1,0 +1,82 @@
+<style>
+  .product-features .features-item{
+    gap: 15px;
+    align-items: center;
+    display: flex;
+
+  }
+  section.businessDays-addToCart{
+    border-top: 0 !important
+  }
+
+  @media (max-width: 768px){
+    .product-features .features-item{
+      display: block;
+      text-align:center;
+    }
+  }
+  @media (min-width: 992px){
+    .product-features .features-item{
+      gap: 10px;
+    }
+    .product-features .features-item img{
+      width: 42px;
+    }
+  }
+  @media (min-width: 1366px){
+    .product-features .features-item{
+      gap: 15px;
+    }
+    .product-features .features-item img{
+      width: 62px;
+    }
+  }
+</style>
+<div class="product-features bg-lightgray" style="padding-top: 41px; padding-bottom: 41px;">
+  <div class="container container-panel">
+    <div class="m-0 row justify-content-between" style="row-gap:20px;">
+        <div class="col-lg-2 col-md-4 col-6 features-item">
+          <img src="{{ 'p_top_speed.png' | asset_url }}" alt="Top Speed" width="62" height="auto" class="img-fluid">
+          <div class="features-text">
+              <span class="v-small fw-600 txt-light">TOP SPEED</span>
+              <div class="v-extra-large fw-bold">20MPH</div>
+          </div>
+        </div>
+         <div class="col-lg-2 col-md-4 col-6  features-item">
+          <img src="{{ 'p_tires.png' | asset_url }}" alt="Top Speed" width="62" height="auto" class="img-fluid">
+          <div class="features-text">
+              <span class="v-small fw-600 txt-light">TIRES</span>
+              <div class="v-extra-large fw-bold">3" Fat Tires</div>
+          </div>
+        </div>
+         <div class="col-lg-2 col-md-4 col-6 features-item">
+          <img src="{{ 'p_motor.png' | asset_url }}" alt="Top Speed" width="62" height="auto" class="img-fluid">
+          <div class="features-text">
+              <span class="v-small fw-600 txt-light">MOTOR POWER</span>
+              <div class="v-extra-large fw-bold">750W</div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 features-item">
+          <img src="{{ 'p_range.png' | asset_url }}" alt="Top Speed" width="62" height="auto" class="img-fluid">
+          <div class="features-text">
+              <span class="v-small fw-600 txt-light">RANGE</span>
+              <div class="v-extra-large fw-bold">70Miles</div>
+          </div>
+        </div>
+         <div class="col-lg-2 col-md-4 col-6 features-item">
+          <img src="{{ 'p_payload.png' | asset_url }}" alt="Top Speed" width="62" height="auto" class="img-fluid">
+          <div class="features-text">
+              <span class="v-small fw-600 txt-light">PAYLOAD</span>
+              <div class="v-extra-large fw-bold">260Lbs</div>
+          </div>
+        </div>
+         <div class="col-lg-2 col-md-4 col-6  features-item">
+          <img src="{{ 'p_phone.png' | asset_url }}" alt="Top Speed" width="62" height="auto" class="img-fluid">
+          <div class="features-text">
+              <span class="v-small fw-600 txt-light">PHONE APP</span>
+              <div class="v-extra-large fw-bold">iOS, Android</div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

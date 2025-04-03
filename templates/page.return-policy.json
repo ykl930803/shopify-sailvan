@@ -1,0 +1,1 @@
+{"sections":{"banner":{"type":"small-banner","settings":{"image_url":"shopify:\/\/shop_images\/Return_banner_3x_e7801f3f-0458-4ec6-b5bd-a61f5264c742.png"}},"main-content":{"type":"page-policy-content","settings":{"title":"{{ page.title }}","subtitle":"","layout":"container","content":"{{page.content}}"}}},"order":["banner","main-content"]}

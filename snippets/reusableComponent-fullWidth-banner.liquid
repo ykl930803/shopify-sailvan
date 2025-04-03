@@ -1,0 +1,29 @@
+<section id="shopify-section--{{ section.id }}" class="fullWidth-banner d-flex {{ section.settings.content_alignment }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="col-12 banner-content">
+
+                    {%- if section.settings.banner_headingText != blank -%}
+                        <div class="banner-headingText">
+                            {{ section.settings.banner_headingTag }}{{ section.settings.banner_headingText }}
+                        </div>
+                    {% endif %}
+                    
+                    {%- if section.settings.banner_paragraph != blank -%}
+                        <div class="banner-paragraph">
+                            {{ section.settings.banner_paragraph }}
+                        </div>
+                    {% endif %}
+
+                    {%- if section.settings.button_link != blank -%}
+                        <a href="{{ section.settings.button_link }}" class="btn btn-light mt-4 text-uppercase">{{ section.settings.button_text }}</a>
+                    {% endif %}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

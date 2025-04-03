@@ -1,0 +1,185 @@
+<section  id="{%- if section.settings.section_id != blank -%}custom-{{ section.settings.section_id }}{% else %}shopify-section--{{ section.id }}{% endif %}" class="fullProduct-detail">
+  <div class="container container-panel">
+    <div class="row">
+      <div class="productHolder col-xl-7">
+        {% render 'productImage' %}
+      </div>
+      <div class="productData col-xl-5">
+        {% render 'productInfo' %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% render 'businessDays-with-addTocart' %}
+
+<!--{% render 'floating-navigation' %}-->
+
+<style>
+  section.fullProduct-detail {
+    padding-top: {{ section.settings.section_paddingTop }}px;
+    padding-bottom: {{ section.settings.section_paddingBottom }}px;
+  }
+  body.product-page .jdgm-rev-widg__title {
+    display: none;
+  }
+
+  @media (max-width: 1199px) {
+    .productHolder {
+      padding-right: 12px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    section.fullProduct-detail {
+      padding-top: 40px !important;
+      padding-bottom: 20px !important;
+    }
+  }
+</style>
+
+
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+    var mainImage = document.getElementById('main-product-image');
+
+    // Set initial main image based on the first thumbnail
+    var firstThumbnail = document.querySelector('.thumbnail-item');
+    if (firstThumbnail) {
+        firstThumbnail.classList.add('active');
+        mainImage.src = firstThumbnail.getAttribute('data-main-image');
+    }
+
+    // Initialize Swiper
+    var thumbnailSlider = new Swiper('.product-thumbnail-slider', {
+        slidesPerView: 5,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    // Function to update the main image
+    function updateMainImage() {
+        var activeSlide = document.querySelector('.thumbnail-item.active');
+        if (activeSlide) {
+            var newMainImageSrc = activeSlide.getAttribute('data-main-image');
+            mainImage.src = newMainImageSrc;
+        }
+    }
+
+    // Add click event listeners to all thumbnail items
+    document.querySelectorAll('.thumbnail-item').forEach(function(thumbnail) {
+        thumbnail.addEventListener('click', function() {
+            // Remove 'active' class from all thumbnails
+            document.querySelectorAll('.thumbnail-item').forEach(function(item) {
+                item.classList.remove('active');
+            });
+
+            // Add 'active' class to the clicked thumbnail
+            thumbnail.classList.add('active');
+
+            // Update the main image
+            updateMainImage();
+        });
+    });
+
+    // Update the main image when swiper slides change
+    thumbnailSlider.on('slideChange', function() {
+        var activeSlides = thumbnailSlider.slides.filter(slide => slide.classList.contains('swiper-slide-active'));
+        if (activeSlides.length > 0) {
+            // Remove 'active' class from all thumbnails
+            document.querySelectorAll('.thumbnail-item').forEach(function(item) {
+                item.classList.remove('active');
+            });
+
+            // Add 'active' class to the first active slide
+            var firstActiveSlide = activeSlides[0];
+            firstActiveSlide.classList.add('active');
+
+            // Update the main image
+            updateMainImage();
+        }
+    });
+
+    document.querySelector('.swiper-button-next').addEventListener('click', function() {
+        setTimeout(updateMainImage, 300); 
+    });
+
+    document.querySelector('.swiper-button-prev').addEventListener('click', function() {
+        setTimeout(updateMainImage, 300);
+    });
+});
+
+</script>
+
+{% javascript %}
+  //variant colors
+  jQuery(document).ready(function(){
+    $('.customVariant-color').click(function() {
+      // Remove active class from all customVariantColor-items
+      $('.customVariantColor-item').removeClass('active');
+      // Add active class to the parent customVariantColor-item of the clicked customVariant-color
+      $(this).closest('.customVariantColor-item').toggleClass('active');
+    });
+  });
+{% endjavascript %}
+
+{% schema %}
+  {
+      "name": "Simple Product",
+      "settings": [
+          {
+            "type": "text",
+            "id": "section_id",
+            "label": "Section id",
+            "info": "Add custom section id without #. Ex: section-id"
+          },
+          {
+            "type": "number",
+            "id": "section_paddingTop",
+            "label": "Section Padding Top",
+            "default": 100
+          },
+          {
+            "type": "number",
+            "id": "section_paddingBottom",
+            "label": "Section Padding Bottom",
+            "default": 100
+          },
+          {
+            "type": "checkbox",
+            "id": "show_quantity_selector",
+            "label": "Show quantity selector",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_payment_button",
+            "label": "Show dynamic checkout button",
+            "default": true,
+            "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "delivery_1",
+            "label": "Shipping Time Description 1"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "delivery_2",
+            "label": "Shipping Time Description 2"
+          }
+
+
+      ],
+      "blocks": [],
+      "presets": [
+        {
+          "name": "Simple Product"
+        }
+      ]
+  }
+{% endschema %}

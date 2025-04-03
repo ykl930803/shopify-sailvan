@@ -1,0 +1,282 @@
+<section id="hnz-support-items">
+
+    <div class="nav-categories">
+        <p class="nav-category active" data-nav="before_purchase">Before Purchase</p>
+        <p class="nav-category" data-nav="delivery">Delivery</p>
+        <p class="nav-category" data-nav="aftermarket">Aftermarket</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navCategories = document.querySelectorAll('.nav-category');
+
+            navCategories.forEach(category => {
+                category.addEventListener('click', () => {
+
+                    document.querySelector('.categories').style.display = 'block';
+                    document.querySelector('.search-categories').style.display = 'none';
+                    document.querySelector('.search-input').value = '';
+
+                    navCategories.forEach(nav => nav.classList.remove('active'));
+                    category.classList.add('active');
+
+
+                    const targetCategory = category.getAttribute('data-nav');
+                    const categories = document.querySelectorAll('.category');
+                    
+                    categories.forEach(cat => {
+                        if (cat.hasAttribute('data-category')) {
+                            cat.style.display = 'none';
+                        }
+                    });
+
+                    const matchingCategory = document.querySelector(`.category[data-category="${targetCategory}"]`);
+                    if (matchingCategory) {
+                        matchingCategory.style.display = 'block';
+                    }
+
+                });
+            });
+        });
+    </script>
+
+    <div class="container section-content">
+        <div class="row g-lg-5 g-md-4 g-sm-4">
+
+            <div class="col-lg-8 col-md-7 col-sm-12">
+
+                <div class="categories">
+
+                    <div class="category" data-category="before_purchase">
+                        <div class="row g-lg-4 g-md-3 g-sm-3">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <a class="openTidio" href="javascript:void(0)">
+                                    <img class="category-icon" src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Expert.png?v=1718948813">
+                                    <h5 class="category-title">
+                                        Ask An Expert
+                                    </h5>
+                                </a>
+                            </div>
+                            {% for block in section.blocks %}
+                                {% if block.settings.category == 'before_purchase' %}
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <a href="{% if block.type == 'url' %}{{ block.settings.page_url }}{% else %}javascript:void(0){% endif %}" {% if block.type == 'text' %} class="hnz-modal" data-modal="support" {% endif %}>
+                                            <img class="category-icon" src="{{ block.settings.icon | img_url: 'master'  }}">
+                                            <h5 class="category-title">
+                                                {{ block.settings.title }}
+                                            </h5>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="category" data-category="delivery">
+                        <div class="row g-lg-4 g-md-3 g-sm-3">
+                            {% for block in section.blocks %}
+                                {% if block.settings.category == 'delivery' %}
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <a href="{% if block.type == 'url' %}{{ block.settings.page_url }}{% else %}javascript:void(0){% endif %}" {% if block.type == 'text' %} class="hnz-modal" data-modal="support" {% endif %}>
+                                            <img class="category-icon" src="{{ block.settings.icon | img_url: 'master'  }}">
+                                            <h5 class="category-title">
+                                                {{ block.settings.title }}
+                                            </h5>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="category" data-category="aftermarket">
+                        <div class="row g-lg-4 g-md-3 g-sm-3">
+                            {% for block in section.blocks %}
+                                {% if block.settings.category == 'aftermarket' %}
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <a href="{% if block.type == 'url' %}{{ block.settings.page_url }}{% else %}javascript:void(0){% endif %}" {% if block.type == 'text' %} class="hnz-modal" data-modal="support" {% endif %}>
+                                            <img class="category-icon" src="{{ block.settings.icon | img_url: 'master'  }}">
+                                            <h5 class="category-title">
+                                                {{ block.settings.title }}
+                                            </h5>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="search-categories">
+                    <div class="category">
+                        <div class="row g-lg-4 g-md-3 g-sm-3">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <a class="openTidio" href="javascript:void(0)">
+                                    <img class="category-icon" src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Expert.png?v=1718948813">
+                                    <h5 class="category-title">
+                                        Ask An Expert
+                                    </h5>
+                                </a>
+                            </div>
+                            {% for block in section.blocks %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <a href="{% if block.type == 'url' %}{{ block.settings.page_url }}{% else %}javascript:void(0){% endif %}" {% if block.type == 'text' %} class="hnz-modal" data-modal="support" {% endif %}>
+                                        <img class="category-icon" src="{{ block.settings.icon | img_url: 'master'  }}">
+                                        <h5 class="category-title">
+                                            {{ block.settings.title }}
+                                        </h5>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="no-category" style="display: none;">
+                        <div class="row g-lg-4 g-md-3 g-sm-3 align-items-center h-100">
+                            <div class="col-12 text-center">
+                                <p>No items found.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 col-md-5 col-sm-12">
+                <div class="app">
+                    <img class="app-logo" src="https://cdn.shopify.com/s/files/1/0625/2684/9277/files/Frame_1524903737.png?v=1740400908">
+                    <h5 class="app-title">
+                        Vanlife E-Bike APP
+                    </h5>
+                    <p class="app-subtitle">
+                        One-Stop Smart Mobility Solution
+                    </p>
+                    <a class="btn btn-black" href="{{ section.settings.app_url }}">
+                        DOWNLOAD APP
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener('click', function(event) {
+
+                document.querySelectorAll('.mdl-container .success-hide').forEach(function(element) {
+                    element.style.display = 'block';
+                });
+                document.querySelectorAll('.mdl-container .open-hide').forEach(function(element) {
+                    element.style.display = 'none';
+                });
+
+                let modalElement = event.target.closest('.hnz-modal');
+                if (modalElement) {
+                    let categoryTitleElement = modalElement.querySelector('.category-title');
+                    if (categoryTitleElement) {
+                        let categoryTitle = categoryTitleElement.innerHTML.trim();
+                        let inputElement = document.querySelector('.mdl-container[data-id="support"] input[name="contact[help]"]');
+                        if (inputElement) {
+                            inputElement.value = categoryTitle;
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+
+    {% render 'hnz-modal-support' %}
+
+</section>
+
+{% schema %}
+    {
+        "name": "Support Items",
+        "settings": [
+            {
+                "type": "url",
+                "id": "app_url",
+                "label": "App URL"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "url",
+                "name": "Page",
+                "settings": [
+                    {
+                        "type": "select",
+                        "id": "category",
+                        "label": "Category",
+                        "options": [
+                            {
+                                "label": "Before Purchase",
+                                "value": "before_purchase"
+                            },
+                            {
+                                "label": "Delivery",
+                                "value": "delivery"
+                            },
+                            {
+                                "label": "Aftermarket",
+                                "value": "aftermarket"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "icon",
+                        "label": "Icon"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "url",
+                        "id": "page_url",
+                        "label": "Page URL"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "name": "Form",
+                "settings": [
+                    {
+                        "type": "select",
+                        "id": "category",
+                        "label": "Category",
+                        "options": [
+                            {
+                                "label": "Before Purchase",
+                                "value": "before_purchase"
+                            },
+                            {
+                                "label": "Delivery",
+                                "value": "delivery"
+                            },
+                            {
+                                "label": "Aftermarket",
+                                "value": "aftermarket"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "icon",
+                        "label": "Icon"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

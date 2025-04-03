@@ -1,0 +1,412 @@
+<style>
+  .filter-toggle {
+    background: #fff;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .filter-toggle .toggle i {
+    font-size: .9em;
+    margin-left: 5px;
+    transition: all .3s ease;
+  }
+  .filter-list {
+    display: none;
+    background: #f8f8f8;
+    padding: 15px 25px 30px;
+  }
+  .filter-list .filter {
+    display: block;
+    border-bottom: 1px solid lightgrey;
+    text-decoration: none;
+  }
+  .filter-list .filter span {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 20px 0;
+    display: inline-block;
+    color: #6a6a6a;
+    position: relative;
+  }
+  .filter-list .filter.active span {
+    color: #1a1a1a;
+  }
+  .filter-list .filter.active span::after {
+    content: '';
+    display: block;
+    height: 4px;
+    background: #1a1a1a;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .section-content {
+    max-width: 1570px;
+  }
+  .blog-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  .blog-filter .filter {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    background: #fff;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    padding: 12px;
+    min-width: 100px;
+  }
+  .blog-filter .filter.active {
+    color: #fff;
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+  }
+</style>
+
+{% if blog.tags.size > 0 %}
+  <div class="filter-toggle d-lg-none d-md-flex d-sm-flex">
+      <div class="title">
+          Blog
+      </div>
+      <div class="title toggle">
+          {% if current_tags %}
+              {{ current_tags }}
+          {% else %}
+              All
+          {% endif %}
+          <i class="fa-solid fa-chevron-down"></i>
+      </div>
+  </div>
+  <div class="filter-list">
+    <a href="{{ blog.url }}" class="filter {% unless current_tags %}active{% endunless %}">
+        <span>
+          {{ 'All' }}
+        </span>
+    </a>
+    {% for tag in blog.all_tags %}
+        {% if current_tags contains tag %}
+            <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="filter active">
+                <span>
+                  {{ tag | trim }}
+                </span>
+            </a>
+        {% else %}
+            <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="filter">
+                <span>
+                  {{ tag | trim }}
+                </span>
+            </a>
+        {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+<div class="blog-template-section container container-panel {{section.id}}">
+    <div class="section-wrapper">
+        <div class="container section-content">
+
+            {% if blog.tags.size > 0 %}
+              <div class="row mb-5 d-lg-flex d-md-none d-sm-none">
+                  <div class="col-12">
+                      {% if blog.tags.size > 0 %}
+                          <div class="blog-filter">
+                              <a href="{{ blog.url }}" class="filter {% unless current_tags %}active{% endunless %}">
+                                  {{ 'All' }}
+                              </a>
+                              {% for tag in blog.all_tags %}
+                                  {% if current_tags contains tag %}
+                                      <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="filter active">
+                                          {{ tag | trim }}
+                                      </a>
+                                  {% else %}
+                                      <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="filter">
+                                          {{ tag | trim }}
+                                      </a>
+                                  {% endif %}
+                              {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+              </div>
+            {% endif %}
+
+            {% if blog.articles.size==0 %}
+                <div class="empty-blog-list">
+                    <h1 style="text-align:center;">No Blog Post </h1>
+                </div>
+            {% else %}
+
+                {% paginate blog.articles by 6 %}
+                    <div class="blog-list row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-2 gx-lg-5">
+                      {% for article in blog.articles %}
+                        <div class="col">
+                          {% render 'article-card',
+                            article: article,
+                            article_image: __image
+                          %}
+                        </div>
+                      {% endfor %}
+                    </div>
+                
+                    {%- if paginate.pages > 1 -%}
+                    {%- render 'pagination', paginate: paginate -%}
+                    {%- endif -%}
+                {%- endpaginate -%}
+
+            {% endif %}
+        </div>
+    </div>
+</div>
+<style>
+    .blog-template-section{
+        .featured-article{
+          padding: 73px 0 62px 0;
+          .card-text{
+              padding-top: 19px;
+              font-weight: 600;
+              .text-body-secondary{
+                --bs-secondary-color: #999999
+              }
+          }
+          .card-title{
+            padding-top: 11px;
+            line-height: 1.9;
+            --bs-card-title-color: #112027
+          }
+          .card-desc{
+            line-height: 1.8;
+            padding-top: 30px;
+            color: #666;
+          }
+        }
+        .img-fit{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .featured-img-wrapper{
+          padding-left: 74px;
+          .featured-image{
+            height: 447px;
+            border-radius: 10px;
+            overflow: hidden;
+            img{
+              transition:all 0.5s ease;
+
+              &:hover{
+                  scale:1.1;
+              }
+
+            }
+          }
+        }
+        .blog-list{
+            row-gap: 70px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            &.gx-lg-5 .col{
+              --bs-gutter-x : 40px !Important;
+            }
+            .card{
+                .card-img-wrapper {
+                  overflow: hidden;
+                  border-radius: 10px;
+                  width: 100%;
+                  border: 1px solid #ededed;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition:all 0.5s ease;
+
+                      &:hover{
+                         scale:1.1;
+                      }
+                    }
+                }
+                .card-body{
+                    padding: 20px 45px 20px 0;
+                    .card-title a{
+                        color :{{ settings.text_color }};
+                        text-decoration: none;
+                        font-size: 22px;
+                        line-height: 1.4;
+                    }
+                    .card-desc{
+                        font-size: 14px;
+                        line-height: 2;
+                    }
+                }
+                .card-text{
+                  padding-top: 14px;
+                  .extra-small{
+                    font-size: 14px;
+                    opacity: .8
+                  }
+                }
+            }
+        }
+    }
+@media only screen and (max-width: 768px) {
+   .featured-article{
+      .featured-img-wrapper{
+        height: auto;
+        padding-left: 0;
+      }
+    }
+    /*.blog-list{
+      .card{
+        .card-img-wrapper {
+            height: 210px;
+        }
+      }
+    }*/
+}
+
+@media only screen and (min-width: 768px) {
+    .featured-article{
+      .featured-img-wrapper{
+        padding-left: 74px;
+        .featured-image{
+          height: 318px;
+        }
+      }
+    }
+    .blog-list{
+      .card{
+        .card-img-wrapper {
+            height: 210px;
+        }
+      }
+    }
+}
+@media only screen and (min-width: 1536px) {
+   .featured-article{
+      .featured-img-wrapper{
+        padding-left: 74px;
+        .featured-image{
+           height: 447px;
+        }
+      }
+    }
+   .blog-list{
+      .card{
+        .card-img-wrapper {
+            height: 288px;
+        }
+      }
+    }
+}
+
+
+/* Jay Css */
+@media (max-width: 991px) {
+  .blog-list .col {
+    padding: 0 6px;
+  }
+  .featured-article {
+    padding: 30px 0 35px 0 !important;
+  }
+  .blog-template-section .blog-list {
+    row-gap: 10px;
+  }
+  .blog-list .card-body {
+    padding-right: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .featured-article {
+      display: flex;
+      flex-direction: column-reverse;
+  }
+  .featured-article-content .card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .featured-article-content .card-body .card-title {
+    order: 1;
+  }
+  .featured-article-content .card-body .card-desc {
+    order: 2;
+    padding-top: 10px;
+    margin-bottom: 10px;
+  }
+  .featured-article-content .card-body .card-text {
+    order: 3;
+    padding-top: 0;
+  }
+  .blog-template-section .featured-img-wrapper .featured-image,
+  .blog-list .card-img-wrapper {
+    height: 300px;
+    margin-bottom: 5px;
+  }
+  .blog-template-section .blog-list {
+    row-gap: 10px;
+  }
+  .blog-template-section .Pagination {
+    margin: 20px 0 50px;
+  }
+  .blog-template-section h6.page-subtitle {
+    padding-top: 0 !important;
+  }
+  .blog-list .card-text {
+    padding-top: 10px !important;
+  }
+  .blog-template-section .card-title a {
+    font-size: 21px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .blog-template-section .featured-img-wrapper .featured-image, .blog-list .card-img-wrapper {
+    height: 288px;
+  }
+}
+
+
+</style>
+{% schema %}
+{
+  "name": "Blog List",
+  "tag": "div",
+  "class": "shopify--blog-content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "{{blog.title}}"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub Title"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog List"
+    }
+  ],
+  "locales": {
+    "en": {
+      "title": "Blog List"
+    }
+  },
+  "enabled_on": {
+    "templates": ["blog"]
+  }
+}
+{% endschema %}

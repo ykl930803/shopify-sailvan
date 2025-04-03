@@ -1,0 +1,63 @@
+<section id="hnz-ug-standard-13" data-toggle="3d-model" data-name="3D-Model" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="container section-content">
+        <div class="row">
+            <div class="col-12">
+                <div class="nav-toggle">
+                    <span class="toggle active">Details Highlight</span>{% if section.settings.glb_url != blank %}<span class="toggle">3D Preview</span>{% endif %}
+                </div>
+                <div class="nav-menu">
+                    <div class="menu active" style="background: url('{{ section.settings.background_hotspot | img_url: "master" }}');
+                                                    background-size: 100%;
+                                                    background-repeat: no-repeat;
+                                                    background-position: center;">
+                        <div class="iactiveImg hotspot" data-ii="{{ section.settings.hotspot_id }}"></div>
+                    </div>
+                    {% if section.settings.glb_url != blank %}
+                        <div class="menu" style="background: url('{{ section.settings.background_3d | img_url: "master" }}');
+                                                 background-size: 100%;
+                                                 background-repeat: no-repeat;
+                                                 background-position: center;">
+                            <model-viewer class="model-3d" src="{{ section.settings.glb_url }}" auto-rotate camera-controls></model-viewer>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "UG Standard Section 13",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "hotspot_id",
+                "label": "Image Hotspot ID",
+                "info": "Use Hotspot Images app. Create your hotspot image and paste the ID here."
+            },
+            {
+                "type": "image_picker",
+                "id": "background_hotspot",
+                "label": "Hotspot Background"
+            },
+            {
+                "type": "url",
+                "id": "glb_url",
+                "label": "GLB URL",
+                "info": "Upload your GLB 3d Model to files and paste its url here."
+            },
+            {
+                "type": "image_picker",
+                "id": "background_3d",
+                "label": "3D Background"
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,38 @@
+<section id="hnz-ug-pro-6" data-toggle="riding-experience" data-name="Riding Experience" {% if section.settings.show == false %}style="display: none;"{% endif %}>
+    <div class="full-video d-lg-block d-md-none d-sm-none">
+        <video muted>
+            <source src="{{ section.settings.video.sources[1].url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="full-video d-lg-none d-md-block d-sm-block">
+        <video muted>
+            <source src="{{ section.settings.video_mobile.sources[1].url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "UG Pro Section 6",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show",
+                "label": "Show/Hide Section",
+                "default": true
+            },
+            {
+                "type": "video",
+                "id": "video",
+                "label": "Video Desktop"
+            },
+            {
+                "type": "video",
+                "id": "video_mobile",
+                "label": "Video Mobile"
+            }
+        ]
+    }
+{% endschema %}
