@@ -39,7 +39,6 @@
     },
     "header_banner_wbRrJh": {
       "type": "header-banner",
-      "disabled": true,
       "custom_css": [],
       "settings": {
         "section_paddingTop": 150,
